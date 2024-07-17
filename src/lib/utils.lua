@@ -24,4 +24,18 @@ function utils.keys(table)
     return res
 end
 
+function utils.strTable(table)
+    if type(table) ~= "table" then
+        return tostring(table)
+    end
+
+    local res = "{"
+
+    for k, v in pairs(table) do
+        res = res .. " " .. utils.strTable(k) .. " = " .. utils.strTable(v) .. " "
+    end
+
+    return res .. "}"
+end
+
 return utils
