@@ -4,7 +4,6 @@ local console = require("lib.console").new()
 function scene.load()
     console.print("Debug scene")
     console.print("Game version:", scene.main.version)
-    scene.main.loadScene(scene.main.scenes.menu)
 end
 
 function scene.draw(screen)
