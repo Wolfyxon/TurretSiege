@@ -26,7 +26,7 @@ end
 --== Love2D function overrides ==--
 
 function love.load()
-    main.loadScene(scenes.debug)
+    main.loadScene(scenes.game)
 end
 
 function love.draw(screen)
