@@ -30,4 +30,9 @@ function Sprite:getTextureSize()
     return self.texture:getDimensions()
 end
 
+function Sprite:getOrigin()
+    local w, h = self:getTextureSize()
+    return self.x + w / 2, self.y + h / 2
+end
+
 return Sprite
