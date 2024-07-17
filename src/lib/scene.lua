@@ -1,28 +1,32 @@
-local Scene = {}
+local Scene = {
+    main = nil
+}
 
-function Scene.new(name)
-    local this = {}
+function Scene:new(o, name)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
 
-    this.name = name or debug.getinfo(2, "S").short_src
-    this.main = nil
+    self.name = name or debug.getinfo(2, "S").short_src
 
-    function this.drawRequest(screen)
-        this.draw(screen)
-    end
-    
-    function this.draw(screen)
-        love.graphics.print(this.name .. "\nNo draw function implemented. \nScreen name: " .. tostring(screen), 0, 0)
-    end
-    
-    function this.updateRequest(delta)
-        this.update(delta)
-    end
-    
-    function this.update(delta) end
-    function this.load() end
-    function this.unload() end
-    
-    return this
+    return o
 end
+
+function Scene:drawRequest(screen)
+    self:draw(screen)
+end
+
+function Scene:draw(screen)
+    love.graphics.print(self.name .. "\nNo draw function implemented. \nScreen name: " .. tostring(screen), 0, 0)
+end
+
+function Scene:updateRequest(delta)
+    self:update(delta)
+end
+
+function Scene:update(delta) end
+function Scene:load() end
+function Scene:unload() end
+
 
 return Scene

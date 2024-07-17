@@ -1,16 +1,16 @@
-local scene = require("lib.scene").new()
-local console = require("lib.console").new()
+local scene = require("lib.scene"):new()
+local console = require("lib.console"):new()
 
-function scene.load()
+function scene:load()
     console.print("Debug scene")
     console.print("Game version:", scene.main.version)
 end
 
-function scene.draw(screen)
+function scene:draw(screen)
     console.draw()
 end
 
-function scene.update(delta)
+function scene:update(delta)
     
 end
 

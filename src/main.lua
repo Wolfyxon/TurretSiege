@@ -20,7 +20,7 @@ function main.loadScene(scene)
 
     scene.main = main
     currentScene = scene
-    scene.load()
+    scene:load()
 end
 
 --== Love2D function overrides ==--
@@ -31,12 +31,12 @@ end
 
 function love.draw(screen)
     if currentScene then
-        currentScene.drawRequest(screen)
+        currentScene:drawRequest(screen)
     end
 end
 
 function love.update(delta)
     if currentScene then
-        currentScene.updateRequest(delta)
+        currentScene:updateRequest(delta)
     end
 end
