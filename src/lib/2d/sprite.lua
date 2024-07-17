@@ -10,9 +10,7 @@ function Sprite:new(o, path)
     o = Node2D.new(self, o)
     setmetatable(o, self)
     self.__index = self
-
-    o.main = nil
-
+    
     if path then
         self:loadTextureFromFile(path)
     end
