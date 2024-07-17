@@ -1,7 +1,9 @@
 local Scene = {}
 
-function Scene.new()
+function Scene.new(name)
     local this = {}
+    
+    this.name = name or debug.getinfo(2, "S").short_src
     this.main = nil
 
     function this.drawRequest(screen)
