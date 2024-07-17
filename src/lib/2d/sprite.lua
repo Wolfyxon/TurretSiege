@@ -25,4 +25,9 @@ function Sprite:draw()
     love.graphics.draw(self.texture, 0, 0, self.sizeX, self.sizeY)
 end
 
+function Sprite:getTextureSize()
+    if not self.texture then return end
+    return self.texture:getDimensions()
+end
+
 return Sprite
