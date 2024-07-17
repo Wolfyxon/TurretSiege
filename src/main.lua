@@ -19,8 +19,8 @@ function main.loadScene(scene)
     assert(tp == "table", "Not a table. Type: " .. tp)
 
     scene.main = main
-    scene.load()
     currentScene = scene
+    scene.load()
 end
 
 --== Love2D function overrides ==--
