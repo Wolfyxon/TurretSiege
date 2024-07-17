@@ -6,6 +6,7 @@ local scenes = {
     menu = require("scenes.menu.menu"),
     debug = require("scenes.debug")
 }
+main.scenes = scenes
 
 local currentScene = nil
 
