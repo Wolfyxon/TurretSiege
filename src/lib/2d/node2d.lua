@@ -39,16 +39,24 @@ function Node2D:disownChild(node)
     table.remove(self.children, node:getIndex())
 end
 
-function Node2D:draw(screen)
+function Node2D:drawRequest(screen)
+    self:draw(screen)
+
     for i, v in ipairs(self.children) do
-        v:draw(screen)
+        v:drawRequest(screen)
     end
 end
 
-function Update:update(delta)
+function Node2D:updateRequest(delta)
+    self:update(delta)
+
     for i, v in ipairs(self.children) do
-        v:update(delta)
+        v:updateRequest(delta)
     end
 end
+
+function Node2D:draw(screen) end
+function Node2D:update(delta) end
+
 
 return Node2D
