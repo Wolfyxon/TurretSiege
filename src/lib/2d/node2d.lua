@@ -3,6 +3,8 @@ local Node2D = {
     children = {},
     visible = true,
     rotation = 0,
+    scaleX = 1,
+    scaleY = 1,
     x = 0,
     y = 0
 }
@@ -44,8 +46,10 @@ function Node2D:drawRequest(screen)
     if not self.visible then return end
 
     local sW, sH = love.graphics.getDimensions(screen)
+    local ratio = sW / sH
 
     love.graphics.translate(self.x * (self.x / sW), self.y * (self.y / sH))
+    love.graphics.scale(self.scaleX * ratio, self.scaleY * ratio)
     love.graphics.rotate(math.rad(self.rotation))
 
     self:draw(screen)
