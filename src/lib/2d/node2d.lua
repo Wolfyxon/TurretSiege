@@ -2,6 +2,7 @@ local Node2D = {
     parent = nil,
     children = {},
     visible = true,
+    rotation = 0,
     x = 0,
     y = 0
 }
@@ -41,7 +42,7 @@ end
 
 function Node2D:drawRequest(screen)
     if not self.visible then return end
-    
+
     self:draw(screen)
 
     for i, v in ipairs(self.children) do
