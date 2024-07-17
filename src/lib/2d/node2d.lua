@@ -43,6 +43,11 @@ end
 function Node2D:drawRequest(screen)
     if not self.visible then return end
 
+    local sW, sH = love.graphics.getDimensions(screen)
+
+    love.graphics.translate(self.x * (self.x / sW), self.y * (self.y / sH))
+    love.graphics.rotate(math.rad(self.rotation))
+
     self:draw(screen)
 
     for i, v in ipairs(self.children) do
