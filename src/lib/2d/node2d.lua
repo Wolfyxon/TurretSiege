@@ -40,11 +40,15 @@ function Node2D:disownChild(node)
 end
 
 function Node2D:draw(screen)
-
+    for i, v in ipairs(self.children) do
+        v:draw(screen)
+    end
 end
 
 function Update:update(delta)
-    
+    for i, v in ipairs(self.children) do
+        v:update(delta)
+    end
 end
 
 return Node2D
