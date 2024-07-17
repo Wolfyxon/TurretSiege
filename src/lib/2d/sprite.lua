@@ -10,7 +10,7 @@ function Sprite:new(o, path)
     o.sizeY = nil
 
     if path then
-        self:loadTextureFromFile(path)
+        o:loadTextureFromFile(path)
     end
 
     return o
