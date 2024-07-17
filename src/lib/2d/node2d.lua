@@ -36,7 +36,7 @@ function Node2D:addChild(node)
     node:orphanize()
     node.parent = self
     table.insert(self.children, node)
-    
+
     node.added(self)
 end
 
@@ -73,8 +73,6 @@ end
 function Node2D:draw(screen) end
 function Node2D:update(delta) end
 function Node2D.added(newParent) end
-function Node2D.removed(previousParent)
-    
-end
+function Node2D.removed(previousParent) end
 
 return Node2D
