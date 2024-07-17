@@ -1,5 +1,6 @@
 local main = {}
 main.version = "1.0"
+main.frameCount = 0
 
 local scenes = {
     game = require("scenes.game.game"),
@@ -27,7 +28,7 @@ end
 
 function love.load()
     love.window.setTitle("Turret Siege")
-    
+
     main.loadScene(scenes.game)
 end
 
@@ -38,6 +39,8 @@ function love.draw(screen)
 end
 
 function love.update(delta)
+    main.frameCount = main.frameCount + 1
+
     if currentScene then
         currentScene:updateRequest(delta)
     end
