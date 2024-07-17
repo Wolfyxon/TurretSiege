@@ -17,6 +17,7 @@ function scene:draw(screen)
 
         for i = 1, circles do
             love.graphics.push()
+            love.graphics.origin()
             love.graphics.translate(sW / 2, sH / 2)
             local dir = (-1) ^ i
             
