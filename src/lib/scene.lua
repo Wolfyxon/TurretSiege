@@ -1,20 +1,26 @@
 local Scene = {}
-Scene.main = nil
 
-function Scene.drawRequest(screen)
-    Scene.draw(screen)
+function Scene.new()
+    local this = {}
+    this.main = nil
+
+    function this.drawRequest(screen)
+        this.draw(screen)
+    end
+    
+    function this.draw(screen)
+        love.graphics.print("No draw function implemented. \nScreen name: " .. tostring(screen), 0, 0)
+    end
+    
+    function this.updateRequest(delta)
+        this.update(delta)
+    end
+    
+    function this.update(delta) end
+    function this.load() end
+    function this.unload() end
+    
+    return this
 end
-
-function Scene.draw(screen)
-    love.graphics.print("No draw function implemented. \nScreen name: " .. tostring(screen), 0, 0)
-end
-
-function Scene.updateRequest(delta)
-    Scene.update(delta)
-end
-
-function Scene.update(delta) end
-function Scene.load() end
-function Scene.unload() end
 
 return Scene

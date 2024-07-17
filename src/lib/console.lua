@@ -1,19 +1,24 @@
 local Console = {}
 
-Console.text = ""
+function Console.new()
+    local this = {}
+    this.text = ""
 
-function Console.print(...)
-    local str = ""
-
-    for i, v in ipairs({...}) do
-        str = str .. tostring(v) .. " "
+    function this.print(...)
+        local str = ""
+    
+        for i, v in ipairs({...}) do
+            str = str .. tostring(v) .. " "
+        end
+    
+        this.text = this.text .. str .. "\n"
+    end
+    
+    function this.draw()
+        love.graphics.print(this.text, 0, 0)
     end
 
-    Console.text = Console.text .. str .. "\n"
-end
-
-function Console.draw()
-    love.graphics.print(Console.text, 0, 0)
+    return this
 end
 
 return Console
