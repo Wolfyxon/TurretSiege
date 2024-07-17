@@ -36,10 +36,13 @@ function Node2D:addChild(node)
     node:orphanize()
     node.parent = self
     table.insert(self.children, node)
+    
+    node.added(self)
 end
 
 function Node2D:disownChild(node)
     table.remove(self.children, node:getIndex())
+    node.removed(self)
 end
 
 function Node2D:drawRequest(screen)
@@ -69,6 +72,9 @@ end
 
 function Node2D:draw(screen) end
 function Node2D:update(delta) end
-
+function Node2D.added(newParent) end
+function Node2D.removed(previousParent)
+    
+end
 
 return Node2D
