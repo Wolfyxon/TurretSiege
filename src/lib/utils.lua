@@ -38,4 +38,9 @@ function utils.strTable(table)
     return res .. "}"
 end
 
+function utils.lerp(start, target, speed)
+    if speed >= 1 then return target end;
+    return (1 - speed) * start + speed * target;
+end
+
 return utils
