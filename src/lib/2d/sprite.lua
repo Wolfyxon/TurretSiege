@@ -26,3 +26,5 @@ function Sprite:draw()
     if not self.texture then return end
     love.graphics.draw(self.texture, 0, 0, self.sizeX, self.sizeY)
 end
+
+return Sprite
