@@ -5,7 +5,7 @@ local circleRot = 0
 
 function scene:draw(screen)
     local sW, sH = love.graphics.getDimensions(screen)
-    local ratio = sW / sH
+    local ratio = math.min(sW, sH)
 
     if not screen or screen == "left" then
         
@@ -25,7 +25,7 @@ function scene:draw(screen)
 
             local c = i / circles
             love.graphics.setColor(0.6 * c, 0.5 * c, 0, 1)
-            love.graphics.circle("fill", 0 , 0, (circles - i) * 100 * ratio, 6)
+            love.graphics.circle("fill", 0 , 0, (circles - i) * 0.25 * ratio, 6)
 
             love.graphics.pop()
         end
