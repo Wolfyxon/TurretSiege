@@ -1,6 +1,5 @@
 local Node2D = {
     parent = nil,
-    children = {},
     visible = true,
     rotation = 0,
     scaleX = 1,
@@ -13,6 +12,8 @@ function Node2D:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+
+    o.children = {}
 
     return o
 end
