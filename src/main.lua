@@ -26,6 +26,8 @@ end
 --== Love2D function overrides ==--
 
 function love.load()
+    love.window.setTitle("Turret Siege")
+    
     main.loadScene(scenes.game)
 end
 
