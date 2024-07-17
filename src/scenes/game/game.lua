@@ -1,7 +1,17 @@
 local scene = require("lib.scene"):new()
+local turret = nil
 
 local circles = 10
 local circleRot = 0
+
+function scene:load()
+    turret = require("scenes.game.turret.turret"):new()
+    scene:addChild(turret)
+end
+
+function scene:unload()
+    turret = nil
+end
 
 function scene:draw(screen)
     local sW, sH = love.graphics.getDimensions(screen)
