@@ -7,7 +7,7 @@ function Scene:new(o, name)
     setmetatable(o, self)
     self.__index = self
 
-    self.name = name or debug.getinfo(2, "S").short_src
+    o.name = name or debug.getinfo(2, "S").short_src
 
     return o
 end
