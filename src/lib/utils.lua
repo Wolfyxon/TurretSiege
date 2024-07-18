@@ -44,6 +44,18 @@ function utils.lerp(start, target, speed)
     return (1 - speed) * start + speed * target;
 end
 
+function utils.lerpAngle(start, target, speed)
+    if speed >= 1 then return target end;
+
+    start = math.rad(start);
+    target = math.rad(target);
+
+    local TAU = math.pi * 2;
+    local diff = math.fmod(target - start, TAU);
+    local shortest = math.fmod(2 * diff, TAU) - diff;
+    return math.deg(start + shortest * speed);
+end
+
 function utils.rotationTo(x1, y1, x2, y2)
     local dX = x2 - x1
     local dY = y2 - y1
