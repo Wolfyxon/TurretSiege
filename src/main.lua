@@ -41,10 +41,17 @@ function love.draw(screen)
     local w, h = love.graphics.getDimensions(screen)
     local ratio = math.min(w / main.width, h / main.height)
 
+    local data = {
+        w = main.width,
+        h = main.height,
+        scaleX = ratio,
+        scaleY = ratio,
+    }
+
     love.graphics.scale(ratio, ratio)
 
     if currentScene then
-        currentScene:drawRequest(screen)
+        currentScene:drawRequest(screen, data)
     end
 end
 
