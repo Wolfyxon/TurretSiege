@@ -43,4 +43,10 @@ function utils.lerp(start, target, speed)
     return (1 - speed) * start + speed * target;
 end
 
+function utils.rotationTo(x1, y1, x2, y2)
+    local dX = x2 - x1
+    local dY = y2 - y1
+    return math.deg(math.atan(dX, dY))
+end
+
 return utils
