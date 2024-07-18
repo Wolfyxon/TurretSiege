@@ -53,6 +53,8 @@ end
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
 
+    love.graphics.push()
+
     love.graphics.translate(self.x * data.w, self.y * data.h)
     love.graphics.scale(self.scaleX, self.scaleY)
     love.graphics.rotate(math.rad(self.rotation))
@@ -62,6 +64,8 @@ function Node2D:drawRequest(screen, data)
     for i, v in ipairs(self.children) do
         v:drawRequest(screen, data)
     end
+
+    love.graphics.pop()
 end
 
 function Node2D:updateRequest(delta)
