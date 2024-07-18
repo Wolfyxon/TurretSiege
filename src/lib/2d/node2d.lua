@@ -78,6 +78,10 @@ function Node2D:rotationTo(x, y)
     return utils.rotationTo(self.x, self.y, x, y)
 end
 
+function Node2D:rotate(deg)
+    self.rotation = self.rotation + deg
+end
+
 function Node2D:draw(screen) end
 function Node2D:update(delta) end
 function Node2D.added(newParent) end
