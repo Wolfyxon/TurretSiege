@@ -82,6 +82,11 @@ function Node2D:rotate(deg)
     self.rotation = self.rotation + deg
 end
 
+function Node2D:move(x, y)
+    self.x = self.x + x
+    self.y = self.y + y
+end
+
 function Node2D:draw(screen) end
 function Node2D:update(delta) end
 function Node2D.added(newParent) end
