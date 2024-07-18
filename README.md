@@ -1,7 +1,7 @@
 # Turret Siege
-Open source rougelike game where you are a turret surrounded by enemies.
+Open source rougelike game where you are a turret surrounded by enemies. Longer you survive, the better you score.
 
-Made with [Love2D](https://love2d.org/) and [LovePotion](https://lovebrew.org/).
+Made with [Love2D](https://love2d.org/) and [LovePotion](https://lovebrew.org/) in Lua.
 
 ## Screenshots
 TODO!
