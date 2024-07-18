@@ -50,20 +50,17 @@ function Node2D:disownChild(node)
     node.removed(self)
 end
 
-function Node2D:drawRequest(screen)
+function Node2D:drawRequest(screen, data)
     if not self.visible then return end
 
-    local sW, sH = love.graphics.getDimensions(screen)
-    local ratio = sW / sH
-
-    love.graphics.translate(self.x * (self.x / sW), self.y * (self.y / sH))
-    love.graphics.scale(self.scaleX * ratio, self.scaleY * ratio)
+    love.graphics.translate(self.x * (self.x / data.w), self.y * (self.y / data.h))
+    --love.graphics.scale(self.scaleX * data.scaleX, self.scaleY * data.scaleY)
     love.graphics.rotate(math.rad(self.rotation))
 
     self:draw(screen)
 
     for i, v in ipairs(self.children) do
-        v:drawRequest(screen)
+        v:drawRequest(screen, data)
     end
 end
 
