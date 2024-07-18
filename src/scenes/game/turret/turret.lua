@@ -1,5 +1,5 @@
-local Node2D = require("src.lib.2d.node2d")
-local Sprite = require("src.lib.2d.sprite")
+local Node2D = require("lib.2d.node2d")
+local Sprite = require("lib.2d.sprite")
 
 local Turret = Node2D:new()
 
