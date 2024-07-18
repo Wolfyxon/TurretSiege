@@ -42,7 +42,7 @@ function love.draw(screen)
     local sX = w / data.width
     local sY = h / data.height
 
-    local data = {
+    local drawData = {
         w = data.width,
         h = data.height,
         scaleX = sX,
@@ -52,7 +52,7 @@ function love.draw(screen)
     love.graphics.scale(sX, sY)
 
     if currentScene then
-        currentScene:drawRequest(screen, data)
+        currentScene:drawRequest(screen, drawData)
     end
 end
 
