@@ -53,13 +53,13 @@ end
 function utils.getMousePos(screen)
     local w, h = love.graphics.getDimensions(screen)
     
-    local mX = love.mouse.getX()
-    local mY = love.mouse.getY()
+    local mX, mY = love.mouse.getPosition()
 
-    local x = mX * (data.width / w)
-    local y = mY * (data.height / h)
+    local x = mX / w
+    local y = mY / h
 
     return x, y
 end
+
 
 return utils
