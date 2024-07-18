@@ -11,6 +11,10 @@ function Turret:new(o)
     o.base = Sprite:new({}, "scenes/game/turret/img/base.png")
     o.cannon = Sprite:new({}, "scenes/game/turret/img/cannon.png")
     
+    o.cannon.x = 0.2
+    
+    o.scaleX = 0.3
+    o.scaleY = 0.3
     o.x = 0.5
     o.y = 0.5
 
