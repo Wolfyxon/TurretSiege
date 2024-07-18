@@ -1,3 +1,5 @@
+local utils = require("lib.utils")
+
 local Node2D = {
     parent = nil,
     visible = true,
@@ -74,6 +76,10 @@ function Node2D:updateRequest(delta)
     for i, v in ipairs(self.children) do
         v:updateRequest(delta)
     end
+end
+
+function Node2D:rotationTo(x, y)
+    return utils.rotationTo(self.x, self.y, x, y)
 end
 
 function Node2D:draw(screen) end
