@@ -6,8 +6,15 @@ Made with [Love2D](https://love2d.org/) and [LovePotion](https://lovebrew.org/).
 ## Screenshots
 TODO!
 
-## Supported platforms
-- Universal `love`
-- Linux x86_64 `AppImage`
-- Windows x86_64 x86_32 `exe`
-- Nintendo 3DS `3dsx` (`cia` support soon)
+## Platforms
+| Platform     | File formats     | Architectures | Status   |
+| ------------ | ---------------- | ------------- | -------- |
+| Universal    | `love`           | *             | ✅       |
+| Linux        | `AppImage`       | x86_64        | ✅       |
+| Windows      | `exe`            | x86_64 x86_32 | ✅✅     |
+| Nintendo 3DS | `3dsx` ~~`cia`~~ |               | ✅📁     |
+| MacOS        |                  |               | 📁       |
+
+✅ `supported` | 🟡 `unstable` | ❌ `unsupported` | 🕛 `in progress` | 📁 `planned` 
+
+[Downloads]()
