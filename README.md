@@ -16,6 +16,8 @@ TODO!
 | Windows      | `exe`            | x86_64 x86_32 | ✅✅     |
 | Nintendo 3DS | `3dsx` ~~`cia`~~ |               | ✅📁     |
 | MacOS        |                  |               | 📁       |
+| Android      |                  |               | 📁       |
+
 
 ✅ `supported` | 🟡 `unstable` | ❌ `unsupported` | 🕛 `in progress` | 📁 `planned` 
 
