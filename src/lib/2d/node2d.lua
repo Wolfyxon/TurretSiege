@@ -30,10 +30,6 @@ function Node2D:getIndex()
     end
 end
 
-function Node2D:getOrigin()
-    return self.x, self.y
-end
-
 function Node2D:orphanize()
     if not self.parent then return end
     self.parent:disownChild(self)
