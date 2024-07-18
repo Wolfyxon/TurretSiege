@@ -11,6 +11,9 @@ function Turret:new(o)
     o.base = Sprite:new({}, "scenes/game/turret/img/base.png")
     o.cannon = Sprite:new({}, "scenes/game/turret/img/cannon.png")
     
+    o.x = 0.5
+    o.y = 0.5
+
     o:addChild(o.cannon)
     o:addChild(o.base)
 
