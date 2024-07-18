@@ -1,9 +1,7 @@
-local main = {
-    version = "1.0",
-    frameCount = 0,
+local data = require("data")
 
-    width = 400,
-    height = 240
+local main = {
+    frameCount = 0,
 }
 
 local scenes = {
@@ -32,18 +30,18 @@ end
 
 function love.load()
     love.window.setTitle("Turret Siege")
-    love.window.setMode(main.width, main.height, {resizable = true})
+    love.window.setMode(data.width, data.height, {resizable = true})
 
     main.loadScene(scenes.game)
 end
 
 function love.draw(screen)
     local w, h = love.graphics.getDimensions(screen)
-    local ratio = math.min(w / main.width, h / main.height)
+    local ratio = math.min(w / data.width, h / data.height)
 
     local data = {
-        w = main.width,
-        h = main.height,
+        w = data.width,
+        h = data.height,
         scaleX = ratio,
         scaleY = ratio,
     }
