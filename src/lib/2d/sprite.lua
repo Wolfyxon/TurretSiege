@@ -1,6 +1,8 @@
 local Node2D = require("lib.2d.node2d")
 local Sprite = Node2D:new()
 
+local gameData = require("data")
+
 function Sprite:new(o, path)
     o = Node2D.new(self, o)
     setmetatable(o, self)
@@ -22,7 +24,9 @@ end
 
 function Sprite:draw()
     if not self.texture then return end
-    love.graphics.draw(self.texture, 0, 0, self.sizeX, self.sizeY)
+    local tW, tH = self:getTextureSize()
+
+    love.graphics.draw(self.texture, -(tW / 2), -(tH / 2), self.sizeX, self.sizeY)
 end
 
 function Sprite:getTextureSize()
