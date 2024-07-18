@@ -1,6 +1,7 @@
-local main = {}
-main.version = "1.0"
-main.frameCount = 0
+local main = {
+    version = "1.0",
+    frameCount = 0
+}
 
 local scenes = {
     game = require("scenes.game.game"),
