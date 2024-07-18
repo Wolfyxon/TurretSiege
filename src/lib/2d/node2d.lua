@@ -87,6 +87,13 @@ function Node2D:move(x, y)
     self.y = self.y + y
 end
 
+function Node2D:moveRotated(x, y)
+    local ang = math.rad(self.rotation)
+    local rx = x * math.cos(ang) - y * math.sin(ang)
+    local ry = x * math.sin(ang) + y * math.cos(ang)
+    self:move(rx, ry)
+end
+
 function Node2D:draw(screen) end
 function Node2D:update(delta) end
 function Node2D.added(newParent) end
