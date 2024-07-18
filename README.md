@@ -17,4 +17,7 @@ TODO!
 
 ✅ `supported` | 🟡 `unstable` | ❌ `unsupported` | 🕛 `in progress` | 📁 `planned` 
 
+> [!NOTE]  
+> The 3DS version may not work under emulators. On real hardware it will most likely crash on the first run, but run successfully when restarted. This seems to be a LovePotion bug (or my 3DS is broken lol).
+
 [Downloads]()
