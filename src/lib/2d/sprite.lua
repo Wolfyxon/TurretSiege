@@ -1,4 +1,4 @@
-local Node2D = require("src.lib.2d.node2d")
+local Node2D = require("lib.2d.node2d")
 local Sprite = Node2D:new()
 
 function Sprite:new(o, path)
