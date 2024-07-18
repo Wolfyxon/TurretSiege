@@ -1,4 +1,5 @@
 local utils = {}
+local data = require("data")
 
 function utils.merge(...)
     local current = {}
@@ -47,6 +48,18 @@ function utils.rotationTo(x1, y1, x2, y2)
     local dX = x2 - x1
     local dY = y2 - y1
     return math.deg(math.atan(dX, dY))
+end
+
+function utils.getMousePos(screen)
+    local w, h = love.graphics.getDimensions(screen)
+    
+    local mX = love.mouse.getX()
+    local mY = love.mouse.getY()
+
+    local x = mX * (data.width / w)
+    local y = mY * (data.height / h)
+
+    return x, y
 end
 
 return utils
