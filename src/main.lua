@@ -1,6 +1,9 @@
 local main = {
     version = "1.0",
-    frameCount = 0
+    frameCount = 0,
+
+    width = 400,
+    height = 240
 }
 
 local scenes = {
@@ -29,11 +32,17 @@ end
 
 function love.load()
     love.window.setTitle("Turret Siege")
+    love.window.setMode(main.width, main.height, {resizable = true})
 
     main.loadScene(scenes.game)
 end
 
 function love.draw(screen)
+    local w, h = love.graphics.getDimensions(screen)
+    local ratio = math.min(w / main.width, h / main.height)
+
+    love.graphics.scale(ratio, ratio)
+
     if currentScene then
         currentScene:drawRequest(screen)
     end
