@@ -53,9 +53,7 @@ end
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
 
-    local x, y = self:getOrigin()
-
-    love.graphics.translate(x * data.w, y * data.h)
+    love.graphics.translate(self.x * data.w, self.y * data.h)
     --love.graphics.scale(self.scaleX * data.scaleX, self.scaleY * data.scaleY)
     love.graphics.rotate(math.rad(self.rotation))
 
