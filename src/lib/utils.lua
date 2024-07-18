@@ -47,7 +47,7 @@ end
 function utils.rotationTo(x1, y1, x2, y2)
     local dX = x2 - x1
     local dY = y2 - y1
-    return math.deg(math.atan(dX, dY))
+    return math.deg(math.atan(dY, dX))
 end
 
 function utils.getMousePos(screen)
