@@ -1,5 +1,6 @@
 local utils = require("lib.utils")
 local Node2D = require("lib.2d.node2d")
+local data = require("data")
 local AreaNode = Node2D:new()
 
 AreaNode.hitboxTypes = {"rect", "circle"}
@@ -18,10 +19,10 @@ end
 
 function AreaNode:drawDebug()
     if self.hitboxType == "rect" then
-        local x = self.x - self.width / 2
-        local y = self.y - self.height / 2
+        local x = (self.x - self.width / 2) * data.height
+        local y = (self.y - self.height / 2) * data.height
 
-        love.graphics.rectangle("fill", x, y, self.width, self.height)
+        love.graphics.rectangle("fill", x, y, self.width * data.width, self.height * data.height)
 
         for i, corner in ipairs(self:getRectCorners()) do
             local x = corner[1]
