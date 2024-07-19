@@ -14,6 +14,18 @@ All platforms supported by [Love2D Universal](https://github.com/Wolfyxon/love2d
 [Downloads]()
 
 ## Building and debugging
+### With the Makefile (recommended)
 This project uses [Love2D Universal](https://github.com/Wolfyxon/love2d-universal). Refer to the [wiki](https://github.com/Wolfyxon/love2d-universal/wiki/Building-your-project) for instructions.
 
-You may also use the [LovePotion bundler](https://bundle.lovebrew.org/) for Nintendo consoles but it's not officially supported.
+### Running manually
+
+To test the game without using the Makefile with `love`, start a terminal in the repository directory then run:
+```
+love src
+```
+
+### Manual building
+Refer to the [Love2D wiki](https://love2d.org/wiki/Game_Distribution) and [LovePotion wiki](https://lovebrew.org/#/packaging?id=fused-binary).
+
+### LovePotion bundler
+You may use the [LovePotion bundler](https://bundle.lovebrew.org/) for Nintendo consoles but it's not officially supported and will require making a config file.
