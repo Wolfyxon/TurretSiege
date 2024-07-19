@@ -7,8 +7,8 @@ function AreaNode:new(o, path)
     setmetatable(o, self)
     self.__index = self
 
-    o.sizeX = nil
-    o.sizeY = nil
+    o.height = nil
+    o.width = nil
 
     return o
 end
