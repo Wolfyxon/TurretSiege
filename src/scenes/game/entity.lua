@@ -26,3 +26,5 @@ function Entity:die()
 end
 
 function Entity:died() end
+
+return Entity
