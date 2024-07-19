@@ -7,7 +7,12 @@ local Node2D = {
     scaleX = 1,
     scaleY = 1,
     x = 0,
-    y = 0
+    y = 0,
+
+    r = 1,
+    g = 1,
+    b = 1,
+    a = 1
 }
 
 function Node2D:new(o)
@@ -56,7 +61,7 @@ function Node2D:drawRequest(screen, data)
     love.graphics.translate(self.x * data.w, self.y * data.h)
     love.graphics.scale(self.scaleX, self.scaleY)
     love.graphics.rotate(math.rad(self.rotation))
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(self.r, self.g, self.b, self.a)
 
     self:draw(screen)
 
