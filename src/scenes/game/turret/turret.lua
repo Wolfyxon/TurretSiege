@@ -41,8 +41,8 @@ function Turret:update(delta)
         self:fire()
     end
 
-    self.rotation = utils.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
-    self.cannon.x = utils.lerp(self.cannon.x, 0.2, 5 * delta)
+    self.rotation = utils.math.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
+    self.cannon.x = utils.math.lerp(self.cannon.x, 0.2, 5 * delta)
 end
 
 function Turret:fire()

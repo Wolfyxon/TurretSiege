@@ -1,7 +1,11 @@
-local utils = {}
+local utils = {
+    table = {},
+    math = {}
+}
 local data = require("data")
 
-function utils.merge(...)
+--== Table ==--
+function utils.table.merge(...)
     local current = {}
 
     for i, tbl in ipairs({...}) do
@@ -15,7 +19,7 @@ function utils.merge(...)
     return current
 end
 
-function utils.keys(table)
+function utils.table.keys(table)
     local res = {}
 
     for k, v in pairs(table) do
@@ -25,7 +29,7 @@ function utils.keys(table)
     return res
 end
 
-function utils.strTable(table)
+function utils.table.tostring(table)
     if type(table) ~= "table" then
         return tostring(table)
     end
@@ -39,12 +43,14 @@ function utils.strTable(table)
     return res .. "}"
 end
 
-function utils.lerp(start, target, speed)
+--== Math ==--
+
+function utils.math.lerp(start, target, speed)
     if speed >= 1 then return target end;
     return (1 - speed) * start + speed * target;
 end
 
-function utils.lerpAngle(start, target, speed)
+function utils.math.lerpAngle(start, target, speed)
     if speed >= 1 then return target end;
 
     start = math.rad(start);
@@ -56,12 +62,14 @@ function utils.lerpAngle(start, target, speed)
     return math.deg(start + shortest * speed);
 end
 
-function utils.rotationTo(x1, y1, x2, y2)
+function utils.math.rotationTo(x1, y1, x2, y2)
     local dX = x2 - x1
     local dY = y2 - y1
     return math.deg(math.atan2(dY, dX)) -- NOTE: Docs claim that atan2 can be replaced with atan, but it doesn't work properly
                                         -- TODO: Find a solution
 end
+
+--== Other ==--
 
 function utils.getMousePos(screen)
     local w, h = love.graphics.getDimensions(screen)
