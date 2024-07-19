@@ -22,6 +22,13 @@ function AreaNode:drawDebug()
         local y = self.y - self.height / 2
 
         love.graphics.rectangle("fill", x, y, self.width, self.height)
+
+        for i, corner in ipairs(self:getRectCorners()) do
+            local x = corner[1]
+            local y = corner[2]
+
+            love.graphics.circle("fill", x, y, 10, 8)
+        end
     else 
         if self.hitboxType == "circle" then
             love.graphics.circle("fill", x, y, self.width / 2)   
