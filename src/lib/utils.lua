@@ -77,6 +77,20 @@ function utils.math.rotationTo(x1, y1, x2, y2)
                                         -- TODO: Find a solution
 end
 
+function utils.math.rotatePoint(px, py, cx, cy, angle)
+    angle = math.rad(angle)
+
+    local cosTheta = math.cos(angle)
+    local sinTheta = math.sin(angle)
+    local dx = px - cx
+    local dy = py - cy
+
+    local x = cosTheta * dx - sinTheta * dy + cx
+    local y = sinTheta * dx + cosTheta * dy + cy
+    
+    return x, y
+end
+
 --== Other ==--
 
 function utils.getMousePos(screen)
