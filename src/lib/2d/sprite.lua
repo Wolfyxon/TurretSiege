@@ -1,4 +1,4 @@
-local AreaNode = require("src.lib.2d.AreaNode")
+local AreaNode = require("lib.2d.AreaNode")
 local Sprite = AreaNode:new()
 
 local gameData = require("data")
