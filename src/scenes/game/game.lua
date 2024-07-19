@@ -34,6 +34,9 @@ function scene:draw(screen)
             love.graphics.rotate(circleRot * dir)
 
             local c = i / circles
+            if dir == -1 then
+                c = c * 0.8
+            end
             love.graphics.setColor(0.6 * c, 0.5 * c, 0, 1)
             love.graphics.circle("fill", 0 , 0, (circles - i) * 0.25 * ratio, 6)
 
