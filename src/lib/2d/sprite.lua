@@ -1,15 +1,12 @@
-local Node2D = require("lib.2d.node2d")
-local Sprite = Node2D:new()
+local AreaNode = require("src.lib.2d.AreaNode")
+local Sprite = AreaNode:new()
 
 local gameData = require("data")
 
 function Sprite:new(o, path)
-    o = Node2D.new(self, o)
+    o = AreaNode.new(self, o)
     setmetatable(o, self)
     self.__index = self
-
-    o.sizeX = nil
-    o.sizeY = nil
 
     if path then
         o:loadTextureFromFile(path)
