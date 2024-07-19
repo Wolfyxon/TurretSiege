@@ -29,6 +29,14 @@ function utils.table.keys(table)
     return res
 end
 
+function utils.table.find(table, value)
+    for i,v in ipairs(table) do
+        if v == value then
+            return i
+        end
+    end
+end
+
 function utils.table.tostring(table)
     if type(table) ~= "table" then
         return tostring(table)
