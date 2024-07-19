@@ -15,6 +15,21 @@ function AreaNode:new(o, path)
     return o
 end
 
+function AreaNode:setHitboxType(type)
+    local found = false
+    
+    for i,v in ipairs(self.hitboxTypes) do
+        if v == type then
+            found = true
+            break
+        end
+    end
+
+    assert(found, "Unknown hitbox type '" .. tostring(type) .. "'")
+
+    self.hitboxType = type
+end
+
 function AreaNode:getSize()
     return self.width, self.height
 end
