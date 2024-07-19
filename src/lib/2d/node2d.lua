@@ -56,6 +56,7 @@ function Node2D:drawRequest(screen, data)
     love.graphics.translate(self.x * data.w, self.y * data.h)
     love.graphics.scale(self.scaleX, self.scaleY)
     love.graphics.rotate(math.rad(self.rotation))
+    love.graphics.setColor(1, 1, 1, 1)
 
     self:draw(screen)
 
