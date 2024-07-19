@@ -1,3 +1,4 @@
+local utils = require("lib.utils")
 local Node2D = require("lib.2d.node2d")
 local AreaNode = Node2D:new()
 
@@ -45,6 +46,17 @@ end
 
 function AreaNode:getSize()
     return self.width, self.height
+end
+
+function AreaNode:getRectCorners()
+    local cx = self.x + self.width / 2
+    local cy = self.y + self.height / 2
+    
+    return {
+        utils.math.rotatePoint(self.x + self.width, self.y, cx, cy, self.rotation),
+        utils.math.rotatePoint(self.x + self.width, self.y + self.height, cx, cy, self.rotation),
+        utils.math.rotatePoint(self.x, self.y + self.height, cx, cy, self.rotation)
+    }
 end
 
 return AreaNode
