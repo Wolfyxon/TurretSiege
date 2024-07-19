@@ -81,7 +81,7 @@ function Node2D:updateRequest(delta)
 end
 
 function Node2D:rotationTo(x, y)
-    return utils.rotationTo(self.x, self.y, x, y)
+    return utils.math.rotationTo(self.x, self.y, x, y)
 end
 
 function Node2D:rotate(deg)
