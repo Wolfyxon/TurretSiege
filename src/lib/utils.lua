@@ -37,7 +37,7 @@ function utils.table.tostring(table)
     local res = "{"
 
     for k, v in pairs(table) do
-        res = res .. " " .. utils.strTable(k) .. " = " .. utils.strTable(v) .. " "
+        res = res .. " " .. utils.table.tostring(k) .. " = " .. utils.table.tostring(v) .. " "
     end
 
     return res .. "}"
