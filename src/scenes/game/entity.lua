@@ -8,9 +8,12 @@ function Entity:new(o)
     self.__index = self
 
     o.hp = 100
+    o.invincible = false
 end
 
 function Entity:damage(amount)
+    if self.invincible then return end
+
     self.hp = self.hp - amount
     if self.hp <= 0 then
         self:die()
