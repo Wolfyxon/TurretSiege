@@ -1,12 +1,12 @@
-local Node2D = require("lib.2d.node2d")
+local AreaNode = require("lib.2d.AreaNode")
 local Sprite = require("lib.2d.sprite")
 local utils = require("lib.utils")
 local data  = require("data")
 
-local Turret = Node2D:new()
+local Turret = AreaNode:new()
 
 function Turret:new(o)
-    o = Node2D.new(self, o)
+    o = AreaNode.new(self, o)
     setmetatable(o, self)
     self.__index = self
 
