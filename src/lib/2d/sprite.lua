@@ -17,13 +17,17 @@ end
 
 function Sprite:loadTextureFromFile(path)
     self.texture = love.graphics.newImage(path)
+
+    local tW, tH = self:getTextureSize()
+    self.sizeX = tW / gameData.width
+    self.sizeY = tH / gameData.height
 end
 
 function Sprite:draw()
     if not self.texture then return end
     local tW, tH = self:getTextureSize()
 
-    love.graphics.draw(self.texture, -(tW / 2), -(tH / 2), self.sizeX, self.sizeY)
+    love.graphics.draw(self.texture, -(tW / 2), -(tH / 2))
 end
 
 function Sprite:getTextureSize()
