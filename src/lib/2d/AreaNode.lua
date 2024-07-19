@@ -13,4 +13,8 @@ function AreaNode:new(o, path)
     return o
 end
 
+function AreaNode:getSize()
+    return self.width, self.height
+end
+
 return AreaNode
