@@ -32,7 +32,7 @@ function AreaNode:drawDebug()
         end
     else 
         if self.hitboxType == "circle" then
-            love.graphics.circle("fill", x, y, self.width / 2)   
+            love.graphics.circle("fill", self.x, self.y, self.width / 2)   
         end
     end
 end
