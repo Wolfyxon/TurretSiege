@@ -10,8 +10,8 @@ function AreaNode:new(o, path)
     self.__index = self
 
     o.hitboxType = "rect"
-    o.height = nil
-    o.width = nil
+    o.height = 1
+    o.width = 1
 
     return o
 end
