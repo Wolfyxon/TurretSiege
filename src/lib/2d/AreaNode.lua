@@ -53,6 +53,7 @@ function AreaNode:getRectCorners()
     local cy = self.y + self.height / 2
     
     return {
+        utils.math.rotatePoint(self.x, self.y, cx, cy, self.rotation),
         utils.math.rotatePoint(self.x + self.width, self.y, cx, cy, self.rotation),
         utils.math.rotatePoint(self.x + self.width, self.y + self.height, cx, cy, self.rotation),
         utils.math.rotatePoint(self.x, self.y + self.height, cx, cy, self.rotation)
