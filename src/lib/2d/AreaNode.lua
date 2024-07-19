@@ -15,6 +15,19 @@ function AreaNode:new(o, path)
     return o
 end
 
+function AreaNode:drawDebug()
+    if self.hitboxType == "rect" then
+        local x = self.x - self.width / 2
+        local y = self.y - self.height / 2
+
+        love.graphics.rectangle("fill", x, y, self.width, self.height)
+    else 
+        if self.hitboxType == "circle" then
+            love.graphics.circle("fill", x, y, self.width / 2)   
+        end
+    end
+end
+
 function AreaNode:setHitboxType(type)
     local found = false
     
