@@ -2,6 +2,7 @@ local utils = require("lib.utils")
 
 local Node2D = {
     parent = nil,
+    children = {},
     visible = true,
     rotation = 0,
     scaleX = 1,
