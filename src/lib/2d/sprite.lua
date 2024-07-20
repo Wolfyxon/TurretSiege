@@ -1,7 +1,12 @@
+local gameData = require("data")
+
 local AreaNode = require("lib.2d.AreaNode")
+
+---@class Sprite: AreaNode
 local Sprite = AreaNode:new()
 
-local gameData = require("data")
+---@type ImageData|nil
+Sprite.texture = nil
 
 function Sprite:new(o, path)
     o = AreaNode.new(self, o)
