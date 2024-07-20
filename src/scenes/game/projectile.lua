@@ -1,9 +1,14 @@
-local Entity = require("entity")
+local Entity = require("scenes.game.entity")
 
----@class Projectile
+---@class Projectile: Entity
 local Projectile = Entity:new()
 
-Projectile.speed = 2
+---@type number
+Projectile.speed = 5
+---@type number
+Projectile.damage = 2
+---@type boolean
+Projectile.alreadyHit = false
 
 function Projectile:new(o)
     o = Projectile.new(self, o)
