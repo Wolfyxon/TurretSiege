@@ -48,6 +48,7 @@ end
 function Node2D:addChild(node)
     node:orphanize()
     node.parent = self
+    node.main = node.main or self.main
     table.insert(self.children, node)
 
     node.added(self)
