@@ -1,19 +1,20 @@
 local utils = require("lib.utils")
 
+---@class Node2D
 local Node2D = {
-    parent = nil,
-    children = {},
-    visible = true,
-    rotation = 0,
-    scaleX = 1,
-    scaleY = 1,
-    x = 0,
-    y = 0,
+    parent = nil,   ---@type Node2D
+    children = {},  ---@type Node2D[]
+    visible = true, ---@type boolean
+    rotation = 0,   ---@type number
+    scaleX = 1,     ---@type number
+    scaleY = 1,     ---@type number
+    x = 0,          ---@type number
+    y = 0,          ---@type number
 
-    r = 1,
-    g = 1,
-    b = 1,
-    a = 1
+    r = 1,          ---@type number
+    g = 1,          ---@type number
+    b = 1,          ---@type number
+    a = 1           ---@type number
 }
 
 function Node2D:new(o)
@@ -26,6 +27,7 @@ function Node2D:new(o)
     return o
 end
 
+---@return integer|nil
 function Node2D:getIndex()
     if not self.parent then return end
 
@@ -41,6 +43,7 @@ function Node2D:orphanize()
     self.parent:disownChild(self)
 end
 
+---@param node Node2D
 function Node2D:addChild(node)
     node:orphanize()
     node.parent = self
@@ -49,11 +52,13 @@ function Node2D:addChild(node)
     node.added(self)
 end
 
+---@param node Node2D
 function Node2D:disownChild(node)
     table.remove(self.children, node:getIndex())
     node.removed(self)
 end
 
+---@param screen nil|"left"|"bottom"
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
 
@@ -73,6 +78,7 @@ function Node2D:drawRequest(screen, data)
     love.graphics.pop()
 end
 
+---@param delta number
 function Node2D:updateRequest(delta)
     self:update(delta)
 
@@ -81,19 +87,26 @@ function Node2D:updateRequest(delta)
     end
 end
 
+---@param x number
+---@param y number
 function Node2D:rotationTo(x, y)
     return utils.math.rotationTo(self.x, self.y, x, y)
 end
 
+---@param deg number
 function Node2D:rotate(deg)
     self.rotation = self.rotation + deg
 end
 
+---@param x number
+---@param y number
 function Node2D:move(x, y)
     self.x = self.x + x
     self.y = self.y + y
 end
 
+---@param x number
+---@param y number
 function Node2D:moveRotated(x, y)
     local ang = math.rad(self.rotation)
     local rx = x * math.cos(ang) - y * math.sin(ang)
@@ -101,9 +114,16 @@ function Node2D:moveRotated(x, y)
     self:move(rx, ry)
 end
 
+---@param screen nil|"left"|"bottom"
 function Node2D:draw(screen) end
+
+---@param delta number
 function Node2D:update(delta) end
+
+---@param newParent Node2D
 function Node2D.added(newParent) end
+
+---@param previousParent Node2D
 function Node2D.removed(previousParent) end
 
 return Node2D
