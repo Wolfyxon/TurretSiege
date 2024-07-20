@@ -14,7 +14,7 @@ AreaNode.width = 0
 AreaNode.height = 0
 
 
-function AreaNode:new(o, path)
+function AreaNode:new(o)
     o = Node2D.new(self, o)
     setmetatable(o, self)
     self.__index = self
