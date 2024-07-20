@@ -5,6 +5,7 @@ local utils = {
 local data = require("data")
 
 --== Table ==--
+---@return table
 function utils.table.merge(...)
     local current = {}
 
@@ -19,6 +20,7 @@ function utils.table.merge(...)
     return current
 end
 
+---@return any[]
 function utils.table.keys(table)
     local res = {}
 
@@ -29,6 +31,9 @@ function utils.table.keys(table)
     return res
 end
 
+---@param table any[]
+---@param value any
+---@return integer|nil
 function utils.table.find(table, value)
     for i,v in ipairs(table) do
         if v == value then
@@ -37,6 +42,8 @@ function utils.table.find(table, value)
     end
 end
 
+---@param table table
+---@return string
 function utils.table.tostring(table)
     if type(table) ~= "table" then
         return tostring(table)
@@ -53,11 +60,19 @@ end
 
 --== Math ==--
 
+---@param start number
+---@param target number
+---@param speed number
+---@return number
 function utils.math.lerp(start, target, speed)
     if speed >= 1 then return target end;
     return (1 - speed) * start + speed * target;
 end
 
+---@param start number
+---@param target number
+---@param speed number
+---@return number
 function utils.math.lerpAngle(start, target, speed)
     if speed >= 1 then return target end;
 
@@ -70,6 +85,11 @@ function utils.math.lerpAngle(start, target, speed)
     return math.deg(start + shortest * speed);
 end
 
+---@param x1 number
+---@param y1 number
+---@param x2 number
+---@param y2 number
+---@return number
 function utils.math.rotationTo(x1, y1, x2, y2)
     local dX = x2 - x1
     local dY = y2 - y1
@@ -77,6 +97,12 @@ function utils.math.rotationTo(x1, y1, x2, y2)
                                         -- TODO: Find a solution
 end
 
+---@param px number
+---@param py number
+---@param cx number
+---@param cy number
+---@param angle number
+---@return number, number
 function utils.math.rotatePoint(px, py, cx, cy, angle)
     angle = math.rad(angle)
 
@@ -93,6 +119,8 @@ end
 
 --== Other ==--
 
+---@param screen nil|"left"|"bottom"
+---@return number, number
 function utils.getMousePos(screen)
     local w, h = love.graphics.getDimensions(screen)
     
