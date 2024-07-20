@@ -1,4 +1,5 @@
 local Entity = require("scenes.game.entity")
+local Projectile = require("scenes.game.projectile")
 local Sprite = require("lib.2d.sprite")
 local utils = require("lib.utils")
 local data  = require("data")
@@ -53,6 +54,17 @@ function Turret:fire()
     self.lastFireTime = now
 
     self.cannon.x = 0.15
+
+    local b = Projectile:new()
+    b.x = self.x
+    b.y = self.y
+    b.scaleX = 0.3
+    b.scaleY = 0.3
+    b.rotation = self.rotation
+    b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
+
+    b:moveRotated(0.05, 0)
+    self.parent:addChild(b)
 end
 
 return Turret
