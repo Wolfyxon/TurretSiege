@@ -3,8 +3,6 @@ local Node2D = require("lib.2d.node2d")
 ---@class Scene: Node2D
 local Scene = Node2D:new()
 
--- TODO: type
-Scene.main = nil
 ---@type string|nil
 Scene.name = "scene"
 
