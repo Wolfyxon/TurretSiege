@@ -61,8 +61,11 @@ function Turret:fire()
     b.scaleX = 0.3
     b.scaleY = 0.3
     b.rotation = self.rotation
-    b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
+    b.r = 1
+    b.g = 0.5
+    b.b = 0
 
+    b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
     b:moveRotated(0.05, 0)
     self.parent:addChild(b)
 end
