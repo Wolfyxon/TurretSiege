@@ -5,7 +5,8 @@ local data = require("data")
 ---@class AreaNode: Node2D
 local AreaNode = Node2D:new()
 
-AreaNode.hitboxTypes = {"rect", "circle"}
+local hitboxTypes = {"rect", "circle"}
+
 ---@type string
 AreaNode.hitboxType = "rect"
 ---@type number
@@ -46,7 +47,7 @@ end
 function AreaNode:setHitboxType(type)
     local found = false
     
-    for i,v in ipairs(self.hitboxTypes) do
+    for i,v in ipairs(hitboxTypes) do
         if v == type then
             found = true
             break
