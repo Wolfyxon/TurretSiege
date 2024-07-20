@@ -1,6 +1,6 @@
 local Sprite = require("lib.2d.sprite")
 
----@class Entity
+---@class Entity: Sprite
 local Entity = Sprite:new()
 
 ---@type number
