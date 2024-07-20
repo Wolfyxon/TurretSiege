@@ -12,6 +12,8 @@ function Entity:new(o)
     o = Sprite.new(self, o)
     setmetatable(o, self)
     self.__index = self
+
+    return o
 end
 
 function Entity:damage(amount)
