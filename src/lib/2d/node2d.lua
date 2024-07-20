@@ -2,6 +2,7 @@ local utils = require("lib.utils")
 
 ---@class Node2D
 local Node2D = {
+    main = nil,     ---@type Main
     parent = nil,   ---@type Node2D
     children = {},  ---@type Node2D[]
     visible = true, ---@type boolean
