@@ -1,18 +1,23 @@
 local utils = require("lib.utils")
 local Node2D = require("lib.2d.node2d")
 local data = require("data")
+
+---@class AreaNode: Node2D
 local AreaNode = Node2D:new()
 
 AreaNode.hitboxTypes = {"rect", "circle"}
+---@type string
+AreaNode.hitboxType = "rect"
+---@type number
+AreaNode.width = 0
+---@type number
+AreaNode.height = 0
+
 
 function AreaNode:new(o, path)
     o = Node2D.new(self, o)
     setmetatable(o, self)
     self.__index = self
-
-    o.hitboxType = "rect"
-    o.height = 1
-    o.width = 1
 
     return o
 end
@@ -37,6 +42,7 @@ function AreaNode:drawDebug()
     end
 end
 
+---@param type "rect"|"circle"
 function AreaNode:setHitboxType(type)
     local found = false
     
@@ -52,10 +58,12 @@ function AreaNode:setHitboxType(type)
     self.hitboxType = type
 end
 
+---@return number, number
 function AreaNode:getSize()
     return self.width, self.height
 end
 
+---@return number[][]
 function AreaNode:getRectCorners()
     local cx = self.x + self.width / 2
     local cy = self.y + self.height / 2
