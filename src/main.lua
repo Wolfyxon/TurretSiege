@@ -1,9 +1,12 @@
 local data = require("data")
 
+---@class Main
 local main = {
     frameCount = 0,
 }
 
+
+---@type {string: Scene}
 local scenes = {
     game = require("scenes.game.game"),
     menu = require("scenes.menu.menu"),
@@ -11,10 +14,12 @@ local scenes = {
 }
 main.scenes = scenes
 
+---@type Scene|nil
 local currentScene = nil
 
 --== Main functions ==--
 
+---@param scene Scene
 function main.loadScene(scene)
     assert(scene, "Scene is nil")
 
