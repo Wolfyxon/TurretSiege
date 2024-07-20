@@ -5,10 +5,10 @@ local data = require("data")
 ---@class AreaNode: Node2D
 local AreaNode = Node2D:new()
 
-local hitboxTypes = {"rect", "circle"}
+local shapes = {"rect", "circle"}
 
 ---@type string
-AreaNode.hitboxType = "rect"
+AreaNode.shape = "rect"
 ---@type number
 AreaNode.width = 0
 ---@type number
@@ -24,7 +24,7 @@ function AreaNode:new(o)
 end
 
 function AreaNode:drawDebug()
-    if self.hitboxType == "rect" then
+    if self.shape == "rect" then
         local x = (self.x - self.width / 2) * data.height
         local y = (self.y - self.height / 2) * data.height
 
@@ -37,26 +37,26 @@ function AreaNode:drawDebug()
             love.graphics.circle("fill", x, y, 10, 8)
         end
     else 
-        if self.hitboxType == "circle" then
+        if self.shape == "circle" then
             love.graphics.circle("fill", self.x, self.y, self.width / 2)   
         end
     end
 end
 
----@param type "rect"|"circle"
-function AreaNode:setHitboxType(type)
+---@param shape "rect"|"circle"
+function AreaNode:setShape(shape)
     local found = false
     
-    for i,v in ipairs(hitboxTypes) do
+    for i,v in ipairs(shapes) do
         if v == type then
             found = true
             break
         end
     end
 
-    assert(found, "Unknown hitbox type '" .. tostring(type) .. "'")
+    assert(found, "Unknown shape '" .. tostring(shape) .. "'")
 
-    self.hitboxType = type
+    self.shape = shape
 end
 
 ---@return number, number
