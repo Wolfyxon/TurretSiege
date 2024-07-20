@@ -1,14 +1,17 @@
 local Sprite = require("lib.2d.sprite")
 
+---@class Entity
 local Entity = Sprite:new()
+
+---@type number
+Entity.hp = 100
+---@type boolean
+Entity.invincible = false
 
 function Entity:new(o)
     o = Sprite.new(self, o)
     setmetatable(o, self)
     self.__index = self
-
-    o.hp = 100
-    o.invincible = false
 end
 
 function Entity:damage(amount)
