@@ -21,3 +21,5 @@ end
 function Projectile:update(delta)
     self:moveRotated(self.speed * delta, 0)
 end
+
+return Projectile
