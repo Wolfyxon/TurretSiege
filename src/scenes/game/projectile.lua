@@ -11,7 +11,7 @@ Projectile.damage = 2
 Projectile.alreadyHit = false
 
 function Projectile:new(o)
-    o = Projectile.new(self, o)
+    o = Entity.new(self, o)
     setmetatable(o, self)
     self.__index = self
 
