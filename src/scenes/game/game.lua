@@ -1,8 +1,20 @@
+local utils = require("lib.utils")
 local scene = require("lib.scene"):new()
 local turret = nil
 
 local circles = 10
 local circleRot = 0
+
+---@param projectile Projectile
+local function spawnProjectile(projectile)
+    local min = 0.8
+    local max = 1.5
+
+    projectile.x = utils.math.random(min, max)
+    projectile.y = utils.math.random(min, max)
+    
+    projectile.rotation = projectile:rotationTo(0.5, 0.5)
+end
 
 function scene:load()
     turret = require("scenes.game.turret.turret"):new()
