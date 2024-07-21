@@ -14,8 +14,7 @@ local scenes = {
 }
 main.scenes = scenes
 
----@type Scene|nil
-local currentScene = nil
+local currentScene = nil ---@type Scene|nil
 
 --== Main functions ==--
 
