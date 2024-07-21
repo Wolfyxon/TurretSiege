@@ -53,7 +53,7 @@ function Node2D:addChild(node)
     table.insert(self.children, node)
 
     node.added(self)
-    
+
     if not node.isReady then
         node:ready()
     end
@@ -62,6 +62,7 @@ end
 ---@param node Node2D
 function Node2D:disownChild(node)
     table.remove(self.children, node:getIndex())
+    node.parent = nil
     node.removed(self)
 end
 
