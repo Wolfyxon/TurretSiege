@@ -4,7 +4,7 @@ local Entity = require("scenes.game.entity")
 local Projectile = Entity:new()
 
 
-Projectile.speed = 5          ---@type number
+Projectile.speed = 0.5          ---@type number
 Projectile.rotationSpeed = 0  ---@type number
 Projectile.damage = 2         ---@type number
 Projectile.alreadyHit = false ---@type boolean
