@@ -8,6 +8,8 @@ Projectile.speed = 0.5        ---@type number
 Projectile.rotationSpeed = 0  ---@type number
 Projectile.damage = 2         ---@type number
 Projectile.alreadyHit = false ---@type boolean
+Projectile.lifeTime   = 5     ---@type number
+Projectile.spawnedAt  = 0     ---@type number
 
 function Projectile:new(o)
     o = Entity.new(self, o)
@@ -17,7 +19,16 @@ function Projectile:new(o)
     return o
 end
 
+function Projectile:ready()
+    self.spawnedAt = love.timer.getTime()
+end
+
 function Projectile:update(delta)
+    if love.timer.getTime() > self.spawnedAt + self.lifeTime then
+        self:orphanize()
+        return
+    end
+
     self.textureRotation = self.textureRotation + self.rotationSpeed  * delta
     self:moveRotated(self.speed * delta, 0)
 end
