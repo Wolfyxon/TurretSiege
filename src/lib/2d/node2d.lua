@@ -123,9 +123,9 @@ function Node2D:draw(screen) end
 function Node2D:update(delta) end
 
 ---@param newParent Node2D
-function Node2D.added(newParent) end
+function Node2D:added(newParent) end
 
 ---@param previousParent Node2D
-function Node2D.removed(previousParent) end
+function Node2D:removed(previousParent) end
 
 return Node2D
