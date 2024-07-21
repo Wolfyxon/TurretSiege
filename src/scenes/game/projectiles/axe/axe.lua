@@ -15,7 +15,7 @@ function AxeProjectile:new(o)
 end
 
 function AxeProjectile:ready()
-    self:loadTextureFromFile("scenes/game/projectile/axe/axe.png")
+    self:loadTextureFromFile("scenes/game/projectiles/axe/axe.png")
 end
 
 return AxeProjectile
