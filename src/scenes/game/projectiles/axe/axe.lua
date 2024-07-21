@@ -15,6 +15,9 @@ function AxeProjectile:new(o)
 end
 
 function AxeProjectile:ready()
+    self.scaleX = 0.4
+    self.scaleY = 0.4
+
     self:loadTextureFromFile("scenes/game/projectiles/axe/axe.png")
 end
 
