@@ -3,10 +3,8 @@ local Sprite = require("lib.2d.sprite")
 ---@class Entity: Sprite
 local Entity = Sprite:new()
 
----@type number
-Entity.hp = 100
----@type boolean
-Entity.invincible = false
+Entity.hp = 100           ---@type number
+Entity.invincible = false ---@type boolean
 
 function Entity:new(o)
     o = Sprite.new(self, o)
