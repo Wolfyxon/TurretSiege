@@ -10,6 +10,11 @@ local function spawnProjectile(projectile)
     local min = 0.8
     local max = 1.5
 
+    if math.random(0, 1) == 1 then
+        min = -min
+        max = -max
+    end
+
     projectile.x = utils.math.random(min, max)
     projectile.y = utils.math.random(min, max)
     
