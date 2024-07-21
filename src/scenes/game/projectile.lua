@@ -18,7 +18,7 @@ function Projectile:new(o)
 end
 
 function Projectile:update(delta)
-    self.textureRotation = self.textureRotation + self.textureRotation  * delta
+    self.textureRotation = self.textureRotation + self.rotationSpeed  * delta
     self:moveRotated(self.speed * delta, 0)
 end
 
