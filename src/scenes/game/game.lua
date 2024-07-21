@@ -14,6 +14,8 @@ local function spawnProjectile(projectile)
     projectile.y = utils.math.random(min, max)
     
     projectile.rotation = projectile:rotationTo(0.5, 0.5)
+
+    scene:addChild(projectile)
 end
 
 function scene:load()
