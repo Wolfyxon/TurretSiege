@@ -53,6 +53,10 @@ function Node2D:addChild(node)
     table.insert(self.children, node)
 
     node.added(self)
+    
+    if not node.isReady then
+        node:ready()
+    end
 end
 
 ---@param node Node2D
