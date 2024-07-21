@@ -16,11 +16,9 @@ function Projectile:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    return o
-end
+    o.spawnedAt = love.timer.getTime()
 
-function Projectile:ready()
-    self.spawnedAt = love.timer.getTime()
+    return o
 end
 
 function Projectile:update(delta)
