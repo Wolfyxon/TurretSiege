@@ -6,6 +6,8 @@ local Projectile = Entity:new()
 ---@type number
 Projectile.speed = 5
 ---@type number
+Projectile.rotationSpeed = 0
+---@type number
 Projectile.damage = 2
 ---@type boolean
 Projectile.alreadyHit = false
@@ -19,6 +21,7 @@ function Projectile:new(o)
 end
 
 function Projectile:update(delta)
+    self.textureRotation = self.textureRotation + self.textureRotation  * delta
     self:moveRotated(self.speed * delta, 0)
 end
 
