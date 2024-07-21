@@ -8,7 +8,7 @@ function AxeProjectile:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    o.rotationSpeed = 4
+    o.rotationSpeed = -500
     o.damage = 2
 
     return o
