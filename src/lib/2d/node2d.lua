@@ -2,20 +2,21 @@ local utils = require("lib.utils")
 
 ---@class Node2D
 local Node2D = {
-    main = nil,     ---@type Main
-    parent = nil,   ---@type Node2D
-    children = {},  ---@type Node2D[]
-    visible = true, ---@type boolean
-    rotation = 0,   ---@type number
-    scaleX = 1,     ---@type number
-    scaleY = 1,     ---@type number
-    x = 0,          ---@type number
-    y = 0,          ---@type number
+    main = nil,      ---@type Main
+    parent = nil,    ---@type Node2D
+    children = {},   ---@type Node2D[]
+    visible = true,  ---@type boolean
+    rotation = 0,    ---@type number
+    scaleX = 1,      ---@type number
+    scaleY = 1,      ---@type number
+    isReady = false, ---@type boolean
+    x = 0,           ---@type number
+    y = 0,           ---@type number
 
-    r = 1,          ---@type number
-    g = 1,          ---@type number
-    b = 1,          ---@type number
-    a = 1           ---@type number
+    r = 1,           ---@type number
+    g = 1,           ---@type number
+    b = 1,           ---@type number
+    a = 1            ---@type number
 }
 
 function Node2D:new(o)
@@ -127,5 +128,7 @@ function Node2D:added(newParent) end
 
 ---@param previousParent Node2D
 function Node2D:removed(previousParent) end
+
+function Node2D:ready() end
 
 return Node2D
