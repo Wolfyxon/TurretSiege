@@ -117,6 +117,13 @@ function utils.math.rotatePoint(px, py, cx, cy, angle)
     return x, y
 end
 
+---@param min number
+---@param max number
+---@return number
+function utils.math.random(min, max)
+    return min + max * (math.random(0, 100) / 100)
+end
+
 --== Other ==--
 
 ---@param screen nil|"left"|"bottom"
