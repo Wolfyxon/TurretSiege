@@ -56,6 +56,7 @@ function Turret:fire()
     self.cannon.x = 0.15
 
     local b = Projectile:new()
+    b.speed = 4
     b.x = self.x
     b.y = self.y
     b.scaleX = 0.3
