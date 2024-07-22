@@ -65,16 +65,16 @@ function AreaNode:getSize()
 end
 
 -- TODO: Rotation support
----@return number[][]
+---@return {string: number[]}
 function AreaNode:getGlobalCorners()
     local cx, cy = self:getGlobalPosition()
     local ox, oy = self.width / 2, self.height / 2
 
     return {
-        {cx - ox, cy - oy}, -- top left
-        {cx + ox, cy - oy}, -- top right
-        {cx - ox, cy + oy}, -- bottom left
-        {cx + ox, cy + oy}, -- bottom right
+        topLeft = {cx - ox, cy - oy},
+        topRight = {cx + ox, cy - oy},
+        bottomLeft = {cx - ox, cy + oy},
+        bottomRight = {cx + ox, cy + oy},
     }
 end
 
