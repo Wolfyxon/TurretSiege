@@ -2,6 +2,7 @@ local Projectile = require("scenes.game.projectile")
 
 ---@class AxeProjectile: Projectile
 local AxeProjectile = Projectile:new()
+AxeProjectile:_appendClass("AxeProjectile")
 
 local scale = 0.2
 

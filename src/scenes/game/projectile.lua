@@ -2,7 +2,7 @@ local Entity = require("scenes.game.entity")
 
 ---@class Projectile: Entity
 local Projectile = Entity:new()
-
+Projectile:_appendClass("Projectile")
 
 Projectile.speed = 0.5        ---@type number
 Projectile.rotationSpeed = 0  ---@type number

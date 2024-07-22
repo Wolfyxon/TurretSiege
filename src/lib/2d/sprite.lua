@@ -5,6 +5,7 @@ local AreaNode = require("lib.2d.AreaNode")
 
 ---@class Sprite: AreaNode
 local Sprite = AreaNode:new()
+Sprite:_appendClass("Sprite")
 
 ---@type ImageData|nil
 Sprite.texture = nil
