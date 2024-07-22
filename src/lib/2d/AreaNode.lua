@@ -4,6 +4,7 @@ local data = require("data")
 
 ---@class AreaNode: Node2D
 local AreaNode = Node2D:new()
+AreaNode:_appendClass("AreaNode")
 
 local shapes = {"rect", "circle"}
 
