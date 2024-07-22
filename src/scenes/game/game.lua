@@ -1,11 +1,18 @@
 local utils = require("lib.utils")
-local scene = require("lib.scene"):new()
-local turret = nil
+
+local Turret = require("scenes.game.turret.turret")
+local Scene = require("lib.scene")
+
+---@class GameScene: Scene
+local GameScene = Scene:new()
+GameScene:_appendClass("GameScene")
+
+GameScene.turret = nil          ---@type Turret
+GameScene.spawnFrameDelay = 100 ---@type number
+GameScene.level = 1             ---@type integer
 
 local circles = 10
 local circleRot = 0
-
-local spawnFrameDelay = 100
 
 local projectiles = {
     {
@@ -13,10 +20,17 @@ local projectiles = {
     }
 }
 
-local level = 1
+
+function GameScene:new(o)
+    o = Scene.new(self, o)
+    setmetatable(o, self)
+    self.__index = self
+
+    return o
+end
 
 ---@param projectile Projectile
-local function spawnProjectile(projectile)
+function GameScene:spawnProjectile(projectile)
     local min = 0
     local max = 1
 
@@ -54,19 +68,19 @@ local function spawnProjectile(projectile)
     
     projectile.rotation = projectile:rotationTo(0.5, 0.5)
 
-    scene:addChild(projectile)
+    self:addChild(projectile)
 end
 
-function scene:load()
-    turret = require("scenes.game.turret.turret"):new()
-    scene:addChild(turret)
+function GameScene:load()
+    self.turret = Turret:new()
+    self:addChild(self.turret)
 end
 
-function scene:unload()
-    turret = nil
+function GameScene:unload()
+    self.turret = nil
 end
 
-function scene:draw(screen)
+function GameScene:draw(screen)
     local sW, sH = love.graphics.getDimensions(screen)
     local ratio = math.min(sW, sH)
 
@@ -99,13 +113,13 @@ function scene:draw(screen)
     end 
 end
 
-function scene:update(delta)
+function GameScene:update(delta)
     circleRot = circleRot + delta * 0.2
 
-    if scene.main.frameCount % spawnFrameDelay == 0 then
-        local proj = utils.table.random(projectiles[level]):new()
-        spawnProjectile(proj)
+    if self.main.frameCount % self.spawnFrameDelay == 0 then
+        local proj = utils.table.random(projectiles[self.level]):new()
+        self:spawnProjectile(proj)
     end
 end
 
-return scene
+return GameScene
