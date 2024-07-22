@@ -62,13 +62,24 @@ function Node2D:getAncestors()
 
     while current do
         table.insert(res, current)
-        
+
         if current.parent then
             current = current.parent
         end
     end
 
     return res
+end
+
+---@return number
+function Node2D:getGlobalRotation()
+    local rot = self.rotation
+
+    for i,v in ipairs(self:getAncestors()) do
+        rot = rot + v.rotation
+    end
+
+    return rot
 end
 
 function Node2D:orphanize()
