@@ -5,6 +5,16 @@ local turret = nil
 local circles = 10
 local circleRot = 0
 
+local spawnFrameDelay = 100
+
+local projectiles = {
+    {
+        require("scenes.game.projectiles.axe.axe")
+    }
+}
+
+local level = 1
+
 ---@param projectile Projectile
 local function spawnProjectile(projectile)
     local min = 0
@@ -91,6 +101,11 @@ end
 
 function scene:update(delta)
     circleRot = circleRot + delta * 0.2
+
+    if scene.main.frameCount % spawnFrameDelay == 0 then
+        local proj = utils.table.random(projectiles[level]):new()
+        spawnProjectile(proj)
+    end
 end
 
 return scene
