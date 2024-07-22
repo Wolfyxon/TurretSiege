@@ -4,7 +4,7 @@ local Sprite = require("lib.2d.sprite")
 local utils = require("lib.utils")
 local data  = require("data")
 
----@class Turret
+---@class Turret: Entity
 local Turret = Entity:new()
 
 local scale = 0.15
