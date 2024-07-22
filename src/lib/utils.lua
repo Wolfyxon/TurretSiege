@@ -103,6 +103,17 @@ function utils.math.rotationTo(x1, y1, x2, y2)
                                         -- TODO: Find a solution
 end
 
+---@param x number
+---@param y number
+---@param deg number
+function utils.math.rotateDirection(x, y, deg)
+    local ang = math.rad(deg)
+    local rx = x * math.cos(ang) - y * math.sin(ang)
+    local ry = x * math.sin(ang) + y * math.cos(ang)
+    
+    return rx, ry
+end
+
 ---@param px number
 ---@param py number
 ---@param cx number
