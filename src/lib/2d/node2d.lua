@@ -48,6 +48,11 @@ function Node2D:getClass()
     return self.classList[#self.classList]
 end
 
+---@param className string
+function Node2D:_appendClass(className)
+    table.insert(self.classList, className)
+end
+
 ---@param class string
 ---@return boolean
 function Node2D:isA(class)
