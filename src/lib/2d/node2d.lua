@@ -79,6 +79,19 @@ function Node2D:getGlobalRotation()
     return rot
 end
 
+---@return number, number
+function Node2D:getGlobalPosition()
+    local x = self.x
+    local y = self.y
+
+    for i, v in ipairs(self:getAncestors()) do
+        x = x + v.x
+        y = y + v.y
+    end
+
+    return x, y
+end
+
 function Node2D:orphanize()
     if not self.parent then return end
     self.parent:disownChild(self)
