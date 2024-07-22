@@ -78,4 +78,28 @@ function AreaNode:getGlobalCorners()
     }
 end
 
+---@param area AreaNode
+---@return boolean
+function AreaNode:isTouching(area)
+    local selfCorners = self:getGlobalCorners()
+    local otherCorners = area:getGlobalCorners()
+
+    local selfLeft = selfCorners.topLeft[1]
+    local selfRight = selfCorners.topRight[1]
+    local selfTop = selfCorners.topLeft[2]
+    local selfBottom = selfCorners.bottomLeft[2]
+
+    local otherLeft = otherCorners.topLeft[1]
+    local otherRight = otherCorners.topRight[1]
+    local otherTop = otherCorners.topLeft[2]
+    local otherBottom = otherCorners.bottomLeft[2]
+
+    return not (
+        selfRight < otherLeft or
+        selfLeft > otherRight or
+        selfBottom < otherTop or
+        selfTop > otherBottom
+    )
+end
+
 return AreaNode
