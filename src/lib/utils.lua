@@ -42,6 +42,22 @@ function utils.table.find(table, value)
     end
 end
 
+---@param table table
+---@return table
+function utils.table.copy(table)
+    local res = {}
+    
+    for k, v in pairs(table) do
+        if type(v) == "table" then
+            v = utils.table.copy(v)
+        end
+        
+        res[k] = v
+    end
+
+    return res
+end
+
 ---@param table any[]
 ---@return any
 function utils.table.random(table)
