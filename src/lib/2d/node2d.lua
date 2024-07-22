@@ -141,7 +141,7 @@ end
 function Node2D:disownChild(node)
     table.remove(self.children, node:getIndex())
     node.parent = nil
-    node.removed(self)
+    node:removed(self)
 end
 
 ---@param screen nil|"left"|"bottom"
