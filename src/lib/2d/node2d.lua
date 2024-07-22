@@ -92,6 +92,19 @@ function Node2D:getGlobalPosition()
     return x, y
 end
 
+---@return number, number
+function Node2D:getGlobalScale()
+    local sx = self.scaleY
+    local sy = self.scaleX
+
+    for i, v in ipairs(self:getAncestors()) do
+        sx = sx * v.scaleX
+        sy = sy * v.scaleY
+    end
+
+    return sx, sy
+end
+
 function Node2D:orphanize()
     if not self.parent then return end
     self.parent:disownChild(self)
