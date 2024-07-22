@@ -50,6 +50,7 @@ end
 
 ---@param className string
 function Node2D:_appendClass(className)
+    self.classList = utils.table.copy(self.classList)
     table.insert(self.classList, className)
 end
 
