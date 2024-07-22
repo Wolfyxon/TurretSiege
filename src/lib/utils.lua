@@ -42,6 +42,12 @@ function utils.table.find(table, value)
     end
 end
 
+---@param table any[]
+---@return any
+function utils.table.random(table)
+    return table[math.random(1, #table)]
+end
+
 ---@param table table
 ---@return string
 function utils.table.tostring(table)
