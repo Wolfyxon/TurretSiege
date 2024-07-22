@@ -62,10 +62,7 @@ function Node2D:getAncestors()
 
     while current do
         table.insert(res, current)
-
-        if current.parent then
-            current = current.parent
-        end
+        current = current.parent
     end
 
     return res
