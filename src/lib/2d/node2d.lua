@@ -30,6 +30,8 @@ function Node2D:new(o)
     return o
 end
 
+--== Dynamic methods ==--
+
 ---@return integer|nil
 function Node2D:getIndex()
     if not self.parent then return end
@@ -136,5 +138,23 @@ function Node2D:added(newParent) end
 function Node2D:removed(previousParent) end
 
 function Node2D:ready() end
+
+--== Static methods ==--
+
+---@param instance table
+---@return boolean
+function Node2D.isNode2D(instance)
+    if type(instance) ~= "table" then
+        return false
+    end
+
+    local classList = instance.classList
+
+    if not classList or type(classList) ~= "table" then
+        return false
+    end
+
+    return utils.table.find(classList, "Node2D") ~= nil
+end
 
 return Node2D
