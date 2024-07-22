@@ -130,9 +130,8 @@ end
 ---@param x number
 ---@param y number
 function Node2D:moveRotated(x, y)
-    local ang = math.rad(self.rotation)
-    local rx = x * math.cos(ang) - y * math.sin(ang)
-    local ry = x * math.sin(ang) + y * math.cos(ang)
+    local rx, ry = utils.math.rotateDirection(x, y, self.rotation)
+
     self:move(rx, ry)
 end
 
