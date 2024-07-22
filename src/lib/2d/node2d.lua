@@ -48,6 +48,12 @@ function Node2D:getClass()
     return self.classList[#self.classList]
 end
 
+---@param class string
+---@return boolean
+function Node2D:isA(class)
+    return utils.table.find(self.classList, class) ~= nil
+end
+
 function Node2D:orphanize()
     if not self.parent then return end
     self.parent:disownChild(self)
