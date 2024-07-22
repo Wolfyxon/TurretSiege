@@ -64,5 +64,18 @@ function AreaNode:getSize()
     return self.width, self.height
 end
 
+-- TODO: Rotation support
+---@return number[][]
+function AreaNode:getGlobalCorners()
+    local cx, cy = self:getGlobalPosition()
+    local ox, oy = self.width / 2, self.height / 2
+
+    return {
+        {cx - ox, cy - oy}, -- top left
+        {cx + ox, cy - oy}, -- top right
+        {cx - ox, cy + oy}, -- bottom left
+        {cx + ox, cy + oy}, -- bottom right
+    }
+end
 
 return AreaNode
