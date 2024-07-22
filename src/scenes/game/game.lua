@@ -21,14 +21,6 @@ local projectiles = {
 }
 
 
-function GameScene:new(o)
-    o = Scene.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    return o
-end
-
 ---@param projectile Projectile
 function GameScene:spawnProjectile(projectile)
     local min = 0
