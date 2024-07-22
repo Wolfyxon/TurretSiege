@@ -75,6 +75,21 @@ function Node2D:getAncestors()
     return res
 end
 
+---@return Node2D[]
+function Node2D:getDescendants()
+    local res = {}
+
+    for i, v in ipairs(self.children) do
+        table.insert(res, v)
+        
+        for ii, vv in ipairs(v:getDescendants()) do
+            table.insert(res, vv)
+        end
+    end
+
+    return res
+end
+
 ---@return number
 function Node2D:getGlobalRotation()
     local rot = self.rotation
