@@ -30,12 +30,12 @@ function AreaNode:drawDebug()
 
         love.graphics.rectangle("fill", x, y, self.width * data.width, self.height * data.height)
 
-        for i, corner in ipairs(self:getRectCorners()) do
+        --[[for i, corner in ipairs(self:getRectCorners()) do
             local x = corner[1]
             local y = corner[2]
 
             love.graphics.circle("fill", x, y, 10, 8)
-        end
+        end]]
     else 
         if self.shape == "circle" then
             love.graphics.circle("fill", self.x, self.y, self.width / 2)   
