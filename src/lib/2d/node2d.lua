@@ -43,6 +43,11 @@ function Node2D:getIndex()
     end
 end
 
+---@return string
+function Node2D:getClass()
+    return self.classList[#self.classList]
+end
+
 function Node2D:orphanize()
     if not self.parent then return end
     self.parent:disownChild(self)
