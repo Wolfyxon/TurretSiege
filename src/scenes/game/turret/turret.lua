@@ -6,6 +6,8 @@ local data  = require("data")
 
 local Turret = Entity:new()
 
+local scale = 0.15
+
 function Turret:new(o)
     o = Entity.new(self, o)
     setmetatable(o, self)
@@ -21,8 +23,8 @@ function Turret:new(o)
     
     o.cannon.x = 0.2
     
-    o.scaleX = 0.3
-    o.scaleY = 0.3
+    o.scaleX = scale
+    o.scaleY = scale
     o.x = 0.5
     o.y = 0.5
 
@@ -56,18 +58,18 @@ function Turret:fire()
     self.cannon.x = 0.15
 
     local b = Projectile:new()
-    b.speed = 4
+    b.speed = 3
     b.x = self.x
     b.y = self.y
-    b.scaleX = 0.3
-    b.scaleY = 0.3
+    b.scaleX = scale
+    b.scaleY = scale
     b.rotation = self.rotation
     b.r = 1
     b.g = 0.5
     b.b = 0
 
     b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
-    b:moveRotated(0.05, 0)
+    b:moveRotated(0.02, 0)
     self.parent:addChild(b)
 end
 
