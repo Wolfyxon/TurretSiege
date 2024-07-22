@@ -2,6 +2,7 @@ local utils = require("lib.utils")
 
 ---@class Node2D
 local Node2D = {
+    scene = nil,             ---@type Scene
     main = nil,              ---@type Main
     parent = nil,            ---@type Node2D
     children = {},           ---@type Node2D[]
@@ -121,6 +122,12 @@ function Node2D:addChild(node)
     node:orphanize()
     node.parent = self
     node.main = node.main or self.main
+    
+    node.scene = self.scene
+    if self:isA("Scene") then
+        node.scene = self
+    end
+
     table.insert(self.children, node)
 
     node.added(self)
