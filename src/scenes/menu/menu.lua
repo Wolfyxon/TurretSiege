@@ -1,3 +1,4 @@
-local scene = require("lib.scene"):new()
+local Scene = require("lib.scene")
+local MenuScene = Scene:new()
 
-return scene
+return MenuScene
