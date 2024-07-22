@@ -54,6 +54,23 @@ function Node2D:isA(class)
     return utils.table.find(self.classList, class) ~= nil
 end
 
+---@return Node2D[]
+function Node2D:getAncestors()
+    local res = {}
+
+    local current = self.parent
+
+    while current do
+        table.insert(res, current)
+        
+        if current.parent then
+            current = current.parent
+        end
+    end
+
+    return res
+end
+
 function Node2D:orphanize()
     if not self.parent then return end
     self.parent:disownChild(self)
