@@ -7,16 +7,40 @@ local circleRot = 0
 
 ---@param projectile Projectile
 local function spawnProjectile(projectile)
-    local min = 0.8
-    local max = 1.5
+    local min = 0
+    local max = 1
 
-    if math.random(0, 1) == 1 then
-        min = -min
-        max = -max
+    local x = 0
+    local y = 0
+
+    local side = math.random(1, 4)
+
+    local function r()
+        return utils.math.random(min, max)
     end
 
-    projectile.x = utils.math.random(min, max)
-    projectile.y = utils.math.random(min, max)
+    if side == 1 then
+        x = r()
+        y = 0
+    end
+
+    if side == 2 then
+        x = r()
+        y = 1
+    end
+
+    if side == 3 then
+        x = 0
+        y = r()
+    end
+
+    if side == 4 then
+        x = 1
+        y = r()
+    end
+
+    projectile.x = x
+    projectile.y = y
     
     projectile.rotation = projectile:rotationTo(0.5, 0.5)
 
