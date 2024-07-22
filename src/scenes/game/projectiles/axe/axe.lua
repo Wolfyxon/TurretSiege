@@ -3,6 +3,8 @@ local Projectile = require("scenes.game.projectile")
 ---@class AxeProjectile: Projectile
 local AxeProjectile = Projectile:new()
 
+local scale = 0.2
+
 function AxeProjectile:new(o)
     o = Projectile.new(self, o)
     setmetatable(o, self)
@@ -15,8 +17,8 @@ function AxeProjectile:new(o)
 end
 
 function AxeProjectile:ready()
-    self.scaleX = 0.4
-    self.scaleY = 0.4
+    self.scaleX = scale
+    self.scaleY = scale
 
     self:loadTextureFromFile("scenes/game/projectiles/axe/axe.png")
 end
