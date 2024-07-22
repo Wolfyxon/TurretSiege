@@ -131,7 +131,6 @@ end
 ---@param y number
 function Node2D:moveRotated(x, y)
     local rx, ry = utils.math.rotateDirection(x, y, self.rotation)
-
     self:move(rx, ry)
 end
 
