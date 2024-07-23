@@ -6,12 +6,13 @@ Projectile:_appendClass("Projectile")
 
 Projectile.hp = 2
 
-Projectile.speed = 0.5        ---@type number
-Projectile.rotationSpeed = 0  ---@type number
-Projectile.damage = 2         ---@type number
-Projectile.alreadyHit = false ---@type boolean
-Projectile.lifeTime   = 5     ---@type number
-Projectile.spawnedAt  = 0     ---@type number
+Projectile.speed = 0.5               ---@type number
+Projectile.rotationSpeed = 0         ---@type number
+Projectile.damage = 2                ---@type number
+Projectile.alreadyHit = false        ---@type boolean
+Projectile.lifeTime   = 5            ---@type number
+Projectile.spawnedAt  = 0            ---@type number
+Projectile.damageProjectiles = false ---@type boolean
 
 function Projectile:new(o)
     o = Entity.new(self, o)
@@ -34,8 +35,10 @@ function Projectile:update(delta)
 
     for i, v in ipairs(self.scene:getDescendantsOfClass("Entity")) do
         if self:isTouching(v) then
-            v:dealDamage(self.damage)
-            self:orphanize()
+            if v:isA("Projectile") and self.damageProjectiles then
+                v:dealDamage(self.damage)
+                self:orphanize()
+            end
         end
     end
 
