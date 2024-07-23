@@ -15,11 +15,14 @@ Turret.fireCooldown = 0.2 ---@type number
 Turret.lastFireTime = 0   ---@type number
 Turret.cannon = nil       ---@type Sprite
 Turret.base = nil         ---@type Sprite
+Turret.projectiles = {}   ---@type Projectile[]
 
 function Turret:new(o)
     o = Entity.new(self, o)
     setmetatable(o, self)
     self.__index = self
+
+    o.projectiles = {}
 
     o.base = Sprite:new({}, "scenes/game/turret/img/base.png")
     o.cannon = Sprite:new({}, "scenes/game/turret/img/cannon.png")
@@ -70,6 +73,14 @@ function Turret:fire()
     b.r = 1
     b.g = 0.5
     b.b = 0
+    
+    table.insert(self.projectiles, b)
+    
+    -- NOTE: self.projectiles can't be accessed in the sub-function so it has to be point to a variable
+    local projectiles = self.projectiles
+    function b:removed()
+        utils.table.erase(projectiles, b)
+    end
 
     b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
     b:moveRotated(0.02, 0)
