@@ -27,6 +27,7 @@ end
 function Entity:die()
     self.hp = 0
     self:died()
+    self:orphanize()
 end
 
 function Entity:died() end
