@@ -56,8 +56,13 @@ function Node2D:_appendClass(className)
 end
 
 ---@param class string
+---@param exact? boolean
 ---@return boolean
-function Node2D:isA(class)
+function Node2D:isA(class, exact)
+    if exact then
+        return self:getClass() == class
+    end
+
     return utils.table.find(self.classList, class) ~= nil
 end
 
