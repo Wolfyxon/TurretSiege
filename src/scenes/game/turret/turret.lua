@@ -9,6 +9,8 @@ local Turret = Entity:new()
 
 local scale = 0.15
 
+local fireSound = love.audio.newSource("scenes/game/turret/fire.ogg", "static")
+
 Turret.targetRotation = 0 ---@type number
 Turret.rotationSpeed = 5  ---@type number
 Turret.fireCooldown = 0.2 ---@type number
@@ -58,8 +60,11 @@ function Turret:fire()
     if now < self.lastFireTime + self.fireCooldown then 
         return 
     end
-    self.lastFireTime = now
 
+    fireSound:stop()
+    fireSound:play()
+
+    self.lastFireTime = now
     self.cannon.x = 0.15
 
     local b = Projectile:new()
