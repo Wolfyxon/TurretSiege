@@ -173,7 +173,19 @@ end
 function utils.getMousePos(screen)
     local w, h = love.graphics.getDimensions(screen)
     
-    local mX, mY = love.mouse.getPosition()
+    local mX, mY = 0, 0
+
+    if love.mouse and love.mouse.isCursorSupported() then
+        mX, mY = love.mouse.getPosition()
+    else
+        if love.touch then
+            local touches = love.touch.getTouches()
+
+            if touches and #touches ~= 0 then
+                mX, mY = love.touch.getPosition(touches[1])
+            end
+        end
+    end
 
     local x = mX / w
     local y = mY / h

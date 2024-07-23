@@ -41,12 +41,11 @@ function Turret:new(o)
 end
 
 function Turret:update(delta)
-    if love.mouse.isCursorSupported() then
-        local x, y = utils.getMousePos()
-        self.targetRotation = self:rotationTo(x, y)
-    end
 
-    if love.mouse.isDown(1) then
+    local x, y = utils.getMousePos()
+    self.targetRotation = self:rotationTo(x, y)
+
+    if love.mouse and love.mouse.isDown(1) then
         self:fire()
     end
 
