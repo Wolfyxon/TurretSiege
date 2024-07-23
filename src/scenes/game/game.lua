@@ -11,6 +11,8 @@ GameScene.turret = nil          ---@type Turret
 GameScene.spawnFrameDelay = 100 ---@type number
 GameScene.level = 1             ---@type integer
 
+local music = love.audio.newSource("scenes/game/music.ogg", "stream")
+
 local circles = 10
 local circleRot = 0
 
@@ -66,10 +68,12 @@ end
 function GameScene:load()
     self.turret = Turret:new()
     self:addChild(self.turret)
+    --music:play()
 end
 
 function GameScene:unload()
     self.turret = nil
+    music:stop()
 end
 
 function GameScene:draw(screen)
