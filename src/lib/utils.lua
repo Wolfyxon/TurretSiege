@@ -20,6 +20,15 @@ function utils.table.merge(...)
     return current
 end
 
+function utils.table.erase(tab, value)
+    for i, v in ipairs(tab) do
+        if v == value then
+            table.remove(tab, i)
+            return
+        end
+    end
+end
+
 ---@return any[]
 function utils.table.keys(table)
     local res = {}
