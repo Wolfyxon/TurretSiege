@@ -9,15 +9,17 @@ local Turret = Entity:new()
 
 local scale = 0.15
 
+Turret.targetRotation = 0 ---@type number
+Turret.rotationSpeed = 5  ---@type number
+Turret.fireCooldown = 0.2 ---@type number
+Turret.lastFireTime = 0   ---@type number
+Turret.cannon = nil       ---@type Sprite
+Turret.base = nil         ---@type Sprite
+
 function Turret:new(o)
     o = Entity.new(self, o)
     setmetatable(o, self)
     self.__index = self
-
-    o.targetRotation = 0
-    o.rotationSpeed = 5
-    o.fireCooldown = 0.2
-    o.lastFireTime = 0
 
     o.base = Sprite:new({}, "scenes/game/turret/img/base.png")
     o.cannon = Sprite:new({}, "scenes/game/turret/img/cannon.png")
