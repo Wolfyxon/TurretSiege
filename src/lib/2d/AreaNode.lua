@@ -85,6 +85,8 @@ end
 ---@param area AreaNode
 ---@return boolean
 function AreaNode:isTouching(area)
+    if area == self then return false end
+
     local selfCorners = self:getGlobalCorners()
     local otherCorners = area:getGlobalCorners()
 
