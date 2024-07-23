@@ -68,8 +68,11 @@ end
 -- TODO: Rotation support
 ---@return {string: number[]}
 function AreaNode:getGlobalCorners()
+    local sx, sy = self:getGlobalScale()
+
     local cx, cy = self:getGlobalPosition()
-    local ox, oy = self.width / 2, self.height / 2
+    local ox = (self.width / 2) * sx
+    local oy = (self.height / 2) * sy
 
     return {
         topLeft = {cx - ox, cy - oy},
