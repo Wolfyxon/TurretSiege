@@ -95,6 +95,21 @@ function Node2D:getDescendants()
     return res
 end
 
+---@param class string
+---@param exact? boolean
+---@return Node2D[]
+function Node2D:getChildrenOfClass(class, exact)
+    local res = {}
+
+    for i, v in ipairs(self.children) do
+        if v:isA(class, exact) then
+            table.insert(res, v)
+        end
+    end
+
+    return res
+end
+
 ---@return number
 function Node2D:getGlobalRotation()
     local rot = self.rotation
