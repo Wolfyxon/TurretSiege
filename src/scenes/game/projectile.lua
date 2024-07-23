@@ -24,6 +24,12 @@ function Projectile:new(o)
     return o
 end
 
+---@param entity Entity
+function Projectile:hit(entity)
+    entity:dealDamage(self.damage)
+    self:orphanize()
+end
+
 function Projectile:update(delta)
     if love.timer.getTime() > self.spawnedAt + self.lifeTime then
         self:orphanize()
@@ -35,9 +41,12 @@ function Projectile:update(delta)
 
     for i, v in ipairs(self.scene:getDescendantsOfClass("Entity")) do
         if self:isTouching(v) then
-            if v:isA("Projectile") and self.damageProjectiles then
-                v:dealDamage(self.damage)
-                self:orphanize()
+            if v:isA("Projectile") then
+                if self.damageProjectiles then
+                    self:hit(v)
+                end
+            else
+                self:hit(v)
             end
         end
     end
