@@ -15,7 +15,7 @@ function Entity:new(o)
     return o
 end
 
-function Entity:damage(amount)
+function Entity:dealDamage(amount)
     if self.invincible then return end
 
     self.hp = self.hp - amount
