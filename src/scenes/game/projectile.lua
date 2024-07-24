@@ -37,6 +37,11 @@ function Projectile:update(delta)
         return
     end
 
+    if (self.x < -0.1 or self.x > 1.1) or (self.y < -0.1 or self.y > 1.1) then
+        self:orphanize()
+        return
+    end
+
     self.textureRotation = self.textureRotation + self.rotationSpeed  * delta
     self:moveRotated(self.speed * delta, 0)
 
