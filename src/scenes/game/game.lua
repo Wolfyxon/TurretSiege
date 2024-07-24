@@ -1,5 +1,6 @@
 local utils = require("lib.utils")
 
+local Color = require("lib.color")
 local Sprite = require("lib.2d.sprite")
 local Turret = require("scenes.game.turret.turret")
 local Scene = require("lib.scene")
@@ -83,9 +84,7 @@ function GameScene:load()
         gear.scaleX = s
         gear.scaleY = s
         
-        gear.r = 0.6 * c
-        gear.g = 0.5 * c
-        gear.b = 0
+        gear.color = Color:new(0.6 * c, 0.5 * c, 0)
         
 
         table.insert(gears, gear)
