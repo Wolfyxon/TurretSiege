@@ -6,6 +6,7 @@ Projectile:_appendClass("Projectile")
 
 Projectile.hp = 2
 
+Projectile.owner = nil               ---@type Entity
 Projectile.speed = 0.5               ---@type number
 Projectile.rotationSpeed = 0         ---@type number
 Projectile.damage = 2                ---@type number
@@ -40,7 +41,7 @@ function Projectile:update(delta)
     self:moveRotated(self.speed * delta, 0)
 
     for i, v in ipairs(self.scene:getDescendantsOfClass("Entity")) do
-        if self:isTouching(v) then
+        if self.owner ~= v and self:isTouching(v) then
             if v:isA("Projectile") then
                 if self.damageProjectiles then
                     self:hit(v)
