@@ -1,4 +1,10 @@
-local Color = {}
+---@class Color
+local Color = {
+    r = 1, ---@type number
+    g = 1, ---@type number
+    b = 1, ---@type number
+    a = 1  ---@type number
+}
 
 ---@param r number
 ---@param g number
