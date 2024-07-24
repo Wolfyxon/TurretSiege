@@ -138,12 +138,19 @@ end
 
 ---@return number, number
 function Node2D:getGlobalPosition()
-    local x = self.x
-    local y = self.y
+    local x = self.x * self.scaleX
+    local y = self.y * self.scaleY
 
     for i, v in ipairs(self:getAncestors()) do
-        x = x + v.x
-        y = y + v.y
+        local rad = math.rad(v.rotation)
+        local cos_rad = math.cos(rad)
+        local sin_rad = math.sin(rad)
+
+        x = x * v.scaleX
+        y = y * v.scaleY
+        
+        x = (cos_rad * x - sin_rad * y) + v.x
+        y = (sin_rad * x + cos_rad * y) + v.y
     end
 
     return x, y
