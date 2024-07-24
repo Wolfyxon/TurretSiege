@@ -1,24 +1,21 @@
 local utils = require("lib.utils")
+local Color = require("lib.color")
 
 ---@class Node2D
 local Node2D = {
-    scene = nil,             ---@type Scene
-    main = nil,              ---@type Main
-    parent = nil,            ---@type Node2D
-    children = {},           ---@type Node2D[]
-    visible = true,          ---@type boolean
-    rotation = 0,            ---@type number
-    scaleX = 1,              ---@type number
-    scaleY = 1,              ---@type number
-    isReady = false,         ---@type boolean
-    classList = {"Node2D"},  ---@type string[]
-    x = 0,                   ---@type number
-    y = 0,                   ---@type number
-
-    r = 1,                   ---@type number
-    g = 1,                   ---@type number
-    b = 1,                   ---@type number
-    a = 1                    ---@type number
+    scene = nil,               ---@type Scene
+    main = nil,                ---@type Main
+    parent = nil,              ---@type Node2D
+    children = {},             ---@type Node2D[]
+    visible = true,            ---@type boolean
+    rotation = 0,              ---@type number
+    scaleX = 1,                ---@type number
+    scaleY = 1,                ---@type number
+    isReady = false,           ---@type boolean
+    classList = {"Node2D"},    ---@type string[]
+    x = 0,                     ---@type number
+    y = 0,                     ---@type number
+    color = Color:new(1, 1, 1) ---@type Color
 }
 
 function Node2D:new(o)
@@ -26,6 +23,7 @@ function Node2D:new(o)
     setmetatable(o, self)
     self.__index = self
 
+    o.color = Color:new(1, 1, 1)
     o.children = {}
 
     return o
@@ -242,7 +240,7 @@ function Node2D:drawRequest(screen, data)
     love.graphics.translate(self.x * data.w, self.y * data.h)
     love.graphics.scale(self.scaleX, self.scaleY)
     love.graphics.rotate(math.rad(self.rotation))
-    love.graphics.setColor(self.r, self.g, self.b, self.a)
+    love.graphics.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
 
     self:draw(screen)
 
