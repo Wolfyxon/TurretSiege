@@ -78,7 +78,7 @@ function GameScene:load()
             c = c * 0.8
         end
         
-        gear.enableShadow = false
+        gear.shadowOpaticy = 0.25
         gear.x = 0.5
         gear.y = 0.5
         gear.scaleX = s
