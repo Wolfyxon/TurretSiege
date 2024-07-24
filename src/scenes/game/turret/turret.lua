@@ -77,7 +77,7 @@ function Turret:fire()
     b.rotation = self.rotation
     b.r = 1
     b.g = 0.5
-    b.b = 0
+    b.b = 0.5
     
     table.insert(self.projectiles, b)
     
