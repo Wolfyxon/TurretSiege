@@ -23,4 +23,9 @@ function Color:new(r, g, b, a)
     return o
 end
 
+---@return Color
+function Color:clone()
+    return Color:new(self.r, self.g, self.b, self.a)
+end
+
 return Color
