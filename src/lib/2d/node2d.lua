@@ -162,6 +162,31 @@ function Node2D:getGlobalPosition()
     return x, y
 end
 
+---@param x number
+---@param y number
+function Node2D:setGlobalPosition(x, y)
+    local ancestors = self:getAncestors()
+
+    for i = #ancestors, 1, -1 do
+        local anc = ancestors[i]
+
+        x = (x / anc.scaleX) - anc.x
+        y = (y / anc.scaleY) - anc.y
+
+        local rad = math.rad(-anc.rotation)
+        local cos_rad = math.cos(rad)
+        local sin_rad = math.sin(rad)
+        
+        local rx = cos_rad * x - sin_rad * y
+        local ry = sin_rad * x + cos_rad * y
+
+        x = rx
+        y = ry
+    end
+    
+    self.x = x / self.scaleX
+    self.y = y / self.scaleY
+end
 
 ---@return number, number
 function Node2D:getGlobalScale()
