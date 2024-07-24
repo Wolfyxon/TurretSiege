@@ -3,11 +3,13 @@ local Projectile = require("scenes.game.projectile")
 local Sprite = require("lib.2d.sprite")
 local utils = require("lib.utils")
 local data  = require("data")
+local Color = require("lib.color")
 
 ---@class Turret: Entity
 local Turret = Entity:new()
 
 local scale = 0.15
+local bulletColor = Color:new(1, 0.5, 0.5)
 
 local fireSound = love.audio.newSource("scenes/game/turret/fire.ogg", "static")
 
@@ -77,9 +79,7 @@ function Turret:fire()
     b.scaleX = scale
     b.scaleY = scale
     b.rotation = self.rotation
-    b.r = 1
-    b.g = 0.5
-    b.b = 0.5
+    b.color = bulletColor
     
     table.insert(self.projectiles, b)
     
