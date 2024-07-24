@@ -19,6 +19,8 @@ function Color:new(r, g, b, a)
     o.g = g
     o.b = b
     o.a = a or 1
+
+    return o
 end
 
 return Color
