@@ -1,5 +1,6 @@
 local utils = require("lib.utils")
 
+local Sprite = require("lib.2d.sprite")
 local Turret = require("scenes.game.turret.turret")
 local Scene = require("lib.scene")
 
@@ -13,8 +14,7 @@ GameScene.level = 1             ---@type integer
 
 local music = love.audio.newSource("scenes/game/music.ogg", "stream")
 
-local circles = 10
-local circleRot = 0
+local gears = {} ---@type Sprite[]
 
 local projectiles = {
     {
@@ -66,8 +66,35 @@ function GameScene:spawnProjectile(projectile)
 end
 
 function GameScene:load()
+    local gearCount = 20
+    for i = 1,gearCount do
+        local gear = Sprite:new({}, "scenes/game/gear.png")
+        local dir = (-1) ^ i
+        local s = ((gearCount - i) / gearCount) * 5
+        
+        local c = i / gearCount
+        if dir == -1 then
+            c = c * 0.8
+        end
+        
+        gear.enableShadow = false
+        gear.x = 0.5
+        gear.y = 0.5
+        gear.scaleX = s
+        gear.scaleY = s
+        
+        gear.r = 0.6 * c
+        gear.g = 0.5 * c
+        gear.b = 0
+        
+
+        table.insert(gears, gear)
+        self:addChild(gear)
+    end
+
     self.turret = Turret:new()
     self:addChild(self.turret)
+
     --music:play()
 end
 
@@ -77,40 +104,15 @@ function GameScene:unload()
 end
 
 function GameScene:draw(screen)
-    local sW, sH = love.graphics.getDimensions(screen)
-    local ratio = math.min(sW, sH)
 
-    if not screen or screen == "left" then
-        
-    end
-
-    if not screen or screen == "bottom" then
-        --love.graphics.setBackgroundColor(0.6, 0.5, 0)
-
-
-        for i = 1, circles do
-            love.graphics.push()
-            love.graphics.origin()
-            love.graphics.translate(sW / 2, sH / 2)
-            local dir = (-1) ^ i
-            
-            love.graphics.rotate(circleRot * dir)
-
-            local c = i / circles
-            if dir == -1 then
-                c = c * 0.8
-            end
-            love.graphics.setColor(0.6 * c, 0.5 * c, 0, 1)
-            love.graphics.circle("fill", 0 , 0, (circles - i) * 0.25 * ratio, 6)
-
-            love.graphics.pop()
-        end
-        
-    end 
 end
 
 function GameScene:update(delta)
-    circleRot = circleRot + delta * 0.2
+    for i, v in ipairs(gears) do
+        local dir = (-1) ^ i
+
+        v.rotation = v.rotation + dir * delta * 4
+    end
 
     if self.main.frameCount % self.spawnFrameDelay == 0 then
         local proj = utils.table.random(projectiles[self.level]):new()
