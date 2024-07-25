@@ -4,19 +4,11 @@ local Projectile = require("scenes.game.projectile")
 local AxeProjectile = Projectile:new()
 AxeProjectile:_appendClass("AxeProjectile")
 
+AxeProjectile.speed = 0.3
+AxeProjectile.rotationSpeed = -500
+AxeProjectile.damage = 2
+
 local scale = 0.2
-
-function AxeProjectile:new(o)
-    o = Projectile.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    o.speed = 0.3
-    o.rotationSpeed = -500
-    o.damage = 2
-
-    return o
-end
 
 function AxeProjectile:ready()
     self.scaleX = scale
