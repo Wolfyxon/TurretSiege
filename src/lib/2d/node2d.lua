@@ -32,10 +32,17 @@ end
 
 --== Dynamic methods ==--
 
+---@param ... string
+function Node2D:registerEvent(...)
+    for i, event in ipairs({...}) do
+        self.eventHandlers[event] = {}
+    end
+end
+
 ---@param name string
 function Node2D:emitEvent(name, ...)
     local handlers = self.eventHandlers[name]
-    if not handlers then return end
+    assert(handlers, "Unknown event '" .. name .. "'")
 
     for i, v in ipairs(handlers) do
         v(...)
@@ -46,10 +53,7 @@ end
 ---@param handler function
 function Node2D:onEvent(name, handler)
     local handlers = self.eventHandlers[name]
-    
-    if not handlers then 
-        self.eventHandlers[name] = {}
-    end
+    assert(handlers, "Unknown event '" .. name .. "'")
 
     table.insert(handlers, handlers)
 end
@@ -344,5 +348,9 @@ function Node2D.isNode2D(instance)
 
     return utils.table.find(classList, "Node2D") ~= nil
 end
+
+--== Post logic ==--
+
+Node2D:registerEvent("ready", "added", "removed", "nodeAdded")
 
 return Node2D
