@@ -1,5 +1,6 @@
 name: Bug report
 description: Something isn't working as it should be
+title: "[BUG]: "
 labels: ["bug"]
 
 body:
