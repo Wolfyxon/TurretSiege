@@ -3,6 +3,7 @@ local Color = require("lib.color")
 
 ---@class Node2D
 local Node2D = {
+    eventHandlers = {},        ---@type {string: function[]}
     scene = nil,               ---@type Scene
     main = nil,                ---@type Main
     parent = nil,              ---@type Node2D
@@ -30,6 +31,28 @@ function Node2D:new(o)
 end
 
 --== Dynamic methods ==--
+
+---@param name string
+function Node2D:emitEvent(name, ...)
+    local handlers = self.eventHandlers[name]
+    if not handlers then return end
+
+    for i, v in ipairs(handlers) do
+        v(...)
+    end
+end
+
+---@param name string
+---@param handler function
+function Node2D:onEvent(name, handler)
+    local handlers = self.eventHandlers[name]
+    
+    if not handlers then 
+        self.eventHandlers[name] = {}
+    end
+    
+    table.insert(handlers, handlers)
+end
 
 ---@return integer|nil
 function Node2D:getIndex()
