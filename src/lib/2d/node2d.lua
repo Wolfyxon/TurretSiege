@@ -33,7 +33,7 @@ end
 --== Dynamic methods ==--
 
 ---@param ... string
-function Node2D:registerEvent(...)
+function Node2D:_registerEvent(...)
     for i, event in ipairs({...}) do
         self.eventHandlers[event] = {}
     end
@@ -351,6 +351,6 @@ end
 
 --== Post logic ==--
 
-Node2D:registerEvent("ready", "added", "removed", "nodeAdded")
+Node2D:_registerEvent("ready", "added", "removed", "nodeAdded")
 
 return Node2D

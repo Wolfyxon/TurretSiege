@@ -3,7 +3,7 @@ local Sprite = require("lib.2d.sprite")
 ---@class Entity: Sprite
 local Entity = Sprite:new()
 Entity:_appendClass("Entity")
-Entity:registerEvent("died", "damaged")
+Entity:_registerEvent("died", "damaged")
 
 Entity.hp = 100           ---@type number
 Entity.invincible = false ---@type boolean
