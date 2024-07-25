@@ -1,6 +1,7 @@
 name: Bug report
 description: Something isn't working as it should be
 labels: ["bug"]
+
 body:
 - type: textarea
   attributes:
@@ -38,6 +39,7 @@ body:
     options: ["Windows", "Linux", "Nintendo 3DS"]
   validations:
     required: true
+
 - type: checkboxes
   attributes:
     description: Before submitting a bug, please search for similar [issues](https://github.com/Wolfyxon/TurretSiege/issues)
