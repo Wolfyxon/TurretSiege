@@ -28,4 +28,9 @@ function Color:clone()
     return Color:new(self.r, self.g, self.b, self.a)
 end
 
+---@return number, number, number, number
+function Color:getRGBA()
+    return self.r, self.g, self.b, self.a
+end
+
 return Color
