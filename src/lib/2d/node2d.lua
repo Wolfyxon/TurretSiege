@@ -245,7 +245,7 @@ function Node2D:addChild(node)
     table.insert(self.children, node)
 
     node:emitEvent("added", self)
-    node.added(self)
+    node:added(self)
 
     if not node.isReady then
         node:emitEvent("ready")
