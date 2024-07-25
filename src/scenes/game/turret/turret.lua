@@ -73,7 +73,7 @@ function Turret:fire()
     b:_appendClass("TurretBullet")
     b.owner = self
     b.damageProjectiles = true
-    b.speed = 3
+    b.speed = 1
     b.x = self.x
     b.y = self.y
     b.scaleX = scale
