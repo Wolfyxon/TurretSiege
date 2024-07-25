@@ -38,3 +38,9 @@ body:
     options: ["Windows", "Linux", "Nintendo 3DS"]
   validations:
     required: true
+- type: checkboxes
+  attributes:
+    description: Before submitting a bug, please search for similar [issues](https://github.com/Wolfyxon/TurretSiege/issues)
+    options:
+      - label: I have done the search for similar issues
+        required: true
