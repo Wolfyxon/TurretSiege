@@ -1,0 +1,35 @@
+name: Bug report
+description: Something isn't working as it should be
+labels: ["bug"]
+body:
+- type: textarea
+  attributes:
+    label: Description
+    description: |
+      Describe the bug, give us as much details as you can.
+  validations:
+    required: true
+    
+- type: textarea
+  attributes:
+    label: Steps to reproduce
+    description: |
+       How to reproduce the bug. Example: click on... press.. then go to... and then...
+  validations:
+    required: true
+     
+- type: input
+  attributes:
+    label: Game version
+    description: |
+      Specify the version of the game.
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Platform
+    description: |
+      If the issue is specific to a platform, providing your platform/OS will be very helpful.
+  validations:
+    required: true
