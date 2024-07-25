@@ -3,6 +3,7 @@ local Sprite = require("lib.2d.sprite")
 ---@class Entity: Sprite
 local Entity = Sprite:new()
 Entity:_appendClass("Entity")
+Entity:registerEvent("died", "damaged")
 
 Entity.hp = 100           ---@type number
 Entity.invincible = false ---@type boolean
@@ -19,6 +20,7 @@ function Entity:dealDamage(amount)
     if self.invincible then return end
 
     self.hp = self.hp - amount
+    self:emitEvent("damaged")
     if self.hp <= 0 then
         self:die()
     end
@@ -27,6 +29,7 @@ end
 function Entity:die()
     self.hp = 0
     self:died()
+    self:emitEvent("died")
     self:orphanize()
 end
 
