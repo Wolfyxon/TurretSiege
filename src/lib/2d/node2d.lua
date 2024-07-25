@@ -50,7 +50,7 @@ function Node2D:onEvent(name, handler)
     if not handlers then 
         self.eventHandlers[name] = {}
     end
-    
+
     table.insert(handlers, handlers)
 end
 
@@ -240,17 +240,22 @@ function Node2D:addChild(node)
 
     table.insert(self.children, node)
 
+    node:emitEvent("added", self)
     node.added(self)
 
     if not node.isReady then
+        node:emitEvent("ready")
         node:ready()
     end
+
+    self:emitEvent("nodeAdded", node)
 end
 
 ---@param node Node2D
 function Node2D:disownChild(node)
     table.remove(self.children, node:getIndex())
     node.parent = nil
+    node:emitEvent("removed")
     node:removed(self)
 end
 
