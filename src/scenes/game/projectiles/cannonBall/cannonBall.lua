@@ -8,7 +8,7 @@ CannonBallProjectile.speed = 0.4
 CannonBallProjectile.rotationSpeed = 1000
 CannonBallProjectile.damage = 5
 
-local scale = 0.25
+local scale = 0.28
 
 function CannonBallProjectile:ready()
     self.scaleX = scale
