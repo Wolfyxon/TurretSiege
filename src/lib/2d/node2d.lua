@@ -285,6 +285,7 @@ end
 ---@return boolean
 function Node2D:canBeDrawnOnScreen(screen)
     if not screen then return true end
+    if screen == "right" then return false end -- disable 3D
     local target = self:getTargetScreen()
     return target == screen or target == "all"
 end
