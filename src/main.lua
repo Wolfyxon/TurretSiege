@@ -1,4 +1,5 @@
 local data = require("data")
+local utils = require("lib.utils")
 
 ---@class Main
 local main = {
@@ -35,6 +36,17 @@ end
 --== Love2D function overrides ==--
 
 function love.load()
+    print("==================================================================")
+    print("TurretSiege by Wolfyxon")
+    print("Licensed under GPL-2.0")
+    print("Made with Love2D and LovePotion on Nintendo consoles")
+    print(" ")
+    print("Platform:", utils.system.getPlatform())
+    print("Game version:", data.version)
+    print("Love2D version:", love.getVersion())
+    print("LovePotion version:", love.__potion_version)
+    print("==================================================================")
+
     love.window.setTitle("Turret Siege")
     love.window.setMode(data.width, data.height, {resizable = true})
 
