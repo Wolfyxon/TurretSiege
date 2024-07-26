@@ -14,5 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install lua
+      run: apt install lua5.3
+
     - name: Verify Lua syntax
       run: make parse
