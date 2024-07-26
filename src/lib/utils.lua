@@ -205,8 +205,7 @@ function utils.system.has2screens()
 end
 
 function utils.system.getPlatform()
-    -- NOTE: _console_name is the old constant that's still used in nest
-    return love._console_name or love._console or love.system.getOS()
+    return love._console or love.system.getOS()
 end
 
 return utils
