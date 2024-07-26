@@ -33,6 +33,10 @@ function Entity:die()
     self:orphanize()
 end
 
+function Entity:isAlive()
+    return self.hp > 0
+end
+
 function Entity:died() end
 
 return Entity
