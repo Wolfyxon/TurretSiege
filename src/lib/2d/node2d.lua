@@ -55,7 +55,7 @@ function Node2D:onEvent(name, handler)
     local handlers = self.eventHandlers[name]
     assert(handlers, "Unknown event '" .. name .. "'")
 
-    table.insert(handlers, handlers)
+    table.insert(handlers, handler)
 end
 
 ---@return integer|nil
