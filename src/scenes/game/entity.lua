@@ -7,6 +7,7 @@ Entity:_registerEvent("died", "damaged")
 
 Entity.hp = 100           ---@type number
 Entity.invincible = false ---@type boolean
+Entity.dead = false       ---@type boolean
 
 function Entity:new(o)
     o = Sprite.new(self, o)
@@ -28,6 +29,9 @@ function Entity:dealDamage(amount)
 end
 
 function Entity:die()
+    if self.dead then return end
+    self.dead = true
+
     self.hp = 0
     self:died()
     self:emitEvent("died")
