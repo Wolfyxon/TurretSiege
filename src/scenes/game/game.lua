@@ -1,5 +1,6 @@
 local utils = require("lib.utils")
 
+local Node2D = require("lib.2d.node2d")
 local Color = require("lib.color")
 local Sprite = require("lib.2d.sprite")
 local Turret = require("scenes.game.turret.turret")
@@ -17,6 +18,7 @@ GameScene.level = 1                   ---@type integer
 
 local music = love.audio.newSource("scenes/game/music.ogg", "stream")
 
+local arena = nil ---@type Node2D
 local gears = {} ---@type Sprite[]
 
 local projectiles = {
@@ -66,10 +68,12 @@ function GameScene:spawnProjectile(projectile)
     
     projectile.rotation = projectile:rotationTo(0.5, 0.5)
 
-    self:addChild(projectile)
+    arena:addChild(projectile)
 end
 
 function GameScene:load()
+    arena = Node2D:new()
+
     local gearCount = 20
     for i = 1,gearCount do
         local gear = Sprite:new({}, "scenes/game/gear.png")
@@ -91,12 +95,13 @@ function GameScene:load()
         
 
         table.insert(gears, gear)
-        self:addChild(gear)
+        arena:addChild(gear)
     end
 
     self.turret = Turret:new()
-    self:addChild(self.turret)
-
+    arena:addChild(self.turret)
+    
+    self:addChild(arena)
     --music:play()
 end
 
