@@ -10,6 +10,7 @@ local console = require("lib.console"):new()
 function DebugScene:load()
     console:print("Debug scene")
     console:print("Game version:", self.main.version)
+    console:print("Platform:", utils.system.getPlatform())
 end
 
 function DebugScene:draw(screen)
