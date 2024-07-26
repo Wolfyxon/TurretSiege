@@ -18,6 +18,7 @@ end
 
 function Entity:dealDamage(amount)
     if self.invincible then return end
+    if not self:isAlive() then return end
 
     self.hp = self.hp - amount
     self:emitEvent("damaged")
