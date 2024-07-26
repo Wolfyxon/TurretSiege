@@ -27,6 +27,8 @@ end
 
 ---@param entity Entity
 function Projectile:hit(entity)
+    if not self.parent then return end
+
     entity:dealDamage(self.damage)
     self:orphanize()
 end
