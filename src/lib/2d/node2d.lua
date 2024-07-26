@@ -271,8 +271,8 @@ function Node2D:drawRequest(screen, data)
     love.graphics.push()
 
     love.graphics.translate(self.x * data.w, self.y * data.h)
-    love.graphics.scale(self.scaleX, self.scaleY)
     love.graphics.rotate(math.rad(self.rotation))
+    love.graphics.scale(self.scaleX, self.scaleY)
     love.graphics.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
 
     self:draw(screen)
