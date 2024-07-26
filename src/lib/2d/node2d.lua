@@ -24,6 +24,7 @@ function Node2D:new(o)
     setmetatable(o, self)
     self.__index = self
 
+    o.eventHandlers = utils.table.copy(self.eventHandlers)
     o.color = Color:new(1, 1, 1)
     o.children = {}
 
