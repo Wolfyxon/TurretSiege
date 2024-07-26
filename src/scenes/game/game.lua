@@ -124,7 +124,6 @@ function GameScene:update(delta)
 
         proj:onEvent("died", function ()
             self.projectilesDestroyed = self.projectilesDestroyed + 1
-            print(self.projectilesDestroyed)
         end)
         
         self:spawnProjectile(proj)
