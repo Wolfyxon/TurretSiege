@@ -203,4 +203,8 @@ function utils.system.has2screens()
     return console == "3DS" or console == "Wii U"
 end
 
+function utils.system.getPlatform()
+    return love._console or love.system.getOS()
+end
+
 return utils
