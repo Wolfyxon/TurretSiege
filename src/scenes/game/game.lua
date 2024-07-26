@@ -101,6 +101,7 @@ function GameScene:load()
     self.turret = Turret:new()
     arena:addChild(self.turret)
     
+    arena.screen = "bottom"
     self:addChild(arena)
     --music:play()
 end
