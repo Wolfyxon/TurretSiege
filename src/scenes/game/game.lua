@@ -9,9 +9,10 @@ local Scene = require("lib.scene")
 local GameScene = Scene:new()
 GameScene:_appendClass("GameScene")
 
-GameScene.turret = nil          ---@type Turret
-GameScene.spawnFrameDelay = 100 ---@type number
-GameScene.level = 1             ---@type integer
+GameScene.turret = nil                ---@type Turret
+GameScene.projectileSpawnDelay = 1    ---@type number
+GameScene.lastProjectileSpawnTime = 2 ---@type number
+GameScene.level = 1                   ---@type integer
 
 local music = love.audio.newSource("scenes/game/music.ogg", "stream")
 
@@ -114,7 +115,9 @@ function GameScene:update(delta)
         v.rotation = v.rotation + dir * delta * 4
     end
 
-    if self.main.frameCount % self.spawnFrameDelay == 0 then
+    local now = love.timer.getTime()
+    if now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
+        self.lastProjectileSpawnTime = now
         local proj = utils.table.random(projectiles[self.level]):new()
         self:spawnProjectile(proj)
     end
