@@ -12,6 +12,7 @@ GameScene:_appendClass("GameScene")
 GameScene.turret = nil                ---@type Turret
 GameScene.projectileSpawnDelay = 1    ---@type number
 GameScene.lastProjectileSpawnTime = 2 ---@type number
+GameScene.projectilesDestroyed = 0    ---@type integer
 GameScene.level = 1                   ---@type integer
 
 local music = love.audio.newSource("scenes/game/music.ogg", "stream")
@@ -118,7 +119,14 @@ function GameScene:update(delta)
     local now = love.timer.getTime()
     if now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now
+        
         local proj = utils.table.random(projectiles[self.level]):new()
+
+        proj:onEvent("died", function ()
+            self.projectilesDestroyed = self.projectilesDestroyed + 1
+            print(self.projectilesDestroyed)
+        end)
+        
         self:spawnProjectile(proj)
     end
 end
