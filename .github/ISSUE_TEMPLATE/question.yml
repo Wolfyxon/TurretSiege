@@ -1,0 +1,21 @@
+name: Question
+description: Question or something else
+title: "[QUESTION]: "
+labels: ["question"]
+
+body:
+- type: textarea
+  attributes:
+    label: Description
+    description: |
+      Describe your question.
+  validations:
+    required: true
+
+- type: checkboxes
+  attributes:
+    label: Similar submissions
+    description: Before submitting a question, please search for similar ones in [issues](https://github.com/Wolfyxon/TurretSiege/issues)
+    options:
+      - label: I have done the search for similar question
+        required: true
