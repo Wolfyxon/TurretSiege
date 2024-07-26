@@ -9,6 +9,7 @@ local Node2D = {
     parent = nil,              ---@type Node2D
     children = {},             ---@type Node2D[]
     visible = true,            ---@type boolean
+    screen = "inherit",        ---@type "all" | "inherit" | "left" | "bottom" -- NOTE: the top screen is called 'left'
     rotation = 0,              ---@type number
     scaleX = 1,                ---@type number
     scaleY = 1,                ---@type number
@@ -264,6 +265,30 @@ function Node2D:disownChild(node)
     node:removed(self)
 end
 
+
+---@return "all" | "left" | "bottom"
+function Node2D:getTargetScreen()
+    if self.screen ~= "inherit" then
+        return self.screen ---@type "all" | "left" | "bottom"
+    end
+    
+    for i, v in ipairs(self:getAncestors()) do
+        if v.screen ~= "inherit" then
+            return v.screen  ---@type "all" | "left" | "bottom"
+        end
+    end
+
+    return "all"
+end
+
+---@param screen nil | "left" | "bottom"
+---@return boolean
+function Node2D:canBeDrawnOnScreen(screen)
+    if not screen then return true end
+    local target = self:getTargetScreen()
+    return target == screen or target == "all"
+end
+
 ---@param screen nil|"left"|"bottom"
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
@@ -275,8 +300,10 @@ function Node2D:drawRequest(screen, data)
     love.graphics.scale(self.scaleX, self.scaleY)
     love.graphics.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
 
-    self:draw(screen)
-
+    if self:canBeDrawnOnScreen(screen) then
+        self:draw(screen)
+    end
+    
     for i, v in ipairs(self.children) do
         v:drawRequest(screen, data)
     end
