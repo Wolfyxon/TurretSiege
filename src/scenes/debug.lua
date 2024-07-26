@@ -1,5 +1,6 @@
 local Scene = require("lib.scene")
 local utils = require("lib.utils")
+local data = require("data")
 
 ---@class DebugScene: Scene
 local DebugScene = Scene:new()
@@ -9,7 +10,7 @@ local console = require("lib.console"):new()
 
 function DebugScene:load()
     console:print("Debug scene")
-    console:print("Game version:", self.main.version)
+    console:print("Game version:", data.version)
     console:print("Platform:", utils.system.getPlatform())
 end
 
