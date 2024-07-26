@@ -193,5 +193,14 @@ function utils.getMousePos(screen)
     return x, y
 end
 
+--== System ==--
+
+---@return boolean
+function utils.system.has2screens()
+    local console = love._console
+    if not console then return false end
+
+    return console == "3DS" or console == "Wii U"
+end
 
 return utils
