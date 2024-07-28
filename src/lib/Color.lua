@@ -8,18 +8,18 @@ local Color = {
     a = 1  ---@type number
 }
 
----@param r number
----@param g number
----@param b number
+---@param r? number
+---@param g? number
+---@param b? number
 ---@param a? number
 function Color:new(r, g, b, a)
     local o = {}
     setmetatable(o, self)
     self.__index = self
 
-    o.r = r
-    o.g = g
-    o.b = b
+    o.r = r or 1
+    o.g = g or 1
+    o.b = b or 1
     o.a = a or 1
 
     return o
