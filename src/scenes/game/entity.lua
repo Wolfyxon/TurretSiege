@@ -1,4 +1,4 @@
-local Sprite = require("lib.2d.sprite")
+local Sprite = require("src.lib.2d.Sprite")
 
 ---@class Entity: Sprite
 local Entity = Sprite:new()

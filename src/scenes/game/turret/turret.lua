@@ -1,9 +1,9 @@
 local Entity = require("scenes.game.entity")
 local Projectile = require("scenes.game.projectile")
-local Sprite = require("lib.2d.sprite")
+local Sprite = require("src.lib.2d.Sprite")
 local utils = require("lib.utils")
 local data  = require("data")
-local Color = require("lib.color")
+local Color = require("src.lib.Color")
 
 ---@class Turret: Entity
 local Turret = Entity:new()

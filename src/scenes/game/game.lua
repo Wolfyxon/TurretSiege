@@ -1,11 +1,11 @@
 local utils = require("lib.utils")
 
-local Node2D = require("lib.2d.node2d")
-local Color = require("lib.color")
-local Sprite = require("lib.2d.sprite")
+local Node2D = require("src.lib.2d.Node2d")
+local Color = require("src.lib.Color")
+local Sprite = require("src.lib.2d.Sprite")
 local Turret = require("scenes.game.turret.turret")
 local GameGui = require("scenes.game.gui")
-local Scene = require("lib.scene")
+local Scene = require("src.lib.Scene")
 
 ---@class GameScene: Scene
 local GameScene = Scene:new()
