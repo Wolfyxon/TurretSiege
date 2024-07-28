@@ -35,7 +35,7 @@ function Entity:die()
     self.hp = 0
     self:died()
     self:emitEvent("died")
-    self:orphanize()
+    self:destroy()
 end
 
 function Entity:isAlive()

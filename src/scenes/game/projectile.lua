@@ -35,12 +35,12 @@ end
 
 function Projectile:update(delta)
     if love.timer.getTime() > self.spawnedAt + self.lifeTime then
-        self:orphanize()
+        self:destroy()
         return
     end
 
     if (self.x < -0.1 or self.x > 1.1) or (self.y < -0.1 or self.y > 1.1) then
-        self:orphanize()
+        self:destroy()
         return
     end
 
