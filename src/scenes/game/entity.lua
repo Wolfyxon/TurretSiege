@@ -5,7 +5,8 @@ local Entity = Sprite:new()
 Entity:_appendClass("Entity")
 Entity:_registerEvent("died", "damaged")
 
-Entity.hp = 100           ---@type number
+Entity.maxHp = 100        ---@type number
+Entity.hp = Entity.maxHp  ---@type number
 Entity.invincible = false ---@type boolean
 Entity.dead = false       ---@type boolean
 
