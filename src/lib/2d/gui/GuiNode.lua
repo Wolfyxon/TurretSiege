@@ -14,7 +14,7 @@ function GuiNode:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    o.backgroundColor = Color:new(0.5, 0.5, 0.5)
+    o.backgroundColor = Color:new(0.2, 0.2, 0.2)
     o.borderColor = Color:new(1, 1, 1)
 
     return o
