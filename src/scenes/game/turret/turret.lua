@@ -46,9 +46,10 @@ function Turret:new(o)
 end
 
 function Turret:update(delta)
-
-    local x, y = utils.getMousePos()
-    self.targetRotation = self:rotationTo(x, y)
+    if (love.mouse and love.mouse.isCursorSupported()) or ((not love.mouse or not love.mouse.isCursorSupported()) and utils.system.isMousePressed()) then
+        local x, y = utils.system.getMousePos()
+        self.targetRotation = self:rotationTo(x, y) 
+    end
 
     if love.mouse and love.mouse.isDown(1) then
         self:fire()
@@ -115,6 +116,10 @@ function Turret:shockwave()
     end
     
     self.parent:addChild(cir)
+end
+
+function love.mousemoved(x, y, dx, dy, isTouch)
+    
 end
 
 return Turret
