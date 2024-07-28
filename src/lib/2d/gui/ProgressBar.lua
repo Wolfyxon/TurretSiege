@@ -40,7 +40,7 @@ function ProgressBar:draw()
     GuiNode.draw(self)
 
     local x = -(self.width / 2 * data.width)
-    local y = -(self.height / 2 * data.height) - 0.5
+    local y = -(self.height / 2 * data.height)
 
     if self.positioning == "topleft" then
         x = 0
