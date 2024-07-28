@@ -24,6 +24,11 @@ function GuiNode:draw()
     local ox = -(self.width / 2)
     local oy = -(self.height / 2)
 
+    if self.positioning == "topleft" then
+        ox = 0
+        oy = 0
+    end
+
     self.backgroundColor:toGraphics()
     love.graphics.rectangle(
         "fill",
