@@ -7,7 +7,6 @@ local font = love.graphics.getFont()
 Label.padding = 5           ---@type number
 Label.textScale = 0.5       ---@type number
 Label.textObj = nil         ---@type Text
-Label.autoSizing = true     ---@type boolean
 Label.wrapping = "word"     ---@type "word" | "character" | "nowrap"
 Label.formatted = false     ---@type boolean
 Label._unprocessedText = "" ---@type string
@@ -39,12 +38,27 @@ function Label:draw()
     love.graphics.draw(self.textObj, ox, oy, 0, self.textScale, self.textScale)
 end
 
-function Label:adjustSizeToText()
+function Label:adjustSize()
+    if self.sizing == "keep" then return end
+
     local tW = self.textObj:getWidth() * self.textScale + self.padding
     local tH = self.textObj:getHeight() * self.textScale + self.padding
 
-    self.width = tW
-    self.height = tH
+    if self.sizing == "minimal" then
+        self.width = tW
+        self.height = tH
+
+        return
+    end
+
+    if self.sizing == "extend" then
+        if self.width < tW then
+            self.width = tW
+        end
+        if self.height < tH then
+            self.height = tH
+        end
+    end
 end
 
 ---@param text string | any
@@ -60,9 +74,7 @@ function Label:setText(text)
         self.textObj:set(text)
     end
 
-    if self.autoSizing then
-        self:adjustSizeToText()
-    end
+    self:adjustSize()
 end
 
 ---@return string
