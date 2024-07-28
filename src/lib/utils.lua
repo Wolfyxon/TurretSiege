@@ -167,6 +167,21 @@ function utils.math.random(min, max)
     return min + max * (math.random(0, 100) / 100)
 end
 
+---@param value number
+---@param min number
+---@param max number
+function utils.math.clamp(value, min, max)
+    if value < min then
+        return min
+    end
+
+    if value > max then
+        return max
+    end
+
+    return value
+end
+
 --== Other ==--
 
 ---@param screen nil|"left"|"bottom"
