@@ -1,3 +1,5 @@
+local utils = require("lib.utils")
+
 ---@class Color
 local Color = {
     r = 1, ---@type number
@@ -21,6 +23,14 @@ function Color:new(r, g, b, a)
     o.a = a or 1
 
     return o
+end
+
+---@param color Color
+function Color:lerp(color, speed)
+    self.r = utils.math.lerp(self.r, color.r, speed)
+    self.g = utils.math.lerp(self.g, color.g, speed)
+    self.b = utils.math.lerp(self.b, color.b, speed)
+    self.a = utils.math.lerp(self.a, color.a, speed)
 end
 
 ---@return Color
