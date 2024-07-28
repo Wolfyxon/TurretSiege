@@ -68,7 +68,15 @@ function Sprite:draw()
     end
 
 
-    love.graphics.draw(self.texture, -(tW / 2), -(tH / 2))
+    local ox = -(tW / 2)
+    local oy = -(tH / 2)
+
+    if self.positioning == "topleft" then
+        ox = 0
+        oy = 0
+    end
+
+    love.graphics.draw(self.texture, ox, oy)
 end
 
 function Sprite:getTextureSize()
