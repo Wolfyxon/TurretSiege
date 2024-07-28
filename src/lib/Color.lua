@@ -33,6 +33,18 @@ function Color:lerp(color, speed)
     self.a = utils.math.lerp(self.a, color.a, speed)
 end
 
+---@param r number
+---@param g number
+---@param b number
+---@param a number
+---@param speed number
+function Color:lerpRGBA(r, g, b, a, speed)
+    self.r = utils.math.lerp(self.r, r, speed)
+    self.g = utils.math.lerp(self.g, g, speed)
+    self.b = utils.math.lerp(self.b, b, speed)
+    self.a = utils.math.lerp(self.a, a, speed)
+end
+
 ---@return Color
 function Color:clone()
     return Color:new(self.r, self.g, self.b, self.a)
