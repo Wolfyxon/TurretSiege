@@ -1,5 +1,5 @@
-local Entity = require("scenes.game.entity")
-local Projectile = require("scenes.game.projectile")
+local Entity = require("src.scenes.game.Entity")
+local Projectile = require("src.scenes.game.Projectile")
 local Sprite = require("src.lib.2d.Sprite")
 local utils = require("lib.utils")
 local data  = require("data")
