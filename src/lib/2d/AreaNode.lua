@@ -6,7 +6,6 @@ local data = require("data")
 local AreaNode = Node2D:new()
 AreaNode:_appendClass("AreaNode")
 
-local shapes = {"rect", "circle"}
 
 AreaNode.shape = "rect" ---@type string
 AreaNode.width = 0      ---@type number
@@ -39,22 +38,6 @@ function AreaNode:drawDebug()
             love.graphics.circle("fill", self.x, self.y, self.width / 2)   
         end
     end
-end
-
----@param shape "rect"|"circle"
-function AreaNode:setShape(shape)
-    local found = false
-    
-    for i,v in ipairs(shapes) do
-        if v == type then
-            found = true
-            break
-        end
-    end
-
-    assert(found, "Unknown shape '" .. tostring(shape) .. "'")
-
-    self.shape = shape
 end
 
 ---@return number, number
