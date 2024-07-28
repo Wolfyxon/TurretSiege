@@ -210,6 +210,23 @@ function utils.system.getMousePos(screen)
 end
 
 ---@return boolean
+function utils.system.isMousePressed()
+    if love.mouse then
+        return love.mouse.isDown(1)
+    end
+
+    if love.touch then
+        local touches = love.touch.getTouches()
+
+        if touches and #touches ~= 0 then
+            return love.touch.getPressure(touches[1]) ~= 0
+        end
+    end
+
+    return false
+end
+
+---@return boolean
 function utils.system.has2screens()
     local console = love._console
     if not console then return false end
