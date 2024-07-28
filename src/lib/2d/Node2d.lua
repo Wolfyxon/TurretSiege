@@ -268,6 +268,13 @@ function Node2D:disownChild(node)
     self:emitEvent("nodeListUpdated")
 end
 
+function Node2D:destroy()
+    for i, v in ipairs(self:getDescendants()) do
+        v:orphanize()
+    end
+
+    self:orphanize()
+end
 
 ---@return "all" | "left" | "bottom"
 function Node2D:getTargetScreen()
