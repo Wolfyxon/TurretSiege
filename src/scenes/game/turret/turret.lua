@@ -13,6 +13,8 @@ local scale = 0.15
 local bulletColor = Color:new(1, 0.5, 0.5)
 
 local fireSound = love.audio.newSource("scenes/game/turret/fire.ogg", "static")
+local joystick = love.joystick.getJoysticks()[1]
+local manualRotationSpeed = 20
 
 Turret.targetRotation = 0 ---@type number
 Turret.rotationSpeed = 5  ---@type number
@@ -55,10 +57,25 @@ function Turret:update(delta)
         self:fire()
     end
 
+    if joystick then
+        if joystick:isGamepadDown("a") then
+            self:fire()
+        end
+
+        if joystick:isGamepadDown("dpleft") then
+            self.targetRotation = self.targetRotation - manualRotationSpeed * delta
+        end
+
+        if joystick:isGamepadDown("dpright") then
+            self.targetRotation = self.targetRotation + manualRotationSpeed * delta
+        end
+    end
+
     self.rotation = utils.math.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
     self.cannon.x = utils.math.lerp(self.cannon.x, 0.2, 5 * delta)
 end
 
+-- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
     local now = love.timer.getTime()
     if now < self.lastFireTime + self.fireCooldown then 
@@ -116,10 +133,6 @@ function Turret:shockwave()
     end
     
     self.parent:addChild(cir)
-end
-
-function love.mousemoved(x, y, dx, dy, isTouch)
-    
 end
 
 return Turret
