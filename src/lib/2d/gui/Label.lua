@@ -4,6 +4,7 @@ local GuiNode = require("lib.2d.gui.GuiNode")
 local Label = GuiNode:new()
 local font = love.graphics.getFont()
 
+Label.padding = 5           ---@type number
 Label.textScale = 0.5       ---@type number
 Label.textObj = nil         ---@type Text
 Label.autoSizing = true     ---@type boolean
@@ -39,8 +40,8 @@ function Label:draw()
 end
 
 function Label:adjustSizeToText()
-    local tW = self.textObj:getWidth() * self.textScale
-    local tH = self.textObj:getHeight() * self.textScale
+    local tW = self.textObj:getWidth() * self.textScale + self.padding
+    local tH = self.textObj:getHeight() * self.textScale + self.padding
 
     self.width = tW
     self.height = tH
