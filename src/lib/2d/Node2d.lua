@@ -263,6 +263,7 @@ function Node2D:disownChild(node)
     node.parent = nil
     node:emitEvent("removed")
     node:removed(self)
+    self:emitEvent("nodeRemoved", node)
 end
 
 
@@ -380,6 +381,6 @@ end
 
 --== Post logic ==--
 
-Node2D:_registerEvent("ready", "added", "removed", "nodeAdded")
+Node2D:_registerEvent("ready", "added", "removed", "nodeAdded", "nodeRemoved")
 
 return Node2D
