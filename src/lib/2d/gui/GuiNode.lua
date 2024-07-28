@@ -36,8 +36,8 @@ function GuiNode:draw()
         self.y + oy,
         self.width,
         self.height,
-        self.borderRadius / self.width,
-        self.borderRadius / self.height
+        self.borderRadius * self.width,
+        self.borderRadius * self.height
     )
 
     self.borderColor:toGraphics()
@@ -47,8 +47,8 @@ function GuiNode:draw()
         self.y + oy,
         self.width,
         self.height,
-        self.borderRadius / self.width,
-        self.borderRadius / self.height
+        self.borderRadius * self.width,
+        self.borderRadius * self.height
     )
 
     self.color:toGraphics()
