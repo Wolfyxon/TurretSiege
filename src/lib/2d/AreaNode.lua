@@ -7,9 +7,10 @@ local AreaNode = Node2D:new()
 AreaNode:_appendClass("AreaNode")
 
 
-AreaNode.shape = "rect" ---@type string
-AreaNode.width = 0      ---@type number
-AreaNode.height = 0     ---@type number
+AreaNode.shape = "rect"         ---@type string
+AreaNode.positioning = "center" ---@type "center" | "topleft"
+AreaNode.width = 0              ---@type number
+AreaNode.height = 0             ---@type number
 
 
 function AreaNode:new(o)
@@ -22,8 +23,16 @@ end
 
 function AreaNode:drawDebug()
     if self.shape == "rect" then
-        local x = (self.x - self.width / 2) * data.height
-        local y = (self.y - self.height / 2) * data.height
+        local ox = -(self.width / 2)
+        local oy = -(self.height / 2)
+
+        if self.positioning == "topleft" then
+            ox = 0
+            oy = 0
+        end
+
+        local x = (self.x + ox) * data.height
+        local y = (self.y + oy) * data.height
 
         love.graphics.rectangle("fill", x, y, self.width * data.width, self.height * data.height)
 
@@ -53,6 +62,11 @@ function AreaNode:getGlobalCorners()
     local cx, cy = self:getGlobalPosition()
     local ox = (self.width / 2) * sx
     local oy = (self.height / 2) * sy
+
+    if self.positioning == "topleft" then
+        ox = 0
+        oy = 0
+    end
 
     return {
         topLeft = {cx - ox, cy - oy},
