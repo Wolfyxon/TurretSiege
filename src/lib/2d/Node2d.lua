@@ -255,6 +255,7 @@ function Node2D:addChild(node)
     end
 
     self:emitEvent("nodeAdded", node)
+    self:emitEvent("nodeListUpdated")
 end
 
 ---@param node Node2D
@@ -264,6 +265,7 @@ function Node2D:disownChild(node)
     node:emitEvent("removed")
     node:removed(self)
     self:emitEvent("nodeRemoved", node)
+    self:emitEvent("nodeListUpdated")
 end
 
 
@@ -381,6 +383,6 @@ end
 
 --== Post logic ==--
 
-Node2D:_registerEvent("ready", "added", "removed", "nodeAdded", "nodeRemoved")
+Node2D:_registerEvent("ready", "added", "removed", "nodeAdded", "nodeRemoved", "nodeListUpdated")
 
 return Node2D
