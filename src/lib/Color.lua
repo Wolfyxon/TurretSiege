@@ -60,4 +60,11 @@ function Color:toGraphics()
     love.graphics.setColor(self.r, self.g, self.b, self.a)
 end
 
+Color.RED = Color:new(1, 0, 0)
+Color.GREEN = Color:new(0, 1, 0)
+Color.BLUE = Color:new(0, 0, 1)
+Color.WHITE = Color:new(1, 1, 1)
+Color.BLACK = Color:new(0, 0, 0)
+Color.TRANSPARENT = Color:new(1, 1, 1, 0)
+
 return Color
