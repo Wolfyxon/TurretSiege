@@ -8,12 +8,9 @@ AreaNode:_appendClass("AreaNode")
 
 local shapes = {"rect", "circle"}
 
----@type string
-AreaNode.shape = "rect"
----@type number
-AreaNode.width = 0
----@type number
-AreaNode.height = 0
+AreaNode.shape = "rect" ---@type string
+AreaNode.width = 0      ---@type number
+AreaNode.height = 0     ---@type number
 
 
 function AreaNode:new(o)
