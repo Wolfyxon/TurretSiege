@@ -30,8 +30,8 @@ function Label:draw()
 end
 
 function Label:drawText()
-    local tW = self.textObj:getWidth()
-    local tH = self.textObj:getHeight()
+    local tW = self.textObj:getWidth() * globalFontScale
+    local tH = self.textObj:getHeight() * globalFontScale
 
     local ox = -(tW / 2)
     local oy = -(tH / 2)
@@ -41,7 +41,7 @@ function Label:drawText()
         oy = 0
     end
 
-    love.graphics.draw(self.textObj, ox * globalFontScale, oy * globalFontScale, 0, globalFontScale, globalFontScale)
+    love.graphics.draw(self.textObj, ox, oy, 0, globalFontScale, globalFontScale)
 end
 
 ---@param size integer
@@ -56,8 +56,8 @@ end
 function Label:adjustSize()
     if self.sizing == "keep" then return end
 
-    local tW = (self.textObj:getWidth() + self.padding) / data.width
-    local tH = (self.textObj:getHeight() + self.padding) / data.width
+    local tW = (self.textObj:getWidth() * globalFontScale + self.padding) / data.width
+    local tH = (self.textObj:getHeight() * globalFontScale + self.padding) / data.width
 
     if self.sizing == "minimal" then
         self.width = tW
