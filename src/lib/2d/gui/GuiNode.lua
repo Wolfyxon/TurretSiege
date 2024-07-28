@@ -1,5 +1,6 @@
 local AreaNode = require("lib.2d.AreaNode")
 local Color    = require("lib.Color")
+local data     = require("data")
 
 ---@class GuiNode: AreaNode
 local GuiNode = AreaNode:new()
@@ -23,7 +24,7 @@ end
 
 function GuiNode:draw()
     local ox = -(self.width / 2)
-    local oy = -(self.height / 2)
+    local oy = -(self.height)
 
     if self.positioning == "topleft" then
         ox = 0
@@ -33,10 +34,10 @@ function GuiNode:draw()
     self.backgroundColor:toGraphics()
     love.graphics.rectangle(
         "fill",
-        self.x + ox,
-        self.y + oy,
-        self.width,
-        self.height,
+        (self.x + ox) * data.width,
+        (self.y + oy) * data.height,
+        self.width * data.width,
+        self.height * data.height,
         self.borderRadius * self.width,
         self.borderRadius * self.height
     )
@@ -44,10 +45,10 @@ function GuiNode:draw()
     self.borderColor:toGraphics()
     love.graphics.rectangle(
         "line", 
-        self.x + ox,
-        self.y + oy,
-        self.width,
-        self.height,
+        (self.x + ox) * data.width,
+        (self.y + oy) * data.height,
+        self.width * data.width,
+        self.height * data.height,
         self.borderRadius * self.width,
         self.borderRadius * self.height
     )
