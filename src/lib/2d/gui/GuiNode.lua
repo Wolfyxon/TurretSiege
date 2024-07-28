@@ -42,6 +42,7 @@ function GuiNode:draw()
         self.borderRadius * (self.height * data.height)
     )
 
+    love.graphics.setLineWidth(self.borderSize)
     self.borderColor:toGraphics()
     love.graphics.rectangle(
         "line", 
