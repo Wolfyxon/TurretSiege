@@ -49,7 +49,8 @@ function Label:setFontSize(size)
     self._fontSize = size
     local font = love.graphics.newFont(fontPath, size)
 
-    self.textObj = love.graphics.newText(font)
+    local newText = love.graphics.newText or love.graphics.newTextBatch
+    self.textObj = newText(font)
     self:setText(self:getText())
 end
 
