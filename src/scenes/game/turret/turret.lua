@@ -3,6 +3,7 @@ local Projectile = require("src.scenes.game.Projectile")
 local Sprite = require("src.lib.2d.Sprite")
 local utils = require("lib.utils")
 local data  = require("data")
+local Circle = require("lib.2d.Circle")
 local Color = require("src.lib.Color")
 
 ---@class Turret: Entity
@@ -92,6 +93,28 @@ function Turret:fire()
     b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
     b:moveRotated(0.02, 0)
     self.parent:addChild(b)
+end
+
+function Turret:shockwave()
+    local cir = Circle:new()
+
+    cir.fillColor = Color.TRANSPARENT
+    cir.outlineColor = Color.WHITE:clone()
+    cir.outlineSize = 10
+    cir.radius = 0
+    cir.x = self.x
+    cir.y = self.y
+
+    function cir:update(delta)
+        cir.radius = cir.radius + delta * 300
+        cir.outlineColor:lerp(Color.TRANSPARENT, delta * 3)
+
+        if cir.radius > 250 then
+            cir:destroy()
+        end
+    end
+    
+    self.parent:addChild(cir)
 end
 
 return Turret
