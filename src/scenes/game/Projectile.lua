@@ -1,4 +1,4 @@
-local Entity = require("scenes.game.entity")
+local Entity = require("src.scenes.game.Entity")
 
 ---@class Projectile: Entity
 local Projectile = Entity:new()
