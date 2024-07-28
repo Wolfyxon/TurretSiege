@@ -1,4 +1,4 @@
-local Scene = require("src.lib.Scene")
+local Scene = require("lib.Scene")
 local utils = require("lib.utils")
 local data = require("data")
 
@@ -6,7 +6,7 @@ local data = require("data")
 local DebugScene = Scene:new()
 DebugScene:_appendClass("DebugScene")
 
-local console = require("src.lib.Console"):new()
+local console = require("lib.Console"):new()
 
 function DebugScene:load()
     console:print("Debug scene")

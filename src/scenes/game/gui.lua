@@ -1,6 +1,6 @@
-local Node2D = require("src.lib.2d.Node2d")
+local Node2D = require("lib.2d.Node2d")
 local ListContainer = require("lib.2d.gui.container.ListContainer")
-local Label = require("src.lib.2d.gui.Label")
+local Label = require("lib.2d.gui.Label")
 local ProgressBar = require("lib.2d.gui.ProgressBar")
 
 ---@class GameGui: Node2D
