@@ -4,12 +4,14 @@ local Node2D = require("lib.2d.node2d")
 local Color = require("lib.color")
 local Sprite = require("lib.2d.sprite")
 local Turret = require("scenes.game.turret.turret")
+local GameGui = require("scenes.game.gui")
 local Scene = require("lib.scene")
 
 ---@class GameScene: Scene
 local GameScene = Scene:new()
 GameScene:_appendClass("GameScene")
 
+GameScene.gui = nil                   ---@type GameGui
 GameScene.turret = nil                ---@type Turret
 GameScene.projectileSpawnDelay = 1    ---@type number
 GameScene.lastProjectileSpawnTime = 2 ---@type number
@@ -73,6 +75,7 @@ end
 
 function GameScene:load()
     arena = Node2D:new()
+    self.gui = GameGui:new()
 
     local gearCount = 20
     for i = 1,gearCount do
@@ -108,6 +111,7 @@ end
 
 function GameScene:unload()
     self.turret = nil
+    self.gui = nil
     music:stop()
 end
 
