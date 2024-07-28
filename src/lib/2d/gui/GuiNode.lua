@@ -8,6 +8,7 @@ GuiNode.backgroundColor = nil ---@type Color
 GuiNode.borderColor = nil     ---@type Color
 GuiNode.borderSize = 0        ---@type number
 GuiNode.borderRadius = 0.1    ---@type number
+GuiNode.sizing = "extend"     ---@type "extend" | "minimal" | "keep" 
 
 function GuiNode:new(o)
     o = AreaNode.new(self, o)
@@ -53,5 +54,7 @@ function GuiNode:draw()
 
     self.color:toGraphics()
 end
+
+function GuiNode:adjustSize() end
 
 return GuiNode
