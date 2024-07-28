@@ -1,4 +1,4 @@
-local Node2D = require("src.lib.2d.Node2d")
+local Node2D = require("lib.2d.Node2d")
 
 ---@class Scene: Node2D
 local Scene = Node2D:new()

@@ -1,4 +1,4 @@
-local Projectile = require("src.scenes.game.Projectile")
+local Projectile = require("scenes.game.Projectile")
 
 ---@class CannonBallProjectile: Projectile
 local CannonBallProjectile = Projectile:new()
