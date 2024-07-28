@@ -46,6 +46,18 @@ function Color:lerpRGB(r, g, b, speed)
     Color:lerpRGBA(r, g, b, self.a, speed)
 end
 
+---@param color Color
+function Color:mul(color)
+    local function clamp(val)
+        return utils.math.clamp(val, 0, 1)
+    end
+
+    self.r = clamp(self.r * color.r)
+    self.g = clamp(self.g * color.g)
+    self.b = clamp(self.b * color.b)
+    self.a = clamp(self.a * color.a)
+end
+
 ---@return Color
 function Color:clone()
     return Color:new(self.r, self.g, self.b, self.a)
