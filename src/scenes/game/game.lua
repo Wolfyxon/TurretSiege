@@ -75,7 +75,6 @@ end
 
 function GameScene:load()
     arena = Node2D:new()
-    self.gui = GameGui:new()
 
     local gearCount = 20
     for i = 1,gearCount do
@@ -106,6 +105,10 @@ function GameScene:load()
     
     arena.screen = "bottom"
     self:addChild(arena)
+
+    self.gui = GameGui:new()
+    self:addChild(self.gui)
+
     --music:play()
 end
 
