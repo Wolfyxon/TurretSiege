@@ -23,8 +23,10 @@ end
 
 function AreaNode:drawDebug()
     if self.shape == "rect" then
-        local ox = -(self.width / 2)
-        local oy = -(self.height / 2)
+        local sx, sy = self:getGlobalScale()
+
+        local ox = -(self.width / 2 * sx)
+        local oy = -(self.height / 2 * sy)
 
         if self.positioning == "topleft" then
             ox = 0
