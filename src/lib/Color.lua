@@ -27,10 +27,7 @@ end
 
 ---@param color Color
 function Color:lerp(color, speed)
-    self.r = utils.math.lerp(self.r, color.r, speed)
-    self.g = utils.math.lerp(self.g, color.g, speed)
-    self.b = utils.math.lerp(self.b, color.b, speed)
-    self.a = utils.math.lerp(self.a, color.a, speed)
+    self:lerpRGBA(color.r, color.g, color.b, color.a, speed)
 end
 
 ---@param r number
