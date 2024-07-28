@@ -24,7 +24,7 @@ function GuiNode:draw()
     local ox = -(self.width / 2)
     local oy = -(self.height / 2)
 
-    love.graphics.setColor(self.backgroundColor:getRGBA())
+    self.backgroundColor:toGraphics()
     love.graphics.rectangle(
         "fill",
         self.x + ox,
@@ -35,7 +35,7 @@ function GuiNode:draw()
         self.borderRadius / self.height
     )
 
-    love.graphics.setColor(self.borderColor:getRGBA())
+    self.borderColor:toGraphics()
     love.graphics.rectangle(
         "line", 
         self.x + ox,
