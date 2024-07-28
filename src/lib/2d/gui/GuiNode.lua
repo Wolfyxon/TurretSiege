@@ -7,7 +7,7 @@ local GuiNode = AreaNode:new()
 GuiNode.backgroundColor = nil ---@type Color
 GuiNode.borderColor = nil     ---@type Color
 GuiNode.borderSize = 0        ---@type number
-GuiNode.borderRadius = 0.1    ---@type number
+GuiNode.borderRadius = 0      ---@type number
 GuiNode.sizing = "extend"     ---@type "extend" | "minimal" | "keep" 
 
 function GuiNode:new(o)
@@ -15,8 +15,8 @@ function GuiNode:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    o.backgroundColor = Color:new(0.2, 0.2, 0.2)
-    o.borderColor = Color:new(1, 1, 1)
+    o.backgroundColor = Color:new(0, 0, 0, 0)
+    o.borderColor = Color:new(0, 0, 0, 0)
 
     return o
 end
