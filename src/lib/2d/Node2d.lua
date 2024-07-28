@@ -1,5 +1,5 @@
 local utils = require("lib.utils")
-local Color = require("lib.color")
+local Color = require("src.lib.Color")
 
 ---@class Node2D
 local Node2D = {
