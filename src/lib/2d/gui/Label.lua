@@ -1,4 +1,5 @@
 local GuiNode = require("lib.2d.gui.GuiNode")
+local data    = require("data")
 
 ---@class Label: GuiNode
 local Label = GuiNode:new()
@@ -41,8 +42,8 @@ end
 function Label:adjustSize()
     if self.sizing == "keep" then return end
 
-    local tW = self.textObj:getWidth() * self.textScale + self.padding
-    local tH = self.textObj:getHeight() * self.textScale + self.padding
+    local tW = (self.textObj:getWidth() * self.textScale + self.padding) / data.width
+    local tH = (self.textObj:getHeight() * self.textScale + self.padding) / data.width
 
     if self.sizing == "minimal" then
         self.width = tW
