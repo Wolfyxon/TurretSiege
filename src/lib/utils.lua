@@ -182,11 +182,11 @@ function utils.math.clamp(value, min, max)
     return value
 end
 
---== Other ==--
+--== System ==--
 
 ---@param screen nil|"left"|"bottom"
 ---@return number, number
-function utils.getMousePos(screen)
+function utils.system.getMousePos(screen)
     local w, h = love.graphics.getDimensions(screen)
     
     local mX, mY = 0, 0
@@ -208,8 +208,6 @@ function utils.getMousePos(screen)
 
     return x, y
 end
-
---== System ==--
 
 ---@return boolean
 function utils.system.has2screens()
