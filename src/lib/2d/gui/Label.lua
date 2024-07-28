@@ -21,6 +21,8 @@ function Label:new(o)
 end
 
 function Label:draw()
+    GuiNode.draw(self)
+    
     local tW = self.textObj:getWidth() * self.textScale
     local tH = self.textObj:getHeight() * self.textScale
 
