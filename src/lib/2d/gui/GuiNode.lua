@@ -50,6 +50,8 @@ function GuiNode:draw()
         self.borderRadius / self.width,
         self.borderRadius / self.height
     )
+
+    self.color:toGraphics()
 end
 
 return GuiNode
