@@ -42,6 +42,10 @@ function Color:lerpRGBA(r, g, b, a, speed)
     self.a = utils.math.lerp(self.a, a, speed)
 end
 
+function Color:lerpRGB(r, g, b, speed)
+    Color:lerpRGBA(r, g, b, self.a, speed)
+end
+
 ---@return Color
 function Color:clone()
     return Color:new(self.r, self.g, self.b, self.a)
