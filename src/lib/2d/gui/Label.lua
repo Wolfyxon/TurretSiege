@@ -24,7 +24,10 @@ end
 
 function Label:draw()
     GuiNode.draw(self)
-    
+    self:drawText()
+end
+
+function Label:drawText()
     local tW = self.textObj:getWidth() * self.textScale
     local tH = self.textObj:getHeight() * self.textScale
 
