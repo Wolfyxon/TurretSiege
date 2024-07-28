@@ -23,8 +23,8 @@ function GuiNode:new(o)
 end
 
 function GuiNode:draw()
-    local ox = -(self.width / 2)
-    local oy = -(self.height)
+    local ox = -(self.width / 2) * data.width
+    local oy = -(self.height / 2) * data.height
 
     if self.positioning == "topleft" then
         ox = 0
@@ -34,8 +34,8 @@ function GuiNode:draw()
     self.backgroundColor:toGraphics()
     love.graphics.rectangle(
         "fill",
-        (self.x + ox) * data.width,
-        (self.y + oy) * data.height,
+        ox,
+        oy,
         self.width * data.width,
         self.height * data.height,
         self.borderRadius * self.width,
@@ -45,8 +45,8 @@ function GuiNode:draw()
     self.borderColor:toGraphics()
     love.graphics.rectangle(
         "line", 
-        (self.x + ox) * data.width,
-        (self.y + oy) * data.height,
+        ox,
+        oy,
         self.width * data.width,
         self.height * data.height,
         self.borderRadius * self.width,
