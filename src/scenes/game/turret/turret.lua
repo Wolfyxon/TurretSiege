@@ -16,6 +16,8 @@ local fireSound = love.audio.newSource("scenes/game/turret/fire.ogg", "static")
 local joystick = love.joystick.getJoysticks()[1]
 local manualRotationSpeed = 20
 
+Turret.damageSound = love.audio.newSource("scenes/game/turret/damage.ogg", "static")
+
 Turret.targetRotation = 0 ---@type number
 Turret.rotationSpeed = 5  ---@type number
 Turret.fireCooldown = 0.2 ---@type number
