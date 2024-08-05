@@ -9,6 +9,7 @@ Entity.maxHp = 100        ---@type number
 Entity.hp = Entity.maxHp  ---@type number
 Entity.invincible = false ---@type boolean
 Entity.dead = false       ---@type boolean
+Entity.damageSound = nil  ---@type Source
 
 function Entity:new(o)
     o = Sprite.new(self, o)
@@ -24,6 +25,12 @@ function Entity:dealDamage(amount)
 
     self.hp = self.hp - amount
     self:emitEvent("damaged")
+    
+    if self.damageSound then
+        self.damageSound:stop()
+        self.damageSound:play()
+    end
+    
     if self.hp <= 0 then
         self:die()
     end
