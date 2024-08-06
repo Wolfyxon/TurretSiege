@@ -4,7 +4,7 @@ local Entity = require("scenes.game.Entity")
 local Projectile = Entity:new()
 Projectile:_appendClass("Projectile")
 
-Projectile.hp = 200
+Projectile.hp = 3
 
 Projectile.owner = nil               ---@type Entity
 Projectile.speed = 0.5               ---@type number
