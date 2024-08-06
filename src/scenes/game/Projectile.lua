@@ -4,7 +4,7 @@ local Entity = require("scenes.game.Entity")
 local Projectile = Entity:new()
 Projectile:_appendClass("Projectile")
 
-Projectile.hp = 2
+Projectile.hp = 200
 
 Projectile.owner = nil               ---@type Entity
 Projectile.speed = 0.5               ---@type number
@@ -21,6 +21,26 @@ function Projectile:new(o)
     self.__index = self
 
     o.spawnedAt = love.timer.getTime()
+
+    local t = nil
+    o:onEvent("damaged", function()
+        if t then t:stop() end
+
+        t = o:createTween()
+                :addKeyframe(o.color, { 
+                    r = 1,
+                    g = 0.5,
+                    b = 0.5,
+                    a = 0.8 
+                }, 0.05)
+                :addKeyframe(o.color, { 
+                    r = 1,
+                    g = 1,
+                    b = 1,
+                    a = 1
+                }, 0.05)
+        t:play()
+    end)
 
     return o
 end
