@@ -129,7 +129,7 @@ function Tween.interpolateNumber(num, targetNum, startTime, currentTime, duratio
     easingStyle = easingStyle or Tween.EASING_STYLE.LINEAR
     easingDirection = easingDirection or Tween.EASING_DIRECTION.IN_OUT
 
-    local timeProgress = currentTime / (startTime + duration)
+    local timeProgress = (currentTime - startTime) / duration
 
     if easingStyle == Tween.EASING_STYLE.LINEAR then
         return num + (targetNum - num) * timeProgress
