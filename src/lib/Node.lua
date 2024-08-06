@@ -159,11 +159,6 @@ function Node:addChild(node)
     node.parent = self
     node.main = node.main or self.main
     
-    node.scene = self.scene
-    if self:isA("Scene") then
-        node.scene = self
-    end
-
     table.insert(self.children, node)
 
     node:emitEvent("added", self)
