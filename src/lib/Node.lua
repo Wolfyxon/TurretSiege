@@ -201,6 +201,15 @@ function Node:updateRequest(delta)
     end
 end
 
+---@return Scene|nil
+function Node:getScene()
+    for i, v in ipairs(self:getAncestors()) do
+        if v:isA("Scene") then
+            return v ---@type Scene
+        end
+    end
+end
+
 -- Overrides --
 
 ---@param delta number
