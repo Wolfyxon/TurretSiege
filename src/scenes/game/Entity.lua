@@ -10,6 +10,8 @@ Entity.hp = Entity.maxHp  ---@type number
 Entity.invincible = false ---@type boolean
 Entity.dead = false       ---@type boolean
 Entity.damageSound = nil  ---@type Source
+Entity.deathSound = nil   ---@type Source
+
 
 function Entity:new(o)
     o = Sprite.new(self, o)
@@ -44,6 +46,10 @@ function Entity:die()
     self:died()
     self:emitEvent("died")
     self:destroy()
+
+    if self.deathSound then
+        self.deathSound:play()
+    end
 end
 
 function Entity:isAlive()
