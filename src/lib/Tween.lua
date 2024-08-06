@@ -61,9 +61,9 @@ function Tween:update(delta)
         return
     end
 
-    if not keyframe.playing then
+    if not keyframe.isPlaying then
         keyframe.startTime = love.timer.getTime()
-        keyframe.playing = true
+        keyframe.isPlaying = true
     end
 
     local time = love.timer.getTime()
@@ -81,7 +81,7 @@ function Tween:update(delta)
     if timePassed >= keyframe.duration then
         if self.currentKeyframe >= #self.keyframes then
             self:emitEvent("finished")
-            keyframe.playing = false
+            keyframe.isPlaying = false
         else
             self.currentKeyframe = self.currentKeyframe + 1
         end
