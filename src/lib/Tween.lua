@@ -16,10 +16,11 @@ Tween.EASING_DIRECTION = {
     OUT = 2
 }
 
-Tween.isPlaying = false   ---@type boolean
-Tween.paused = false      ---@type boolean
-Tween.keyframes = {}      ---@type {}[]
-Tween.currentKeyframe = 1 ---@type integer
+Tween.isPlaying = false     ---@type boolean
+Tween.paused = false        ---@type boolean
+Tween.removeOnFinish = true ---@type boolean
+Tween.keyframes = {}        ---@type {}[]
+Tween.currentKeyframe = 1   ---@type integer
 
 Tween:_appendClass("Tween")
 Tween:_registerEvent("started", "finished")
@@ -30,6 +31,12 @@ function Tween:new(o)
     self.__index = self
     
     o.keyframes = {}
+
+    o:onEvent("finished", function()
+        if self.removeOnFinish then
+            self:destroy()
+        end
+    end)
 
     return o
 end
@@ -107,6 +114,10 @@ end
 function Tween:stop()
     self.currentKeyframe = 1
     self.isPlaying = false
+
+    if self.removeOnFinish then
+        self:destroy()
+    end
 end
 
 --== Static functions ==--
