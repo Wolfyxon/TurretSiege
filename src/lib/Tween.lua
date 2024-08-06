@@ -144,4 +144,26 @@ function Tween.interpolateColor(color, targetColor, startTime, currentTime, dura
     )
 end
 
+---@param value any
+---@param targetValue any
+---@param startTime number
+---@param currentTime number
+---@param duration number
+---@param easingStyle? EASING_STYLE
+---@param easingDirection? EASING_DIRECTION
+---@return number|Color
+function Tween.interpolateValue(value, targetValue, startTime, currentTime, duration, easingStyle, easingDirection)
+    assert(type(value) == type(targetValue), "Current and target value types don't match")
+
+    if type(value) == "number" then
+        return Tween.interpolateNumber(value, targetValue, startTime, currentTime, duration, easingStyle, easingDirection)
+    end
+
+    if Color.isColor(value) then
+        return Tween.interpolateColor(value, targetValue, startTime, currentTime, duration, easingStyle, easingDirection)
+    end
+
+    error("Unsupported type: '" .. type(value) .. "'")
+end
+
 return Tween
