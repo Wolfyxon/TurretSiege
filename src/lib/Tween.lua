@@ -24,6 +24,17 @@ Tween.currentKeyframe = 1 ---@type integer
 Tween:_appendClass("Tween")
 Tween:_registerEvent("started", "finished")
 
+function Tween:new(o)
+    o = Node.new(self, o)
+    setmetatable(o, self)
+    self.__index = self
+    
+    o.keyframes = {}
+
+    return o
+end
+
+
 ---@param target Node|table
 ---@param properties {string: number|Color}
 ---@param easingStyle? EASING_STYLE
