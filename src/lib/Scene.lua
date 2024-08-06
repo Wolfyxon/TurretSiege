@@ -12,6 +12,7 @@ function Scene:new(o, name)
     self.__index = self
 
     o.main = nil
+    o.scene = o
     o.name = name or debug.getinfo(2, "S").short_src
 
     return o
