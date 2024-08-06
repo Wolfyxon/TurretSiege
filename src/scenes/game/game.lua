@@ -141,6 +141,8 @@ function GameScene:update(delta)
         
         self:spawnProjectile(proj)
     end
+
+    self.projectileSpawnDelay = self.projectileSpawnDelay - 0.01 * delta
 end
 
 return GameScene
