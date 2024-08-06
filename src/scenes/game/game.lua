@@ -101,6 +101,9 @@ function GameScene:load()
     end
 
     self.turret = Turret:new()
+    self.turret:onEvent("died", function ()
+        self:gameOver()
+    end)
     arena:addChild(self.turret)
     
     arena.screen = "bottom"
@@ -143,6 +146,11 @@ function GameScene:update(delta)
     end
 
     self.projectileSpawnDelay = self.projectileSpawnDelay - 0.01 * delta
+end
+
+function GameScene:gameOver()
+    self.gui.healthDisplay.visible = false
+    music:stop()
 end
 
 return GameScene
