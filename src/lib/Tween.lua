@@ -81,11 +81,10 @@ function Tween:update(delta)
     if timePassed >= keyframe.duration then
         if self.currentKeyframe >= #self.keyframes then
             self:emitEvent("finished")
+            keyframe.playing = false
         else
             self.currentKeyframe = self.currentKeyframe + 1
         end
-
-        keyframe.playing = false
     end
 
 end
