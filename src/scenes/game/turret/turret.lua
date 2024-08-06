@@ -46,6 +46,26 @@ function Turret:new(o)
     o:addChild(o.cannon)
     o:addChild(o.base)
 
+    local t = nil
+    o:onEvent("damaged", function()
+        if t then
+            t:stop()
+            t:destroy()
+        end
+
+        local range = 0.005
+        local function r() return 0.5 + utils.math.random(-range, range) end
+
+        t = o:createTween()
+                  :addKeyframe(o, { x = r(), y = r() }, 0.05)
+                  :addKeyframe(o, { x = 0.5, y = 0.5 }, 0.05)
+        t:play()
+
+        t:onEvent("finished", function()
+            t:destroy()
+        end)
+    end)
+
     return o
 end
 
