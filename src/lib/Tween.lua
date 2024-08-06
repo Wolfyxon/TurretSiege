@@ -121,6 +121,8 @@ function Tween.interpolateNumber(num, targetNum, startTime, currentTime, duratio
     if easingStyle == Tween.EASING_STYLE.LINEAR then
         return num + (targetNum - num) * timeProgress
     end
+
+    error("Easing style '" .. tostring(easingStyle) .. "' not supported")
 end
 
 ---@param color Color
