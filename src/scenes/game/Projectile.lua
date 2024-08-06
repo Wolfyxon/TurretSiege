@@ -21,6 +21,8 @@ function Projectile:new(o)
     self.__index = self
 
     o.spawnedAt = love.timer.getTime()
+    o.damageSound = love.audio.newSource("scenes/game/projectiles/audio/smallHit.ogg", "static")
+
 
     local t = nil
     o:onEvent("damaged", function()
