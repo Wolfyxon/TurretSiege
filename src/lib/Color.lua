@@ -77,6 +77,7 @@ end
 --== Static functions ==--
 
 ---@param instance any|Color
+---@return boolean
 function Color.isColor(instance)
     return (
         type(instance) == "table" and
