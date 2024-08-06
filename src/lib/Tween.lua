@@ -69,7 +69,7 @@ function Tween:update(delta)
     local time = love.timer.getTime()
     local timePassed = time - (keyframe.startTime + keyframe.duration)
 
-    for k, v in ipairs(keyframe.properties) do
+    for k, v in pairs(keyframe.properties) do
         keyframe.target[k] = Tween.interpolateValue(
             keyframe.target[k], v,
             keyframe.startTime, time,
