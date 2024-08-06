@@ -113,6 +113,7 @@ end
 ---@param duration number
 ---@param easingStyle? EASING_STYLE
 ---@param easingDirection? EASING_DIRECTION
+---@return number
 function Tween.interpolateNumber(num, targetNum, startTime, currentTime, duration, easingStyle, easingDirection)
     easingStyle = easingStyle or Tween.EASING_STYLE.LINEAR
     easingDirection = easingDirection or Tween.EASING_DIRECTION.IN_OUT
@@ -131,6 +132,7 @@ end
 ---@param duration number
 ---@param easingStyle? EASING_STYLE
 ---@param easingDirection? EASING_DIRECTION
+---@return Color
 function Tween.interpolateColor(color, targetColor, startTime, currentTime, duration, easingStyle, easingDirection)
     local function interp(a, b)
         return Tween.interpolateNumber(a, b, startTime, currentTime, duration, easingStyle, easingDirection)
