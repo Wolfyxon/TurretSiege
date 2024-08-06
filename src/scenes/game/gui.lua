@@ -36,7 +36,7 @@ function GameGui:ready()
 end
 
 function GameGui:update()
-    local turret = self.scene.turret ---@type Turret
+    local turret = self:getScene().turret ---@type Turret
 
     if turret then
         self.hpBar.value = turret.hp

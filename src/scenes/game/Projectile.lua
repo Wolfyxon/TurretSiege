@@ -69,7 +69,7 @@ function Projectile:update(delta)
     self.textureRotation = self.textureRotation + self.rotationSpeed  * delta
     self:moveRotated(self.speed * delta, 0)
 
-    for i, v in ipairs(self.scene:getDescendantsOfClass("Entity")) do
+    for i, v in ipairs(self:getScene():getDescendantsOfClass("Entity")) do
         if self.owner ~= v and self:isTouching(v) and v:getClass() ~= self:getClass() then
             if v:isA("Projectile") then
                 if self.damageProjectiles then
