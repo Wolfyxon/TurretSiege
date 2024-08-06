@@ -76,7 +76,7 @@ function Tween:update(delta)
             )
         end
     end
-    
+
     if timePassed >= keyframe.duration then
         if self.currentKeyframe >= #self.keyframes then
             self:emitEvent("finished")
@@ -122,6 +122,26 @@ function Tween.interpolateNumber(num, targetNum, startTime, currentTime, duratio
     if easingStyle == Tween.EASING_STYLE.LINEAR then
         return num + (targetNum - num) * timeProgress
     end
+end
+
+---@param color Color
+---@param targetColor Color
+---@param startTime number
+---@param currentTime number
+---@param duration number
+---@param easingStyle? EASING_STYLE
+---@param easingDirection? EASING_DIRECTION
+function Tween.interpolateColor(color, targetColor, startTime, currentTime, duration, easingStyle, easingDirection)
+    local function interp(a, b)
+        return Tween.interpolateNumber(a, b, startTime, currentTime, duration, easingStyle, easingDirection)
+    end
+
+    return Color:new(
+        interp(color.r, targetColor.r),
+        interp(color.g, targetColor.g),
+        interp(color.b, targetColor.b),
+        interp(color.a, targetColor.a)
+    )
 end
 
 return Tween
