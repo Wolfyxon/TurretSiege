@@ -67,14 +67,12 @@ function Tween:update(delta)
     local timePassed = time - (keyframe.startTime + keyframe.duration)
 
     for k, v in ipairs(keyframe.properties) do
-        if type(v) == "number" then
-            keyframe.target[k] = Tween.interpolateNumber(
-                keyframe.target[k], v,
-                keyframe.startTime, time,
-                keyframe.duration,
-                keyframe.easingStyle, keyframe.easingDirection
-            )
-        end
+        keyframe.target[k] = Tween.interpolateValue(
+            keyframe.target[k], v,
+            keyframe.startTime, time,
+            keyframe.duration,
+            keyframe.easingStyle, keyframe.easingDirection
+        )
     end
 
     if timePassed >= keyframe.duration then
