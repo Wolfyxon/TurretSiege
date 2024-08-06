@@ -1,6 +1,7 @@
 local utils = require("lib.utils")
 local Color = require("lib.Color")
 local Node = require("lib.Node")
+local Tween = require("lib.Tween")
 
 ---@class Node2D: Node
 local Node2D = Node:new()
@@ -173,6 +174,14 @@ end
 function Node2D:moveRotated(x, y)
     local rx, ry = utils.math.rotateDirection(x, y, self.rotation)
     self:move(rx, ry)
+end
+
+---@return Tween
+function Node2D:createTween()
+    local t = Tween:new()
+    self:addChild(t)
+
+    return t
 end
 
 ---@param screen nil|"left"|"bottom"
