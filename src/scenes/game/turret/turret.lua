@@ -2,7 +2,6 @@ local Entity = require("scenes.game.Entity")
 local Projectile = require("scenes.game.Projectile")
 local Sprite = require("lib.2d.Sprite")
 local utils = require("lib.utils")
-local data  = require("data")
 local Circle = require("lib.2d.Circle")
 local Color = require("lib.Color")
 
