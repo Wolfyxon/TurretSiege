@@ -145,7 +145,9 @@ function Node2D:drawRequest(screen, data)
     end
     
     for i, v in ipairs(self.children) do
-        v:drawRequest(screen, data)
+        if v:isA("Node2D") then
+            v:drawRequest(screen, data)
+        end
     end
 
     love.graphics.pop()
