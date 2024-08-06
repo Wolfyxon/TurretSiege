@@ -79,6 +79,8 @@ end
 ---@param instance any|Color
 function Color.isColor(instance)
     return (
+        type(instance) == "table" and
+
         instance.r ~= nil and
         instance.g ~= nil and
         instance.b ~= nil and
