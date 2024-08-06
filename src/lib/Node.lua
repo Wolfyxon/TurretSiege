@@ -62,6 +62,11 @@ function Node:getIndex()
 end
 
 ---@return string
+function Node:toString()
+    return self:getClass() .. "(" .. tostring(self) .. ")"
+end
+
+---@return string
 function Node:getClass()
     return self.classList[#self.classList]
 end
