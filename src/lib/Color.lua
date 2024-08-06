@@ -25,6 +25,8 @@ function Color:new(r, g, b, a)
     return o
 end
 
+--== Dynamic functions ==--
+
 ---@param color Color
 function Color:lerp(color, speed)
     self:lerpRGBA(color.r, color.g, color.b, color.a, speed)
@@ -71,6 +73,20 @@ end
 function Color:toGraphics()
     love.graphics.setColor(self.r, self.g, self.b, self.a)
 end
+
+--== Static functions ==--
+
+---@param instance any|Color
+function Color.isColor(instance)
+    return (
+        instance.r ~= nil and
+        instance.g ~= nil and
+        instance.b ~= nil and
+        instance.a ~= nil
+    )
+end
+
+--== Predefined colors ==--
 
 Color.RED = Color:new(1, 0, 0)
 Color.GREEN = Color:new(0, 1, 0)
