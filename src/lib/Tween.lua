@@ -28,6 +28,7 @@ Tween:_registerEvent("started", "finished")
 ---@param properties {string: number|Color}
 ---@param easingStyle? EASING_STYLE
 ---@param easingDirection? EASING_DIRECTION
+---@return Tween
 function Tween:addKeyframe(target, properties, duration, easingStyle, easingDirection)
     assert(type(target) == "table", "Only tables can be tweened")
     
@@ -45,6 +46,8 @@ function Tween:addKeyframe(target, properties, duration, easingStyle, easingDire
         playing = false,
         startTime = 0
     })
+
+    return self
 
 end
 
