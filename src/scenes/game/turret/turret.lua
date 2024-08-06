@@ -58,6 +58,10 @@ function Turret:new(o)
         t:play()
     end)
 
+    o:onEvent("died", function ()
+        o:shockwave()
+    end)
+
     return o
 end
 
