@@ -94,3 +94,8 @@ CoolClass.name = "Friderick von Fazbear" ---@type string
 Avoid adding any third-party unless necessary.
 
 When making this project I wanted to create most the environment from the ground up and only rely on **Love2D** as the base engine.
+
+#### Readability and openness
+Do not obfuscate or precompile your code.
+
+The code you write must be readable and open source.
