@@ -336,4 +336,15 @@ function utils.config.getFlagDictionary()
     return res
 end
 
+---@return boolean
+function utils.config.hasFlag(flag)
+    for k, v in pairs(utils.config.getFlagDictionary()) do
+        if k == flag then
+            return true
+        end 
+    end
+    
+    return false
+end
+
 return utils
