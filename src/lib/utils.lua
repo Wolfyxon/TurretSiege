@@ -114,7 +114,7 @@ end
 
 ---@param str string
 ---@param separator string
----@return string
+---@return string[]
 function utils.string.split(str, separator)
     separator = separator or "%s"
     
