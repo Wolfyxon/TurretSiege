@@ -2,7 +2,8 @@ local utils = {
     table = {},
     string = {},
     math = {},
-    system = {}
+    system = {},
+    config = {}
 }
 local data = require("data")
 
@@ -257,6 +258,23 @@ end
 
 function utils.system.getPlatform()
     return love._console or love.system.getOS()
+end
+
+--== Config ==--
+
+---@return string[]
+function utils.config.getCommandLineFlags()
+    local res = {}
+    local prefix = "--"
+
+    for i, v in ipairs(arg) do
+        if utils.string.startsWith(v, prefix) then
+            local s, _ = v:gsub(prefix, "")
+            table.insert(res, s)
+        end
+    end
+
+    return res
 end
 
 return utils
