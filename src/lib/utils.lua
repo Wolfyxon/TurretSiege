@@ -139,9 +139,10 @@ end
 ---@param replacement string
 ---@return string
 function utils.string.replace(str, search, replacement)
-    local escaped = utils.string.regexEscape(search)
-
-    local s, _ = str:gsub(escaped, replacement:gsub("%%", "%%%%"))
+    search = utils.string.regexEscape(search)
+    replacement = replacement:gsub("%%", "%%%%")
+    
+    local s, _ = str:gsub(search, replacement)
     return s
 end
 
