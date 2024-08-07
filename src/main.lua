@@ -33,6 +33,13 @@ function main.loadScene(scene)
     scene:load()
 end
 
+---@param sceneName string
+function main.loadSceneByName(sceneName)
+    local s = main.scenes[sceneName]
+    assert(s, "Scene '" .. tostring(sceneName) .. "' does not exist")
+    main.loadScene(s)
+end
+
 --== Love2D function overrides ==--
 
 function love.load()
