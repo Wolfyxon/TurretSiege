@@ -1,5 +1,6 @@
 local utils = {
     table = {},
+    string = {},
     math = {},
     system = {}
 }
@@ -89,6 +90,8 @@ function utils.table.tostring(table)
 
     return res .. "}"
 end
+
+--== String ==--
 
 --== Math ==--
 
