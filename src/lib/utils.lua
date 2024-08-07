@@ -134,6 +134,16 @@ function utils.string.regexEscape(str)
     return s
 end
 
+---@param str string
+---@param replacement string
+---@return string
+function utils.string.replace(str, replacement)
+    local escaped = utils.string.regexEscape(str)
+
+    local s, _ = str:gsub(escaped, replacement:gsub("%%", "%%%%"))
+    return s
+end
+
 --== Math ==--
 
 ---@param start number
