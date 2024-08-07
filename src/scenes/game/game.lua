@@ -112,7 +112,7 @@ function GameScene:load()
     self.gui = GameGui:new()
     self:addChild(self.gui)
 
-    --music:play()
+    music:play()
 end
 
 function GameScene:unload()
