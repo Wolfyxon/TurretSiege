@@ -100,6 +100,17 @@ function utils.string.startsWith(str, search)
     return string.sub(str, 1, #search) == search
 end
 
+---@param str string
+---@param search string
+---@return boolean
+function utils.string.endsWith(str, search)
+    if #search > #str then
+        return false
+    end
+
+    return string.sub(str, #str - #search + 1, #str) == search
+end
+
 --== Math ==--
 
 ---@param start number
