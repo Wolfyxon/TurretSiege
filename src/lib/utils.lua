@@ -277,4 +277,15 @@ function utils.config.getCommandLineFlags()
     return res
 end
 
+---@return string[]
+function utils.config.getFlags()
+    local res = utils.table.copy(data.flags)
+
+    for i, v in ipairs(utils.config.getCommandLineFlags()) do
+        table.insert(res, v)
+    end
+
+    return res
+end
+
 return utils
