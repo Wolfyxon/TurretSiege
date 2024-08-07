@@ -93,6 +93,13 @@ end
 
 --== String ==--
 
+---@param str string
+---@param search string
+---@return boolean
+function utils.string.startsWith(str, search)
+    return string.sub(str, 1, #search) == search
+end
+
 --== Math ==--
 
 ---@param start number
