@@ -133,7 +133,7 @@ function GameScene:update(delta)
     end
 
     local now = love.timer.getTime()
-    if now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
+    if self.turret:isAlive() and now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now
         
         local proj = utils.table.random(projectiles[self.level]):new()
