@@ -304,4 +304,19 @@ function utils.config.getFlags()
     return res
 end
 
+---@return table
+function utils.config.getFlagDictionary()
+    local res = {}
+    
+    for i, v in ipairs(utils.config.getFlags()) do
+        local split = utils.string.split(v, "=")
+        local name = split[1]
+        local value = split[2]
+
+        res[name] = value
+    end
+
+    return res
+end
+
 return utils
