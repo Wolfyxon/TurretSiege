@@ -1,6 +1,6 @@
 # Contributing
 
-> [!NOTE]  
+> [!IMPORTANT]  
 > All contributions related to the **Makefile** should be made in https://github.com/Wolfyxon/love2d-universal
 
 ## Submissions
