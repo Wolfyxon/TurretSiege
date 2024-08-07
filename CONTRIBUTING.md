@@ -65,6 +65,27 @@ local bad_variable = 'string'
 local VariableThatIsNotAClass = 12345
 ```
 
+#### Documentation
+Function parameters, function return values and class properties, must be typehinted using [LuaDoc](https://keplerproject.github.io/luadoc/manual.html).
+
+```lua
+---@param a number
+---@param b number
+---@return number
+function add(a, b) 
+    return a + b
+end
+```
+
+```lua
+
+---@class CoolClass: BaseClass
+local CoolClass = BaseClass:new()
+
+CoolClass.someProperty = 123             ---@type number
+CoolClass.name = "Friderick von Fazbear" ---@type string
+```
+
 #### Independence
 Avoid adding any third-party unless necessary.
 
