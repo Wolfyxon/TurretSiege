@@ -24,7 +24,7 @@ TODO!
 
 ✅ `supported` | ⚠️ `unstable` | ❌ `unsupported` | 🕛 `in progress` | 📁 `planned` 
 
-[Downloads]()
+[Downloads](https://github.com/Wolfyxon/TurretSiege/releases/latest)
 
 ## Building and debugging
 ### With the Makefile (recommended)
