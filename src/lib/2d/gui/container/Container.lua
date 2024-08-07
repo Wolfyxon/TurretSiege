@@ -8,11 +8,11 @@ function Container:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    o:onEvent("ready", function()
+    o:onEvent("ready", function ()
         self:arrangeChildren()
     end)
 
-    o:onEvent("nodeListUpdated", function()
+    o:onEvent("nodeListUpdated", function ()
         self:arrangeChildren()
     end)
 

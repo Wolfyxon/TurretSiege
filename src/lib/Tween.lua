@@ -32,7 +32,7 @@ function Tween:new(o)
     
     o.keyframes = {}
 
-    o:onEvent("finished", function()
+    o:onEvent("finished", function ()
         if self.removeOnFinish then
             self:destroy()
         end

@@ -25,7 +25,7 @@ function Projectile:new(o)
 
 
     local t = nil
-    o:onEvent("damaged", function()
+    o:onEvent("damaged", function ()
         if t then t:stop() end
 
         t = o:createTween()
