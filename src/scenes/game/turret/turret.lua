@@ -47,7 +47,7 @@ function Turret:new(o)
     o:addChild(o.base)
 
     local t = nil
-    o:onEvent("damaged", function()
+    o:onEvent("damaged", function ()
         if t then t:stop() end
 
         local range = 0.005
