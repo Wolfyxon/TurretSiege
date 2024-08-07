@@ -19,11 +19,3 @@ body:
       Why do you think this should happen?
   validations:
     required: true
-
-- type: checkboxes
-  attributes:
-    label: Similar submissions
-    description: Before submitting a suggestion, please search for similar suggestion in [issues](https://github.com/Wolfyxon/TurretSiege/issues)
-    options:
-      - label: I have done the search for similar suggestions
-        required: true
