@@ -112,6 +112,22 @@ function utils.string.endsWith(str, search)
     return string.sub(str, #str - #search + 1, #str) == search
 end
 
+---@param str string
+---@param separator string
+---@return string
+function utils.string.split(str, separator)
+    separator = separator or "%s"
+    
+    local res = {}
+
+    for v in string.gmatch(str, "([^"..separator.."]+)") do
+      table.insert(res, v)
+    end
+
+    return res
+  end
+  
+
 --== Math ==--
 
 ---@param start number
