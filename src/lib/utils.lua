@@ -135,6 +135,7 @@ function utils.string.regexEscape(str)
 end
 
 ---@param str string
+---@param search string
 ---@param replacement string
 ---@return string
 function utils.string.replace(str, search, replacement)
