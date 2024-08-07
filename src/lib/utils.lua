@@ -126,7 +126,13 @@ function utils.string.split(str, separator)
 
     return res
   end
-  
+
+---@param str string
+---@return string
+function utils.string.regexEscape(str)
+    local s, _ = str:gsub("[%(%)%.%%%+%-%*%?%[%^%$%]]", "%%%1")
+    return s
+end
 
 --== Math ==--
 
