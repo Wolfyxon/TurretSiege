@@ -56,6 +56,8 @@ local longListTable = {
     "Not that I wish to imply you have been sleeping on the job."
 }
 
+local math = a + b * 3
+
 ---@class SomeClass
 local SomeClass = {}
 ```
@@ -63,6 +65,8 @@ Do **not** do things like:
 ```lua
 local bad_variable = 'string'
 local VariableThatIsNotAClass = 12345
+
+local badMath = a+b*3
 ```
 
 #### Documentation
