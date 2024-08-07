@@ -137,8 +137,8 @@ end
 ---@param str string
 ---@param replacement string
 ---@return string
-function utils.string.replace(str, replacement)
-    local escaped = utils.string.regexEscape(str)
+function utils.string.replace(str, search, replacement)
+    local escaped = utils.string.regexEscape(search)
 
     local s, _ = str:gsub(escaped, replacement:gsub("%%", "%%%%"))
     return s
@@ -301,8 +301,7 @@ function utils.config.getCommandLineFlags()
 
     for i, v in ipairs(arg) do
         if utils.string.startsWith(v, prefix) then
-            local s, _ = v:gsub(prefix, "")
-            table.insert(res, s)
+            table.insert(res, utils.string.replace(v, prefix, ""))
         end
     end
 
