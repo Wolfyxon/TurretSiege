@@ -1,5 +1,5 @@
 return {
-    version = "1.0-Alpha",
+    version = "0.1.0-alpha",
     width = 400,
     height = 240
 }
