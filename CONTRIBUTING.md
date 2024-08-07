@@ -8,4 +8,4 @@ You may use [issues](https://github.com/Wolfyxon/TurretSiege/issues) to submit b
 You can open a new issue [here](https://github.com/Wolfyxon/TurretSiege/issues/new/choose), and pick a form matching your submission.
 
 ## Writing code
-TODO
+If you'd like to contribute to the project by directly writing code, [fork this repository](https://github.com/Wolfyxon/TurretSiege/fork), then commit your changes there. After that, open a [pull request](https://github.com/Wolfyxon/TurretSiege/pulls), then your changes will be reviewed.
