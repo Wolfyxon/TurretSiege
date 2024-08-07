@@ -30,6 +30,14 @@ Bad:
 - Fixed bugs
 - Menu update
 
+#### Single-task focus
+Please avoid creating pull requests that introduce multiple unrelated changes.
+You should only make changes focused on one thing. You can split your pull request by committing changes to multiple branches then submitting PRs for each.
+
+Bad examples:
+- Add 2 new projectiles + fix performance
+- Improve texture quality and add error handling
+
 #### Style
 Please follow the project's code style.
 ```lua
