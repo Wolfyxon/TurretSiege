@@ -22,6 +22,7 @@ function Entity:new(o)
     return o
 end
 
+---@param amount number
 function Entity:dealDamage(amount)
     if self.invincible then return end
     if not self:isAlive() then return end
@@ -60,6 +61,7 @@ function Entity:die()
     end
 end
 
+---@return boolean
 function Entity:isAlive()
     return self.hp > 0
 end
