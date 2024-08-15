@@ -1,3 +1,4 @@
+local utils = require("lib.utils")
 local Sprite = require("lib.2d.Sprite")
 
 ---@class Entity: Sprite
@@ -36,6 +37,13 @@ function Entity:dealDamage(amount)
     if self.hp <= 0 then
         self:die()
     end
+end
+
+---@param amount number
+function Entity:heal(amount)
+    if not self:isAlive() then return end
+    
+    self.hp = utils.math.clamp(self.hp + amount, 0, self.maxHp)
 end
 
 function Entity:die()
