@@ -23,6 +23,7 @@ function GameGui:ready()
     healthDisplay:addChild(hpLbl)
 
     local hpBar = ProgressBar:new()
+    hpBar.barPositioning = "center"
     hpBar.width = 0.5
     hpBar.height = 0.04
 
