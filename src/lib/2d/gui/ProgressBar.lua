@@ -8,6 +8,7 @@ local utils = require("lib.utils")
 local ProgressBar = Label:new()
 
 ProgressBar.textDisplayStyle = "value/max" ---@type "value/max" | "value" | "percent"
+ProgressBar.barPositioning = "left"        ---@type "left" | "center"
 ProgressBar.barColor = nil                 ---@type Color
 ProgressBar.max = 100                      ---@type number
 ProgressBar.value = 50                     ---@type number
@@ -44,20 +45,25 @@ end
 function ProgressBar:draw()
     GuiNode.draw(self)
 
-    local x = -(self.width / 2 * data.width)
-    local y = -(self.height / 2 * data.height)
+    local x = -(self.width / 2)
+    local y = -(self.height / 2)
+    local w = (self.displayValue / self.max) * self.width
 
     if self.positioning == "topleft" then
         x = 0
         y = 0
     end
 
+    if self.barPositioning == "center" then
+        x = -(w / 2)
+    end
+
     self.barColor:toGraphics()
     love.graphics.rectangle(
         "fill",
-        x,
-        y,
-        ((self.displayValue / self.max) * self.width) * data.width,
+        x * data.width,
+        y * data.height,
+        w * data.width,
         self.height * data.height
     )
 
