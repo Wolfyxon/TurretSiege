@@ -100,12 +100,12 @@ function utils.table.tostring(table)
 end
 
 ---@param value any
----@param comminity number
----@return {value: any, comminity: number}
-function utils.table.occurenceWrap(value, comminity)
+---@param commonity number
+---@return {value: any, commonity: number}
+function utils.table.occurenceWrap(value, commonity)
     return {
         value = value,
-        comminity = comminity
+        commonity = commonity
     }
 end
 
