@@ -22,14 +22,17 @@ local music = love.audio.newSource("scenes/game/music.ogg", "stream")
 
 local arena = nil ---@type Node2D
 local gears = {} ---@type Sprite[]
+local projectiles = {} ---@type table
 
-local projectiles = {
-    {
-        require("scenes.game.projectiles.axe.axe"),
-        require("scenes.game.projectiles.cannonBall.cannonBall")
-    }
-}
+---@param projectile Projectile
+---@param comminity? number
+---@param level? number
+function GameScene:registerProjectile(projectile, comminity, level)
+    level = level or 1
+    projectiles[level] = projectiles[level] or {}
 
+    table.insert(projectiles[level], utils.table.occurrenceWrap(projectile, comminity or 1))
+end
 
 ---@param projectile Projectile
 function GameScene:spawnProjectile(projectile)
@@ -74,6 +77,9 @@ function GameScene:spawnProjectile(projectile)
 end
 
 function GameScene:load()
+    self:registerProjectile(require("scenes.game.projectiles.axe.axe"))
+    self:registerProjectile(require("scenes.game.projectiles.cannonBall.cannonBall"))
+
     arena = Node2D:new()
 
     local gearCount = 20
@@ -136,8 +142,8 @@ function GameScene:update(delta)
     if self.turret:isAlive() and now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now
         
-        local proj = table.random(projectiles[self.level]):new()
-
+        local proj = utils.table.randomByOccurrence(projectiles[self.level]):new()
+        
         proj:onEvent("died", function ()
             self.projectilesDestroyed = self.projectilesDestroyed + 1
         end)
