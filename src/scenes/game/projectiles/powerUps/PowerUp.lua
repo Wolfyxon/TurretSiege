@@ -5,6 +5,7 @@ local Tween = require("lib.Tween")
 
 ---@class Powerup: Projectile
 local PowerUp = Projectile:new()
+PowerUp:_appendClass("PowerUp")
 
 PowerUp.armorHp = 5                ---@type number
 PowerUp.powerUpHp = 10             ---@type number
