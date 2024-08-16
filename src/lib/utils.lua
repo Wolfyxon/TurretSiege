@@ -167,7 +167,7 @@ function utils.string.genUniqueId()
         .. tostring(adt) .. 
         "-" 
         .. tostring(t * fps * dt * adt) .. ":"
-        .. tostring(t + fps + dt + adt) .. ":" ..
+        .. tostring(t + fps + dt + adt) ..
         "-"
         .. tostring(math.randomf(0, 4096))
 end
