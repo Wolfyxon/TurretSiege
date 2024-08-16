@@ -211,4 +211,15 @@ function Tween.fadeNodeColor(node, targetColor, time)
     return t
 end
 
+---@param node Node2D
+---@param targetAlpha number
+---@param time number
+---@return Tween
+function Tween.fadeNode(node, targetAlpha, time)
+    local c = node.color:clone()
+    c.a = targetAlpha
+
+    return Tween.fadeNodeColor(node, c, time)
+end
+
 return Tween
