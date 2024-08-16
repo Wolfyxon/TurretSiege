@@ -25,9 +25,8 @@ local gears = {} ---@type Sprite[]
 
 local projectiles = {
     {
-        require("scenes.game.projectiles.powerUps.PowerUp")
-        --require("scenes.game.projectiles.axe.axe"),
-        --require("scenes.game.projectiles.cannonBall.cannonBall")
+        require("scenes.game.projectiles.axe.axe"),
+        require("scenes.game.projectiles.cannonBall.cannonBall")
     }
 }
 
