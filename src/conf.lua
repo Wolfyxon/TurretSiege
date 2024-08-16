@@ -9,6 +9,7 @@ local utils = require("lib.utils")
 --== Table ==--
 table.keys = utils.table.keys
 table.find = utils.table.find
+table.has = utils.table.has
 table.random = utils.table.random
 table.tostring = utils.table.tostring
 table.copy = utils.table.copy
