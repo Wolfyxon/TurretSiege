@@ -14,7 +14,7 @@ PowerUp.armor = {}                 ---@type Sprite[]
 PowerUp.icon = nil                 ---@type Sprite
 PowerUp.armorDistance = 0.15       ---@type number
 PowerUp.targetArmorDistance = 0.15 ---@type number
-PowerUp.iconPath = "none"          ---@type string
+PowerUp.iconImage = "none"         ---@type string
 
 PowerUp:setScaleAll(0.12)
 PowerUp.speed = 0.1
@@ -49,7 +49,7 @@ function PowerUp:new(o)
 
     --== Icon ==--
     o.icon = Sprite:new()
-    o.icon:loadTextureFromFile(iconDir .. o.iconPath .. ".png")
+    o.icon:loadTextureFromFile(iconDir .. o.iconImage .. ".png")
     o.icon.enableShadow = false
     o:addChild(o.icon)
 
