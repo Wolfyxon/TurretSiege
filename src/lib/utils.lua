@@ -99,6 +99,16 @@ function utils.table.tostring(table)
     return res .. "}"
 end
 
+---@param value any
+---@param comminity number
+---@return {value: any, comminity: number}
+function utils.table.occurenceWrap(value, comminity)
+    return {
+        value = value,
+        comminity = comminity
+    }
+end
+
 --== String ==--
 
 ---@param str string
