@@ -6,13 +6,13 @@ local Tween = require("lib.Tween")
 ---@class Powerup: Projectile
 local PowerUp = Projectile:new()
 PowerUp:_appendClass("PowerUp")
+PowerUp:_registerEvent("collected")
 
 PowerUp.armorHp = 5                ---@type number
 PowerUp.powerUpHp = 10             ---@type number
 PowerUp.armor = {}                 ---@type Sprite[]
 PowerUp.armorDistance = 0.15       ---@type number
 PowerUp.targetArmorDistance = 0.15 ---@type number
-
 
 PowerUp:setScaleAll(0.12)
 PowerUp.speed = 0.1
@@ -36,6 +36,12 @@ function PowerUp:new(o)
             Tween.fadeNode(o.armor[1], 0, 0.5)
             Tween.fadeNode(o.armor[2], 0, 0.5)
         end
+    end)
+
+    o:onEvent("hit", function ()
+        if not o:isSafe() then return end
+        o:emitEvent("collected")
+        o:collected()
     end)
 
     --== Armor ==--
@@ -82,5 +88,7 @@ function PowerUp:setArmorDistance(distance)
     local ra = self.armor[2]
     ra.x = distance
 end
+
+function PowerUp:collected() end
 
 return PowerUp
