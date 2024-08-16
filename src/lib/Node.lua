@@ -85,7 +85,7 @@ function Node:isA(class, exact)
         return self:getClass() == class
     end
 
-    return utils.table.find(self.classList, class) ~= nil
+    return table.has(self.classList, class)
 end
 
 ---@return Node[]
@@ -238,7 +238,7 @@ function Node.isNode(instance)
         return false
     end
 
-    return utils.table.find(classList, "Node") ~= nil
+    return table.has(classList, "Node")
 end
 
 --== Post logic ==--
