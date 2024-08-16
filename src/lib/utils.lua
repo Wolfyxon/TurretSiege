@@ -109,6 +109,31 @@ function utils.table.occurenceWrap(value, commonity)
     }
 end
 
+---@param tbl table
+---@return any
+function utils.table.randomByOccurence(tbl)
+    local totalWeight = 0
+
+    for i, v in ipairs(tbl) do
+        assert(v.commonity, type(v) .. " value '" .. tostring(v) .. "' is not occurence wrapped.")
+
+        totalWeight = totalWeight + v.commonity
+    end
+
+    local r = utils.math.randomf(0, totalWeight)
+
+    for i, v in ipairs(tbl) do
+        r = r - v.commonity
+
+        if r <= 0 then
+            return v.value
+        end
+    end
+
+    error("If you see this, Wolfyxon is an idiot")
+end
+
+
 --== String ==--
 
 ---@param str string
