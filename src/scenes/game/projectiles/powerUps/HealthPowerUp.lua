@@ -5,6 +5,7 @@ local Color = require("lib.Color")
 local HealthPowerUp = PowerUp:new()
 
 function HealthPowerUp:ready()
+    PowerUp.ready(self)
     self.color = Color:new(0.5, 1, 0.5)
 end
 
