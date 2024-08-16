@@ -27,8 +27,12 @@ function Projectile:new(o)
 
 
     local t = nil
+    local oc = nil
     o:onEvent("damaged", function ()
         if t then t:stop() end
+        if not oc then
+            oc = o.color:clone()
+        end
 
         t = o:createTween()
                 :addKeyframe(o.color, { 
@@ -38,10 +42,10 @@ function Projectile:new(o)
                     a = 0.8 
                 }, 0.05)
                 :addKeyframe(o.color, { 
-                    r = 1,
-                    g = 1,
-                    b = 1,
-                    a = 1
+                    r = oc.r,
+                    g = oc.g,
+                    b = oc.b,
+                    a = oc.a
                 }, 0.05)
         t:play()
     end)
