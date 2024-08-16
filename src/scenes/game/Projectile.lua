@@ -11,7 +11,7 @@ Projectile.speed = 0.5               ---@type number
 Projectile.rotationSpeed = 0         ---@type number
 Projectile.damage = 2                ---@type number
 Projectile.alreadyHit = false        ---@type boolean
-Projectile.lifeTime   = 5            ---@type number
+Projectile.lifeTime   = 8            ---@type number
 Projectile.spawnedAt  = 0            ---@type number
 Projectile.damageProjectiles = false ---@type boolean
 
