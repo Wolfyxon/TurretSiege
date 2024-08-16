@@ -3,6 +3,7 @@ local Entity = require("scenes.game.Entity")
 ---@class Projectile: Entity
 local Projectile = Entity:new()
 Projectile:_appendClass("Projectile")
+Projectile:_registerEvent("hit")
 
 Projectile.hp = 3
 
@@ -52,6 +53,7 @@ function Projectile:hit(entity)
     if not self.parent then return end
 
     entity:dealDamage(self.damage)
+    self:emitEvent("hit", entity)
     self:orphanize()
 end
 
