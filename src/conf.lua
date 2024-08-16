@@ -24,6 +24,7 @@ string.replace = utils.string.replace
 
 --== Math ==--
 math.randomf = utils.math.randomf
+math.clamp = utils.math.clamp
 math.lerp = utils.math.lerp
 math.lerpAngle = utils.math.lerpAngle
 math.rotationTo = utils.math.rotationTo
