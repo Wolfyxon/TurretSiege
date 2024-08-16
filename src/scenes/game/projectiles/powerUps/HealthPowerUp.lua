@@ -9,7 +9,7 @@ function HealthPowerUp:ready()
 end
 
 function HealthPowerUp:collected()
-    self.scene.turret:heal(10)
+    self:getScene().turret:heal(10)
 end
 
 return HealthPowerUp
