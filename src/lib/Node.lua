@@ -8,12 +8,15 @@ local Node = {
     main = nil,                ---@type Main
     parent = nil,              ---@type Node
     children = {},             ---@type Node[]
+    uniqueId = ""              ---@type string
 }
 
 function Node:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+
+    o.uniqueId = utils.string.genUniqueId()
 
     o.eventHandlers = table.copy(self.eventHandlers) -- do not change the 'self'
     o.children = {}
