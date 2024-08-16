@@ -7,6 +7,7 @@ Projectile:_registerEvent("hit")
 
 Projectile.hp = 3
 
+Projectile.moveTarget = "turret"     ---@type "turret" | "forward"
 Projectile.owner = nil               ---@type Entity
 Projectile.speed = 0.5               ---@type number
 Projectile.rotationSpeed = 0         ---@type number
@@ -69,7 +70,15 @@ function Projectile:update(delta)
     end
 
     self.textureRotation = self.textureRotation + self.rotationSpeed  * delta
-    self:moveRotated(self.speed * delta, 0)
+
+    if self.moveTarget == "forward" then
+        self:moveRotated(self.speed * delta, 0)
+    end
+
+    if self.moveTarget == "turret" then
+        self:moveToward(0.5, 0.5, self.speed * delta)
+    end
+    
 
     for i, v in ipairs(self:getScene():getDescendantsOfClass("Entity")) do
         if self.owner ~= v and self:isTouching(v) and v:getClass() ~= self:getClass() then
