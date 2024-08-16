@@ -179,7 +179,7 @@ end
 
 ---@param x number
 ---@param y number
----@param rotation number
+---@param rotation? number
 function Node2D:moveRotated(x, y, rotation)
     local rx, ry = utils.math.rotateDirection(x, y, rotation or self.rotation)
     self:move(rx, ry)
