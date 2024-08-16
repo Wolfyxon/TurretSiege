@@ -11,6 +11,9 @@ local Scene = require("lib.Scene")
 local GameScene = Scene:new()
 GameScene:_appendClass("GameScene")
 
+GameScene.gears = {}                  ---@type Sprite[]
+GameScene.projectiles = {}            ---@type table
+GameScene.arena = nil                 ---@type Node2D
 GameScene.gui = nil                   ---@type GameGui
 GameScene.turret = nil                ---@type Turret
 GameScene.projectileSpawnDelay = 1    ---@type number
@@ -20,18 +23,14 @@ GameScene.level = 1                   ---@type integer
 
 local music = love.audio.newSource("scenes/game/music.ogg", "stream")
 
-local arena = nil ---@type Node2D
-local gears = {} ---@type Sprite[]
-local projectiles = {} ---@type table
-
 ---@param projectile Projectile
 ---@param comminity? number
 ---@param level? number
 function GameScene:registerProjectile(projectile, comminity, level)
     level = level or 1
-    projectiles[level] = projectiles[level] or {}
+    self.projectiles[level] = self.projectiles[level] or {}
 
-    table.insert(projectiles[level], utils.table.occurrenceWrap(projectile, comminity or 1))
+    table.insert(self.projectiles[level], utils.table.occurrenceWrap(projectile, comminity or 1))
 end
 
 ---@param projectile Projectile
@@ -73,7 +72,7 @@ function GameScene:spawnProjectile(projectile)
     
     projectile.rotation = projectile:rotationTo(0.5, 0.5)
 
-    arena:addChild(projectile)
+    self.arena:addChild(projectile)
 end
 
 function GameScene:load()
@@ -82,7 +81,7 @@ function GameScene:load()
     self:registerProjectile(require("scenes.game.projectiles.axe.axe"))
     self:registerProjectile(require("scenes.game.projectiles.cannonBall.cannonBall"))
 
-    arena = Node2D:new()
+    self.arena = Node2D:new()
 
     local gearCount = 20
     for i = 1,gearCount do
@@ -104,18 +103,18 @@ function GameScene:load()
         gear.color = Color:new(0.6 * c, 0.5 * c, 0)
         
 
-        table.insert(gears, gear)
-        arena:addChild(gear)
+        table.insert(self.gears, gear)
+        self.arena:addChild(gear)
     end
 
     self.turret = Turret:new()
     self.turret:onEvent("died", function ()
         self:gameOver()
     end)
-    arena:addChild(self.turret)
+    self.arena:addChild(self.turret)
     
-    arena.screen = "bottom"
-    self:addChild(arena)
+    self.arena.screen = "bottom"
+    self:addChild(self.arena)
 
     self.gui = GameGui:new()
     self:addChild(self.gui)
@@ -134,7 +133,7 @@ function GameScene:draw(screen)
 end
 
 function GameScene:update(delta)
-    for i, v in ipairs(gears) do
+    for i, v in ipairs(self.gears) do
         local dir = (-1) ^ i
 
         v.rotation = v.rotation + dir * delta * 4
@@ -144,7 +143,7 @@ function GameScene:update(delta)
     if self.turret:isAlive() and now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now
         
-        local proj = utils.table.randomByOccurrence(projectiles[self.level]):new()
+        local proj = utils.table.randomByOccurrence(self.projectiles[self.level]):new()
         
         proj:onEvent("died", function ()
             self.projectilesDestroyed = self.projectilesDestroyed + 1
