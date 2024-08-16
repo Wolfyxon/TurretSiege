@@ -25,8 +25,9 @@ local gears = {} ---@type Sprite[]
 
 local projectiles = {
     {
-        require("scenes.game.projectiles.axe.axe"),
-        require("scenes.game.projectiles.cannonBall.cannonBall")
+        require("scenes.game.projectiles.powerUps.PowerUp")
+        --require("scenes.game.projectiles.axe.axe"),
+        --require("scenes.game.projectiles.cannonBall.cannonBall")
     }
 }
 
@@ -42,7 +43,7 @@ function GameScene:spawnProjectile(projectile)
     local side = math.random(1, 4)
 
     local function r()
-        return utils.math.random(min, max)
+        return utils.math.randRange(min, max)
     end
 
     if side == 1 then
