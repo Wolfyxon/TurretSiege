@@ -77,6 +77,8 @@ function GameScene:spawnProjectile(projectile)
 end
 
 function GameScene:load()
+    self:registerProjectile(require("scenes.game.projectiles.powerUps.HealthPowerUp"), 0.1)
+
     self:registerProjectile(require("scenes.game.projectiles.axe.axe"))
     self:registerProjectile(require("scenes.game.projectiles.cannonBall.cannonBall"))
 
