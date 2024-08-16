@@ -29,7 +29,7 @@ function PowerUp:new(o)
     o:onEvent("damaged", function ()
         o.targetArmorDistance = o.targetArmorDistance + 0.05
 
-        if o.hp < o.maxHp - o.armorHp then
+        if o:isSafe() then
             o.damage = 0
             
             Tween.fadeNode(o.armor[1], 0, 0.5)
@@ -66,6 +66,11 @@ function PowerUp:update(delta)
     local extraDistance = math.abs(math.sin(love.timer.getTime()) * 0.05)
     self.armorDistance = utils.math.lerp(self.armorDistance, self.targetArmorDistance + extraDistance, 2 * delta)
     self:setArmorDistance(self.armorDistance)
+end
+
+---@return boolean
+function PowerUp:isSafe()
+    return self.hp < self.maxHp - self.armorHp
 end
 
 ---@param distance number
