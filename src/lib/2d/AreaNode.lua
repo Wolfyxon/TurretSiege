@@ -56,6 +56,12 @@ function AreaNode:getSize()
     return self.width, self.height
 end
 
+---@param size number
+function AreaNode:setSizeAll(size)
+    self.width = size
+    self.height = size
+end
+
 -- TODO: Rotation support
 ---@return {string: number[]}
 function AreaNode:getGlobalCorners()
