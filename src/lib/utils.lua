@@ -55,6 +55,13 @@ function utils.table.find(table, value)
 end
 
 ---@param table table
+---@param value any
+---@return boolean
+function utils.table.has(table, value)
+    return utils.table.find(table, value) ~= nil
+end
+
+---@param table table
 ---@return table
 function utils.table.copy(table)
     local res = {}
