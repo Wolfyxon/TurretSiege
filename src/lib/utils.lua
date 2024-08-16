@@ -102,7 +102,7 @@ end
 ---@param value any
 ---@param commonity number
 ---@return {value: any, commonity: number}
-function utils.table.occurenceWrap(value, commonity)
+function utils.table.occurrenceWrap(value, commonity)
     return {
         value = value,
         commonity = commonity
@@ -111,11 +111,11 @@ end
 
 ---@param tbl table
 ---@return any
-function utils.table.randomByOccurence(tbl)
+function utils.table.randomByOccurrence(tbl)
     local totalWeight = 0
 
     for i, v in ipairs(tbl) do
-        assert(v.commonity, type(v) .. " value '" .. tostring(v) .. "' is not occurence wrapped.")
+        assert(v.commonity, type(v) .. " value '" .. tostring(v) .. "' is not occurrence wrapped.")
 
         totalWeight = totalWeight + v.commonity
     end
