@@ -15,7 +15,7 @@ function Node:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    o.eventHandlers = table.copy(o.eventHandlers)
+    o.eventHandlers = table.copy(self.eventHandlers) -- do not change the 'self'
     o.children = {}
 
     return o
