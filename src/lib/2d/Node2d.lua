@@ -29,6 +29,12 @@ end
 
 --== Dynamic methods ==--
 
+---@param scale number
+function Node2D:setScaleAll(scale)
+    self.scaleX = scale
+    self.scaleY = scale
+end
+
 ---@return number
 function Node2D:getGlobalRotation()
     local rot = self.rotation
