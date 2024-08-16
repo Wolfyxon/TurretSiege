@@ -39,7 +39,9 @@ function Node:emitEvent(name, ...)
     assert(handlers, "Unknown event '" .. name .. "'")
 
     for i, v in ipairs(handlers) do
-        v(...)
+        if v.ownerId == self.uniqueId then
+            v.func(...)
+        end
     end
 end
 
@@ -49,7 +51,10 @@ function Node:onEvent(name, handler)
     local handlers = self.eventHandlers[name]
     assert(handlers, "Unknown event '" .. name .. "'")
 
-    table.insert(handlers, handler)
+    table.insert(handlers, {
+        func = handler,
+        ownerId = self.uniqueId
+    })
 end
 
 ---@return integer|nil
