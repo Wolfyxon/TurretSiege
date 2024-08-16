@@ -153,6 +153,25 @@ function utils.string.replace(str, search, replacement)
     return s
 end
 
+---@return string
+function utils.string.genUniqueId()
+    local t = love.timer.getTime()
+    local fps = love.timer.getFPS()
+    local dt = love.timer.getDelta()
+    local adt = love.timer.getAverageDelta()
+
+    return 
+           tostring(t) .. ":" 
+        .. tostring(fps) .. ":" 
+        .. tostring(dt) .. ":"
+        .. tostring(adt) .. 
+        "-" 
+        .. tostring(t * fps * dt * adt) .. ":"
+        .. tostring(t + fps + dt + adt) .. ":" ..
+        "-"
+        .. tostring(math.randomf(0, 4096))
+end
+
 --== Math ==--
 
 ---@param start number
