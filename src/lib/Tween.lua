@@ -192,4 +192,23 @@ function Tween.interpolateValue(value, targetValue, startTime, currentTime, dura
     error("Unsupported type: '" .. type(value) .. "'")
 end
 
+-- Quick tweens --
+
+---@param node Node2D
+---@param targetColor Color
+---@param time number
+---@return Tween
+function Tween.fadeNodeColor(node, targetColor, time)
+    local t = Tween:new()
+
+    t:addKeyframe(node, {
+        color = targetColor
+    }, time)
+
+    node:addChild(t)
+    t:play()
+
+    return t
+end
+
 return Tween
