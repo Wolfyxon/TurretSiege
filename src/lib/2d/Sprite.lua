@@ -57,7 +57,7 @@ function Sprite:draw()
         love.graphics.translate(ox, oy)
         love.graphics.rotate(math.rad(self.textureRotation))
 
-        love.graphics.setColor(0, 0, 0, self.shadowOpaticy)
+        love.graphics.setColor(0, 0, 0, self.shadowOpaticy * self.color.a)
         love.graphics.draw(self.texture, -(tW / 2), -(tH / 2))
 
         love.graphics.setColor(r, g, b, a)
