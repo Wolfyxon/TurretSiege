@@ -63,7 +63,8 @@ end
 function PowerUp:update(delta)
     Projectile.update(self, delta)
 
-    self.armorDistance = utils.math.lerp(self.armorDistance, self.targetArmorDistance, 2 * delta)
+    local extraDistance = math.abs(math.sin(love.timer.getTime()) * 0.05)
+    self.armorDistance = utils.math.lerp(self.armorDistance, self.targetArmorDistance + extraDistance, 2 * delta)
     self:setArmorDistance(self.armorDistance)
 end
 
