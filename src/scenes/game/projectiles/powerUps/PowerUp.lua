@@ -16,7 +16,7 @@ PowerUp.targetArmorDistance = 0.15 ---@type number
 PowerUp:setScaleAll(0.12)
 PowerUp.speed = 0.1
 
-local armorTexture = "scenes/game/projectiles/powerUps/armor.png"
+local armorTexture = "scenes/game/projectiles/powerUps/img/armor.png"
 
 function PowerUp:new(o)
     o = Projectile.new(self, o)
@@ -24,7 +24,7 @@ function PowerUp:new(o)
     self.__index = self
 
     o:initHp(o.armorHp + o.powerUpHp)
-    o:loadTextureFromFile("scenes/game/projectiles/powerUps/powerUp.png")
+    o:loadTextureFromFile("scenes/game/projectiles/powerUps/img/powerUp.png")
 
     o:onEvent("damaged", function ()
         o.targetArmorDistance = o.targetArmorDistance + 0.05
