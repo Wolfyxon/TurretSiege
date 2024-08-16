@@ -51,7 +51,7 @@ function Turret:new(o)
         if t then t:stop() end
 
         local range = 0.005
-        local function r() return 0.5 + utils.math.randRange(-range, range) end
+        local function r() return 0.5 + utils.math.randomf(-range, range) end
 
         t = o:createTween()
                   :addKeyframe(o, { x = r(), y = r() }, 0.05)

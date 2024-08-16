@@ -219,7 +219,7 @@ end
 ---@param min number
 ---@param max number
 ---@return number
-function utils.math.randRange(min, max)
+function utils.math.randomf(min, max)
     return min + max * (math.random(0, 100) / 100)
 end
 

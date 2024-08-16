@@ -43,7 +43,7 @@ function GameScene:spawnProjectile(projectile)
     local side = math.random(1, 4)
 
     local function r()
-        return utils.math.randRange(min, max)
+        return utils.math.randomf(min, max)
     end
 
     if side == 1 then
