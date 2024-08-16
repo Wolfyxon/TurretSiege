@@ -22,6 +22,12 @@ function Entity:new(o)
     return o
 end
 
+---@param maxHp number
+function Entity:initHp(maxHp)
+    self.maxHp = maxHp
+    self.hp = maxHp
+end
+
 ---@param amount number
 function Entity:dealDamage(amount)
     if self.invincible then return end
