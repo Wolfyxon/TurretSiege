@@ -5,7 +5,6 @@ local Node = {
     classList = {"Node"},      ---@type string[]
     isReady = false,           ---@type boolean
     eventHandlers = {},        ---@type {string: function[]}
-    scene = nil,               ---@type Scene
     main = nil,                ---@type Main
     parent = nil,              ---@type Node
     children = {},             ---@type Node[]
