@@ -109,6 +109,7 @@ function Turret:fire()
 
     local b = Projectile:new()
     b:_appendClass("TurretBullet")
+    b.moveTarget = "forward"
     b.owner = self
     b.damageProjectiles = true
     b.speed = 1
