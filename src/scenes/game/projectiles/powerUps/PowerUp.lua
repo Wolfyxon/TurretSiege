@@ -11,12 +11,15 @@ PowerUp:_registerEvent("collected")
 PowerUp.armorHp = 5                ---@type number
 PowerUp.powerUpHp = 10             ---@type number
 PowerUp.armor = {}                 ---@type Sprite[]
+PowerUp.icon = nil                 ---@type Sprite
 PowerUp.armorDistance = 0.15       ---@type number
 PowerUp.targetArmorDistance = 0.15 ---@type number
+PowerUp.iconPath = "none"          ---@type string
 
 PowerUp:setScaleAll(0.12)
 PowerUp.speed = 0.1
 
+local iconDir = "scenes/game/projectiles/powerUps/img/icons/"
 local armorTexture = "scenes/game/projectiles/powerUps/img/armor.png"
 
 function PowerUp:new(o)
@@ -43,6 +46,12 @@ function PowerUp:new(o)
         o:emitEvent("collected")
         o:collected()
     end)
+
+    --== Icon ==--
+    o.icon = Sprite:new()
+    o.icon:loadTextureFromFile(iconDir .. o.iconPath .. ".png")
+    o.icon.enableShadow = false
+    o:addChild(o.icon)
 
     --== Armor ==--
 
