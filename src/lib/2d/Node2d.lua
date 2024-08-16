@@ -185,6 +185,14 @@ function Node2D:moveRotated(x, y, rotation)
     self:move(rx, ry)
 end
 
+---@param x number
+---@param y number
+---@param speed number
+function Node2D:moveToward(x, y, speed)
+    local rot = self:rotationTo(x, y)
+    self:moveRotated(speed, 0, rot)
+end
+
 ---@return Tween
 function Node2D:createTween()
     local t = Tween:new()
