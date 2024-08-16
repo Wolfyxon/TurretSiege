@@ -43,7 +43,7 @@ function GameScene:spawnProjectile(projectile)
     local side = math.random(1, 4)
 
     local function r()
-        return utils.math.randomf(min, max)
+        return math.randomf(min, max)
     end
 
     if side == 1 then
@@ -137,7 +137,7 @@ function GameScene:update(delta)
     if self.turret:isAlive() and now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now
         
-        local proj = utils.table.random(projectiles[self.level]):new()
+        local proj = table.random(projectiles[self.level]):new()
 
         proj:onEvent("died", function ()
             self.projectilesDestroyed = self.projectilesDestroyed + 1

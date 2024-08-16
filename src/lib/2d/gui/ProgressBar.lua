@@ -27,7 +27,7 @@ function ProgressBar:new(o)
 end
 
 function ProgressBar:update(delta)
-    self.displayValue = utils.math.lerp(self.displayValue, self.value, delta * 10)
+    self.displayValue = math.lerp(self.displayValue, self.value, delta * 10)
 
     if self.textDisplayStyle == "value/max" then
         self:setText(tostring(self.value) .. "/" .. tostring(self.max))

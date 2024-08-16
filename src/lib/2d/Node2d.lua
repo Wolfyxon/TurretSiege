@@ -162,7 +162,7 @@ end
 ---@param x number
 ---@param y number
 function Node2D:rotationTo(x, y)
-    return utils.math.rotationTo(self.x, self.y, x, y)
+    return math.rotationTo(self.x, self.y, x, y)
 end
 
 ---@param deg number
@@ -181,7 +181,7 @@ end
 ---@param y number
 ---@param rotation? number
 function Node2D:moveRotated(x, y, rotation)
-    local rx, ry = utils.math.rotateDirection(x, y, rotation or self.rotation)
+    local rx, ry = math.rotateDirection(x, y, rotation or self.rotation)
     self:move(rx, ry)
 end
 

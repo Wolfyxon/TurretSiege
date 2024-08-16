@@ -51,7 +51,7 @@ end
 function Entity:heal(amount)
     if not self:isAlive() then return end
     
-    self.hp = utils.math.clamp(self.hp + amount, 0, self.maxHp)
+    self.hp = math.clamp(self.hp + amount, 0, self.maxHp)
 end
 
 function Entity:die()

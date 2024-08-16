@@ -51,7 +51,7 @@ function Sprite:draw()
     if self.enableShadow then
         local r, g, b, a = love.graphics.getColor()
 
-        local ox, oy = utils.math.rotateDirection(self.shadowOffset, self.shadowOffset, -self:getGlobalRotation())
+        local ox, oy = math.rotateDirection(self.shadowOffset, self.shadowOffset, -self:getGlobalRotation())
 
         love.graphics.rotate(-math.rad(self.textureRotation))
         love.graphics.translate(ox, oy)

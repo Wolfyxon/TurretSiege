@@ -38,10 +38,10 @@ end
 ---@param a number
 ---@param speed number
 function Color:lerpRGBA(r, g, b, a, speed)
-    self.r = utils.math.lerp(self.r, r, speed)
-    self.g = utils.math.lerp(self.g, g, speed)
-    self.b = utils.math.lerp(self.b, b, speed)
-    self.a = utils.math.lerp(self.a, a, speed)
+    self.r = math.lerp(self.r, r, speed)
+    self.g = math.lerp(self.g, g, speed)
+    self.b = math.lerp(self.b, b, speed)
+    self.a = math.lerp(self.a, a, speed)
 end
 
 function Color:lerpRGB(r, g, b, speed)
@@ -51,7 +51,7 @@ end
 ---@param color Color
 function Color:mul(color)
     local function clamp(val)
-        return utils.math.clamp(val, 0, 1)
+        return math.clamp(val, 0, 1)
     end
 
     self.r = clamp(self.r * color.r)

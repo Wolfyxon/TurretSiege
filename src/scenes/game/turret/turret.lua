@@ -51,7 +51,7 @@ function Turret:new(o)
         if t then t:stop() end
 
         local range = 0.005
-        local function r() return 0.5 + utils.math.randomf(-range, range) end
+        local function r() return 0.5 + math.randomf(-range, range) end
 
         t = o:createTween()
                   :addKeyframe(o, { x = r(), y = r() }, 0.05)
@@ -90,8 +90,8 @@ function Turret:update(delta)
         end
     end
 
-    self.rotation = utils.math.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
-    self.cannon.x = utils.math.lerp(self.cannon.x, 0.2, 5 * delta)
+    self.rotation = math.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
+    self.cannon.x = math.lerp(self.cannon.x, 0.2, 5 * delta)
 end
 
 -- TODO: Fix freeze on fire on 3DS
@@ -125,7 +125,7 @@ function Turret:fire()
     -- NOTE: self.projectiles can't be accessed in the sub-function so it has to be point to a variable
     local projectiles = self.projectiles
     function b:removed()
-        utils.table.erase(projectiles, b)
+        table.erase(projectiles, b)
     end
 
     b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")

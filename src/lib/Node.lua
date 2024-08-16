@@ -16,7 +16,7 @@ function Node:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    o.eventHandlers = utils.table.copy(self.eventHandlers)
+    o.eventHandlers = table.copy(self.eventHandlers)
     o.children = {}
 
     return o
@@ -73,7 +73,7 @@ end
 
 ---@param className string
 function Node:_appendClass(className)
-    self.classList = utils.table.copy(self.classList)
+    self.classList = table.copy(self.classList)
     table.insert(self.classList, className)
 end
 
