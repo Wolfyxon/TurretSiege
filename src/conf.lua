@@ -14,6 +14,7 @@ table.random = utils.table.random
 table.tostring = utils.table.tostring
 table.copy = utils.table.copy
 table.erase = utils.table.erase
+table.merge = utils.table.merge
 
 --== String ==--
 string.startsWith = utils.string.startsWith
