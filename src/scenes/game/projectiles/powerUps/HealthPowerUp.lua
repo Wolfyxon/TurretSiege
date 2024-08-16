@@ -4,6 +4,8 @@ local Color = require("lib.Color")
 ---@class HealthPowerUp: Powerup
 local HealthPowerUp = PowerUp:new()
 
+HealthPowerUp.iconImage = "health"
+
 function HealthPowerUp:ready()
     PowerUp.ready(self)
     self.color = Color:new(0.5, 1, 0.5)
