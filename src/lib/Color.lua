@@ -70,6 +70,11 @@ function Color:getRGBA()
     return self.r, self.g, self.b, self.a
 end
 
+---@return string
+function Color:toString()
+    return "(" .. table.join({self.r, self.g, self.b}) .. ")"
+end
+
 function Color:toGraphics()
     love.graphics.setColor(self.r, self.g, self.b, self.a)
 end
