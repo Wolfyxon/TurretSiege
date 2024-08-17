@@ -10,5 +10,6 @@
 *.AppImage
 
 # Temporary files
+*-autosave.kra
 *.tmp
 *~
