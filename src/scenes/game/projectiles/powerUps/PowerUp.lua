@@ -3,7 +3,7 @@ local Projectile = require("scenes.game.Projectile")
 local Sprite = require("lib.2d.Sprite")
 local Tween = require("lib.Tween")
 
----@class Powerup: Projectile
+---@class PowerUp: Projectile
 local PowerUp = Projectile:new()
 PowerUp:_appendClass("PowerUp")
 PowerUp:_registerEvent("collected")
