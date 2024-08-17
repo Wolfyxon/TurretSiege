@@ -140,6 +140,7 @@ function Turret:fire()
     self.parent:addChild(b)
 end
 
+---@param radius? number
 function Turret:shockwave(radius)
     radius = radius or 250
 
