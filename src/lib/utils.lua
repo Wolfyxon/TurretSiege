@@ -133,6 +133,25 @@ function utils.table.randomByOccurrence(tbl)
     error("If you see this, Wolfyxon is an idiot")
 end
 
+---@param tbl any[]
+---@param separator? string
+---@return string
+function utils.table.join(tbl, separator)
+    local res = ""
+    local len = #tbl
+
+    for i = 1, len do
+        local v = tbl[i]
+
+        res = res .. v
+        
+        if i < len then
+            res = res .. (separator or ", ")
+        end
+    end
+
+    return res
+end
 
 --== String ==--
 
