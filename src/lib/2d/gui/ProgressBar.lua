@@ -7,7 +7,7 @@ local utils = require("lib.utils")
 ---@class ProgressBar: Label
 local ProgressBar = Label:new()
 
-ProgressBar.textDisplayStyle = "value/max" ---@type "value/max" | "value" | "percent"
+ProgressBar.textDisplayStyle = "value/max" ---@type "value/max" | "value" | "percent" | "none"
 ProgressBar.barPositioning = "left"        ---@type "left" | "center"
 ProgressBar.barColor = nil                 ---@type Color
 ProgressBar.max = 100                      ---@type number
