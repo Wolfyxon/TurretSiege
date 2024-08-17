@@ -97,7 +97,7 @@ end
 
 ---@param powerUp PowerUp
 function Turret:powerUpReceived(powerUp)
-    
+    self:shockwave(50, powerUp.color)
 end
 
 -- TODO: Fix freeze on fire on 3DS
