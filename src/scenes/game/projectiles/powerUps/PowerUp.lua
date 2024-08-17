@@ -45,6 +45,7 @@ function PowerUp:new(o)
         if not o:isSafe() then return end
         o:emitEvent("collected")
         o:collected()
+        o:getScene().turret:powerUpReceived(o)
     end)
 
     --== Icon ==--

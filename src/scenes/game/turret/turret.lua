@@ -94,6 +94,11 @@ function Turret:update(delta)
     self.cannon.x = math.lerp(self.cannon.x, 0.2, 5 * delta)
 end
 
+---@param powerUp PowerUp
+function Turret:powerUpReceived(powerUp)
+    
+end
+
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
     local now = love.timer.getTime()
