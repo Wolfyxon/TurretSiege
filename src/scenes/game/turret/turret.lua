@@ -106,7 +106,6 @@ function Turret:fire()
     if now < self.lastFireTime + self.fireCooldown then 
         return 
     end
-    self:shockwave()
 
     fireSound:stop()
     fireSound:play()
