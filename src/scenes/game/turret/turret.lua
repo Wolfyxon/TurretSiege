@@ -141,22 +141,26 @@ function Turret:fire()
 end
 
 ---@param radius? number
-function Turret:shockwave(radius)
+---@param color? Color
+function Turret:shockwave(radius, color)
     radius = radius or 250
 
     local cir = Circle:new()
 
     cir.fillColor = Color.TRANSPARENT:clone()
-    cir.outlineColor = Color.WHITE:clone()
+    cir.outlineColor = color or Color.WHITE:clone()
     cir.outlineSize = 10
     cir.radius = 0
     cir.x = self.x
     cir.y = self.y
 
+    local targetColor = cir.outlineColor:clone()
+    targetColor.a = 0
+
     local t = self.parent:createTween()
     t:addKeyframe(cir, {
         radius = radius,
-        outlineColor = Color.TRANSPARENT:clone()
+        outlineColor = targetColor
     }, 2)
 
     t:onEvent("finished", function ()
