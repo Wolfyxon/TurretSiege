@@ -1,6 +1,7 @@
 local Entity = require("scenes.game.Entity")
 local Projectile = require("scenes.game.Projectile")
 local Sprite = require("lib.2d.Sprite")
+local Tween = require("lib.Tween")
 local utils = require("lib.utils")
 local Circle = require("lib.2d.Circle")
 local Color = require("lib.Color")
@@ -105,6 +106,7 @@ function Turret:fire()
     if now < self.lastFireTime + self.fireCooldown then 
         return 
     end
+    self:shockwave()
 
     fireSound:stop()
     fireSound:play()
@@ -138,24 +140,29 @@ function Turret:fire()
     self.parent:addChild(b)
 end
 
-function Turret:shockwave()
+function Turret:shockwave(radius)
+    radius = radius or 250
+
     local cir = Circle:new()
 
-    cir.fillColor = Color.TRANSPARENT
+    cir.fillColor = Color.TRANSPARENT:clone()
     cir.outlineColor = Color.WHITE:clone()
     cir.outlineSize = 10
     cir.radius = 0
     cir.x = self.x
     cir.y = self.y
 
-    function cir:update(delta)
-        cir.radius = cir.radius + delta * 300
-        cir.outlineColor:lerp(Color.TRANSPARENT, delta * 3)
+    local t = self.parent:createTween()
+    t:addKeyframe(cir, {
+        radius = radius,
+        outlineColor = Color.TRANSPARENT:clone()
+    }, 2)
 
-        if cir.radius > 250 then
-            cir:destroy()
-        end
-    end
+    t:onEvent("finished", function ()
+        cir:destroy()
+    end)
+
+    t:play()
     
     self.parent:addChild(cir)
 end
