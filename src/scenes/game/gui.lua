@@ -11,6 +11,7 @@ GameGui.healthDisplay = nil ---@type Node2D
 GameGui.effectBar = nil     ---@type ProgressBar
 GameGui.hpBar = nil         ---@type ProgressBar
 GameGui.hasEffect = false   ---@type boolean
+
 function GameGui:ready()
     self.screen = "left"
 
