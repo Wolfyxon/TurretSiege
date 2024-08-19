@@ -26,6 +26,10 @@ function main.loadScene(scene)
     local tp = type(scene)
     assert(tp == "table", "Not a table. Type: " .. tp)
 
+    if currentScene then
+        currentScene:unload()
+    end
+
     scene = scene:new()
 
     scene.main = main
