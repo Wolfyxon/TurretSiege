@@ -190,6 +190,11 @@ function Node:disownChild(node)
     self:emitEvent("nodeListUpdated")
 end
 
+function Node:clearChildren()
+    for i, v in ipairs(self.children) do
+        v:destroy()
+    end
+end
 
 function Node:destroy()
     for i, v in ipairs(self:getDescendants()) do
