@@ -100,7 +100,7 @@ function GameScene:load()
         gear.scaleX = s
         gear.scaleY = s
         
-        gear.color = Color:new(0.6 * c, 0.5 * c, 0)
+        gear.color = Color:new(0.8 * c, 0.6 * c, 0)
         
 
         table.insert(self.gears, gear)
