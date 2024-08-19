@@ -8,9 +8,9 @@ local ProgressBar = require("lib.2d.gui.ProgressBar")
 local GameGui = Node2D:new()
 
 GameGui.healthDisplay = nil ---@type Node2D
-GameGui.hasEffect = false   ---@type boolean
 GameGui.effectBar = nil     ---@type ProgressBar
-
+GameGui.hpBar = nil         ---@type ProgressBar
+GameGui.hasEffect = false   ---@type boolean
 function GameGui:ready()
     self.screen = "left"
 
