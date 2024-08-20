@@ -110,4 +110,25 @@ function AreaNode:isTouching(area)
     )
 end
 
+---@param x number
+---@param y number
+---@return boolean
+function AreaNode:containsGlobalPoint(x, y)
+    local sgX, sgY = self:getGlobalPosition()
+
+    local w = self.width * self.scaleX
+    local h = self.height * self.scaleY
+
+    if self.positioning == "center" then
+        w = w / 2
+        h = h /2
+    end
+
+    return (
+        x <= sgX + w and x >= sgX - w
+        and
+        y <= sgY + h and y >= sgY - h
+    )
+end
+
 return AreaNode
