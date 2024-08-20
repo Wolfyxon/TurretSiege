@@ -7,8 +7,6 @@ local Button = Label:new()
 Button:_appendClass("Button")
 Button:_registerEvent("pressed")
 
-Button.backgroundColor = Color:new(0.5, 0.5, 0)
-
 Button.isPressed = false  ---@type boolean
 Button.wasPressed = false ---@type boolean
 Button.focused = false    ---@type boolean 
@@ -23,6 +21,8 @@ function Button:new(o)
     setmetatable(o, self)
     self.__index = self
 
+
+    o.backgroundColor = Color:new(0.5, 0.5, 0)
     o:setText("Button")
 
     return o
