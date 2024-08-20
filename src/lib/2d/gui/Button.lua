@@ -16,6 +16,7 @@ Button.focused = false                                 ---@type boolean
 Button.enabled = true                                  ---@type boolean
 Button.next = nil                                      ---@type Button
 Button.previous = nil                                  ---@type Button
+Button._mode = "mouse"                                 ---@type "mouse" | "keys"
 
 local mX, mY = 0, 0
 
@@ -74,7 +75,7 @@ function Button:checkPress()
     if not self.enabled then return end
     if not self.focused then return end
     
-    self.isPressed = utils.system.isMousePressed() or (love.keyboard and love.keyboard.isDown("return"))
+    self.isPressed = self._mode == "mouse" and self:isHovered() and (utils.system.isMousePressed() or (love.keyboard and love.keyboard.isDown("return")))
     
     if not self.isPressed then
         self.wasPressed = false
@@ -106,9 +107,12 @@ function Button:checkMouseFocus()
 
     if cmX ~= mX or cmY ~= mY then
         mX, mY = cmX, cmY
+        self._mode = "mouse"
 
         if self:containsGlobalPoint(mX, mY) then
             self:focus()
+        else
+            self:unfocus()
         end
     end
 end
