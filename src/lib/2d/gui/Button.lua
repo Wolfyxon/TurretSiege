@@ -91,6 +91,14 @@ function Button:checkPress()
     end
 end
 
+---@return boolean
+function Button:isHovered()
+    if not love.mouse or not love.mouse.isCursorSupported() then return false end
+    local mX, mY = utils.system.getMousePos("bottom")
+
+    return self:containsGlobalPoint(mX, mY)
+end
+
 function Button:checkMouseFocus()
     if not love.mouse or not love.mouse.isCursorSupported() then return end
 
