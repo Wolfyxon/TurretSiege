@@ -7,12 +7,15 @@ local Button = Label:new()
 Button:_appendClass("Button")
 Button:_registerEvent("pressed")
 
-Button.isPressed = false  ---@type boolean
-Button.wasPressed = false ---@type boolean
-Button.focused = false    ---@type boolean 
-Button.enabled = true     ---@type boolean
-Button.next = nil         ---@type Button
-Button.previous = nil     ---@type Button
+Button.backgroundColorNormal = Color:new(0.5, 0.5, 0)  ---@type Color
+Button.backgroundColorFocused = Color:new(0.8, 0.8, 0) ---@type Color
+Button.backgroundColorPressed = Color:new(1, 1, 1)     ---@type Color
+Button.isPressed = false                               ---@type boolean
+Button.wasPressed = false                              ---@type boolean
+Button.focused = false                                 ---@type boolean 
+Button.enabled = true                                  ---@type boolean
+Button.next = nil                                      ---@type Button
+Button.previous = nil                                  ---@type Button
 
 local mX, mY = 0, 0
 
@@ -22,7 +25,7 @@ function Button:new(o)
     self.__index = self
 
 
-    o.backgroundColor = Color:new(0.5, 0.5, 0)
+    o.backgroundColor = self.backgroundColorNormal:clone()
     o:setText("Button")
 
     return o
@@ -31,6 +34,8 @@ end
 function Button:update(delta)
     self:checkMouseFocus()
     self:checkPress()
+    
+    self:updateBg(delta)
 end
 
 function Button:focus()
@@ -50,6 +55,19 @@ end
 
 function Button:unfocus()
     self.focused = false
+end
+
+function Button:updateBg(delta)
+    local tar = self.backgroundColorNormal
+
+    if self.isPressed then
+        tar = self.backgroundColorPressed
+    else if self.focused then
+        tar = self.backgroundColorFocused
+    end
+    end
+
+    self.backgroundColor:lerp(tar, 10 * delta)
 end
 
 function Button:checkPress()
