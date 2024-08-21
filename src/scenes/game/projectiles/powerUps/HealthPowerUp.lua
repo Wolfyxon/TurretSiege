@@ -3,6 +3,7 @@ local Color = require("lib.Color")
 
 ---@class HealthPowerUp: PowerUp
 local HealthPowerUp = PowerUp:new()
+HealthPowerUp:_appendClass("HealthPowerUp")
 
 HealthPowerUp.iconImage = "health"
 
