@@ -18,7 +18,8 @@ Button.next = nil                                      ---@type Button
 Button.previous = nil                                  ---@type Button
 Button._mode = "mouse"                                 ---@type "mouse" | "keys"
 
-local mX, mY = 0, 0
+Button.mX = 0
+Button.mY = 0
 
 function Button:new(o)
     o = Label.new(self, o)
@@ -105,11 +106,11 @@ function Button:checkMouseFocus()
 
     local cmX, cmY = utils.system.getMousePos("bottom")
 
-    if cmX ~= mX or cmY ~= mY then
-        mX, mY = cmX, cmY
+    if cmX ~= self.mX or cmY ~= self.mY then
+        self.mX, self.mY = cmX, cmY
         self._mode = "mouse"
 
-        if self:containsGlobalPoint(mX, mY) then
+        if self:containsGlobalPoint(self.mX, self.mY) then
             self:focus()
         else
             self:unfocus()
