@@ -6,12 +6,19 @@ local Scene = require("lib.Scene")
 local MenuScene = Scene:new()
 
 function MenuScene:load()
+    local w = 0.5
+    local h = 0.05
+    local fontSize = 24
+
     local buttonContainer = ListContainer:new()
     buttonContainer.spacing = 0.01
     buttonContainer.x = 0.5
     buttonContainer.y = 0.5
 
     local btnPlay = Button:new()
+    btnPlay.width = w
+    btnPlay.height = h
+    btnPlay:setFontSize(fontSize)
     btnPlay:setText("Play")
     buttonContainer:addChild(btnPlay)
     btnPlay:onEvent("pressed", function ()
@@ -19,6 +26,9 @@ function MenuScene:load()
     end)
 
     local btnQuit = Button:new()
+    btnQuit.width = w
+    btnQuit.height = h
+    btnQuit:setFontSize(fontSize)
     btnQuit:setText("Quit")
     btnQuit:onEvent("pressed", function ()
         love.event.quit()
