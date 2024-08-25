@@ -1,4 +1,3 @@
-local Color = require("lib.Color")
 local Button = require("lib.2d.gui.Button")
 local Label = require("lib.2d.gui.Label")
 local ListContainer = require("lib.2d.gui.container.ListContainer")
