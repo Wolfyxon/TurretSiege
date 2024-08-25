@@ -105,6 +105,10 @@ function MenuScene:load()
     music:play()
 end
 
+function MenuScene:unload()
+    music:stop()
+end
+
 function MenuScene:draw(screen)
     love.graphics.clear(0.2, 0.1, 0.1)
 end
