@@ -40,13 +40,9 @@ function MenuScene:load()
     
     self:addGear(0, 0, 1, 1)
     self:addGear(0.2, 1, 0.7, -1)
-    
     self:addGear(0.7, 0.1, 0.5, 1)
-    
-
     self:addGear(1, 1, 1.2, -1)
     
-
     --== Title ==--
 
     local titleContainer = ListContainer:new()
