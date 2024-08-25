@@ -11,30 +11,41 @@ local MenuScene = Scene:new()
 
 local music = love.audio.newSource("scenes/menu/music.ogg", "stream")
 
+---@param x number
+---@param y number
+---@param size number
+---@param rotDir number
+function MenuScene:addGear(x, y, size, rotDir)
+    local g = Sprite:new()
+
+    g:loadTextureFromFile("scenes/game/gear.png")
+    g:setScaleAll(size)
+
+    g.x = x
+    g.y = y
+
+    local c = math.randomf(0.7, 0.9)
+
+    g.color = Color:new(0.8 * c, 0.6 * c, 0)
+
+    function g:update(delta)
+        g:rotate(rotDir * 10 * delta)
+    end
+
+    self:addChild(g)
+end
+
 function MenuScene:load()
     --== Gears ==--
+    
+    self:addGear(0, 0, 1, 1)
+    self:addGear(0.2, 1, 0.7, -1)
+    
+    self:addGear(0.7, 0.1, 0.5, 1)
+    
 
-    local gearCount = 40
-    for i = 1, gearCount do
-        local g = Sprite:new()
-        
-        g:loadTextureFromFile("scenes/game/gear.png")
-        g:setScaleAll(math.randomf(0.1, 0.3))
-
-        local c = math.randomf(0.5, 0.9)
-        local rot = math.randomf(-50, 50)
-
-        g.color = Color:new(0.8 * c, 0.6 * c, 0)
-
-        g.x = math.randomf(0, 1)
-        g.y = math.randomf(0, 1)
-        
-        function g:update(delta)
-            g:rotate(rot * delta)
-        end
-
-        self:addChild(g)
-    end
+    self:addGear(1, 1, 1.2, -1)
+    
 
     --== Title ==--
 
