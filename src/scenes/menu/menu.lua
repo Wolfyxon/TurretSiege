@@ -9,6 +9,8 @@ local data = require("data")
 ---@class MenuScene: Scene
 local MenuScene = Scene:new()
 
+local music = love.audio.newSource("scenes/menu/music.ogg", "stream")
+
 function MenuScene:load()
     --== Gears ==--
 
@@ -93,6 +95,7 @@ function MenuScene:load()
     self:addChild(titleContainer)
     self:addChild(buttonContainer)
     
+    music:play()
 end
 
 function MenuScene:draw(screen)
