@@ -1,5 +1,7 @@
+local Color = require("lib.Color")
 local Button = require("lib.2d.gui.Button")
 local Label = require("lib.2d.gui.Label")
+local Sprite = require("lib.2d.Sprite")
 local ListContainer = require("lib.2d.gui.container.ListContainer")
 local Scene = require("lib.Scene")
 local data = require("data")
@@ -8,6 +10,30 @@ local data = require("data")
 local MenuScene = Scene:new()
 
 function MenuScene:load()
+    --== Gears ==--
+
+    local gearCount = 40
+    for i = 1, gearCount do
+        local g = Sprite:new()
+        
+        g:loadTextureFromFile("scenes/game/gear.png")
+        g:setScaleAll(math.randomf(0.1, 0.3))
+
+        local c = math.randomf(0.5, 0.9)
+        local rot = math.randomf(-50, 50)
+
+        g.color = Color:new(0.8 * c, 0.6 * c, 0)
+
+        g.x = math.randomf(0, 1)
+        g.y = math.randomf(0, 1)
+        
+        function g:update(delta)
+            g:rotate(rot * delta)
+        end
+
+        self:addChild(g)
+    end
+
     --== Title ==--
 
     local titleContainer = ListContainer:new()
