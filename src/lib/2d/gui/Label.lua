@@ -10,6 +10,7 @@ local globalFontScale = 0.3
 Label.padding = 5           ---@type number
 Label.textObj = nil         ---@type Text
 Label.wrapping = "word"     ---@type "word" | "character" | "nowrap"
+Label.textAlign = "center"  ---@type "center" | "left" | "right"
 Label.formatted = false     ---@type boolean
 Label._unprocessedText = "" ---@type string
 Label._fontSize = 16        ---@type integer
@@ -35,6 +36,14 @@ function Label:drawText()
 
     local ox = -(tW / 2)
     local oy = -(tH / 2)
+
+    if self.textAlign == "left" then
+        ox = 0
+    end
+
+    if self.textAlign == "right" then
+        ox = tW
+    end
 
     if self.positioning == "topleft" then
         ox = 0
