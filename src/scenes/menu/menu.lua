@@ -70,4 +70,8 @@ function MenuScene:load()
     
 end
 
+function MenuScene:draw(screen)
+    love.graphics.clear(0.3, 0.2, 0)
+end
+
 return MenuScene
