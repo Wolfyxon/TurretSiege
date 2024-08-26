@@ -84,7 +84,7 @@ function GameScene:load()
     self.arena = Node2D:new()
 
     local gearCount = 20
-    for i = 1,gearCount do
+    for i = 1, gearCount do
         local gear = Sprite:new({}, "scenes/game/gear.png")
         local dir = (-1) ^ i
         local s = ((gearCount - i) / gearCount) * 5
