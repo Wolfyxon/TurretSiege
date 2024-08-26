@@ -13,7 +13,7 @@ function HealthPowerUp:ready()
 end
 
 function HealthPowerUp:collected()
-    self:getScene().turret:heal(10)
+    self:getScene().turret:heal(25)
 end
 
 return HealthPowerUp
