@@ -15,6 +15,7 @@ PowerUp.icon = nil                 ---@type Sprite
 PowerUp.armorDistance = 0.15       ---@type number
 PowerUp.targetArmorDistance = 0.15 ---@type number
 PowerUp.iconImage = "none"         ---@type string
+PowerUp.originalColor = nil        ---@type Color
 
 PowerUp:setScaleAll(0.12)
 PowerUp.speed = 0.1
@@ -27,6 +28,7 @@ function PowerUp:new(o)
     setmetatable(o, self)
     self.__index = self
 
+    o.originalColor = o.color:clone()
     o:initHp(o.armorHp + o.powerUpHp)
     o:loadTextureFromFile("scenes/game/projectiles/powerUps/img/powerUp.png")
 
