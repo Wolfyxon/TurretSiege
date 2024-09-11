@@ -28,6 +28,7 @@ function PowerUp:new(o)
     setmetatable(o, self)
     self.__index = self
 
+    o.color = o.color:clone()
     o.originalColor = o.color:clone()
     o:initHp(o.armorHp + o.powerUpHp)
     o:loadTextureFromFile("scenes/game/projectiles/powerUps/img/powerUp.png")
