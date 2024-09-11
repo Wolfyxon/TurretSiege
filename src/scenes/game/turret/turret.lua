@@ -102,7 +102,6 @@ end
 
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
-    self:shockwave()
     local now = love.timer.getTime()
     if now < self.lastFireTime + self.fireCooldown then 
         return 
