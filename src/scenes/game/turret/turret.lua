@@ -102,6 +102,7 @@ end
 
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
+    self:shockwave()
     local now = love.timer.getTime()
     if now < self.lastFireTime + self.fireCooldown then 
         return 
@@ -141,8 +142,9 @@ end
 
 ---@param radius? number
 ---@param color? Color
-function Turret:shockwave(radius, color)
+function Turret:shockwave(radius, color, speed)
     radius = radius or 250
+    speed = speed or 50
 
     local cir = Circle:new()
 
@@ -160,7 +162,7 @@ function Turret:shockwave(radius, color)
     t:addKeyframe(cir, {
         radius = radius,
         outlineColor = targetColor
-    }, 2)
+    }, radius / speed)
 
     t:onEvent("finished", function ()
         cir:destroy()
