@@ -22,7 +22,7 @@ function Node2D:new(o)
     setmetatable(o, self)
     self.__index = self
     
-    o.color = Color:new(1, 1, 1)
+    o.color = o.color or Color:new(1, 1, 1)
 
     return o
 end
