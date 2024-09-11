@@ -22,7 +22,12 @@ function Node2D:new(o)
     setmetatable(o, self)
     self.__index = self
     
-    o.color = o.color or Color:new(1, 1, 1)
+    local col = o.color
+    if col then
+        col = col:clone()
+    end
+
+    o.color = col or Color:new(1, 1, 1)
 
     return o
 end
