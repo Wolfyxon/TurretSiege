@@ -158,6 +158,10 @@ function GameScene:update(delta)
 end
 
 function GameScene:gameOver()
+    for i, v in ipairs(self.arena:getChildrenOfClass("Projectile")) do
+        v:destroy()
+    end
+
     self.gui.healthDisplay.visible = false
     music:stop()
 end
