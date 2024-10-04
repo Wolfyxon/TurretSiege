@@ -1,4 +1,4 @@
-local Scene = require("lib.Scene")
+local Scene = require("lib.2d.Scene")
 local utils = require("lib.utils")
 local data = require("data")
 

@@ -3,7 +3,7 @@ local Button = require("lib.2d.gui.Button")
 local Label = require("lib.2d.gui.Label")
 local Sprite = require("lib.2d.Sprite")
 local ListContainer = require("lib.2d.gui.container.ListContainer")
-local Scene = require("lib.Scene")
+local Scene = require("lib.2d.Scene")
 local data = require("data")
 
 ---@class MenuScene: Scene

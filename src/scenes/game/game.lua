@@ -5,7 +5,7 @@ local Color = require("lib.Color")
 local Sprite = require("lib.2d.Sprite")
 local Turret = require("scenes.game.turret.turret")
 local GameGui = require("scenes.game.gui")
-local Scene = require("lib.Scene")
+local Scene = require("lib.2d.Scene")
 
 ---@class GameScene: Scene
 local GameScene = Scene:new()
