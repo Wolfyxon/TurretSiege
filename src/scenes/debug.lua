@@ -23,6 +23,8 @@ function DebugScene:load()
     self.sprite = Sprite:new()
     self.sprite:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
     self.sprite.color = Color.RED:clone()
+    self.sprite.scaleX = 5
+    self.sprite.scaleY = 0.2
     self.sprite.x = 0.5
     self.sprite.y = 0.5
     self:addChild(self.sprite)
