@@ -23,7 +23,10 @@ function DebugScene:draw(screen)
 end
 
 function DebugScene:update(delta)
-    
+    if (love.mouse and love.mouse.isCursorSupported()) or ((not love.mouse or not love.mouse.isCursorSupported()) and utils.system.isMousePressed()) then
+        local x, y = utils.system.getMousePos()
+        self.sprite.rotation = self.sprite:rotationTo(x, y)
+    end
 end
 
 
