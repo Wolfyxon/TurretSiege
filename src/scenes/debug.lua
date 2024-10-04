@@ -9,12 +9,7 @@ DebugScene:_appendClass("DebugScene")
 
 DebugScene.sprite = nil ---@type Sprite
 
-local console = require("lib.Console"):new()
-
 function DebugScene:load()
-    console:print("Debug scene")
-    console:print("Game version:", data.version)
-    console:print("Platform:", utils.system.getPlatform())
 
     self.sprite = Sprite:new()
     self.sprite:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
@@ -24,7 +19,7 @@ function DebugScene:load()
 end
 
 function DebugScene:draw(screen)
-    console:draw()
+    
 end
 
 function DebugScene:update(delta)
