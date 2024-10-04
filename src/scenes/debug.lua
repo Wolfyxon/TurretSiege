@@ -9,6 +9,7 @@ local DebugScene = Scene:new()
 DebugScene:_appendClass("DebugScene")
 
 DebugScene.sprite = nil ---@type Sprite
+DebugScene.cursor = nil ---@type Sprite
 DebugScene.protractor = nil ---@type Sprite
 
 function DebugScene:load()
@@ -28,6 +29,12 @@ function DebugScene:load()
     self.sprite.x = 0.5
     self.sprite.y = 0.5
     self:addChild(self.sprite)
+
+    self.cursor = Sprite:new()
+    self.cursor:loadTextureFromFile("scenes/game/projectiles/powerUps/img/icons/health.png")
+    self.cursor:setScaleAll(0.1)
+    self.cursor.color = Color.GREEN:clone()
+    self:addChild(self.cursor)
 end
 
 function DebugScene:draw(screen)
@@ -37,6 +44,8 @@ end
 function DebugScene:update(delta)
     if (love.mouse and love.mouse.isCursorSupported()) or ((not love.mouse or not love.mouse.isCursorSupported()) and utils.system.isMousePressed()) then
         local x, y = utils.system.getMousePos()
+        self.cursor.x = x
+        self.cursor.y = y
         self.sprite.rotation = self.sprite:rotationTo(x, y)
     end
 end
