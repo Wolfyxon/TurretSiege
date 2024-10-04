@@ -8,8 +8,16 @@ local DebugScene = Scene:new()
 DebugScene:_appendClass("DebugScene")
 
 DebugScene.sprite = nil ---@type Sprite
+DebugScene.protractor = nil ---@type Sprite
 
 function DebugScene:load()
+
+    self.protractor = Sprite:new()
+    self.protractor:loadTextureFromFile("scenes/protractor.png")
+    self.protractor.x = 0.5
+    self.protractor.y = 0.5
+    self.protractor:setScaleAll(0.3)
+    self:addChild(self.protractor)
 
     self.sprite = Sprite:new()
     self.sprite:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
