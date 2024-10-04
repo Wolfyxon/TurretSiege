@@ -1,5 +1,6 @@
 local Scene = require("lib.2d.Scene")
 local Sprite = require("lib.2d.Sprite")
+local Color = require("lib.Color")
 local utils = require("lib.utils")
 local data = require("data")
 
@@ -21,6 +22,7 @@ function DebugScene:load()
 
     self.sprite = Sprite:new()
     self.sprite:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
+    self.sprite.color = Color.RED:clone()
     self.sprite.x = 0.5
     self.sprite.y = 0.5
     self:addChild(self.sprite)
