@@ -140,15 +140,23 @@ function Node2D:canBeDrawnOnScreen(screen)
     return target == screen or target == "all"
 end
 
+---@return boolean
+function Node2D:isTransformDefault()
+    return self.x == 0 and self.y == 0 and self.rotation == 0 and self.scaleX == 1 and self.scaleY == 1
+end
+
 ---@param screen nil|"left"|"bottom"
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
 
     love.graphics.push()
 
-    love.graphics.translate(self.x * data.w, self.y * data.h)
-    love.graphics.rotate(math.rad(self.rotation))
-    love.graphics.scale(self.scaleX, self.scaleY)
+    if not self:isTransformDefault() then
+        love.graphics.translate(self.x * data.w, self.y * data.h)
+        love.graphics.rotate(math.rad(self.rotation))
+        love.graphics.scale(self.scaleX, self.scaleY)
+    end
+
     love.graphics.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
 
     if self:canBeDrawnOnScreen(screen) then
