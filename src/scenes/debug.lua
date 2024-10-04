@@ -13,8 +13,8 @@ function DebugScene:load()
 
     self.sprite = Sprite:new()
     self.sprite:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
-    self.x = 0.5
-    self.y = 0.5
+    self.sprite.x = 0.5
+    self.sprite.y = 0.5
     self:addChild(self.sprite)
 end
 
