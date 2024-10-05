@@ -11,39 +11,44 @@ local MenuScene = Scene:new()
 
 local music = love.audio.newSource("scenes/menu/music.ogg", "stream")
 
----@param x number
----@param y number
----@param size number
----@param rotDir number
-function MenuScene:addGear(x, y, size, rotDir)
-    local g = Sprite:new()
-
-    g:loadTextureFromFile("scenes/game/gear.png")
-    g:setScaleAll(size)
-
-    g.x = x
-    g.y = y
-
-    local c = math.randomf(0.7, 0.9)
-
-    g.color = Color:new(0.8 * c, 0.6 * c, 0)
-
-    function g:update(delta)
-        g:rotate(rotDir * 10 * delta)
-    end
-
-    self:addChild(g)
-end
 
 function MenuScene:load()
     --== Gears ==--
     
-    self:addGear(0, 0, 1, 1)
-    self:addGear(0.05, 0, 0.5, 1)
-    self:addGear(0.2, 1, 0.7, -1)
-    self:addGear(0.7, 0.1, 0.5, 1)
-    self:addGear(0.5, 0.5, 0.4, 1)
-    self:addGear(1, 1, 1.2, -1)
+    local gearCount = 20
+    for i = 1, gearCount do
+        local gear = Sprite:new({}, "scenes/game/gear.png")
+        local dir = (-1) ^ i
+        local s = ((gearCount - i) / gearCount) * 5
+        
+        local c = i / gearCount
+        if dir == -1 then
+            c = c * 0.8
+        end
+        
+        gear.color = Color:new(0.8 * c, 0.6 * c, 0)
+        gear.shadowOpaticy = 0.25
+        gear.x = 0.5
+        gear.y = 0.5
+        gear.scaleX = s
+        gear.scaleY = s
+        
+        local targetRot = 0
+        local time = 0
+
+        function gear:update(delta)
+            gear.rotation = math.lerpAngle(gear.rotation, targetRot, delta * 3)
+            time = time + delta
+            
+            -- 167 is the BPM of the menu soundtrack
+            -- 120 is kinda close to the length but it's somehow perfect lol
+            if time % (120 / 167) <= 0.05 then
+                targetRot = targetRot + 5 * dir
+            end
+        end
+        
+        self:addChild(gear)
+    end
     
     --== Title ==--
 
