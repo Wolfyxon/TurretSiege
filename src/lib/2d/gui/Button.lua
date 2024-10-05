@@ -7,8 +7,8 @@ local Button = Label:new()
 Button:_appendClass("Button")
 Button:_registerEvent("pressed")
 
-Button.backgroundColorNormal = Color:new(0.5, 0.4, 0)  ---@type Color
-Button.backgroundColorFocused = Color:new(0.8, 0.7, 0) ---@type Color
+Button.backgroundColorNormal = Color:new(0.6, 0.3, 0)  ---@type Color
+Button.backgroundColorFocused = Color:new(0.9, 0.6, 0) ---@type Color
 Button.backgroundColorPressed = Color:new(1, 1, 1)     ---@type Color
 Button.isPressed = false                               ---@type boolean
 Button.wasPressed = false                              ---@type boolean
