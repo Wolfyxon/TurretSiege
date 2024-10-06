@@ -7,7 +7,7 @@ HealthPowerUp:_appendClass("HealthPowerUp")
 
 HealthPowerUp.color = Color:new(0.5, 1, 0.5)
 HealthPowerUp.iconImage = "health"
-
+HealthPowerUp.comminity = 0.1
 
 function HealthPowerUp:collected()
     self:getScene().turret:heal(25)

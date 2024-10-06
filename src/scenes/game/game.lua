@@ -24,13 +24,10 @@ GameScene.level = 1                   ---@type integer
 local music = love.audio.newSource("scenes/game/music.ogg", "stream")
 
 ---@param projectile Projectile
----@param comminity? number
----@param level? number
-function GameScene:registerProjectile(projectile, comminity, level)
-    level = level or 1
-    self.projectiles[level] = self.projectiles[level] or {}
-
-    table.insert(self.projectiles[level], utils.table.occurrenceWrap(projectile, comminity or 1))
+function GameScene:registerProjectile(projectile)
+    self.projectiles[projectile.level] = self.projectiles[projectile.level] or {}
+    
+    table.insert(self.projectiles[projectile.level], utils.table.occurrenceWrap(projectile, projectile.comminity))
 end
 
 ---@param projectile Projectile
@@ -78,7 +75,7 @@ end
 function GameScene:load()
     self.lastProjectileSpawnTime = love.timer.getTime()
 
-    self:registerProjectile(require("scenes.game.projectiles.powerUps.HealthPowerUp"), 0.1)
+    self:registerProjectile(require("scenes.game.projectiles.powerUps.HealthPowerUp"))
 
     self:registerProjectile(require("scenes.game.projectiles.axe.axe"))
     self:registerProjectile(require("scenes.game.projectiles.cannonBall.cannonBall"))
