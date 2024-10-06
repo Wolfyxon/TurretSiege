@@ -162,7 +162,7 @@ function GameScene:gameOver()
     end
 
     self.gui.healthDisplay.visible = false
-    music:stop()
+    self.music:stop()
 end
 
 return GameScene
