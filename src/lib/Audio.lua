@@ -15,13 +15,13 @@ function Audio:new(o)
     self.__index = self
     
     o:onEvent("finished", function ()
-        if self.removeOnFinish then
-            self:destroy()
+        if o.removeOnFinish then
+            o:destroy()
         end
     end)
 
     o:onEvent("removed", function ()
-        self:stop()
+        o:stop()
     end)
 
     return o
@@ -85,7 +85,7 @@ end
 ---@return Audio?
 function Audio:play()
     if not self.source then return end
-    
+
     self._wasPlaying = true
 
     self.source:seek(0)
