@@ -36,13 +36,16 @@ end
 
 ---@param path string
 ---@param sourceType "stream" | "static"
+---@return Audio
 function Audio:loadFromFile(path, sourceType)
     sourceType = sourceType or "stream"
 
     self.source = love.audio.newSource(path, sourceType)
+    return self
 end
 
 ---@param volume number
+---@return Audio?
 function Audio:setVolume(volume)
     if not self.source then 
         warn("Volume cannot be applied when no source is loaded.")
@@ -50,9 +53,11 @@ function Audio:setVolume(volume)
     end
 
     self.source:setVolume(volume)
+    return self
 end
 
 ---@param state boolean
+---@return Audio?
 function Audio:setLoop(state)
     if not self.source then
         warn("Loop mode cannot be applied when no source is loaded.")
@@ -60,6 +65,7 @@ function Audio:setLoop(state)
     end
 
     self.source:setLooping(state)
+    return self
 end
 
 ---@return boolean
