@@ -70,7 +70,7 @@ function GameScene:spawnProjectile(projectile)
     projectile.x = x
     projectile.y = y
     
-    projectile.rotation = projectile:rotationTo(0.5, 0.5)
+    projectile.rotation = projectile:rotationTo(0.5, 0.5) + projectile.rotationOffset
     projectile.originalRotation = projectile.rotation
 
     self.arena:addChild(projectile)
@@ -84,6 +84,9 @@ function GameScene:load()
 
         require("scenes.game.projectiles.axe.axe"),
         require("scenes.game.projectiles.cannonBall.cannonBall"),
+
+        require("scenes.game.projectiles.smallRocket.smallRocket"),
+        
     }
 
     for i, v in ipairs(projectileList) do
