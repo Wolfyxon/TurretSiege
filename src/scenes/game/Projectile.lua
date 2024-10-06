@@ -13,6 +13,7 @@ Projectile.comminity = 1             ---@type number
 Projectile.level = 1                 ---@type number
 Projectile.speed = 0.5               ---@type number
 Projectile.rotationSpeed = 0         ---@type number
+Projectile.originalRotation = 0      ---@type number
 Projectile.damage = 2                ---@type number
 Projectile.alreadyHit = false        ---@type boolean
 Projectile.lifeTime   = 8            ---@type number
