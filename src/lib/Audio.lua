@@ -82,6 +82,7 @@ function Audio:getPlaybackPosition()
     return self.source:tell()
 end
 
+---@return Audio?
 function Audio:play()
     if not self.source then return end
 
@@ -89,23 +90,34 @@ function Audio:play()
 
     self.source:seek(0)
     self.source:play()
+
+    return self
 end
 
+---@return Audio?
 function Audio:stop()
     if not self.source then return end
 
     self.source:stop()
     self:emitEvent("finished")
+
+    return self
 end
 
+---@return Audio?
 function Audio:pause()
     if not self.source then return end
     self.source:pause()
+
+    return self
 end
 
+---@return Audio?
 function Audio:resume()
     if not self.source then return end
     self.source:play()
+
+    return
 end
 
 return Audio
