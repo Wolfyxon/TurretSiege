@@ -71,6 +71,7 @@ function GameScene:spawnProjectile(projectile)
     projectile.y = y
     
     projectile.rotation = projectile:rotationTo(0.5, 0.5)
+    projectile.originalRotation = projectile.rotation
 
     self.arena:addChild(projectile)
 end
@@ -78,10 +79,17 @@ end
 function GameScene:load()
     self.lastProjectileSpawnTime = love.timer.getTime()
 
-    self:registerProjectile(require("scenes.game.projectiles.powerUps.HealthPowerUp"))
+    local projectileList = {
+        require("scenes.game.projectiles.powerUps.HealthPowerUp"),
 
-    self:registerProjectile(require("scenes.game.projectiles.axe.axe"))
-    self:registerProjectile(require("scenes.game.projectiles.cannonBall.cannonBall"))
+        require("scenes.game.projectiles.axe.axe"),
+        require("scenes.game.projectiles.cannonBall.cannonBall"),
+    }
+
+    for i, v in ipairs(projectileList) do
+        self:registerProjectile(v)
+    end
+    
 
     self.arena = Node2D:new()
 
