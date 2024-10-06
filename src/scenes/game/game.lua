@@ -152,7 +152,7 @@ function GameScene:update(delta)
         proj:onEvent("died", function ()
             self.projectilesDestroyed = self.projectilesDestroyed + 1
 
-            if self.projectilesDestroyed % (2 * self.level) == 0 then
+            if self.projectilesDestroyed % (20 * self.level) == 0 then
                 self:levelUp()
             end
         end)
