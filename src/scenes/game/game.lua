@@ -15,6 +15,7 @@ GameScene:_appendClass("GameScene")
 GameScene.music = nil                 ---@type Audio
 GameScene.gears = {}                  ---@type Sprite[]
 GameScene.projectiles = {}            ---@type table
+GameScene.currentProjectiles = {}     ---@type table
 GameScene.arena = nil                 ---@type Node2D
 GameScene.gui = nil                   ---@type GameGui
 GameScene.turret = nil                ---@type Turret
@@ -122,6 +123,8 @@ function GameScene:load()
 
     self.gui = GameGui:new()
     self:addChild(self.gui)
+
+    self:updateProjectileList()
 end
 
 function GameScene:unload()
@@ -144,7 +147,7 @@ function GameScene:update(delta)
     if self.turret:isAlive() and now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now
         
-        local proj = utils.table.randomByOccurrence(self.projectiles[self.level]):new()
+        local proj = utils.table.randomByOccurrence(self.currentProjectiles):new()
         
         proj:onEvent("died", function ()
             self.projectilesDestroyed = self.projectilesDestroyed + 1
@@ -160,9 +163,24 @@ function GameScene:update(delta)
     self.projectileSpawnDelay = self.projectileSpawnDelay - 0.01 * delta
 end
 
+function GameScene:updateProjectileList()
+    self.currentProjectiles = {}
+
+    for i = 1, self.level do
+        local projs = self.projectiles[i]
+
+        if projs then
+            for ii, v in ipairs(projs) do
+                table.insert(self.currentProjectiles, v)
+            end
+        end
+    end
+end
+
 function GameScene:levelUp()
     self.level = self.level + 1
     self.turret:shockwave(nil, Color:new(0.9, 0.6, 0))
+    self:updateProjectileList()
 end
 
 function GameScene:gameOver()
