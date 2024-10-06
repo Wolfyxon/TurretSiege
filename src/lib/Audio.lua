@@ -86,6 +86,10 @@ end
 function Audio:play()
     if not self.source then return end
 
+    if not self.parent then
+        warn("Audio played outside of the tree.")
+    end
+
     self._wasPlaying = true
 
     self.source:seek(0)
