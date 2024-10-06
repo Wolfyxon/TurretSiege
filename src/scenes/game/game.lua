@@ -83,7 +83,9 @@ function GameScene:load()
     self:registerProjectile(require("scenes.game.projectiles.cannonBall.cannonBall"))
 
     self.arena = Node2D:new()
+
     self.music = Audio:new():loadFromFile("scenes/game/music.ogg"):play()
+    self:addChild(self.music)
 
     local gearCount = 20
     for i = 1, gearCount do
