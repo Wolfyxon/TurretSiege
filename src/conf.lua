@@ -6,6 +6,10 @@
 
 local utils = require("lib.utils")
 
+function warn(...)
+    print("Warning:", ...)
+end
+
 --== Table ==--
 table.keys = utils.table.keys
 table.find = utils.table.find
