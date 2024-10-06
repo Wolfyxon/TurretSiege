@@ -148,12 +148,21 @@ function GameScene:update(delta)
         
         proj:onEvent("died", function ()
             self.projectilesDestroyed = self.projectilesDestroyed + 1
+
+            if self.projectilesDestroyed % (2 * self.level) == 0 then
+                self:levelUp()
+            end
         end)
         
         self:spawnProjectile(proj)
     end
 
     self.projectileSpawnDelay = self.projectileSpawnDelay - 0.01 * delta
+end
+
+function GameScene:levelUp()
+    self.level = self.level + 1
+    self.turret:shockwave(nil, Color:new(0.9, 0.6, 0))
 end
 
 function GameScene:gameOver()
