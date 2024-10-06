@@ -27,6 +27,7 @@ function main.loadScene(scene)
     assert(tp == "table", "Not a table. Type: " .. tp)
 
     if currentScene then
+        currentScene:clearChildren()
         currentScene:unload()
     end
 
