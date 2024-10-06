@@ -40,6 +40,8 @@ end
 function Audio:loadFromFile(path, sourceType)
     sourceType = sourceType or "stream"
 
+    self:stop()
+
     self.source = love.audio.newSource(path, sourceType)
     return self
 end
