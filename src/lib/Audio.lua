@@ -23,7 +23,7 @@ function Audio:new(o)
     o:onEvent("removed", function ()
         self:stop()
     end)
-    
+
     return o
 end
 
@@ -65,6 +65,13 @@ end
 ---@return boolean
 function Audio:isPlaying()
     return self.source ~= nil and self.source:isPlaying()
+end
+
+---@return number?
+function Audio:getPlaybackPosition()
+    if not self.source then return end
+
+    return self.source:tell()
 end
 
 function Audio:play()
