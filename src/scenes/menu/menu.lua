@@ -2,17 +2,19 @@ local Color = require("lib.Color")
 local Button = require("lib.2d.gui.Button")
 local Label = require("lib.2d.gui.Label")
 local Sprite = require("lib.2d.Sprite")
+local Audio = require("lib.Audio")
 local ListContainer = require("lib.2d.gui.container.ListContainer")
 local Scene = require("lib.2d.Scene")
 local data = require("data")
 
 ---@class MenuScene: Scene
 local MenuScene = Scene:new()
-
-local music = love.audio.newSource("scenes/menu/music.ogg", "stream")
+MenuScene.music = nil ---@type Audio
 
 
 function MenuScene:load()
+    self.music = Audio:new():loadFromFile("scenes/menu/music.ogg"):play()
+
     --== Gears ==--
     
     local gearCount = 20
@@ -108,12 +110,6 @@ function MenuScene:load()
 
     self:addChild(titleContainer)
     self:addChild(buttonContainer)
-    
-    music:play()
-end
-
-function MenuScene:unload()
-    music:stop()
 end
 
 function MenuScene:draw(screen)
