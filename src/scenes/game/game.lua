@@ -179,7 +179,6 @@ end
 
 function GameScene:levelUp()
     self.level = self.level + 1
-    self.turret:shockwave(200, Color:new(1, 0.8, 0))
     self:updateProjectileList()
 end
 
