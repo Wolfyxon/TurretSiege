@@ -73,6 +73,8 @@ function love.draw(screen)
     local sY = h / data.height
 
     local drawData = {
+        wW = w,
+        wH = h,
         w = data.width,
         h = data.height,
         scaleX = sX,
