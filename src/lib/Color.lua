@@ -35,7 +35,7 @@ function Color:new255(r, g, b, a)
     b = b or 1
     a = a or 1
 
-    return Color:new(r * 255, g * 255, b * 255, a * 255)
+    return Color:new(255 / r, 255 / g, 255 / b, 255 / a)
 end
 
 --== Dynamic functions ==--
