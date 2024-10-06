@@ -179,6 +179,11 @@ end
 
 function GameScene:levelUp()
     self.level = self.level + 1
+    
+    if self.level % 4 == 0 then
+        self.turret.fireCooldown = self.turret.fireCooldown * 0.9
+    end
+
     self:updateProjectileList()
 end
 
