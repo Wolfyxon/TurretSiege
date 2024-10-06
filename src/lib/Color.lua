@@ -25,6 +25,19 @@ function Color:new(r, g, b, a)
     return o
 end
 
+---@param r? number
+---@param g? number
+---@param b? number
+---@param a? number
+function Color:new255(r, g, b, a)
+    r = r or 1
+    g = g or 1
+    b = b or 1
+    a = a or 1
+
+    return Color:new(r / 255, g / 255, b / 255, a / 255)
+end
+
 --== Dynamic functions ==--
 
 ---@param color Color
