@@ -10,7 +10,7 @@ local Color = require("lib.Color")
 local Turret = Entity:new()
 
 local scale = 0.15
-local bulletColor = Color:new(1, 0.5, 0.5)
+local bulletColor = Color:new255(255, 106, 0)
 
 local fireSound = love.audio.newSource("scenes/game/turret/audio/fire.ogg", "static")
 local joystick = love.joystick.getJoysticks()[1]
