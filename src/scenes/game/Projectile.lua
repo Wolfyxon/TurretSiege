@@ -13,6 +13,7 @@ Projectile.comminity = 1             ---@type number
 Projectile.level = 1                 ---@type number
 Projectile.speed = 0.5               ---@type number
 Projectile.rotationSpeed = 0         ---@type number
+Projectile.rotationOffset = 0        ---@type number
 Projectile.originalRotation = 0      ---@type number
 Projectile.damage = 2                ---@type number
 Projectile.alreadyHit = false        ---@type boolean
@@ -79,7 +80,7 @@ function Projectile:update(delta)
     self.textureRotation = self.textureRotation + self.rotationSpeed  * delta
 
     if self.moveTarget == "forward" then
-        self:moveRotated(self.speed * delta, 0)
+        self:moveRotated(self.speed * delta, 0, self.rotation - self.rotationOffset)
     end
 
     if self.moveTarget == "turret" then
