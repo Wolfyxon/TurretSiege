@@ -3,6 +3,7 @@ local utils = require("lib.utils")
 local Node2D = require("lib.2d.Node2d")
 local Color = require("lib.Color")
 local Sprite = require("lib.2d.Sprite")
+local Audio = require("lib.Audio")
 local Turret = require("scenes.game.turret.turret")
 local GameGui = require("scenes.game.gui")
 local Scene = require("lib.2d.Scene")
@@ -11,6 +12,7 @@ local Scene = require("lib.2d.Scene")
 local GameScene = Scene:new()
 GameScene:_appendClass("GameScene")
 
+GameScene.music = nil                 ---@type Audio
 GameScene.gears = {}                  ---@type Sprite[]
 GameScene.projectiles = {}            ---@type table
 GameScene.arena = nil                 ---@type Node2D
@@ -21,12 +23,12 @@ GameScene.lastProjectileSpawnTime = 2 ---@type number
 GameScene.projectilesDestroyed = 0    ---@type integer
 GameScene.level = 1                   ---@type integer
 
-local music = love.audio.newSource("scenes/game/music.ogg", "stream")
+
 
 ---@param projectile Projectile
 function GameScene:registerProjectile(projectile)
     self.projectiles[projectile.level] = self.projectiles[projectile.level] or {}
-    
+
     table.insert(self.projectiles[projectile.level], utils.table.occurrenceWrap(projectile, projectile.comminity))
 end
 
@@ -81,6 +83,7 @@ function GameScene:load()
     self:registerProjectile(require("scenes.game.projectiles.cannonBall.cannonBall"))
 
     self.arena = Node2D:new()
+    self.music = Audio:new():loadFromFile("scenes/game/music.ogg"):play()
 
     local gearCount = 20
     for i = 1, gearCount do
@@ -117,14 +120,11 @@ function GameScene:load()
 
     self.gui = GameGui:new()
     self:addChild(self.gui)
-
-    music:play()
 end
 
 function GameScene:unload()
     self.turret = nil
     self.gui = nil
-    music:stop()
 end
 
 function GameScene:draw(screen)
