@@ -107,3 +107,5 @@ function Audio:resume()
     if not self.source then return end
     self.source:play()
 end
+
+return Audio
