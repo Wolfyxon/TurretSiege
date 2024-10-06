@@ -30,12 +30,12 @@ end
 ---@param b? number
 ---@param a? number
 function Color:new255(r, g, b, a)
-    r = r or 1
-    g = g or 1
-    b = b or 1
-    a = a or 1
+    r = r or 255
+    g = g or 255
+    b = b or 255
+    a = a or 255
 
-    return Color:new(255 / r, 255 / g, 255 / b, 255 / a)
+    return Color:new(r / 255, g / 255, b / 255, a / 255)
 end
 
 --== Dynamic functions ==--
