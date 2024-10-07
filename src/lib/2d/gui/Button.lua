@@ -10,8 +10,6 @@ Button:_registerEvent("pressed")
 Button.backgroundColorNormal = Color:new(0.6, 0.3, 0)  ---@type Color
 Button.backgroundColorFocused = Color:new(0.9, 0.6, 0) ---@type Color
 Button.backgroundColorPressed = Color:new(1, 1, 1)     ---@type Color
-Button.isPressed = false                               ---@type boolean
-Button.wasPressed = false                              ---@type boolean
 Button.focused = false                                 ---@type boolean 
 Button.enabled = true                                  ---@type boolean
 Button.next = nil                                      ---@type Button
@@ -30,12 +28,18 @@ function Button:new(o)
     o.backgroundColor = self.backgroundColorNormal:clone()
     o:setText("Button")
 
+    main.onEvent("mousepressed", function ()
+        if not o.focused then return end
+        
+        o:emitEvent("pressed")
+        o:pressed()
+    end)
+
     return o
 end
 
 function Button:update(delta)
     self:checkMouseFocus()
-    self:checkPress()
     
     self:updateBg(delta)
 end
@@ -70,28 +74,6 @@ function Button:updateBg(delta)
     end
 
     self.backgroundColor:lerp(tar, 10 * delta)
-end
-
-function Button:checkPress()
-    if not self.enabled then return end
-    if not self.focused then return end
-    if not self:isVisibleInTree() then return false end
-    
-    self.isPressed = self._mode == "mouse" and self:isHovered() and (utils.system.isMousePressed() or (love.keyboard and love.keyboard.isDown("return")))
-    
-    if not self.isPressed then
-        self.wasPressed = false
-        return
-    end
-
-    if self.wasPressed then return end
-
-    self.wasPressed = self.isPressed
-
-    if self.isPressed then
-        self:emitEvent("pressed")
-        self:pressed()
-    end
 end
 
 ---@return boolean
