@@ -29,13 +29,7 @@ function Button:new(o)
     o:setText("Button")
 
     main.onEvent("mousepressed", function ()
-        if not o.parent then return end
-        if not o.focused then return end
-        if not o:isInScene() then return end
-        if not o:isVisibleInTree() then return end
-
-        o:emitEvent("pressed")
-        o:pressed()
+        o:pressRequest()
     end)
 
     return o
@@ -107,6 +101,15 @@ function Button:checkMouseFocus()
     end
 end
 
+function Button:pressRequest()
+    if not self.parent then return end
+    if not self.focused then return end
+    if not self:isInScene() then return end
+    if not self:isVisibleInTree() then return end
+
+    self:emitEvent("pressed")
+    self:pressed()
+end
 
 function Button:pressed() end
 
