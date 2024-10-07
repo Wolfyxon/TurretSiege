@@ -13,7 +13,7 @@ SmallRocketProjectile.rotationOffset = 90
 function SmallRocketProjectile:ready()
     self:setScaleAll(0.2)
 
-    self:loadTextureFromFile("scenes/game/projectiles/smallRocket/rocket.png")
+    self:loadTextureFromFile("scenes/game/projectiles/level2/smallRocket/rocket.png")
 end
 
 function SmallRocketProjectile:update(delta)

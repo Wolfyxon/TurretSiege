@@ -14,7 +14,7 @@ function CannonBallProjectile:ready()
     self.scaleX = scale
     self.scaleY = scale
 
-    self:loadTextureFromFile("scenes/game/projectiles/cannonBall/cannonBall.png")
+    self:loadTextureFromFile("scenes/game/projectiles/level1/cannonBall/cannonBall.png")
 end
 
 return CannonBallProjectile

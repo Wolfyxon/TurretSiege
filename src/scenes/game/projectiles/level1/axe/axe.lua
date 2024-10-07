@@ -14,7 +14,7 @@ function AxeProjectile:ready()
     self.scaleX = scale
     self.scaleY = scale
 
-    self:loadTextureFromFile("scenes/game/projectiles/axe/axe.png")
+    self:loadTextureFromFile("scenes/game/projectiles/level1/axe/axe.png")
 end
 
 return AxeProjectile
