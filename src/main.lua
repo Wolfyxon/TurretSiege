@@ -101,7 +101,7 @@ function love.load()
     print("==================================================================")
 
     love.window.setTitle("Turret Siege")
-    love.window.setMode(data.width, data.height, {resizable = true})
+    love.window.setMode(data.width * data.windowSizeMultiplier, data.height * data.windowSizeMultiplier, {resizable = true})
     
     main.loadSceneByName(utils.config.getFlagDictionary().scene)
 end
