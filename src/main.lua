@@ -19,7 +19,6 @@ local currentScene = nil ---@type Scene|nil
 
 local events = {
     mousepressed = {},
-    touchpressed = {},
     keypressed = {}
 }
 
