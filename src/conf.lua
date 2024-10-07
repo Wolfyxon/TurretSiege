@@ -34,3 +34,7 @@ math.lerp = utils.math.lerp
 math.lerpAngle = utils.math.lerpAngle
 math.rotationTo = utils.math.rotationTo
 math.rotateDirection = utils.math.rotateDirection
+
+-------=========== Other setup ===============---------
+
+math.randomseed(-os.clock(), os.clock()) -- this fixes random generator creating the same results on each run
