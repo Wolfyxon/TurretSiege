@@ -2,7 +2,7 @@ local data = require("data")
 local utils = require("lib.utils")
 
 ---@class Main
-local main = {
+main = {
     frameCount = 0,
 }
 
