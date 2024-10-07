@@ -122,3 +122,11 @@ function love.update(delta)
         currentScene:updateRequest(delta)
     end
 end
+
+function love.mousepressed(x, y, button, isTouch, presses)
+    emitEvent("mousepressed", x, y, button, isTouch, presses)
+end
+
+function love.keypressed(key, scanCode, isRepeat)
+    emitEvent("keypressed", key, scanCode, isRepeat)
+end
