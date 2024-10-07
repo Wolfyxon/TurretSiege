@@ -44,6 +44,34 @@ function ListContainer:arrangeChildren()
             end
         end
     end
+
+    self:adjustSize()
+end
+
+function ListContainer:adjustSize()
+    local maxW = 0
+    local maxH = 0
+
+    for i, v in ipairs(self.children) do
+        if v:isA("AreaNode") then
+            maxW = math.max(maxW, v.width)
+            maxH = math.max(maxH, v.height)
+        end
+    end
+
+    if self.sizing == "extend" then
+        if self.width < maxW then
+            self.width = maxW
+        end
+
+        if self.height < maxH then
+            self.height = maxH
+        end
+    
+    elseif self.sizing == "minimal" then
+        self.width = maxW
+        self.height = maxH
+    end
 end
 
 return ListContainer
