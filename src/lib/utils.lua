@@ -114,6 +114,10 @@ end
 function utils.table.randomByOccurrence(tbl)
     local totalWeight = 0
 
+    if #tbl == 0 then
+        return
+    end
+
     for i, v in ipairs(tbl) do
         assert(v.commonity, type(v) .. " value '" .. tostring(v) .. "' is not occurrence wrapped.")
 
