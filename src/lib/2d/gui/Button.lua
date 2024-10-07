@@ -75,6 +75,7 @@ end
 function Button:checkPress()
     if not self.enabled then return end
     if not self.focused then return end
+    if not self:isVisibleInTree() then return false end
     
     self.isPressed = self._mode == "mouse" and self:isHovered() and (utils.system.isMousePressed() or (love.keyboard and love.keyboard.isDown("return")))
     
@@ -96,6 +97,8 @@ end
 ---@return boolean
 function Button:isHovered()
     if not love.mouse or not love.mouse.isCursorSupported() then return false end
+    if not self:isVisibleInTree() then return false end
+
     local mX, mY = utils.system.getMousePos("bottom")
 
     return self:containsGlobalPoint(mX, mY)
@@ -103,6 +106,7 @@ end
 
 function Button:checkMouseFocus()
     if not love.mouse or not love.mouse.isCursorSupported() then return end
+    if not self:isVisibleInTree() then return false end
 
     local cmX, cmY = utils.system.getMousePos("bottom")
 
