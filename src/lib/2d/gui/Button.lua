@@ -29,8 +29,10 @@ function Button:new(o)
     o:setText("Button")
 
     main.onEvent("mousepressed", function ()
+        if not o.parent then return end
         if not o.focused then return end
-        
+        if not o:isVisibleInTree() then return end
+
         o:emitEvent("pressed")
         o:pressed()
     end)
