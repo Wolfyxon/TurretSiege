@@ -31,6 +31,7 @@ function Button:new(o)
     main.onEvent("mousepressed", function ()
         if not o.parent then return end
         if not o.focused then return end
+        if not o:isInScene() then return end
         if not o:isVisibleInTree() then return end
 
         o:emitEvent("pressed")
