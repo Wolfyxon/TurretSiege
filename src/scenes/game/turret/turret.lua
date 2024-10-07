@@ -32,6 +32,7 @@ function Turret:new(o)
     setmetatable(o, self)
     self.__index = self
 
+    o.lastFireTime = love.timer.getTime()
     o.projectiles = {}
 
     o.base = Sprite:new({}, "scenes/game/turret/img/base.png")
