@@ -94,7 +94,7 @@ function MenuScene:load()
     btnPlay:setText("Play")
     buttonContainer:addChild(btnPlay)
     btnPlay:onEvent("pressed", function ()
-        self.main.loadSceneByName("game")
+        main.loadSceneByName("game")
     end)
 
     local btnQuit = Button:new()

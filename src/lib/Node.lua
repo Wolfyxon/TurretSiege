@@ -5,7 +5,6 @@ local Node = {
     classList = {"Node"},      ---@type string[]
     isReady = false,           ---@type boolean
     eventHandlers = {},        ---@type {string: function[]}
-    main = nil,                ---@type Main
     parent = nil,              ---@type Node
     children = {},             ---@type Node[]
     uniqueId = ""              ---@type string
@@ -164,7 +163,6 @@ function Node:addChild(node)
 
     node:orphanize()
     node.parent = self
-    node.main = node.main or self.main
     
     table.insert(self.children, node)
 

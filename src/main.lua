@@ -47,7 +47,6 @@ function main.loadScene(scene)
 
     scene = scene:new()
 
-    scene.main = main
     currentScene = scene
     scene:load()
 end

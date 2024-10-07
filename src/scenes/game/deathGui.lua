@@ -51,7 +51,7 @@ function DeathGui:ready()
     buttons:addChild(btnRestart)
 
     btnRestart:onEvent("pressed", function ()
-        self.main.loadSceneByName("game")
+        main.loadSceneByName("game")
     end)
 
     local btnMenu = Button:new()
@@ -61,7 +61,7 @@ function DeathGui:ready()
     buttons:addChild(btnMenu)
 
     btnMenu:onEvent("pressed", function ()
-        self.main.loadSceneByName("menu")
+        main.loadSceneByName("menu")
     end)
 
     buttons:arrangeChildren()

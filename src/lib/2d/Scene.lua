@@ -10,8 +10,7 @@ function Scene:new(o, name)
     o = Node2D.new(self, o)
     setmetatable(o, self)
     self.__index = self
-
-    o.main = nil
+    
     o.name = name or debug.getinfo(2, "S").short_src
 
     return o
