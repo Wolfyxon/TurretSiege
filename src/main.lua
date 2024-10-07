@@ -62,6 +62,11 @@ function main.loadScene(scene)
     scene:load()
 end
 
+---@return Scene?
+function main.getCurrentScene()
+    return currentScene
+end
+
 ---@param sceneName string
 function main.loadSceneByName(sceneName)
     local s = main.scenes[sceneName]
