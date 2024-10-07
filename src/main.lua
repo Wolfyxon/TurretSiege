@@ -35,6 +35,15 @@ function main.onEvent(name, callback)
     return #callbacks
 end
 
+---@param name string
+---@param index integer
+function main.disconnectEvent(name, index)
+    local callbacks = events[name]
+    assert(callbacks, "Unknown event: " .. name)
+
+    table.remove(callbacks, index)
+end
+
 ---@param scene Scene
 function main.loadScene(scene)
     assert(scene, "Scene is nil")
