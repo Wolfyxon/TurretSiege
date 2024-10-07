@@ -202,6 +202,9 @@ function GameScene:levelUp()
         self.turret.fireCooldown = self.turret.fireCooldown * 0.9
     end
 
+    self.gui.levelLabel:setText("Level " .. tostring(self.level))
+    self.gui.levelLabel.color = Color.GREEN:clone()
+
     self:updateProjectileList()
 end
 

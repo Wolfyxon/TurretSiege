@@ -11,9 +11,21 @@ GameGui.healthDisplay = nil ---@type Node2D
 GameGui.effectBar = nil     ---@type ProgressBar
 GameGui.hpBar = nil         ---@type ProgressBar
 GameGui.hasEffect = false   ---@type boolean
+GameGui.levelLabel = nil    ---@type Label
 
 function GameGui:ready()
     self.screen = "left"
+
+    --== Level label ==--
+
+    local lvlLbl = Label:new()
+    lvlLbl.x = 0.01
+    lvlLbl.y = 0.01
+    lvlLbl.positioning = "topleft"
+    lvlLbl:setText("Level 1")
+
+    self.levelLabel = lvlLbl
+    self:addChild(lvlLbl)
 
     --== Health display ==--
     local healthDisplay = ListContainer:new()
@@ -66,6 +78,8 @@ function GameGui:update(delta)
     else
         self.effectBar.scaleY = math.lerp(self.effectBar.scaleY, 0, effectBarSpeed * delta)
     end
+
+    self.levelLabel.color:lerp(Color.WHITE, 2 * delta)
 end
 
 ---@param name string
