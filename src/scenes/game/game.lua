@@ -6,6 +6,7 @@ local Sprite = require("lib.2d.Sprite")
 local Audio = require("lib.Audio")
 local Turret = require("scenes.game.turret.turret")
 local GameGui = require("scenes.game.gui")
+local DeathGui = require("scenes.game.deathGui")
 local Scene = require("lib.2d.Scene")
 
 ---@class GameScene: Scene
@@ -18,6 +19,7 @@ GameScene.projectiles = {}            ---@type table
 GameScene.currentProjectiles = {}     ---@type table
 GameScene.arena = nil                 ---@type Node2D
 GameScene.gui = nil                   ---@type GameGui
+GameScene.deathGui = nil              ---@type DeathGui
 GameScene.turret = nil                ---@type Turret
 GameScene.projectileSpawnDelay = 1    ---@type number
 GameScene.lastProjectileSpawnTime = 2 ---@type number
@@ -135,6 +137,9 @@ function GameScene:load()
     self.gui = GameGui:new()
     self:addChild(self.gui)
 
+    self.deathGui = DeathGui:new()
+    self:addChild(self.deathGui)
+
     self:updateProjectileList()
 end
 
@@ -203,6 +208,7 @@ function GameScene:gameOver()
         v:destroy()
     end
 
+    self.deathGui.visible = true
     self.gui.healthDisplay.visible = false
     self.music:stop()
 end
