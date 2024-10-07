@@ -17,7 +17,22 @@ main.scenes = scenes
 
 local currentScene = nil ---@type Scene|nil
 
+local events = {
+    mousepressed = {},
+    touchpressed = {},
+    keypressed = {}
+}
+
 --== Main functions ==--
+
+---@param name string
+---@param callback function
+function main.onEvent(name, callback)
+    local callbacks = events[name]
+    assert(callbacks, "Unknown event: " .. name)
+
+    table.insert(callbacks, callback)
+end
 
 ---@param scene Scene
 function main.loadScene(scene)
@@ -43,6 +58,17 @@ function main.loadSceneByName(sceneName)
     local s = main.scenes[sceneName]
     assert(s, "Scene '" .. tostring(sceneName) .. "' does not exist")
     main.loadScene(s)
+end
+
+--== Private main functions ==--
+
+local function emitEvent(name, ...)
+    local callbacks = events[name]
+    assert(callbacks, "Unknown event: " .. name)
+
+    for i, v in ipairs(callbacks) do
+        v(...)
+    end
 end
 
 --== Love2D function overrides ==--
