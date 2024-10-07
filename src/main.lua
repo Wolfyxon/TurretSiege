@@ -26,11 +26,13 @@ local events = {
 
 ---@param name string
 ---@param callback function
+---@return integer
 function main.onEvent(name, callback)
     local callbacks = events[name]
     assert(callbacks, "Unknown event: " .. name)
 
     table.insert(callbacks, callback)
+    return #callbacks
 end
 
 ---@param scene Scene
