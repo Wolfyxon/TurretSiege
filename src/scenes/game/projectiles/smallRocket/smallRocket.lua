@@ -6,7 +6,7 @@ SmallRocketProjectile:_appendClass("AxeProjectile")
 
 SmallRocketProjectile.level = 2
 SmallRocketProjectile.comminity = 0.5
-SmallRocketProjectile.speed = 0.6
+SmallRocketProjectile.speed = 0.45
 SmallRocketProjectile.damage = 10
 SmallRocketProjectile.rotationOffset = 90
 
