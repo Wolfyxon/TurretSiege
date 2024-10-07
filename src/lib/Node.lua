@@ -94,6 +94,16 @@ function Node:isA(class, exact)
     return table.has(self.classList, class)
 end
 
+---@return boolean
+function Node:isInScene()
+    local scene = main.getCurrentScene()
+    if not scene then
+        return false
+    end
+
+    return (self == scene) or (table.find(self:getAncestors(), scene) ~= nil)
+end
+
 ---@return Node[]
 function Node:getAncestors()
     local res = {}
