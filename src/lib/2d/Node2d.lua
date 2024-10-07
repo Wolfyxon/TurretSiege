@@ -34,6 +34,21 @@ end
 
 --== Dynamic methods ==--
 
+---@return boolean
+function Node2D:isVisibleInTree()
+    if not self.visible then
+        return false
+    end
+
+    for i, v in ipairs(self:getAncestors()) do
+        if not v.visible then
+            return false
+        end
+    end
+
+    return true
+end
+
 ---@param scale number
 function Node2D:setScaleAll(scale)
     self.scaleX = scale
