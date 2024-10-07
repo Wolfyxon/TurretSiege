@@ -19,6 +19,10 @@ function GuiNode:new(o)
     o.backgroundColor = Color:new(0, 0, 0, 0)
     o.borderColor = Color:new(0, 0, 0, 0)
 
+    o:onEvent("nodeListUpdated", function ()
+        o:adjustSize()
+    end)
+    
     return o
 end
 
