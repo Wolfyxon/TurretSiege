@@ -126,7 +126,6 @@ function GameScene:load()
     end
 
     self.turret = Turret:new()
-    self.turret.hp = 5
     self.turret:onEvent("died", function ()
         self:gameOver()
     end)
