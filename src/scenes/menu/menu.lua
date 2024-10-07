@@ -13,7 +13,7 @@ MenuScene.music = nil ---@type Audio
 
 
 function MenuScene:load()
-    self.music = Audio:new():loadFromFile("scenes/menu/music.ogg"):play()
+    self.music = Audio:new():loadFromFile("scenes/menu/music.ogg"):setLoop(true):play()
     self:addChild(self.music)
 
     --== Gears ==--

@@ -98,7 +98,7 @@ function GameScene:load()
 
     self.arena = Node2D:new()
 
-    self.music = Audio:new():loadFromFile("scenes/game/music.ogg"):play()
+    self.music = Audio:new():loadFromFile("scenes/game/music.ogg"):setLoop(true):play()
     self:addChild(self.music)
 
     local gearCount = 20
