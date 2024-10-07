@@ -19,7 +19,6 @@ table.tostring = utils.table.tostring
 table.copy = utils.table.copy
 table.erase = utils.table.erase
 table.merge = utils.table.merge
-table.join = utils.table.join
 
 --== String ==--
 string.startsWith = utils.string.startsWith
