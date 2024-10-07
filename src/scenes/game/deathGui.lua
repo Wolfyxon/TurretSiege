@@ -16,7 +16,15 @@ local randomTexts = {
     "That was a tough one.",
     "They got you.",
     "That hurts",
-    "Don't give up!"
+    "Don't give up!",
+    "Keep going!",
+    "NOOOO",
+    "welp.",
+    "Try again!",
+    "You're a worthy enemy",
+    "Not bad anyway",
+    "Game over",
+    "Come on!"
 }
 
 function DeathGui:ready()
