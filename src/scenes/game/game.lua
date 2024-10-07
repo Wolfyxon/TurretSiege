@@ -175,8 +175,6 @@ function GameScene:update(delta)
         
         self:spawnProjectile(proj)
     end
-
-    self.projectileSpawnDelay = self.projectileSpawnDelay - 0.01 * delta
 end
 
 function GameScene:updateProjectileList()
@@ -196,6 +194,10 @@ end
 function GameScene:levelUp()
     self.level = self.level + 1
     
+    if self.level % 2 == 0 then
+        self.projectileSpawnDelay = self.projectileSpawnDelay - 0.025
+    end
+
     if self.level % 4 == 0 then
         self.turret.fireCooldown = self.turret.fireCooldown * 0.9
     end
