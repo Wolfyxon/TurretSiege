@@ -126,6 +126,7 @@ function GameScene:load()
     end
 
     self.turret = Turret:new()
+    self.turret.hp = 5
     self.turret:onEvent("died", function ()
         self:gameOver()
     end)
@@ -213,8 +214,8 @@ function GameScene:gameOver()
         v:destroy()
     end
 
-    self.deathGui.visible = true
     self.gui.healthDisplay.visible = false
+    self.deathGui:show()
     self.music:stop()
 end
 

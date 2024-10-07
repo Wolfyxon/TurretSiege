@@ -6,6 +6,7 @@ local Color = require("lib.Color")
 
 ---@class DeathGui: GuiNode
 local DeathGui = GuiNode:new()
+DeathGui.statList = nil ---@type ListContainer
 
 local targetColor = Color:new(0, 0, 0, 0.5)
 
@@ -41,6 +42,15 @@ function DeathGui:ready()
     lbl:setText(table.random(randomTexts))
     lbl:setFontSize(64)
     self:addChild(lbl)
+
+    --== Stats ==--
+    local stats = ListContainer:new()
+    stats.x = 0.5
+    stats.y = 0.48
+    stats.spacing = 0.01
+
+    self.statList = stats
+    self:addChild(stats)
 
     --== Buttons ==--
 
@@ -80,6 +90,22 @@ function DeathGui:update(delta)
     if self.visible then
         self.backgroundColor:lerp(targetColor, delta * 5)
     end
+end
+
+function DeathGui:show()
+    local function addStat(title, value)
+        local label = Label:new()
+        label.width = 1
+        label:setText(title .. ": " .. tostring(value))
+
+        self.statList:addChild(label)
+    end
+
+    addStat("Kills", main.getCurrentScene().projectilesDestroyed)
+    addStat("Level", main.getCurrentScene().level)
+
+    self.statList:arrangeChildren()
+    self.visible = true
 end
 
 return DeathGui
