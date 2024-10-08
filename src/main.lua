@@ -110,7 +110,7 @@ function love.draw(screen)
     local drawData = utils.system.getDrawData(screen)
     
     love.graphics.scale(drawData.scaleX, drawData.scaleY)
-    love.graphics.translate(drawData.offsetX, drawData.offsetY)
+    --love.graphics.translate(drawData.offsetX, drawData.offsetY)
 
     if currentScene then
         currentScene:drawRequest(screen, drawData)

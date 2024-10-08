@@ -167,7 +167,7 @@ function Node2D:drawRequest(screen, data)
     love.graphics.push()
 
     if not self:isTransformDefault() then
-        love.graphics.translate(self.x * data.size, self.y * data.size)
+        love.graphics.translate(self.x * data.w, self.y * data.h)
         love.graphics.rotate(math.rad(self.rotation))
         love.graphics.scale(self.scaleX, self.scaleY)
     end
