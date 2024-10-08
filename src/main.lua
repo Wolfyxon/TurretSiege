@@ -97,7 +97,6 @@ function love.load()
     print("Platform:", utils.system.getPlatform())
     print("Game version:", utils.version.getTuple())
     print("Love2D version:", love.getVersion())
-    print("LovePotion version:", love.__potion_version)
     print("==================================================================")
 
     love.window.setTitle("Turret Siege")
