@@ -3,7 +3,8 @@ local utils = {
     string = {},
     math = {},
     system = {},
-    config = {}
+    config = {},
+    version = {}
 }
 local data = require("data")
 
@@ -452,5 +453,9 @@ function utils.config.hasFlag(flag)
     
     return false
 end
+
+--== Version ==--
+
+
 
 return utils
