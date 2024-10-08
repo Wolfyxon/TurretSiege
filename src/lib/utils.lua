@@ -133,8 +133,8 @@ function utils.table.randomByOccurrence(tbl)
             return v.value
         end
     end
-
-    error("If you see this, Wolfyxon is an idiot")
+    
+    error("Random occurrence pick failed. Random counter value: " .. tostring(r))
 end
 
 --== String ==--
