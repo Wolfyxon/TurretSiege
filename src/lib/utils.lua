@@ -363,7 +363,7 @@ function utils.system.getDrawData(screen)
     local w, h = love.graphics.getDimensions(screen)
     local ratio = math.min(w / data.width, h / data.height)
     local size = math.min(data.width, data.height)
-    
+
     local oX = (data.width - size) / 2
     local oY = (data.height - size) / 2
 
@@ -377,8 +377,8 @@ function utils.system.getDrawData(screen)
         h = data.height,
         scaleX = sX,
         scaleY = sY,
-        oX = oX,
-        oY = oY,
+        offsetX = oX,
+        offsetY = oY,
         ratio = ratio,
         size = size
     }
