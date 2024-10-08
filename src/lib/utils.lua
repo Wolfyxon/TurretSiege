@@ -461,6 +461,12 @@ function utils.version.getSplit()
     return data.version:multiSplit({".", "-"})
 end
 
+function utils.version.getTuple()
+    local split = utils.version.getSplit()
+
+    return split[1], split[2], split[3], split[4]
+end
+
 function utils.version.getTable()
     local split = utils.version.getSplit()
     
