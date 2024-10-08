@@ -9,6 +9,7 @@ SmallRocketProjectile.comminity = 0.5
 SmallRocketProjectile.speed = 0.45
 SmallRocketProjectile.damage = 10
 SmallRocketProjectile.rotationOffset = 90
+SmallRocketProjectile.moveTarget = "forward"
 
 function SmallRocketProjectile:ready()
     self:setScaleAll(0.2)
