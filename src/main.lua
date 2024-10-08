@@ -121,7 +121,8 @@ function love.draw(screen)
         h = size,
         scaleX = sX,
         scaleY = sY,
-        ratio = ratio
+        ratio = ratio,
+        size = size
     }
 
     local oX = (data.width - size) / 2
