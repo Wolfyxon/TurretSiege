@@ -461,4 +461,15 @@ function utils.version.getSplit()
     return data.version:multiSplit({".", "-"})
 end
 
+function utils.version.getTable()
+    local split = utils.version.getSplit()
+    
+    return {
+        major = split[1],
+        minor = split[2],
+        patch = split[3],
+        stage = split[4] or "release"
+    }
+end
+
 return utils
