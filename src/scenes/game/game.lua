@@ -178,17 +178,19 @@ function GameScene:update(delta)
 end
 
 function GameScene:updateProjectileList()
-    self.currentProjectiles = {}
+    local projectiles = {}
 
     for i = 1, self.level do
         local projs = self.projectiles[i]
 
         if projs then
             for ii, v in ipairs(projs) do
-                table.insert(self.currentProjectiles, v)
+                table.insert(projectiles, v)
             end
         end
     end
+
+    self.currentProjectiles = projectiles
 end
 
 function GameScene:levelUp()
