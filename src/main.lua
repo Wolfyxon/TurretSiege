@@ -107,30 +107,10 @@ function love.load()
 end
 
 function love.draw(screen)
-    local w, h = love.graphics.getDimensions(screen)
-    local ratio = math.min(w / data.width, h / data.height)
-    local size = math.min(data.width, data.height)
-    local oX = (data.width - size) / 2
-    local oY = (data.height - size) / 2
-
-    local sX = w / data.width
-    local sY = h / data.height
-
-    local drawData = {
-        wW = w,
-        wH = h,
-        w = data.width,
-        h = data.height,
-        scaleX = sX,
-        scaleY = sY,
-        oX = oX,
-        oY = oY,
-        ratio = ratio,
-        size = size
-    }
-
-    love.graphics.scale(sX, sY)
-    love.graphics.translate(oX, oY)
+    local drawData = utils.system.getDrawData(screen)
+    
+    love.graphics.scale(drawData.scaleX, drawData.scaleY)
+    love.graphics.translate(drawData.oX, drawData.oY)
 
     if currentScene then
         currentScene:drawRequest(screen, drawData)
