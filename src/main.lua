@@ -117,8 +117,8 @@ function love.draw(screen)
     local drawData = {
         wW = w,
         wH = h,
-        w = size,
-        h = size,
+        w = data.width,
+        h = data.height,
         scaleX = sX,
         scaleY = sY,
         ratio = ratio,
@@ -127,7 +127,7 @@ function love.draw(screen)
 
     local oX = (data.width - size) / 2
     local oY = (data.height - size) / 2
-        
+
     love.graphics.scale(sX, sY)
     love.graphics.translate(oX, oY)
 
