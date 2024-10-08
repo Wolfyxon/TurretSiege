@@ -1,4 +1,5 @@
 local Entity = require("scenes.game.Entity")
+local TurretShield = require("scenes.game.turret.shield")
 local Projectile = require("scenes.game.Projectile")
 local Sprite = require("lib.2d.Sprite")
 local Tween = require("lib.Tween")
@@ -171,6 +172,14 @@ function Turret:shockwave(radius, color, speed)
     t:play()
     
     self.parent:addChild(cir)
+end
+
+function Turret:spawnShield()
+    local shield = TurretShield:new()
+    shield.x = 0.5
+    shield.y = 0.5
+
+    self.parent:addChild(shield)
 end
 
 return Turret
