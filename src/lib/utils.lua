@@ -456,6 +456,9 @@ end
 
 --== Version ==--
 
-
+---@return string[]
+function utils.version.getSplit()
+    return data.version:multiSplit({".", "-"})
+end
 
 return utils
