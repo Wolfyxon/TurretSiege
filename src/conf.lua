@@ -21,6 +21,7 @@ table.erase = utils.table.erase
 table.merge = utils.table.merge
 
 --== String ==--
+string.multiSplit = utils.string.multiSplit
 string.startsWith = utils.string.startsWith
 string.endsWith = utils.string.startsWith
 string.split = utils.string.split
