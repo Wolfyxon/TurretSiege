@@ -108,7 +108,7 @@ end
 
 function love.draw(screen)
     local w, h = love.graphics.getDimensions(screen)
-    --local ratio = math.min(w / data.width, h / data.height)
+    local ratio = math.min(w / data.width, h / data.height)
 
     local sX = w / data.width
     local sY = h / data.height
@@ -120,6 +120,7 @@ function love.draw(screen)
         h = data.height,
         scaleX = sX,
         scaleY = sY,
+        ratio = ratio
     }
 
     love.graphics.scale(sX, sY)
