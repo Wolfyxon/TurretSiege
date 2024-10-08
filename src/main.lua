@@ -143,4 +143,8 @@ end
 
 function love.keypressed(key, scanCode, isRepeat)
     emitEvent("keypressed", key, scanCode, isRepeat)
+
+    if key == "f11" then
+        love.window.setFullscreen(not love.window.getFullscreen())
+    end
 end
