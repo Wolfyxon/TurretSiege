@@ -80,6 +80,10 @@ function PowerUp:new(o)
     return o
 end
 
+function PowerUp:ready()
+    self.icon.rotation = -self.rotation
+end
+
 function PowerUp:update(delta)
     Projectile.update(self, delta)
 
