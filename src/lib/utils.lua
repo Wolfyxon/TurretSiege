@@ -140,6 +140,21 @@ end
 --== String ==--
 
 ---@param str string
+---@param separators string[]
+---@return string[]
+function utils.string.multiSplit(str, separators)
+    local pattern = "[^" .. table.concat(separators) .. "]+"
+    
+    local res = {}
+
+    for v in str:gmatch(pattern) do
+        table.insert(res, v)
+    end
+
+    return res
+end
+
+---@param str string
 ---@param search string
 ---@return boolean
 function utils.string.startsWith(str, search)
