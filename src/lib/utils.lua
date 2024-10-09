@@ -265,6 +265,20 @@ function utils.math.rotationTo(x1, y1, x2, y2)
                                         -- TODO: Find a solution
 end
 
+---@param x1 number
+---@param y1 number
+---@param angle number
+---@param distance number
+---@return number, number
+function utils.math.rotationToPosition(x1, y1, angle, distance)
+    local rad = math.rad(angle)
+
+    local x2 = x1 + distance * math.cos(rad)
+    local y2 = y1 + distance * math.sin(rad)
+
+    return x2, y2
+end
+
 ---@param x number
 ---@param y number
 ---@param deg number
