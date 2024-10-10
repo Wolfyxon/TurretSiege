@@ -10,6 +10,7 @@ local data = require("data")
 
 ---@class Turret: Entity
 local Turret = Entity:new()
+Turret:_appendClass("Turret")
 
 local scale = 0.15
 local bulletColor = Color:new255(255, 106, 0)
