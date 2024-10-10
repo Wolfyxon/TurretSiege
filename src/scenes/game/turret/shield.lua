@@ -9,6 +9,8 @@ TurretShield:_appendClass("TurretShield")
 TurretShield.segments = 32   ---@type integer
 TurretShield.distance = 0.15 ---@type number
 
+local segmentColor = Color:new(0.5, 0.8, 1)
+
 function TurretShield:ready()
     local step = (2 * math.pi) / self.segments
 
@@ -27,6 +29,7 @@ function TurretShield:ready()
         seg.x = self.distance * math.cos(angle)
         seg.y = self.distance * math.sin(angle) * 1.7
         seg.rotation = seg:rotationTo(0, 0)
+        seg.color = segmentColor
 
         function seg:update(delta)
             seg:rotate(100 * delta)
