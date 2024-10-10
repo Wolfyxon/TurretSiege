@@ -133,6 +133,7 @@ function Turret:fire()
 
     local b = Projectile:new()
     b:_appendClass("TurretBullet")
+    b.ignoredClasses = {"TurretShieldSegment"}
     b.moveTarget = "forward"
     b.owner = self
     b.damageProjectiles = true
