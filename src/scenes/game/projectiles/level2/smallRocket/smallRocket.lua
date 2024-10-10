@@ -2,7 +2,7 @@ local Projectile = require("scenes.game.Projectile")
 
 ---@class SmallRocketProjectile: Projectile
 local SmallRocketProjectile = Projectile:new()
-SmallRocketProjectile:_appendClass("AxeProjectile")
+SmallRocketProjectile:_appendClass("SmallRocketProjectile")
 
 SmallRocketProjectile.level = 2
 SmallRocketProjectile.comminity = 0.5
