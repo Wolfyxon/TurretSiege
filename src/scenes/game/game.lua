@@ -1,5 +1,6 @@
 local utils = require("lib.utils")
 
+local Node = require("lib.Node")
 local Node2D = require("lib.2d.Node2d")
 local Color = require("lib.Color")
 local Sprite = require("lib.2d.Sprite")
@@ -169,6 +170,11 @@ function GameScene:update(delta)
         if not proj then
             warn("nil projectile selected!") 
             return 
+        end
+
+        if not Node.isNode(proj) then
+            warn("Projectile is not a Node! ", table.tostring(proj))
+            return
         end
 
         proj = proj:new()
