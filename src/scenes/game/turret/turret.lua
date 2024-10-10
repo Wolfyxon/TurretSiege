@@ -74,7 +74,7 @@ function Turret:new(o)
 end
 
 function Turret:update(delta)
-    if (love.mouse and love.mouse.isCursorSupported()) or ((not love.mouse or not love.mouse.isCursorSupported()) and utils.system.isMousePressed()) then
+    if love.mouse and love.mouse.isCursorSupported() then
         local x, y = utils.system.getMousePos()
         self.bulletTargetRotation = self:rotationTo(x, y)
         
