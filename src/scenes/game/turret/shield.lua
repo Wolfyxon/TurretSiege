@@ -31,8 +31,17 @@ function TurretShield:ready()
         seg.rotation = seg:rotationTo(0, 0)
         seg.color = segmentColor
 
+
+        local time = 0
+
         function seg:update(delta)
             seg:rotate(100 * delta)
+
+            time = time + delta
+
+            if time >= 30 then
+                seg:destroy()
+            end
         end
 
         self:addChild(seg)
