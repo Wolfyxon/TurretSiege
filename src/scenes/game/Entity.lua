@@ -21,7 +21,7 @@ function Entity:new(o)
     self.__index = self
 
     if self.damageSound then
-        self.damageSoundVolume:setVolume(self.damageSoundVolume)
+        self.damageSound:setVolume(self.damageSoundVolume)
     end
 
     return o
