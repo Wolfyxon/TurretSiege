@@ -135,7 +135,7 @@ function utils.table.randomByOccurrence(tbl)
         end
     end
     
-    error("Random occurrence pick failed. Random counter value: " .. tostring(r))
+    return utils.table.random(tbl)
 end
 
 --== String ==--
