@@ -195,10 +195,10 @@ end
 
 ---@param node Node2D
 ---@return number
-function Node2D:distanceTo(node)
+function Node2D:distanceToNode(node)
     local x1, y1 = self:getGlobalPosition()
     local x2, y2 = node:getGlobalPosition()
-    
+
     return math.distanceTo(x1, y1, x2, y2)
 end
 
