@@ -31,6 +31,10 @@ GameScene.level = 1                   ---@type integer
 
 ---@param projectile Projectile
 function GameScene:registerProjectile(projectile)
+    assert(projectile, "Projectile nil")
+    assert(Node.isNode(projectile), "Projectile is not a Node")
+    assert(projectile:isA("Projectile"), "Projecile is not of the Projectile class")
+
     self.projectiles[projectile.level] = self.projectiles[projectile.level] or {}
 
     table.insert(self.projectiles[projectile.level], utils.table.occurrenceWrap(projectile, projectile.comminity))
