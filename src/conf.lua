@@ -33,6 +33,7 @@ math.clamp = utils.math.clamp
 math.lerp = utils.math.lerp
 math.lerpAngle = utils.math.lerpAngle
 math.rotationTo = utils.math.rotationTo
+math.distanceTo = utils.math.distanceTo
 math.rotateDirection = utils.math.rotateDirection
 
 -------=========== Other setup ===============---------
