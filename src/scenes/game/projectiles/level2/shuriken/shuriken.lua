@@ -12,6 +12,7 @@ ShurikenProjectile.damage = 8
 ShurikenProjectile.moveTarget = "forward"
 
 function ShurikenProjectile:ready()
+    self.damageSound = love.audio.newSource("scenes/game/projectiles/audio/metalHit.ogg", "static")
     self:loadTextureFromFile("scenes/game/projectiles/level2/shuriken/shuriken.png")
     self:setScaleAll(0.08)
     self:initHp(4)
