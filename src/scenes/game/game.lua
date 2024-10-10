@@ -164,7 +164,14 @@ function GameScene:update(delta)
     if self.turret:isAlive() and now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now
         
-        local proj = utils.table.randomByOccurrence(self.currentProjectiles):new()
+        local proj = utils.table.randomByOccurrence(self.currentProjectiles)
+
+        if not proj then
+            warn("nil projectile selected!") 
+            return 
+        end
+
+        proj = proj:new()
         
         proj:onEvent("died", function ()
             self.projectilesDestroyed = self.projectilesDestroyed + 1
