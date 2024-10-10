@@ -173,7 +173,7 @@ function GameScene:update(delta)
         end
 
         if not Node.isNode(proj) then
-            warn("Projectile is not a Node! ", table.tostring(proj))
+            warn("Projectile is not a Node! ", table.tostring(proj, 3))
             return
         end
 
