@@ -1,2 +1,2 @@
 #!/bin/sh
-prime-run make run
+prime-run make run "$@"
