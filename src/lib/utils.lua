@@ -55,7 +55,7 @@ function utils.table.find(table, value)
     end
 end
 
----@param table table
+---@param table any[]
 ---@param value any
 ---@return boolean
 function utils.table.has(table, value)
@@ -110,7 +110,7 @@ function utils.table.occurrenceWrap(value, commonity)
     }
 end
 
----@param tbl table
+---@param tbl any[]
 ---@return any
 function utils.table.randomByOccurrence(tbl)
     local totalWeight = 0
