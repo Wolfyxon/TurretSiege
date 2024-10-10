@@ -19,6 +19,10 @@ function ShurikenProjectile:ready()
     self:initHp(4)
     
     self:rotate(math.random(-100, 100))
+
+    self:onEvent("damaged", function ()
+        self:rotate(math.random(-20, 20))
+    end)
 end
 
 function ShurikenProjectile:update(delta)
