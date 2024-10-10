@@ -88,7 +88,7 @@ function GameScene:load()
         require("scenes.game.projectiles.level1.cannonBall.cannonBall"),
 
         require("scenes.game.projectiles.level2.smallRocket.smallRocket"),
-        
+        require("scenes.game.projectiles.level2.shuriken.shuriken"),
     }
 
     for i, v in ipairs(projectileList) do
