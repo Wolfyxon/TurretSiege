@@ -85,16 +85,19 @@ function utils.table.random(table)
 end
 
 ---@param table table
+---@param depth number?
 ---@return string
-function utils.table.tostring(table)
-    if type(table) ~= "table" then
+function utils.table.tostring(table, depth)
+    if depth <= 0 or type(table) ~= "table" then
         return tostring(table)
     end
+
+    depth = depth or math.huge
 
     local res = "{"
 
     for k, v in pairs(table) do
-        res = res .. " " .. utils.table.tostring(k) .. " = " .. utils.table.tostring(v) .. " "
+        res = res .. " " .. utils.table.tostring(k, depth - 1) .. " = " .. utils.table.tostring(v, depth - 1) .. " "
     end
 
     return res .. "}"
