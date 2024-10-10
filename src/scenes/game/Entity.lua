@@ -38,6 +38,8 @@ function Entity:dealDamage(amount)
     self:emitEvent("damaged")
     
     if self.damageSound then
+        self.damageSound:setPitch(math.randomf(0.98, 1.02))
+
         self.damageSound:stop()
         self.damageSound:play()
     end
