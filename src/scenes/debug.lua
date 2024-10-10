@@ -42,7 +42,7 @@ function DebugScene:draw(screen)
 end
 
 function DebugScene:update(delta)
-    if (love.mouse and love.mouse.isCursorSupported()) or ((not love.mouse or not love.mouse.isCursorSupported()) and utils.system.isMousePressed()) then
+    if love.mouse and love.mouse.isCursorSupported() then
         local x, y = utils.system.getMousePos()
         self.cursor.x = x
         self.cursor.y = y
