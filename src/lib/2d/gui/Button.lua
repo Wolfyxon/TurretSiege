@@ -75,7 +75,7 @@ end
 
 ---@return boolean
 function Button:isHovered()
-    if not love.mouse or not love.mouse.isCursorSupported() then return false end
+    if not utils.system.hasMouse() then return false end
     if not self:isVisibleInTree() then return false end
 
     local mX, mY = utils.system.getMousePos("bottom")
@@ -84,7 +84,7 @@ function Button:isHovered()
 end
 
 function Button:checkMouseFocus()
-    if not love.mouse or not love.mouse.isCursorSupported() then return end
+    if not utils.system.hasMouse() then return end
     if not self:isVisibleInTree() then return false end
 
     local cmX, cmY = utils.system.getMousePos("bottom")

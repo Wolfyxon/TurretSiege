@@ -371,7 +371,7 @@ function utils.system.getMousePos(screen)
     
     local mX, mY = 0, 0
 
-    if love.mouse and love.mouse.isCursorSupported() then
+    if utils.system.hasMouse() then
         mX, mY = love.mouse.getPosition()
     else
         if love.touch then
