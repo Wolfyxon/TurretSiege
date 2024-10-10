@@ -82,7 +82,7 @@ function GameScene:load()
     self.lastProjectileSpawnTime = love.timer.getTime()
 
     local projectileList = {
-        require("scenes.game.projectiles.powerUps.HealthPowerUp"),
+        require("scenes.game.projectiles.powerUps.health"),
 
         require("scenes.game.projectiles.level1.axe.axe"),
         require("scenes.game.projectiles.level1.cannonBall.cannonBall"),
