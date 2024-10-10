@@ -5,7 +5,7 @@ local Color = require("lib.Color")
 local ShieldPowerUp = PowerUp:new()
 ShieldPowerUp:_appendClass("ShieldPowerUp")
 
-ShieldPowerUp.color = Color:new(0.2, 0.8, 1)
+ShieldPowerUp.color = Color:new(0.5, 0.8, 1)
 ShieldPowerUp.iconImage = "shield"
 ShieldPowerUp.comminity = 1
 
