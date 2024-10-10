@@ -83,7 +83,8 @@ function GameScene:load()
 
     local projectileList = {
         require("scenes.game.projectiles.powerUps.health"),
-
+        require("scenes.game.projectiles.powerUps.shield"),
+        
         require("scenes.game.projectiles.level1.axe.axe"),
         require("scenes.game.projectiles.level1.cannonBall.cannonBall"),
 
