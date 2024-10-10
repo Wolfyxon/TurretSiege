@@ -323,7 +323,7 @@ end
 ---@param max number
 ---@return number
 function utils.math.randomf(min, max)
-    return min + max * (math.random(0, 100) / 100)
+    return min + (max - min) * (math.random(0, 100) / 100)
 end
 
 ---@param value number
