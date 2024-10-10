@@ -138,7 +138,8 @@ function utils.table.randomByOccurrence(tbl)
         end
     end
     
-    return utils.table.random(tbl)
+    local wrapped = utils.table.random(tbl)
+    return wrapped.value
 end
 
 --== String ==--
