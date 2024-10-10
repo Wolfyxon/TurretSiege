@@ -14,6 +14,7 @@ function TurretShield:ready()
 
     for i = 1, self.segments do
         local seg = Entity:new()
+        seg:_appendClass("TurretShieldSegment")
 
         seg:initHp(2)
         seg:setScaleAll(0.2)
