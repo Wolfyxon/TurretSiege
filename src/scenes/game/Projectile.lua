@@ -102,4 +102,9 @@ function Projectile:update(delta)
 
 end
 
+---@return Turret?
+function Projectile:getTurret()
+    return main.getCurrentScene().turret
+end
+
 return Projectile
