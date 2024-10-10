@@ -7,7 +7,7 @@ ShieldPowerUp:_appendClass("ShieldPowerUp")
 
 ShieldPowerUp.color = Color:new(0.5, 0.8, 1)
 ShieldPowerUp.iconImage = "shield"
-ShieldPowerUp.comminity = 1
+ShieldPowerUp.comminity = 0.03
 
 function ShieldPowerUp:collected()
     self:getTurret():spawnShield()
