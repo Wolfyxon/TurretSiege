@@ -20,10 +20,6 @@ function Entity:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    if self.damageSound then
-        self.damageSound:setVolume(self.damageSoundVolume)
-    end
-
     return o
 end
 
@@ -43,6 +39,7 @@ function Entity:dealDamage(amount)
     self:emitEvent("damaged")
     
     if self.damageSound then
+        self.damageSound:setVolume(self.damageSoundVolume)
         self.damageSound:setPitch(math.randomf(0.98, 1.02))
 
         self.damageSound:stop()
