@@ -6,18 +6,23 @@ local Entity = Sprite:new()
 Entity:_appendClass("Entity")
 Entity:_registerEvent("died", "damaged")
 
-Entity.maxHp = 100        ---@type number
-Entity.hp = Entity.maxHp  ---@type number
-Entity.invincible = false ---@type boolean
-Entity.dead = false       ---@type boolean
-Entity.damageSound = nil  ---@type Source
-Entity.deathSound = nil   ---@type Source
+Entity.maxHp = 100           ---@type number
+Entity.hp = Entity.maxHp     ---@type number
+Entity.invincible = false    ---@type boolean
+Entity.dead = false          ---@type boolean
+Entity.damageSound = nil     ---@type Source
+Entity.damageSoundVolume = 1 ---@type number
+Entity.deathSound = nil      ---@type Source
 
 
 function Entity:new(o)
     o = Sprite.new(self, o)
     setmetatable(o, self)
     self.__index = self
+
+    if self.damageSound then
+        self.damageSoundVolume:setVolume(self.damageSoundVolume)
+    end
 
     return o
 end
