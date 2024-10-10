@@ -7,6 +7,7 @@ Projectile:_registerEvent("hit")
 
 Projectile.hp = 3
 
+Projectile.ignoredClasses = {}       ---@type string[]
 Projectile.moveTarget = "turret"     ---@type "turret" | "forward"
 Projectile.owner = nil               ---@type Entity
 Projectile.comminity = 1             ---@type number
@@ -26,6 +27,7 @@ function Projectile:new(o)
     setmetatable(o, self)
     self.__index = self
 
+    o.ignoredClasses = {}
     o.spawnedAt = love.timer.getTime()
     o.damageSound = love.audio.newSource("scenes/game/projectiles/audio/smallHit.ogg", "static")
 
@@ -90,13 +92,25 @@ function Projectile:update(delta)
 
     for i, v in ipairs(self:getScene():getDescendantsOfClass("Entity")) do
         if self.owner ~= v and self:isTouching(v) and v:getClass() ~= self:getClass() then
-            if v:isA("Projectile") then
-                if self.damageProjectiles then
+           local ignored = false
+           
+            for ii, vv in ipairs(self.ignoredClasses) do
+                if v:isA(vv) then
+                    ignored = true
+                    break
+                end
+           end
+
+           if not ignored then
+                if v:isA("Projectile") then
+                    if self.damageProjectiles then
+                        self:hit(v)
+                    end
+                else
                     self:hit(v)
                 end
-            else
-                self:hit(v)
-            end
+           end
+
         end
     end
 
