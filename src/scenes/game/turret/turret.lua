@@ -76,13 +76,15 @@ function Turret:update(delta)
     if (love.mouse and love.mouse.isCursorSupported()) or ((not love.mouse or not love.mouse.isCursorSupported()) and utils.system.isMousePressed()) then
         local x, y = utils.system.getMousePos()
         self.bulletTargetRotation = self:rotationTo(x, y)
+        
         x = x - self.x
         y = y - self.y
-        local aspect_ratio = data.width / data.height
-        if aspect_ratio > 1 then
-            x = x * aspect_ratio
+
+        local ratio = data.width / data.height
+        if ratio > 1 then
+            x = x * ratio
         else
-            x = x / aspect_ratio
+            x = x / ratio
         end
         self.targetRotation = self:rotationTo(self.x + x, self.y + y)
     end
