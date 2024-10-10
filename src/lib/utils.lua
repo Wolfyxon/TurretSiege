@@ -347,6 +347,23 @@ end
 
 --== System ==--
 
+---@return boolean
+function utils.system.hasMouse()
+    if not love.mouse then
+        return false
+    end
+
+    if love.mouse.isCursorSupported then
+        return love.mouse.isCursorSupported()
+    end
+
+    if love.mouse.hasCursor then
+        return love.mouse.hasCursor() -- 0.10.0 >= < 11.0
+    end
+
+    return false
+end
+
 ---@param screen nil|"left"|"bottom"
 ---@return number, number
 function utils.system.getMousePos(screen)
