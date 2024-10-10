@@ -7,7 +7,8 @@ Made with [Love2D](https://love2d.org/) and [LovePotion](https://lovebrew.org/) 
 <!-- [View on itch.io](https://wolfyxon.itch.io/turretsiege) -->
 
 ## Screenshots
-TODO!
+![](.github/screenshots/game1.png)
+![](.github/screenshots/menu1.png)
 
 ## Platforms
 | Platform     | File formats     | Architectures | Status   |
