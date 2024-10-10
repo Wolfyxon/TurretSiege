@@ -10,6 +10,7 @@ ShurikenProjectile.comminity = 10.2
 ShurikenProjectile.speed = 0.5
 ShurikenProjectile.damage = 8
 ShurikenProjectile.moveTarget = "forward"
+ShurikenProjectile.damageSoundVolume = 0.3
 
 function ShurikenProjectile:ready()
     self.damageSound = love.audio.newSource("scenes/game/projectiles/audio/metalHit.ogg", "static")
