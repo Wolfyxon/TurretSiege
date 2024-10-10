@@ -6,6 +6,7 @@ local Tween = require("lib.Tween")
 local utils = require("lib.utils")
 local Circle = require("lib.2d.Circle")
 local Color = require("lib.Color")
+local data = require("data")
 
 ---@class Turret: Entity
 local Turret = Entity:new()
@@ -20,13 +21,15 @@ local manualRotationSpeed = 20
 Turret.damageSound = love.audio.newSource("scenes/game/turret/audio/damage.ogg", "static")
 Turret.deathSound = love.audio.newSource("scenes/game/turret/audio/death.ogg", "static")
 
-Turret.targetRotation = 0 ---@type number
-Turret.rotationSpeed = 5  ---@type number
-Turret.fireCooldown = 0.2 ---@type number
-Turret.lastFireTime = 0   ---@type number
-Turret.cannon = nil       ---@type Sprite
-Turret.base = nil         ---@type Sprite
-Turret.projectiles = {}   ---@type Projectile[]
+Turret.bulletRotation = 0       ---@type number
+Turret.bulletTargetRotation = 0 ---@type number
+Turret.targetRotation = 0       ---@type number
+Turret.rotationSpeed = 5        ---@type number
+Turret.fireCooldown = 0.2       ---@type number
+Turret.lastFireTime = 0         ---@type number
+Turret.cannon = nil             ---@type Sprite
+Turret.base = nil               ---@type Sprite
+Turret.projectiles = {}         ---@type Projectile[]
 
 function Turret:new(o)
     o = Entity.new(self, o)
@@ -38,9 +41,9 @@ function Turret:new(o)
 
     o.base = Sprite:new({}, "scenes/game/turret/img/base.png")
     o.cannon = Sprite:new({}, "scenes/game/turret/img/cannon.png")
-    
+
     o.cannon.x = 0.2
-    
+
     o.scaleX = scale
     o.scaleY = scale
     o.x = 0.5
@@ -72,7 +75,16 @@ end
 function Turret:update(delta)
     if (love.mouse and love.mouse.isCursorSupported()) or ((not love.mouse or not love.mouse.isCursorSupported()) and utils.system.isMousePressed()) then
         local x, y = utils.system.getMousePos()
-        self.targetRotation = self:rotationTo(x, y) 
+        self.bulletTargetRotation = self:rotationTo(x, y)
+        x = x - self.x
+        y = y - self.y
+        local aspect_ratio = data.width / data.height
+        if aspect_ratio > 1 then
+            x = x * aspect_ratio
+        else
+            x = x / aspect_ratio
+        end
+        self.targetRotation = self:rotationTo(self.x + x, self.y + y)
     end
 
     if love.mouse and love.mouse.isDown(1) then
@@ -93,6 +105,7 @@ function Turret:update(delta)
         end
     end
 
+    self.bulletRotation = math.lerpAngle(self.bulletRotation, self.bulletTargetRotation, self.rotationSpeed * delta)
     self.rotation = math.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
     self.cannon.x = math.lerp(self.cannon.x, 0.2, 5 * delta)
 end
@@ -105,8 +118,8 @@ end
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
     local now = love.timer.getTime()
-    if now < self.lastFireTime + self.fireCooldown then 
-        return 
+    if now < self.lastFireTime + self.fireCooldown then
+        return
     end
 
     fireSound:stop()
@@ -125,11 +138,11 @@ function Turret:fire()
     b.y = self.y
     b.scaleX = scale
     b.scaleY = scale
-    b.rotation = self.rotation
+    b.rotation = self.bulletRotation
     b.color = bulletColor
-    
+
     table.insert(self.projectiles, b)
-    
+
     -- NOTE: self.projectiles can't be accessed in the sub-function so it has to be point to a variable
     local projectiles = self.projectiles
     function b:removed()
@@ -170,7 +183,7 @@ function Turret:shockwave(radius, color, speed)
     end)
 
     t:play()
-    
+
     self.parent:addChild(cir)
 end
 
