@@ -24,8 +24,10 @@ function ShurikenProjectile:ready()
     self:addChild(audio)
 
     self:onEvent("damaged", function ()
-        self:rotate(math.random(-20, 20))
+        audio:setPitch(math.randomf(0.99, 1.04))
         audio:play()
+
+        self:rotate(math.random(-20, 20))
     end)
 end
 
