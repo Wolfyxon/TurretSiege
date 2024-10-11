@@ -46,6 +46,14 @@ function Audio:loadFromFile(path, sourceType)
     return self
 end
 
+---@param source Source
+function Audio:setSource(source)
+    self:stop()
+    self.source = source
+
+    return self
+end
+
 ---@param volume number
 ---@return Audio?
 function Audio:setVolume(volume)
