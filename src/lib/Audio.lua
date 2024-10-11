@@ -22,7 +22,7 @@ function Audio:new(o)
     end)
 
     o:onEvent("removed", function ()
-        if not o.stopOnRemove then
+        if o.stopOnRemove then
             o:stop()
         end
     end)
