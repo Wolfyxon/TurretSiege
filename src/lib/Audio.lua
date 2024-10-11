@@ -64,6 +64,19 @@ function Audio:setVolume(volume)
     return self
 end
 
+---@param pitch number
+---@return Audio?
+function Audio:setPitch(pitch)
+    if not self.source then 
+        warn("Pitch cannot be applied when no source is loaded.")
+        return
+    end
+
+    self.source:setPitch(pitch)
+    return self
+end
+
+
 ---@param state boolean
 ---@return Audio?
 function Audio:setLoop(state)
