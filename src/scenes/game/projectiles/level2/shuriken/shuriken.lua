@@ -6,7 +6,7 @@ local ShurikenProjectile = Projectile:new()
 ShurikenProjectile:_appendClass("ShurikenProjectile")
 
 ShurikenProjectile.rotationSpeed = 800
-ShurikenProjectile.level = 1
+ShurikenProjectile.level = 2
 ShurikenProjectile.comminity = 10.2
 ShurikenProjectile.speed = 0.5
 ShurikenProjectile.damage = 8
