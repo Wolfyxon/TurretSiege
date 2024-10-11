@@ -5,9 +5,9 @@ local Audio = Node:new()
 Audio:_appendClass("Audio")
 Audio:_registerEvent("finished")
 
-Audio._wasPlaying = false
-Audio.source = nil
-Audio.removeOnFinish = false
+Audio._wasPlaying = false    ---@type boolean
+Audio.source = nil           ---@type Source
+Audio.removeOnFinish = false ---@type boolean
 
 function Audio:new(o)
     o = Node.new(self, o)
