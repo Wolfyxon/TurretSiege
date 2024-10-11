@@ -8,6 +8,7 @@ Audio:_registerEvent("finished")
 Audio._wasPlaying = false    ---@type boolean
 Audio.source = nil           ---@type Source
 Audio.removeOnFinish = false ---@type boolean
+Audio.stopOnRemove = true    ---@type boolean
 
 function Audio:new(o)
     o = Node.new(self, o)
@@ -21,7 +22,9 @@ function Audio:new(o)
     end)
 
     o:onEvent("removed", function ()
-        o:stop()
+        if not o.stopOnRemove then
+            o:stop()
+        end
     end)
 
     return o
