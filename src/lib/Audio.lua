@@ -38,7 +38,7 @@ end
 ---@param sourceType "stream" | "static"
 ---@return Audio
 function Audio:loadFromFile(path, sourceType)
-    return love.audio.newSource(path, sourceType or "stream")
+    return self:setSource(love.audio.newSource(path, sourceType or "stream"))
 end
 
 ---@param source Source
