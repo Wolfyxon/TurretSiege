@@ -20,6 +20,7 @@ function ShurikenProjectile:ready()
     self:rotate(math.random(-100, 100))
 
     local audio = Audio:new():loadFromFile("scenes/game/projectiles/audio/metalHit.ogg", "static"):setVolume(0.3)
+    audio.stopOnRemove = false
     self:addChild(audio)
 
     self:onEvent("damaged", function ()
