@@ -1,2 +1,2 @@
 #!/bin/sh
-prime-run love src --scene=game
+lover run --scene=game

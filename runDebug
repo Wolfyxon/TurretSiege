@@ -1,2 +1,2 @@
 #!/bin/sh
-prime-run love src --scene=debug
+lover run --scene=debug
