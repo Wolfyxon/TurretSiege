@@ -25,8 +25,19 @@ Made with [Love2D](https://love2d.org/) and [LovePotion](https://lovebrew.org/) 
 [Downloads](https://github.com/Wolfyxon/TurretSiege/releases/latest)
 
 ## Building and debugging
-### With the Makefile (recommended)
-This project uses [Love2D Universal](https://github.com/Wolfyxon/love2d-universal). Refer to the [wiki](https://github.com/Wolfyxon/love2d-universal/wiki/Building-your-project) for instructions.
+### With Lover (recommended)
+This project uses [Lover](https://github.com/Wolfyxon/lover). 
+```
+lover run
+```
+```
+lover build
+```
+```
+lover build linux win64
+```
+
+Refer to the [wiki](https://github.com/Wolfyxon/lover/wiki) for more info.
 
 ### Running manually
 
