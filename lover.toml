@@ -1,5 +1,6 @@
 [package]
 name = "TurretSiege"
+description = "Turret Siege"
 version = "0.3.0-alpha"
 author = "Wolfyxon"
 
