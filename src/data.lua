@@ -1,5 +1,5 @@
 return {
-    version = "0.3.0-alpha",
+    version = os.getenv("LOVER_VERSION"),
     windowSizeMultiplier = 3,
     width = 400,
     height = 240,
