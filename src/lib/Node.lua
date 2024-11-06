@@ -218,11 +218,11 @@ end
 ---@return boolean
 function Node:isPaused()
     if self.updateMode == "pausable" or (self.updateMode == "inherit" and not self.parent) then
-        return main.paused
+        return main.isPaused()
     end
 
     if self.updateMode == "pausedOnly" then
-        return not main.paused
+        return not main.isPaused()
     end
 
     return self.parent:isPaused()

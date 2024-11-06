@@ -4,7 +4,6 @@ local utils = require("lib.utils")
 ---@class Main
 main = {
     frameCount = 0,
-    paused = false
 }
 
 
@@ -17,6 +16,7 @@ local scenes = {
 main.scenes = scenes
 
 local currentScene = nil ---@type Scene?
+local paused = false
 
 local events = {
     mousepressed = {},
@@ -24,6 +24,11 @@ local events = {
 }
 
 --== Main functions ==--
+
+---@return boolean
+function main.isPaused()
+    return paused
+end
 
 ---@param name string
 ---@param callback function
