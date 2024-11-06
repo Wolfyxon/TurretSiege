@@ -3,11 +3,15 @@ local Color = require("lib.Color")
 local Node = require("lib.Node")
 local Tween = require("lib.Tween")
 
+---@alias Screen "left" | "bottom" -- NOTE: the top screen is called 'left'
+---@alias ScreenTarget "all" | Screen
+---@alias ScreenMode "inherit" | ScreenTarget
+
 ---@class Node2D: Node
 local Node2D = Node:new()
 
 Node2D.visible = true             ---@type boolean
-Node2D.screen = "inherit"         ---@type "all" | "inherit" | "left" | "bottom" -- NOTE: the top screen is called 'left'
+Node2D.screen = "inherit"         ---@type ScreenMode
 Node2D.rotation = 0               ---@type number
 Node2D.scaleX = 1                 ---@type number
 Node2D.scaleY = 1                 ---@type number
@@ -131,22 +135,22 @@ function Node2D:getGlobalScale()
     return sx, sy
 end
 
----@return "all" | "left" | "bottom"
+---@return ScreenTarget
 function Node2D:getTargetScreen()
     if self.screen ~= "inherit" then
-        return self.screen ---@type "all" | "left" | "bottom"
+        return self.screen ---@type ScreenTarget
     end
     
     for i, v in ipairs(self:getAncestors()) do
         if v.screen ~= "inherit" then
-            return v.screen  ---@type "all" | "left" | "bottom"
+            return v.screen  ---@type ScreenTarget
         end
     end
 
     return "all"
 end
 
----@param screen nil | "left" | "bottom"
+---@param screen Screen?
 ---@return boolean
 function Node2D:canBeDrawnOnScreen(screen)
     if not screen then return true end
@@ -160,7 +164,7 @@ function Node2D:isTransformDefault()
     return self.x == 0 and self.y == 0 and self.rotation == 0 and self.scaleX == 1 and self.scaleY == 1
 end
 
----@param screen nil|"left"|"bottom"
+---@param screen Screen?
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
 
@@ -238,7 +242,7 @@ function Node2D:createTween()
     return t
 end
 
----@param screen nil|"left"|"bottom"
+---@param screen Screen?
 function Node2D:draw(screen) end
 
 return Node2D

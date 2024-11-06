@@ -364,7 +364,7 @@ function utils.system.hasMouse()
     return false
 end
 
----@param screen nil|"left"|"bottom"
+---@param screen Screen?
 ---@return number, number
 function utils.system.getMousePos(screen)
     local w, h = love.graphics.getDimensions(screen)
@@ -418,7 +418,7 @@ function utils.system.getPlatform()
     return love._console or love.system.getOS()
 end
 
----@param screen nil|"left"|"bottom"
+---@param screen Screen?
 function utils.system.getDrawData(screen)
     local w, h = love.graphics.getDimensions(screen)
     local ratio = math.min(w / data.width, h / data.height)
