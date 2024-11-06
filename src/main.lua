@@ -72,6 +72,8 @@ end
 function main.loadSceneByName(sceneName)
     local s = main.scenes[sceneName]
     assert(s, "Scene '" .. tostring(sceneName) .. "' does not exist")
+
+    print("-> Loading scene: ", sceneName)
     main.loadScene(s)
 end
 
