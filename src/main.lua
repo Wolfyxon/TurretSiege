@@ -19,11 +19,31 @@ local currentScene = nil ---@type Scene?
 local paused = false
 
 local events = {
+    -- Input --
     mousepressed = {},
-    keypressed = {}
+    keypressed = {},
+    -- Pause --
+    pauseChanged = {},
+    paused = {},
+    unpaused = {}
 }
 
 --== Main functions ==--
+
+---@param state boolean
+function main.setPause(state)
+    if paused ~= state then
+        emitEvent("pauseChanged", state)
+
+        if paused then
+            emitEvent("paused")
+        else
+            emitEvent("unpaused")
+        end
+    end
+    
+    paused = state
+end
 
 ---@return boolean
 function main.isPaused()
