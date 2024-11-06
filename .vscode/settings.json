@@ -2,6 +2,5 @@
     "Lua.diagnostics.globals": [
         "love"
     ],
-    "makefile.configureOnOpen": false,
     "pixelbyte.love2d.srcDir": "src"
 }
