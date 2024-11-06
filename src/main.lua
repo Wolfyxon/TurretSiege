@@ -28,6 +28,17 @@ local events = {
     unpaused = {}
 }
 
+--== Private main functions ==--
+
+local function emitEvent(name, ...)
+    local callbacks = events[name]
+    assert(callbacks, "Unknown event: " .. name)
+
+    for i, v in ipairs(callbacks) do
+        v(...)
+    end
+end
+
 --== Main functions ==--
 
 ---@param state boolean
@@ -100,17 +111,6 @@ function main.loadSceneByName(sceneName)
 
     print("-> Loading scene: ", sceneName)
     main.loadScene(s)
-end
-
---== Private main functions ==--
-
-local function emitEvent(name, ...)
-    local callbacks = events[name]
-    assert(callbacks, "Unknown event: " .. name)
-
-    for i, v in ipairs(callbacks) do
-        v(...)
-    end
 end
 
 --== Love2D function overrides ==--
