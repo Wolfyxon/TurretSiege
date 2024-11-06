@@ -230,7 +230,9 @@ end
 
 ---@param delta number
 function Node:updateRequest(delta)
-    self:update(delta)
+    if not self:isPaused() then
+        self:update(delta)
+    end
 
     for i, v in ipairs(self.children) do
         v:updateRequest(delta)
