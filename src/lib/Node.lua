@@ -7,7 +7,8 @@ local Node = {
     eventHandlers = {},        ---@type {string: function[]}
     parent = nil,              ---@type Node
     children = {},             ---@type Node[]
-    uniqueId = ""              ---@type string
+    uniqueId = "",             ---@type string
+    updateMode = "inherit"     ---@type "inherit" | "pausable" | "pausedOnly" 
 }
 
 function Node:new(o)
