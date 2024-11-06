@@ -215,6 +215,19 @@ function Node:destroy()
     self:orphanize()
 end
 
+---@return boolean
+function Node:isPaused()
+    if self.updateMode == "pausable" or (self.updateMode == "inherit" and not self.parent) then
+        return main.paused
+    end
+
+    if self.updateMode == "pausedOnly" then
+        return not main.paused
+    end
+
+    return self.parent:isPaused()
+end
+
 ---@param delta number
 function Node:updateRequest(delta)
     self:update(delta)
