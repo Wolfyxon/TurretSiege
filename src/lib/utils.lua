@@ -46,7 +46,7 @@ end
 
 ---@param table any[]
 ---@param value any
----@return integer|nil
+---@return integer?
 function utils.table.find(table, value)
     for i,v in ipairs(table) do
         if v == value then

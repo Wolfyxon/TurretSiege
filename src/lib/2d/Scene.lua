@@ -4,7 +4,7 @@ local Node2D = require("lib.2d.Node2d")
 local Scene = Node2D:new()
 Scene:_appendClass("Scene")
 
-Scene.name = "scene" ---@type string|nil
+Scene.name = "scene" ---@type string?
 
 function Scene:new(o, name)
     o = Node2D.new(self, o)

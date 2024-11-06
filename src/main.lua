@@ -16,7 +16,7 @@ local scenes = {
 }
 main.scenes = scenes
 
-local currentScene = nil ---@type Scene|nil
+local currentScene = nil ---@type Scene?
 
 local events = {
     mousepressed = {},

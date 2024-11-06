@@ -59,7 +59,7 @@ function Node:onEvent(name, handler)
     })
 end
 
----@return integer|nil
+---@return integer?
 function Node:getIndex()
     if not self.parent then return end
 
@@ -239,7 +239,7 @@ function Node:updateRequest(delta)
     end
 end
 
----@return Scene|nil
+---@return Scene?
 function Node:getScene()
     for i, v in ipairs(self:getAncestors()) do
         if v:isA("Scene") then
