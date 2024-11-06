@@ -1,5 +1,7 @@
 local utils = require("lib.utils")
 
+---@alias UpdateMode "inherit" | "pausable" | "pausedOnly" 
+
 ---@class Node
 local Node = {
     classList = {"Node"},      ---@type string[]
@@ -8,7 +10,7 @@ local Node = {
     parent = nil,              ---@type Node
     children = {},             ---@type Node[]
     uniqueId = "",             ---@type string
-    updateMode = "inherit"     ---@type "inherit" | "pausable" | "pausedOnly" 
+    updateMode = "inherit"     ---@type UpdateMode
 }
 
 function Node:new(o)
