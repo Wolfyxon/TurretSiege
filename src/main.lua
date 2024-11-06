@@ -4,6 +4,7 @@ local utils = require("lib.utils")
 ---@class Main
 main = {
     frameCount = 0,
+    paused = false
 }
 
 
