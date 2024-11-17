@@ -167,7 +167,7 @@ end
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
 
-    love.graphics.push()
+    love.graphics.push("transform")
 
     if not self:isTransformDefault() then
         love.graphics.translate(self.x * data.w, self.y * data.h)
