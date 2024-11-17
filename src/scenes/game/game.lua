@@ -108,8 +108,10 @@ function GameScene:load()
     self:addChild(self.music)
 
     local gearCount = 20
+    
     for i = 1, gearCount do
-        local gear = Sprite:new({}, "scenes/game/gear.png")
+        if i > 11 then
+            local gear = Sprite:new({}, "scenes/game/gear.png")
         local dir = (-1) ^ i
         local s = ((gearCount - i) / gearCount) * 5
         
@@ -129,6 +131,7 @@ function GameScene:load()
 
         table.insert(self.gears, gear)
         self.arena:addChild(gear)
+        end
     end
 
     self.turret = Turret:new()
