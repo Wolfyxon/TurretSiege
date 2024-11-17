@@ -1,6 +1,9 @@
 local data = require("data")
 local utils = require("lib.utils")
 
+local Color = require("lib.Color")
+local Sprite = require("lib.2d.Sprite")
+
 ---@class Main
 main = {
     frameCount = 0,
@@ -111,6 +114,36 @@ function main.loadSceneByName(sceneName)
 
     print("-> Loading scene: ", sceneName)
     main.loadScene(s)
+end
+
+function main.addGears(parent)
+    local gearCount = 20
+    local res = {}
+
+    for i = 1, gearCount do
+        if i > 11 then
+         local gear = Sprite:new({}, "scenes/game/gear.png")
+         local dir = (-1) ^ i
+         local s = ((gearCount - i) / gearCount) * 5
+         
+         local c = i / gearCount
+         if dir == -1 then
+             c = c * 0.8
+         end
+         
+         gear.color = Color:new(0.8 * c, 0.6 * c, 0)
+         gear.shadowOpaticy = 0.25
+         gear.x = 0.5
+         gear.y = 0.5
+         gear.scaleX = s
+         gear.scaleY = s
+         
+         parent:addChild(gear)
+         table.insert(res, gear)
+        end
+     end
+
+     return res
 end
 
 --== Love2D function overrides ==--

@@ -106,31 +106,12 @@ function GameScene:load()
 
     self.music = Audio:new():loadFromFile("scenes/game/music.ogg"):setLoop(true):play()
     self:addChild(self.music)
-
-    local gearCount = 20
     
-    for i = 1, gearCount do
-        if i > 11 then
-            local gear = Sprite:new({}, "scenes/game/gear.png")
+    for i, v in ipairs(main.addGears(self)) do
         local dir = (-1) ^ i
-        local s = ((gearCount - i) / gearCount) * 5
-        
-        local c = i / gearCount
-        if dir == -1 then
-            c = c * 0.8
-        end
-        
-        gear.shadowOpaticy = 0.25
-        gear.x = 0.5
-        gear.y = 0.5
-        gear.scaleX = s
-        gear.scaleY = s
-        
-        gear.color = Color:new(0.8 * c, 0.6 * c, 0)
-        
 
-        table.insert(self.gears, gear)
-        self.arena:addChild(gear)
+        function v:update(delta)
+            v:rotate(dir * delta * 4)
         end
     end
 
@@ -162,12 +143,6 @@ function GameScene:draw(screen)
 end
 
 function GameScene:update(delta)
-    for i, v in ipairs(self.gears) do
-        local dir = (-1) ^ i
-
-        v.rotation = v.rotation + dir * delta * 4
-    end
-
     local now = love.timer.getTime()
     if self.turret:isAlive() and now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now

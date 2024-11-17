@@ -18,28 +18,10 @@ function MenuScene:load()
 
     --== Gears ==--
     
-    local gearCount = 20
-    
-    for i = 1, gearCount do
-       if i > 11 then
-        local gear = Sprite:new({}, "scenes/game/gear.png")
+    for i, gear in ipairs(main.addGears(self)) do
         local dir = (-1) ^ i
-        local s = ((gearCount - i) / gearCount) * 5
-        
-        local c = i / gearCount
-        if dir == -1 then
-            c = c * 0.8
-        end
-        
-        gear.color = Color:new(0.8 * c, 0.6 * c, 0)
-        gear.shadowOpaticy = 0.25
-        gear.x = 0.5
-        gear.y = 0.5
-        gear.scaleX = s
-        gear.scaleY = s
-        
-        local targetRot = 0
         local time = 0
+        local targetRot = 0
 
         function gear:update(delta)
             gear.rotation = math.lerpAngle(gear.rotation, targetRot, delta * 3)
@@ -51,9 +33,6 @@ function MenuScene:load()
                 targetRot = targetRot + 5 * dir
             end
         end
-        
-        self:addChild(gear)
-       end
     end
     
     --== Title ==--
