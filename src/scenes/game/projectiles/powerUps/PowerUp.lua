@@ -54,6 +54,7 @@ function PowerUp:new(o)
 
     --== Icon ==--
     o.icon = Sprite:new()
+    o.icon.colorMode = "set"
     o.icon:loadTextureFromFile(iconDir .. o.iconImage .. ".png")
     o.icon.enableShadow = false
     o:addChild(o.icon)
@@ -68,11 +69,13 @@ function PowerUp:new(o)
     local as = 1.5
 
     local la = o.armor[1]
+    la.colorMode = "set"
     la:loadTextureFromFile(armorTexture)
     la:setScaleAll(as)
     o:addChild(la)
 
     local ra = o.armor[2]
+    ra.colorMode = "set"
     ra:loadTextureFromFile(armorTexture)
     ra:setScaleAll(as)
     ra.rotation = 180
