@@ -83,13 +83,13 @@ function Color:getRGBA()
     return self.r, self.g, self.b, self.a
 end
 
----@return string
-function Color:toString()
-    return "(" .. table.concat({self.r, self.g, self.b, self.a}, ", ") .. ")"
-end
-
 function Color:toGraphics()
     love.graphics.setColor(self.r, self.g, self.b, self.a)
+end
+
+---@return string
+function Color:__tostring()
+    return "(" .. table.concat({self.r, self.g, self.b, self.a}, ", ") .. ")"
 end
 
 --== Static functions ==--

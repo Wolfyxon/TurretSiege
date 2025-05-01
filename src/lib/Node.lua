@@ -71,11 +71,6 @@ function Node:getIndex()
 end
 
 ---@return string
-function Node:toString()
-    return self:getClass() .. "(" .. tostring(self) .. ")"
-end
-
----@return string
 function Node:getClass()
     return self.classList[#self.classList]
 end
@@ -246,6 +241,11 @@ function Node:getScene()
             return v ---@type Scene
         end
     end
+end
+
+---@return string
+function Node:__tostring()
+    return self:getClass() .. "(" .. tostring(self) .. ")"
 end
 
 -- Overrides --
