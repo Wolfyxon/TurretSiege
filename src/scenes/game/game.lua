@@ -7,7 +7,7 @@ local Sprite = require("lib.2d.Sprite")
 local Audio = require("lib.Audio")
 local Turret = require("scenes.game.turret.turret")
 local GameGui = require("scenes.game.gui.GameGui")
-local DeathGui = require("scenes.game.gui.deathGui")
+local DeathGui = require("scenes.game.gui.DeathGui")
 local Scene = require("lib.2d.Scene")
 
 ---@class GameScene: Scene
