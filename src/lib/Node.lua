@@ -1,6 +1,6 @@
 local utils = require("lib.utils")
 
----@alias UpdateMode "inherit" | "pausable" | "pausedOnly" 
+---@alias UpdateMode "inherit" | "always" | "pausable" | "pausedOnly" 
 
 ---@class Node
 local Node = {
@@ -212,6 +212,10 @@ end
 
 ---@return boolean
 function Node:isPaused()
+    if self.updateMode == "always" then
+        return true
+    end
+
     if self.updateMode == "pausable" or (self.updateMode == "inherit" and not self.parent) then
         return main.isPaused()
     end
