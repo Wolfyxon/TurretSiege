@@ -213,7 +213,7 @@ end
 ---@return boolean
 function Node:isPaused()
     if self.updateMode == "always" then
-        return true
+        return false
     end
 
     if self.updateMode == "pausable" or (self.updateMode == "inherit" and not self.parent) then
