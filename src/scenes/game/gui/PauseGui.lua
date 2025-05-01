@@ -6,6 +6,7 @@ local GuiNode = require("lib.2d.gui.GuiNode")
 ---@class PauseGui: GuiNode
 local PauseGui = GuiNode:new()
 PauseGui.visible = true
+PauseGui.updateMode = "always"
 
 PauseGui.title = nil    ---@type Label
 
@@ -22,10 +23,15 @@ function PauseGui:ready()
     self.title.y = 0.2
     self:addChild(self.title)
 
+    main.onEvent("keypressed", function (key)
+        if key == "escape" then
+            main.setPause(not main.isPaused())
+        end
+    end)
 end
 
 function PauseGui:update(delta)
-    
+
 end
 
 return PauseGui
