@@ -17,10 +17,10 @@ function Color:new(r, g, b, a)
     setmetatable(o, self)
     self.__index = self
 
-    o.r = r or 1
-    o.g = g or 1
-    o.b = b or 1
-    o.a = a or 1
+    o.r = math.clamp(r  or 1, 0, 1)
+    o.g = math.clamp(g  or 1, 0, 1)
+    o.b = math.clamp(b  or 1, 0, 1)
+    o.a = math.clamp(a  or 1, 0, 1)
 
     return o
 end
