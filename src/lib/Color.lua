@@ -92,6 +92,39 @@ function Color:__tostring()
     return "(" .. table.concat({self.r, self.g, self.b, self.a}, ", ") .. ")"
 end
 
+---@param color Color
+---@return Color
+function Color:__add(color)
+    return Color:new(
+        self.r + color.r,
+        self.g + color.g,
+        self.b + color.b,
+        self.a + color.a
+    )
+end
+
+---@param color Color
+---@return Color
+function Color:__sub(color)
+    return Color:new(
+        self.r - color.r,
+        self.g - color.g,
+        self.b - color.b,
+        self.a - color.a
+    )
+end
+
+---@param color Color
+---@return Color
+function Color:__mul(color)
+    return Color:new(
+        self.r * color.r,
+        self.g * color.g,
+        self.b * color.b,
+        self.a * color.a
+    )
+end
+
 --== Static functions ==--
 
 ---@param instance any|Color
