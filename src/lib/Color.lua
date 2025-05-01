@@ -85,7 +85,7 @@ end
 
 ---@return string
 function Color:toString()
-    return "(" .. table.join({self.r, self.g, self.b, self.a}) .. ")"
+    return "(" .. table.concat({self.r, self.g, self.b, self.a}, ", ") .. ")"
 end
 
 function Color:toGraphics()
