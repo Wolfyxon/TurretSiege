@@ -11,7 +11,7 @@ local Tween = require("lib.Tween")
 local Node2D = Node:new()
 
 Node2D.visible = true             ---@type boolean
-Node2D.colorMode = "mix"          ---@type
+Node2D.colorMode = "mul"          ---@type ColorMode
 Node2D.screen = "inherit"         ---@type ScreenMode
 Node2D.rotation = 0               ---@type number
 Node2D.scaleX = 1                 ---@type number
