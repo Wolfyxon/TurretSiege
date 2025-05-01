@@ -6,7 +6,7 @@ local Color = require("lib.Color")
 local Sprite = require("lib.2d.Sprite")
 local Audio = require("lib.Audio")
 local Turret = require("scenes.game.turret.turret")
-local GameGui = require("scenes.game.gui.gui")
+local GameGui = require("scenes.game.gui.GameGui")
 local DeathGui = require("scenes.game.gui.deathGui")
 local Scene = require("lib.2d.Scene")
 
