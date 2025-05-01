@@ -45,10 +45,6 @@ To test the game without using the Makefile with `love`, start a terminal in the
 ```
 love src
 ```
-You can also quickly start from the game scene by using:
-```
-./runGame
-```
 
 ### Manual building
 Refer to the [Love2D wiki](https://love2d.org/wiki/Game_Distribution) and [LovePotion wiki](https://lovebrew.org/#/packaging?id=fused-binary).
