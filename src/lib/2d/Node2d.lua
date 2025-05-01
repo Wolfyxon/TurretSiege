@@ -5,11 +5,13 @@ local Tween = require("lib.Tween")
 ---@alias Screen "left" | "bottom" -- NOTE: the top screen is called 'left'
 ---@alias ScreenTarget "all" | Screen
 ---@alias ScreenMode "inherit" | ScreenTarget
+---@alias ColorMode "set" | "mul" | "add" | "sub"
 
 ---@class Node2D: Node
 local Node2D = Node:new()
 
 Node2D.visible = true             ---@type boolean
+Node2D.colorMode = "mix"          ---@type
 Node2D.screen = "inherit"         ---@type ScreenMode
 Node2D.rotation = 0               ---@type number
 Node2D.scaleX = 1                 ---@type number
@@ -163,6 +165,26 @@ function Node2D:isTransformDefault()
     return self.x == 0 and self.y == 0 and self.rotation == 0 and self.scaleX == 1 and self.scaleY == 1
 end
 
+---@return Color
+function Node2D:getDrawnColor()
+    if not self.parent or not self.parent:isA("Node2D") or self.colorMode == "set`" then
+        return self.color:clone()
+    end
+
+    local color = self.parent:getDrawnColor()
+    local m = self.colorMode
+
+    if m == "add" then
+        return color + self.color
+    elseif m == "sub" then
+        return color - self.color
+    elseif m == "mul" then
+        return color * self.color
+    end
+
+    return self.color
+end
+
 ---@param screen Screen?
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
@@ -175,7 +197,7 @@ function Node2D:drawRequest(screen, data)
         love.graphics.scale(self.scaleX, self.scaleY)
     end
 
-    love.graphics.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
+    love.graphics.setColor(self:getDrawnColor():getRGBA())
 
     if self:canBeDrawnOnScreen(screen) then
         self:draw(screen)
