@@ -5,7 +5,7 @@ local GuiNode = require("lib.2d.gui.GuiNode")
 
 ---@class PauseGui: GuiNode
 local PauseGui = GuiNode:new()
-PauseGui.visible = true
+PauseGui.visible = false
 PauseGui.updateMode = "always"
 
 PauseGui.title = nil    ---@type Label
@@ -13,8 +13,8 @@ PauseGui.title = nil    ---@type Label
 function PauseGui:ready()
     self.screen = "bottom"
     self.positioning = "topleft"
-    self.backgroundColor = Color:new(0, 0, 0, 0)
     self:setSizeAll(1)
+    self.backgroundColor = Color:new(0, 0, 0, 0)
 
     self.title = Label:new()
     self.title:setText("Paused")
@@ -31,7 +31,16 @@ function PauseGui:ready()
 end
 
 function PauseGui:update(delta)
+    self.visible = self.color.a > 0.01
+    self.title.visible = main.isPaused()
 
+    local a = 0
+
+    if main.isPaused() then
+        a = 0.5
+    end
+
+    self.backgroundColor.a = math.lerp(self.backgroundColor.a, a, 10 * delta)
 end
 
 return PauseGui
