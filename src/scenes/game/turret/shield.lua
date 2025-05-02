@@ -35,7 +35,7 @@ function TurretShield:ready()
         local time = 0
 
         function seg:update(delta)
-            seg:rotate(100 * delta)
+            self.rotation = math.rotationTo(self.x, self.y, 0, 0) + 90
 
             time = time + delta
 
