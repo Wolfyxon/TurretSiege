@@ -6,7 +6,7 @@ local Entity = require("scenes.game.Entity")
 local TurretShield = Node2D:new()
 TurretShield:_appendClass("TurretShield")
 
-TurretShield.segments = 32   ---@type integer
+TurretShield.segments = 25   ---@type integer
 TurretShield.distance = 0.15 ---@type number
 
 local segmentColor = Color:new(0.5, 0.8, 1)
@@ -26,16 +26,19 @@ function TurretShield:ready()
 
         local angle = step * (i - 1)
 
-        seg.x = self.distance * math.cos(angle)
-        seg.y = self.distance * math.sin(angle) * 1.7
         seg.rotation = seg:rotationTo(0, 0)
         seg.color = segmentColor
 
 
         local time = 0
+        local distance = self.distance
 
         function seg:update(delta)
             self.rotation = math.rotationTo(self.x, self.y, 0, 0) + 90
+
+            local distanceScale = math.abs(math.sin(time)) + 0.1
+            seg.x = distance * distanceScale * math.cos(angle)
+            seg.y = distance * distanceScale * math.sin(angle) * 1.7
 
             time = time + delta
 
