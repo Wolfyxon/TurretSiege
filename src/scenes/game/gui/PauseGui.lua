@@ -23,9 +23,22 @@ function PauseGui:ready()
     self.title.y = 0.2
     self:addChild(self.title)
 
+    local music = self.parent.music
+
+    love.audio.setEffect("pause", { type = "reverb" })
+    
     main.onEvent("keypressed", function (key)
         if key == "escape" then
             main.setPause(not main.isPaused())
+
+            local paused = main.isPaused()
+            music:setEffect("pause", paused)
+
+            if paused then
+                music:setVolume(0.5)
+            else
+                music:setVolume(1)
+            end
         end
     end)
 end
