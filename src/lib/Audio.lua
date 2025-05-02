@@ -37,6 +37,23 @@ function Audio:update(delta)
     end
 end
 
+---@param name string
+---@param settings {}
+---@return boolean
+function Audio:setEffect(name, settings)
+    if not self.source then
+        warn("Failed to set audio effect, source not loaded")
+        print(debug.traceback())
+        return false
+    end
+
+    if not love.audio.isEffectsSupported() then
+        return false
+    end
+
+    return self.source:setEffect(name, settings)
+end
+
 ---@param path string
 ---@param sourceType "stream" | "static"
 ---@return Audio
