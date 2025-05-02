@@ -93,6 +93,14 @@ function Audio:setPitch(pitch)
     return self
 end
 
+---@return number?
+function Audio:getVolume()
+    if not self.source then
+        return
+    end
+
+    return self.source:getVolume()
+end
 
 ---@param state boolean
 ---@return Audio?
