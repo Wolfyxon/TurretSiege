@@ -495,6 +495,15 @@ function utils.config.getFlagValue(flag)
     return dict[flag]
 end
 
+---@param flag string
+---@return number?
+function utils.config.getFlagNumberValue(flag)
+    local val = utils.config.getFlagValue(flag)
+    if not val then return end
+
+    return tonumber(val)
+end
+
 ---@return boolean
 function utils.config.hasFlag(flag)
     for k, v in pairs(utils.config.getFlagDictionary()) do
