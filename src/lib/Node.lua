@@ -212,6 +212,19 @@ function Node:destroy()
     self:orphanize()
 end
 
+---@return UpdateMode
+function Node:getRealUpdateMode()
+    if self.updateMode == "inherit" then
+        if self.parent then
+            return self.parent:getRealUpdateMode()
+        else
+            return "pausable"
+        end
+    end
+
+    return self.updateMode
+end
+
 ---@return boolean
 function Node:isPaused()
     if self.updateMode == "always" then
