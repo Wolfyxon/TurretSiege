@@ -27,7 +27,7 @@ function PauseGui:ready()
 
     love.audio.setEffect("pause", { type = "reverb" })
     
-    main.onEvent("keypressed", function (key)
+    local keyEventId = main.onEvent("keypressed", function (key)
         if key == "escape" then
             main.setPause(not main.isPaused())
 
@@ -40,6 +40,10 @@ function PauseGui:ready()
                 music:setVolume(1)
             end
         end
+    end)
+
+    self:onEvent("removed", function ()
+        main.disconnectEvent("keypressed", keyEventId)
     end)
 
     print("PauseGui ready")
