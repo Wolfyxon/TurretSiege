@@ -489,7 +489,7 @@ end
 
 ---@param flag string
 ---@return string?
-function utils.config.getFlagValue(flag)
+function utils.config.getFlagStringValue(flag)
     local dict = utils.config.getFlagDictionary()
 
     return dict[flag]
@@ -498,7 +498,7 @@ end
 ---@param flag string
 ---@return number?
 function utils.config.getFlagNumberValue(flag)
-    local val = utils.config.getFlagValue(flag)
+    local val = utils.config.getFlagStringValue(flag)
     if not val then return end
 
     return tonumber(val)
