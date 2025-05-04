@@ -6,6 +6,7 @@ local ProgressBar = require("lib.2d.gui.ProgressBar")
 
 ---@class GameGui: Node2D
 local GameGui = Node2D:new()
+GameGui:_appendClass("GameGui")
 
 GameGui.healthDisplay = nil ---@type Node2D
 GameGui.effectBar = nil     ---@type ProgressBar

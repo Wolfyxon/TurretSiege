@@ -5,6 +5,8 @@ local GuiNode = require("lib.2d.gui.GuiNode")
 
 ---@class PauseGui: GuiNode
 local PauseGui = GuiNode:new()
+PauseGui:_appendClass("PauseGui")
+
 PauseGui.visible = false
 PauseGui.updateMode = "always"
 

@@ -6,6 +6,8 @@ local Color = require("lib.Color")
 
 ---@class DeathGui: GuiNode
 local DeathGui = GuiNode:new()
+DeathGui:_appendClass("DeathGui")
+
 DeathGui.statList = nil ---@type ListContainer
 
 local targetColor = Color:new(0, 0, 0, 0.5)
