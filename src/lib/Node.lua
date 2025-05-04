@@ -189,9 +189,11 @@ end
 ---@param node Node
 function Node:disownChild(node)
     table.remove(self.children, node:getIndex())
+    
     node.parent = nil
     node:emitEvent("removed")
     node:removed(self)
+
     self:emitEvent("nodeRemoved", node)
     self:emitEvent("nodeListUpdated")
 end
