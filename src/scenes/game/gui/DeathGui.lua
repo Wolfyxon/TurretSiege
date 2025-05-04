@@ -84,6 +84,8 @@ function DeathGui:ready()
 
     buttons:arrangeChildren()
     self:addChild(buttons)
+
+    print("DeathGui ready")
 end
 
 function DeathGui:update(delta)

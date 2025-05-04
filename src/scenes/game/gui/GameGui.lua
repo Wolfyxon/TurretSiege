@@ -61,6 +61,8 @@ function GameGui:ready()
 
     self:addChild(healthDisplay)
     healthDisplay:arrangeChildren()
+
+    print("GameGui ready")
 end
 
 function GameGui:update(delta)

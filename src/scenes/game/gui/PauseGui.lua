@@ -41,6 +41,8 @@ function PauseGui:ready()
             end
         end
     end)
+
+    print("PauseGui ready")
 end
 
 function PauseGui:update(delta)
