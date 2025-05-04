@@ -7,20 +7,11 @@ local AreaNode = require("lib.2d.AreaNode")
 local Sprite = AreaNode:new()
 Sprite:_appendClass("Sprite")
 
----@type ImageData?
-Sprite.texture = nil
-
----@type number
-Sprite.textureRotation = 0
-
----@type boolean
-Sprite.enableShadow = true
-
----@type number
-Sprite.shadowOffset = 15
-
----@type number
-Sprite.shadowOpaticy = 0.4
+Sprite.texture = nil        ---@type ImageData?
+Sprite.textureRotation = 0  ---@type number
+Sprite.enableShadow = true  ---@type boolean
+Sprite.shadowOffset = 15    ---@type number
+Sprite.shadowOpaticy = 0.4  ---@type number
 
 function Sprite:new(o, path)
     o = AreaNode.new(self, o)
