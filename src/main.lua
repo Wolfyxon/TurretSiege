@@ -7,6 +7,7 @@ local Sprite = require("lib.2d.Sprite")
 ---@class Main
 main = {
     frameCount = 0,
+    gameTime = 0
 }
 
 
@@ -179,6 +180,10 @@ end
 
 function love.update(delta)
     main.frameCount = main.frameCount + 1
+    
+    if not paused then
+        main.gameTime = main.gameTime + delta
+    end
 
     if currentScene then
         currentScene:updateRequest(delta)
