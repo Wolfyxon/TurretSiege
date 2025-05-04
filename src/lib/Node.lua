@@ -225,6 +225,21 @@ function Node:getRealUpdateMode()
     return self.updateMode
 end
 
+---@return number
+function Node:getTime()
+    local mode = self:getRealUpdateMode()
+    
+    if mode == "always" then
+        return love.timer.getTime()
+    elseif mode == "pausable" then
+        return main.activeTime
+    elseif mode == "pausedOnly" then
+        return main.pausedTime
+    end
+
+    error("Failed to get node time, unsupported update mode")
+end
+
 ---@return boolean
 function Node:isPaused()
     if self.updateMode == "always" then
