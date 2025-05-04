@@ -37,7 +37,7 @@ function Turret:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    o.lastFireTime = love.timer.getTime()
+    o.lastFireTime = o:getTime()
     o.projectiles = {}
 
     o.base = Sprite:new({}, "scenes/game/turret/img/base.png")
@@ -120,7 +120,8 @@ end
 
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
-    local now = love.timer.getTime()
+    local now = self:getTime()
+
     if now < self.lastFireTime + self.fireCooldown then
         return
     end

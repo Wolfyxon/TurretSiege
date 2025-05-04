@@ -28,7 +28,7 @@ function Projectile:new(o)
     self.__index = self
 
     o.ignoredClasses = {}
-    o.spawnedAt = love.timer.getTime()
+    o.spawnedAt = o:getTime()
     o.damageSound = love.audio.newSource("scenes/game/projectiles/audio/smallHit.ogg", "static")
 
 
@@ -69,7 +69,7 @@ function Projectile:hit(entity)
 end
 
 function Projectile:update(delta)
-    if love.timer.getTime() > self.spawnedAt + self.lifeTime then
+    if self:getTime() > self.spawnedAt + self.lifeTime then
         self:destroy()
         return
     end

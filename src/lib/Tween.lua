@@ -80,11 +80,11 @@ function Tween:update(delta)
     end
 
     if not keyframe.isPlaying then
-        keyframe.startTime = love.timer.getTime()
+        keyframe.startTime = self:getTime()
         keyframe.isPlaying = true
     end
 
-    local time = love.timer.getTime()
+    local time = self:getTime()
     local timePassed = time - keyframe.startTime
 
     for k, v in pairs(keyframe.properties) do

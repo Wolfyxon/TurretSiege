@@ -84,7 +84,7 @@ function GameScene:spawnProjectile(projectile)
 end
 
 function GameScene:load()
-    self.lastProjectileSpawnTime = love.timer.getTime()
+    self.lastProjectileSpawnTime = self:getTime()
 
     local projectileList = {
         require("scenes.game.projectiles.powerUps.health"),
@@ -146,7 +146,8 @@ function GameScene:draw(screen)
 end
 
 function GameScene:update(delta)
-    local now = love.timer.getTime()
+    local now = self:getTime()
+    
     if self.turret:isAlive() and now > self.lastProjectileSpawnTime + self.projectileSpawnDelay then
         self.lastProjectileSpawnTime = now
         

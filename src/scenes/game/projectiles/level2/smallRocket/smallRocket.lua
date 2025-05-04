@@ -20,7 +20,7 @@ end
 function SmallRocketProjectile:update(delta)
     Projectile.update(self, delta)
 
-    self.rotation = self.originalRotation + math.sin(love.timer.getTime() * 10) * 15
+    self.rotation = self.originalRotation + math.sin(self:getTime() * 10) * 15
 end
 
 return SmallRocketProjectile
