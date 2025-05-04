@@ -25,6 +25,7 @@ function Sprite:new(o, path)
     return o
 end
 
+---@param path string
 function Sprite:loadTextureFromFile(path)
     self.texture = assets.getImage(path)
 
