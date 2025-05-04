@@ -1,5 +1,6 @@
 local data = require("data")
 local utils = require("lib.utils")
+local assets = require("assets")
 
 local Color = require("lib.Color")
 local Sprite = require("lib.2d.Sprite")

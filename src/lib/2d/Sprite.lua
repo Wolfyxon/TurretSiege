@@ -26,7 +26,7 @@ function Sprite:new(o, path)
 end
 
 function Sprite:loadTextureFromFile(path)
-    self.texture = love.graphics.newImage(path)
+    self.texture = assets.getImage(path)
 
     local tW, tH = self:getTextureSize()
     self.width = tW / gameData.width
