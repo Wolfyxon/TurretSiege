@@ -7,7 +7,8 @@ local Sprite = require("lib.2d.Sprite")
 ---@class Main
 main = {
     frameCount = 0,
-    gameTime = 0
+    activeTime = 0,
+    pausedTime = 0
 }
 
 
@@ -147,13 +148,6 @@ function main.addGears(parent)
      return res
 end
 
---== Global functions ==--
-
----@return number
-function gameTime()
-    return main.gameTime
-end
-
 --== Love2D function overrides ==--
 
 function love.load()
@@ -188,8 +182,10 @@ end
 function love.update(delta)
     main.frameCount = main.frameCount + 1
     
-    if not paused then
-        main.gameTime = main.gameTime + delta
+    if paused then
+        main.pausedTime = main.pausedTime + delta
+    else
+        main.activeTime = main.activeTime + delta
     end
 
     if currentScene then
