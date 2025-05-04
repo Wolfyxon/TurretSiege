@@ -70,6 +70,12 @@ function Turret:new(o)
         o:shockwave()
     end)
 
+    local customHp = utils.config.getFlagNumberValue("turretHp")
+
+    if customHp then
+        o.hp = customHp
+    end
+
     return o
 end
 
