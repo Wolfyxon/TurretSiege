@@ -147,6 +147,13 @@ function main.addGears(parent)
      return res
 end
 
+--== Global functions ==--
+
+---@return number
+function gameTime()
+    return main.gameTime
+end
+
 --== Love2D function overrides ==--
 
 function love.load()
