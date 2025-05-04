@@ -8,7 +8,7 @@ function assets.unload(path)
     assets.cache[path] = nil
 end
 
-function assets.unloadAll(path)
+function assets.unloadAll()
     assets.cache = {}
 end
 
