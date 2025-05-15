@@ -120,7 +120,7 @@ function Audio:isPlaying()
 end
 
 ---@return number?
-function Audio:getPlaybackPosition()
+function Audio:getPlayTime()
     if not self.source then return end
 
     return self.source:tell()
