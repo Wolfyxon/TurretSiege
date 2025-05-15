@@ -13,6 +13,8 @@ MenuScene.music = nil ---@type Audio
 
 
 function MenuScene:load()
+    main.musicPos = 0
+    
     self.music = Audio:new():loadFromFile("scenes/menu/music.ogg"):setLoop(true):play()
     self:addChild(self.music)
 
