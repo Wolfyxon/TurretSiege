@@ -9,7 +9,8 @@ local Sprite = require("lib.2d.Sprite")
 main = {
     frameCount = 0,
     activeTime = 0,
-    pausedTime = 0
+    pausedTime = 0,
+    musicPos = 0
 }
 
 

@@ -105,8 +105,9 @@ function GameScene:load()
     self.arena = Node2D:new()
 
     self.music = Audio:new():loadFromFile("scenes/game/music.ogg"):setLoop(true):play()
+    self.music:setPlayTime(main.musicPos)
     self:addChild(self.music)
-    
+
     for i, v in ipairs(main.addGears(self)) do
         local dir = (-1) ^ i
 
@@ -217,6 +218,8 @@ function GameScene:gameOver()
 
     self.gui.healthDisplay.visible = false
     self.deathGui:show()
+
+    main.musicPos = self.music:getPlayTime()
     self.music:stop()
 end
 
