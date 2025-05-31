@@ -5,6 +5,7 @@
 -- (I would use a for loop but Intelisense is too stupid)
 
 local utils = require("lib.utils")
+require("lib.utils.oop")
 
 function warn(...)
     print("Warning:", ...)
