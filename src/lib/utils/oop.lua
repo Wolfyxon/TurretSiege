@@ -41,7 +41,9 @@ end
 ---@param classTable {}
 ---@param body {}
 function initClass(classTable, body)
-    local ins = setmetatable(body or {}, {
+    body = body or {}
+
+    local ins = setmetatable(table.copy(body), {
         __index = classTable,
         __add = classTable.__add,
         __sub = classTable.__sub,
