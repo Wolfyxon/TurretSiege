@@ -2,8 +2,7 @@ local utils = require("lib.utils")
 
 ---@alias UpdateMode "inherit" | "always" | "pausable" | "pausedOnly" 
 
----@class Node
-local Node = {
+--[[local Node = {
     classList = {"Node"},      ---@type string[]
     isReady = false,           ---@type boolean
     eventHandlers = {},        ---@type {string: function[]}
@@ -11,7 +10,17 @@ local Node = {
     children = {},             ---@type Node[]
     uniqueId = "",             ---@type string
     updateMode = "inherit"     ---@type UpdateMode
-}
+}]]
+
+---@class Node
+local Node = class("Node")
+
+Node.isReady = false            ---@type boolean
+Node.eventHandlers = {}         ---@type {string: function[]}
+Node.parent = nil               ---@type Node
+Node.children = {}              ---@type Node[]
+Node.uniqueId = ""              ---@type string
+Node.updateMode = "inherit"     ---@type UpdateMode
 
 function Node:new(o)
     o = o or {}
