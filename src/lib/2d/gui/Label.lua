@@ -2,7 +2,7 @@ local GuiNode = require("lib.2d.gui.GuiNode")
 local data    = require("data")
 
 ---@class Label: GuiNode
-local Label = GuiNode:new()
+local Label = class("Label", GuiNode)
 
 local fontPath = "fonts/ChakraPetch-Bold.ttf"
 local globalFontScale = 0.3
@@ -15,14 +15,8 @@ Label.formatted = false     ---@type boolean
 Label._unprocessedText = "" ---@type string
 Label._fontSize = 16        ---@type integer
 
-function Label:new(o)
-    o = GuiNode.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    o:setFontSize(16)
-
-    return o
+function Label:init()
+    self:setFontSize(16)
 end
 
 function Label:draw()

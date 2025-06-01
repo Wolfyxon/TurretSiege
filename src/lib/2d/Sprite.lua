@@ -4,8 +4,7 @@ local utils    = require("lib.utils")
 local AreaNode = require("lib.2d.AreaNode")
 
 ---@class Sprite: AreaNode
-local Sprite = AreaNode:new()
-Sprite:_appendClass("Sprite")
+local Sprite = class("Sprite", AreaNode)
 
 Sprite.texture = nil        ---@type ImageData?
 Sprite.textureRotation = 0  ---@type number
@@ -13,16 +12,15 @@ Sprite.enableShadow = true  ---@type boolean
 Sprite.shadowOffset = 15    ---@type number
 Sprite.shadowOpaticy = 0.4  ---@type number
 
-function Sprite:new(o, path)
-    o = AreaNode.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
+---@param path string?
+function Sprite:new(path)
+    local ins = initClass(self)
+    
     if path then
-        o:loadTextureFromFile(path)
+        ins:loadTextureFromFile(path)
     end
 
-    return o
+    return ins
 end
 
 ---@param path string

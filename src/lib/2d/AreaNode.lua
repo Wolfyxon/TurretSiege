@@ -1,25 +1,13 @@
-local utils = require("lib.utils")
 local Node2D = require("lib.2d.Node2d")
 local data = require("data")
 
 ---@class AreaNode: Node2D
-local AreaNode = Node2D:new()
-AreaNode:_appendClass("AreaNode")
-
+local AreaNode = class("AreaNode", Node2D)
 
 AreaNode.shape = "rect"         ---@type string
 AreaNode.positioning = "center" ---@type "center" | "topleft"
 AreaNode.width = 0              ---@type number
 AreaNode.height = 0             ---@type number
-
-
-function AreaNode:new(o)
-    o = Node2D.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    return o
-end
 
 function AreaNode:drawDebug()
     if self.shape == "rect" then

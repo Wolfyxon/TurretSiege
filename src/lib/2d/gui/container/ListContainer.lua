@@ -1,21 +1,12 @@
 local Container = require("lib.2d.gui.container.Container")
 
 ---@class ListContainer: Container
-local ListContainer = Container:new()
+local ListContainer = class("ListContainer", Container)
 
 ListContainer.mode = "vertical" ---@type "vertical" | "horizontal"
 ListContainer.spacing = 0       ---@type number
 
 -- TODO: left, right, center mode
-
-function ListContainer:new(o)
-    o = Container.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-
-    return o
-end
 
 function ListContainer:arrangeChildren()
     if self.mode == "vertical" then

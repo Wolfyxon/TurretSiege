@@ -40,8 +40,8 @@ function Turret:new(o)
     o.lastFireTime = o:getTime()
     o.projectiles = {}
 
-    o.base = Sprite:new({}, "scenes/game/turret/img/base.png")
-    o.cannon = Sprite:new({}, "scenes/game/turret/img/cannon.png")
+    o.base = Sprite:new("scenes/game/turret/img/base.png")
+    o.cannon = Sprite:new("scenes/game/turret/img/cannon.png")
 
     o.cannon.x = 0.2
 

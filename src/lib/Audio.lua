@@ -1,8 +1,8 @@
 local Node = require("lib.Node")
 
 ---@class Audio: Node
-local Audio = Node:new()
-Audio:_appendClass("Audio")
+local Audio = class("Audio", Node)
+
 Audio:_registerEvent("finished")
 
 Audio._wasPlaying = false    ---@type boolean
@@ -10,24 +10,18 @@ Audio.source = nil           ---@type Source
 Audio.removeOnFinish = false ---@type boolean
 Audio.stopOnRemove = true    ---@type boolean
 
-function Audio:new(o)
-    o = Node.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-    
-    o:onEvent("finished", function ()
-        if o.removeOnFinish then
-            o:destroy()
+function Audio:init()
+    self:onEvent("finished", function ()
+        if self.removeOnFinish then
+            self:destroy()
         end
     end)
 
-    o:onEvent("removed", function ()
-        if o.stopOnRemove then
-            o:stop()
+    self:onEvent("removed", function ()
+        if self.stopOnRemove then
+            self:stop()
         end
     end)
-
-    return o
 end
 
 function Audio:update(delta)

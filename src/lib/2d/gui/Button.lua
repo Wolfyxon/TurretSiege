@@ -3,8 +3,7 @@ local Color = require("lib.Color")
 local utils = require("lib.utils")
 
 ---@class Button: Label
-local Button = Label:new()
-Button:_appendClass("Button")
+local Button = class("Button", Label)
 Button:_registerEvent("pressed")
 
 Button.backgroundColorNormal = Color:new(0.6, 0.3, 0)  ---@type Color
@@ -19,20 +18,13 @@ Button._mode = "mouse"                                 ---@type "mouse" | "keys"
 Button.mX = 0
 Button.mY = 0
 
-function Button:new(o)
-    o = Label.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-
-    o.backgroundColor = self.backgroundColorNormal:clone()
-    o:setText("Button")
+function Button:init()
+    self.backgroundColor = Button.backgroundColorNormal:clone()
+    self:setText("Button")
 
     main.onEvent("mousepressed", function ()
-        o:pressRequest()
+        self:pressRequest()
     end)
-
-    return o
 end
 
 function Button:update(delta)

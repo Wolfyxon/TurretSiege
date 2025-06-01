@@ -1,22 +1,16 @@
 local GuiNode = require("lib.2d.gui.GuiNode")
 
 ---@class Container: GuiNode
-local Container = GuiNode:new()
+local Container = class("Container", GuiNode)
 
-function Container:new(o)
-    o = GuiNode.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    o:onEvent("ready", function ()
+function Container:init()
+    self:onEvent("ready", function ()
         self:arrangeChildren()
     end)
 
-    o:onEvent("nodeListUpdated", function ()
+    self:onEvent("nodeListUpdated", function ()
         self:arrangeChildren()
     end)
-
-    return o
 end
 
 function Container:arrangeChildren() end

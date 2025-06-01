@@ -8,7 +8,7 @@ local Tween = require("lib.Tween")
 ---@alias ColorMode "set" | "mul" | "add" | "sub"
 
 ---@class Node2D: Node
-local Node2D = Node:new()
+local Node2D = class("Node2D", Node)
 
 Node2D.visible = true             ---@type boolean
 Node2D.colorMode = "mul"          ---@type ColorMode
@@ -22,19 +22,8 @@ Node2D.color = Color:new(1, 1, 1) ---@type Color
 
 Node2D:_appendClass("Node2D")
 
-function Node2D:new(o)
-    o = Node.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-    
-    local col = o.color
-    if col then
-        col = col:clone()
-    end
-
-    o.color = col or Color:new(1, 1, 1)
-
-    return o
+function Node2D:init()
+    self.color = (self.color or Color:new(1, 1, 1)):clone()
 end
 
 --== Dynamic methods ==--

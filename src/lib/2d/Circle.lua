@@ -2,7 +2,7 @@ local Node2D = require("lib.2d.Node2d")
 local Color = require("lib.Color")
 
 ---@class Circle: Node2D
-local Circle = Node2D:new()
+local Circle = class("Circle", Node2D)
 
 Circle.radius = 5         ---@type number
 Circle.segments = 20      ---@type number
@@ -10,15 +10,9 @@ Circle.outlineSize = 0    ---@type number
 Circle.fillColor = nil    ---@type Color
 Circle.outlineColor = nil ---@type Color
 
-function Circle:new(o)
-    o = Node2D.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    o.fillColor = Color:new(1, 1, 1)
-    o.outlineColor = Color:new(1, 1, 1)
-
-    return o
+function Circle:init()
+    self.fillColor = Color:new(1, 1, 1)
+    self.outlineColor = Color:new(1, 1, 1)
 end
 
 function Circle:draw()

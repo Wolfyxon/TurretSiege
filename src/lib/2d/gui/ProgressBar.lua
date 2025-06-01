@@ -5,7 +5,7 @@ local data  = require("data")
 local utils = require("lib.utils")
 
 ---@class ProgressBar: Label
-local ProgressBar = Label:new()
+local ProgressBar = class("ProgressBar", Label)
 
 ProgressBar.textDisplayStyle = "value/max" ---@type "value/max" | "value" | "percent" | "none"
 ProgressBar.barPositioning = "left"        ---@type "left" | "center"
@@ -14,16 +14,10 @@ ProgressBar.max = 100                      ---@type number
 ProgressBar.value = 50                     ---@type number
 ProgressBar.displayValue = 0               ---@type number
 
-function ProgressBar:new(o)
-    o = Label.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    o.backgroundColor = Color:new(0.1, 0.1, 0.1)
-    o.barColor = Color:new(1, 0, 0)
-    o.displayValue = o.value
-
-    return o
+function ProgressBar:init()
+    self.backgroundColor = Color:new(0.1, 0.1, 0.1)
+    self.barColor = Color:new(1, 0, 0)
+    self.displayValue = self.value
 end
 
 function ProgressBar:update(delta)

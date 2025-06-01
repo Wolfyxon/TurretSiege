@@ -3,7 +3,7 @@ local Color    = require("lib.Color")
 local data     = require("data")
 
 ---@class GuiNode: AreaNode
-local GuiNode = AreaNode:new()
+local GuiNode = class("GuiNode", AreaNode)
 
 GuiNode.backgroundColor = nil ---@type Color
 GuiNode.borderColor = nil     ---@type Color
@@ -11,19 +11,13 @@ GuiNode.borderSize = 0        ---@type number
 GuiNode.borderRadius = 0      ---@type number
 GuiNode.sizing = "extend"     ---@type "extend" | "minimal" | "keep" 
 
-function GuiNode:new(o)
-    o = AreaNode.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
+function GuiNode:init()
+    self.backgroundColor = Color:new(0, 0, 0, 0)
+    self.borderColor = Color:new(0, 0, 0, 0)
 
-    o.backgroundColor = Color:new(0, 0, 0, 0)
-    o.borderColor = Color:new(0, 0, 0, 0)
-
-    o:onEvent("nodeListUpdated", function ()
-        o:adjustSize()
+    self:onEvent("nodeListUpdated", function ()
+        self:adjustSize()
     end)
-    
-    return o
 end
 
 function GuiNode:draw()
