@@ -7,13 +7,7 @@ Object = {
 }
 
 function Object:new()
-    local ins = setmetatable({}, {
-        __index = self
-    })
-
-    ins:init()
-    
-    return ins
+    return initClass(self)
 end
 
 ---@return string
@@ -45,10 +39,12 @@ function class(name, baseTable)
     return ins
 end
 
-function initClass(table)
-    local ins = setmetatable({}, table)
+function initClass(classTable)
+    local ins = setmetatable({}, {
+        __index = classTable
+    })
 
     ins:init()
-
+    
     return ins
 end
