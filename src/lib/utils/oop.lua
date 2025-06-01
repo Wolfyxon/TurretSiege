@@ -38,9 +38,15 @@ function class(name, baseTable)
     return ins
 end
 
-function initClass(classTable)
-    local ins = setmetatable({}, {
-        __index = classTable
+---@param classTable {}
+---@param body {}
+function initClass(classTable, body)
+    local ins = setmetatable(body or {}, {
+        __index = classTable,
+        __add = classTable.__add,
+        __sub = classTable.__sub,
+        __mul = classTable.__mul,
+        __div = classTable.__div
     })
 
     ins:init()
