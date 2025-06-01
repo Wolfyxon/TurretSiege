@@ -3,7 +3,7 @@ local utils = require("lib.utils")
 ---@class Object
 Object = {
     classList = {"Object"}, ---@type string[]
-    super = nil             ---@type {}
+    super = nil             ---@type Object?
 }
 
 function Object:new()
