@@ -20,7 +20,7 @@ function Object:init() end
 -------------------------------------------------
 
 ---@param name string
----@param baseTable? {}
+---@param baseTable Object?
 function class(name, baseTable)
     baseTable = baseTable or Object
 
@@ -39,7 +39,7 @@ function class(name, baseTable)
 end
 
 ---@param classTable {}
----@param body {}
+---@param body {} | nil
 function initClass(classTable, body)
     body = body or {}
 

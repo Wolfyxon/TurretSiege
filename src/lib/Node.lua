@@ -12,7 +12,7 @@ local utils = require("lib.utils")
     updateMode = "inherit"     ---@type UpdateMode
 }]]
 
----@class Node
+---@class Node: Object
 local Node = class("Node")
 
 Node.isReady = false            ---@type boolean
