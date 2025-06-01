@@ -1,28 +1,24 @@
 local utils = require("lib.utils")
 
 ---@class Color
-local Color = {
-    r = 1, ---@type number
-    g = 1, ---@type number
-    b = 1, ---@type number
-    a = 1  ---@type number
-}
+local Color = class("Color")
+
+Color.r = 1 ---@type number
+Color.g = 1 ---@type number
+Color.b = 1 ---@type number
+Color.a = 1  ---@type number
 
 ---@param r? number
 ---@param g? number
 ---@param b? number
 ---@param a? number
 function Color:new(r, g, b, a)
-    local o = {}
-    setmetatable(o, self)
-    self.__index = self
-
-    o.r = math.clamp(r  or 1, 0, 1)
-    o.g = math.clamp(g  or 1, 0, 1)
-    o.b = math.clamp(b  or 1, 0, 1)
-    o.a = math.clamp(a  or 1, 0, 1)
-
-    return o
+    return initClass(Color, {
+        r = math.clamp(r  or 1, 0, 1),
+        g = math.clamp(g  or 1, 0, 1),
+        b = math.clamp(b  or 1, 0, 1),
+        a = math.clamp(a  or 1, 0, 1)
+    })
 end
 
 ---@param r? number
