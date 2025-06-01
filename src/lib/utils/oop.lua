@@ -2,7 +2,7 @@ local utils = require("lib.utils")
 
 ---@class Object
 Object = {
-    _classList = {"Object"}, ---@type string[]
+    classList = {"Object"}, ---@type string[]
     super = nil              ---@type {}
 }
 
@@ -15,7 +15,7 @@ end
 
 ---@return string
 function Object:getClass()
-    return self._classList[#self._classList]
+    return self.classList[#self.classList]
 end
 
 function Object:init() end
@@ -32,8 +32,8 @@ function class(name, baseTable)
     setmetatable(ins, { __index = baseTable })
 
     ins.__index = ins
-    ins._classList = utils.table.copy(ins._classList)
-    table.insert(ins._classList, name)
+    ins.classList = utils.table.copy(ins.classList)
+    table.insert(ins.classList, name)
 
     if baseTable ~= Object then
         ins.super = baseTable
