@@ -1,5 +1,3 @@
-local utils = require("lib.utils")
-
 ---@class Color
 local Color = class("Color")
 
