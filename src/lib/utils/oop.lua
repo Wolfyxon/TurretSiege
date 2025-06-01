@@ -51,6 +51,14 @@ function initClass(classTable, body)
         __div = classTable.__div
     })
 
+    local super = classTable.super
+
+    while super do
+        super.init(ins)
+
+        super = super.super
+    end
+
     ins:init()
     
     return ins
