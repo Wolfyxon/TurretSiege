@@ -2,7 +2,7 @@ local Node = require("lib.Node")
 local Color = require("lib.Color")
 
 ---@class Tween: Node
-local Tween = Node:new()
+local Tween = class("Tween", Node)
 
 ---@enum EASING_STYLE
 Tween.EASING_STYLE = {
@@ -22,25 +22,18 @@ Tween.removeOnFinish = true ---@type boolean
 Tween.keyframes = {}        ---@type {}[]
 Tween.currentKeyframe = 1   ---@type integer
 
-Tween:_appendClass("Tween")
 Tween:_registerEvent("started", "finished")
 
-function Tween:new(o)
-    o = Node.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-    
-    o.keyframes = {}
+-- NOTE: If tweens go crazy, resort to the old OOP
+function Tween:init()
+    self.keyframes = {}
 
-    o:onEvent("finished", function ()
+    self:onEvent("finished", function ()
         if self.removeOnFinish then
             self:destroy()
         end
     end)
-
-    return o
 end
-
 
 ---@param target Node|table
 ---@param properties {string: number|Color}
