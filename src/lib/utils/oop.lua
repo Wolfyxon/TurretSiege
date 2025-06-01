@@ -7,7 +7,10 @@ Object = {
 }
 
 function Object:new()
-    local ins = setmetatable({}, self)
+    local ins = setmetatable({}, {
+        __index = self
+    })
+
     ins:init()
     
     return ins
