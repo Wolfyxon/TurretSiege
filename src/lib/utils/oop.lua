@@ -20,7 +20,6 @@ function Object:init() end
 -------------------------------------------------
 
 ---@param name string
----@param table {}
 ---@param baseTable? {}
 function class(name, baseTable)
     baseTable = baseTable or Object
