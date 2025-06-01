@@ -22,17 +22,10 @@ Node.children = {}              ---@type Node[]
 Node.uniqueId = ""              ---@type string
 Node.updateMode = "inherit"     ---@type UpdateMode
 
-function Node:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-
-    o.uniqueId = utils.string.genUniqueId()
-
-    o.eventHandlers = table.copy(self.eventHandlers) -- do not change the 'self'
-    o.children = {}
-
-    return o
+function Node:init()
+    self.uniqueId = utils.string.genUniqueId()
+    self.eventHandlers = table.copy(self.eventHandlers) -- do not change the 'self'
+    self.children = {}
 end
 
 --== Dynamic functions ==--
