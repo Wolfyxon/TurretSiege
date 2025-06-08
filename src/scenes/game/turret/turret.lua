@@ -2,15 +2,13 @@ local Entity = require("scenes.game.Entity")
 local TurretShield = require("scenes.game.turret.shield")
 local Projectile = require("scenes.game.Projectile")
 local Sprite = require("lib.2d.Sprite")
-local Tween = require("lib.Tween")
 local utils = require("lib.utils")
 local Circle = require("lib.2d.Circle")
 local Color = require("lib.Color")
 local data = require("data")
 
 ---@class Turret: Entity
-local Turret = Entity:new()
-Turret:_appendClass("Turret")
+local Turret = class("Turret", Entity)
 
 local scale = 0.15
 local bulletColor = Color:new255(255, 106, 0)
@@ -32,6 +30,47 @@ Turret.cannon = nil             ---@type Sprite
 Turret.base = nil               ---@type Sprite
 Turret.projectiles = {}         ---@type Projectile[]
 
+function Turret:init()
+    self.lastFireTime = self:getTime()
+    self.projectiles = {}
+
+    self.base = Sprite:new("scenes/game/turret/img/base.png")
+    self.cannon = Sprite:new("scenes/game/turret/img/cannon.png")
+
+    self.cannon.x = 0.2
+
+    self:setScaleAll(scale)
+    self.x = 0.5
+    self.y = 0.5
+
+    self:addChild(self.cannon)
+    self:addChild(self.base)
+
+    local t = nil
+    self:onEvent("damaged", function ()
+        if t then t:stop() end
+
+        local range = 0.005
+        local function r() return 0.5 + math.randomf(-range, range) end
+
+        t = self:createTween()
+                  :addKeyframe(self, { x = r(), y = r() }, 0.05)
+                  :addKeyframe(self, { x = 0.5, y = 0.5 }, 0.05)
+        t:play()
+    end)
+
+    self:onEvent("died", function ()
+        self:shockwave()
+    end)
+
+    local customHp = utils.config.getFlagNumberValue("turretHp")
+
+    if customHp then
+        self.hp = customHp
+    end
+end
+
+--[[
 function Turret:new(o)
     o = Entity.new(self, o)
     setmetatable(o, self)
@@ -77,7 +116,7 @@ function Turret:new(o)
     end
 
     return o
-end
+end]]
 
 function Turret:update(delta)
     if utils.system.hasMouse() then
