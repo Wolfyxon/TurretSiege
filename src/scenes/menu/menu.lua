@@ -5,7 +5,7 @@ local Sprite = require("lib.2d.Sprite")
 local Audio = require("lib.Audio")
 local ListContainer = require("lib.2d.gui.container.ListContainer")
 local Scene = require("lib.2d.Scene")
-local data = require("data")
+local gameData = require("gameData")
 
 ---@class MenuScene: Scene
 local MenuScene = Scene:new()
@@ -50,7 +50,7 @@ function MenuScene:load()
 
     local version = Label:new()
     version.textAlign = "right"
-    version:setText("v. " .. data.version)
+    version:setText("v. " .. gameData.version)
     version:setFontSize(14)
     titleContainer:addChild(version)
 

@@ -1,6 +1,6 @@
 local AreaNode = require("lib.2d.AreaNode")
-local Color    = require("lib.Color")
-local data     = require("data")
+local Color = require("lib.Color")
+local gameData = require("gameData")
 
 ---@class GuiNode: AreaNode
 local GuiNode = class("GuiNode", AreaNode)
@@ -21,8 +21,8 @@ function GuiNode:init()
 end
 
 function GuiNode:draw()
-    local ox = -(self.width / 2) * data.width
-    local oy = -(self.height / 2) * data.height
+    local ox = -(self.width / 2) * gameData.width
+    local oy = -(self.height / 2) * gameData.height
 
     if self.positioning == "topleft" then
         ox = 0
@@ -34,10 +34,10 @@ function GuiNode:draw()
         "fill",
         ox,
         oy,
-        self.width * data.width,
-        self.height * data.height,
-        self.borderRadius * (self.width * data.width),
-        self.borderRadius * (self.height * data.height)
+        self.width * gameData.width,
+        self.height * gameData.height,
+        self.borderRadius * (self.width * gameData.width),
+        self.borderRadius * (self.height * gameData.height)
     )
 
     love.graphics.setLineWidth(self.borderSize)
@@ -46,10 +46,10 @@ function GuiNode:draw()
         "line", 
         ox,
         oy,
-        self.width * data.width,
-        self.height * data.height,
-        self.borderRadius * (self.width * data.width),
-        self.borderRadius * (self.height * data.height)
+        self.width * gameData.width,
+        self.height * gameData.height,
+        self.borderRadius * (self.width * gameData.width),
+        self.borderRadius * (self.height * gameData.height)
     )
 
     self.color:toGraphics()

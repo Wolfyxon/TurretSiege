@@ -1,7 +1,7 @@
 local Color = require("lib.Color")
 local Label = require("lib.2d.gui.Label")
 local GuiNode = require("lib.2d.gui.GuiNode")
-local data  = require("data")
+local gameData = require("gameData")
 local utils = require("lib.utils")
 
 ---@class ProgressBar: Label
@@ -55,10 +55,10 @@ function ProgressBar:draw()
     self.barColor:toGraphics()
     love.graphics.rectangle(
         "fill",
-        x * data.width,
-        y * data.height,
-        w * data.width,
-        self.height * data.height
+        x * gameData.width,
+        y * gameData.height,
+        w * gameData.width,
+        self.height * gameData.height
     )
 
     self.color:toGraphics()

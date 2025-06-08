@@ -1,5 +1,5 @@
 local Node2D = require("lib.2d.Node2d")
-local data = require("data")
+local gameData = require("gameData")
 
 ---@class AreaNode: Node2D
 local AreaNode = class("AreaNode", Node2D)
@@ -21,10 +21,10 @@ function AreaNode:drawDebug()
             oy = 0
         end
 
-        local x = (self.x + ox) * data.height
-        local y = (self.y + oy) * data.height
+        local x = (self.x + ox) * gameData.height
+        local y = (self.y + oy) * gameData.height
 
-        love.graphics.rectangle("fill", x, y, self.width * data.width, self.height * data.height)
+        love.graphics.rectangle("fill", x, y, self.width * gameData.width, self.height * gameData.height)
 
         --[[for i, corner in ipairs(self:getRectCorners()) do
             local x = corner[1]

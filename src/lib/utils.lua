@@ -6,7 +6,7 @@ local utils = {
     config = {},
     version = {}
 }
-local data = require("data")
+local gameData = require("gameData")
 
 --== Table ==--
 ---@return table
@@ -421,20 +421,20 @@ end
 ---@param screen Screen?
 function utils.system.getDrawData(screen)
     local w, h = love.graphics.getDimensions(screen)
-    local ratio = math.min(w / data.width, h / data.height)
-    local size = math.min(data.width, data.height)
+    local ratio = math.min(w / gameData.width, h / gameData.height)
+    local size = math.min(gameData.width, gameData.height)
 
-    local oX = (data.width - size) / 2
-    local oY = (data.height - size) / 2
+    local oX = (gameData.width - size) / 2
+    local oY = (gameData.height - size) / 2
 
-    local sX = w / data.width
-    local sY = h / data.height
+    local sX = w / gameData.width
+    local sY = h / gameData.height
 
     return {
         wW = w,
         wH = h,
-        w = data.width,
-        h = data.height,
+        w = gameData.width,
+        h = gameData.height,
         scaleX = sX,
         scaleY = sY,
         offsetX = oX,
@@ -463,7 +463,7 @@ end
 
 ---@return string[]
 function utils.config.getFlags()
-    local res = utils.table.copy(data.flags)
+    local res = utils.table.copy(gameData.flags)
 
     for i, v in ipairs(utils.config.getCommandLineFlags()) do
         table.insert(res, v)
@@ -519,7 +519,7 @@ end
 
 ---@return string[]
 function utils.version.getSplit()
-    return data.version:multiSplit({".", "-"})
+    return gameData.version:multiSplit({".", "-"})
 end
 
 function utils.version.getTuple()

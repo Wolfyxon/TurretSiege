@@ -1,4 +1,4 @@
-local gameData = require("data")
+local gameData = require("gameData")
 local utils    = require("lib.utils")
 
 local AreaNode = require("lib.2d.AreaNode")

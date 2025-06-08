@@ -5,7 +5,7 @@ local Sprite = require("lib.2d.Sprite")
 local utils = require("lib.utils")
 local Circle = require("lib.2d.Circle")
 local Color = require("lib.Color")
-local data = require("data")
+local gameData = require("gameData")
 
 ---@class Turret: Entity
 local Turret = class("Turret", Entity)
@@ -126,7 +126,7 @@ function Turret:update(delta)
         x = x - self.x
         y = y - self.y
 
-        local ratio = data.width / data.height
+        local ratio = gameData.width / gameData.height
         if ratio > 1 then
             x = x * ratio
         else

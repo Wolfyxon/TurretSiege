@@ -1,4 +1,4 @@
-local data = require("data")
+local gameData = require("gameData")
 local utils = require("lib.utils")
 local assets = require("assets")
 
@@ -165,7 +165,7 @@ function love.load()
     print("==================================================================")
 
     love.window.setTitle("Turret Siege")
-    love.window.setMode(data.width * data.windowSizeMultiplier, data.height * data.windowSizeMultiplier, {resizable = true})
+    love.window.setMode(gameData.width * gameData.windowSizeMultiplier, gameData.height * gameData.windowSizeMultiplier, {resizable = true})
     
     main.loadSceneByName(utils.config.getFlagDictionary().scene)
 end
