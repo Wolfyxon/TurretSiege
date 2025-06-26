@@ -70,54 +70,6 @@ function Turret:init()
     end
 end
 
---[[
-function Turret:new(o)
-    o = Entity.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    o.lastFireTime = o:getTime()
-    o.projectiles = {}
-
-    o.base = Sprite:new("scenes/game/turret/img/base.png")
-    o.cannon = Sprite:new("scenes/game/turret/img/cannon.png")
-
-    o.cannon.x = 0.2
-
-    o.scaleX = scale
-    o.scaleY = scale
-    o.x = 0.5
-    o.y = 0.5
-
-    o:addChild(o.cannon)
-    o:addChild(o.base)
-
-    local t = nil
-    o:onEvent("damaged", function ()
-        if t then t:stop() end
-
-        local range = 0.005
-        local function r() return 0.5 + math.randomf(-range, range) end
-
-        t = o:createTween()
-                  :addKeyframe(o, { x = r(), y = r() }, 0.05)
-                  :addKeyframe(o, { x = 0.5, y = 0.5 }, 0.05)
-        t:play()
-    end)
-
-    o:onEvent("died", function ()
-        o:shockwave()
-    end)
-
-    local customHp = utils.config.getFlagNumberValue("turretHp")
-
-    if customHp then
-        o.hp = customHp
-    end
-
-    return o
-end]]
-
 function Turret:update(delta)
     if utils.system.hasMouse() then
         local x, y = utils.system.getMousePos()
