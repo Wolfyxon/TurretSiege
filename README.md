@@ -2,7 +2,7 @@
 
 Open source rougelike game where you are a turret surrounded by enemies. Longer you survive, the better you score.
 
-Made with [Love2D](https://love2d.org/) and [LovePotion](https://lovebrew.org/) in Lua.
+Made with [Love2D](https://love2d.org/) in Lua.
 
 <!-- [View on itch.io](https://wolfyxon.itch.io/turretsiege) -->
 
@@ -16,7 +16,7 @@ Made with [Love2D](https://love2d.org/) and [LovePotion](https://lovebrew.org/) 
 | Universal    | `love`           | *             | ✅       |
 | Linux        | `AppImage`       | x86_64        | ✅       |
 | Windows      | `exe`            | x86_64 x86_32 | ✅✅     |
-| Nintendo 3DS | `3dsx` ~~`cia`~~ |               | ⚠️📁     |
+| Nintendo 3DS | `3dsx` `cia`     |               | 📁📁     |
 | MacOS        |                  |               | 📁       |
 | Android      |                  |               | 📁       |
 
@@ -49,5 +49,4 @@ love src
 ### Manual building
 Refer to the [Love2D wiki](https://love2d.org/wiki/Game_Distribution) and [LovePotion wiki](https://lovebrew.org/#/packaging?id=fused-binary).
 
-### LovePotion bundler
-You may use the [LovePotion bundler](https://bundle.lovebrew.org/) for Nintendo consoles but it's not officially supported and will require making a config file.
+You may also use other build tools than Lover but their features will not be supported.
