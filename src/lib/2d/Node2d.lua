@@ -20,8 +20,6 @@ Node2D.x = 0                      ---@type number
 Node2D.y = 0                      ---@type number
 Node2D.color = Color:new(1, 1, 1) ---@type Color
 
-Node2D:_appendClass("Node2D")
-
 function Node2D:init()
     self.color = (self.color or Color:new(1, 1, 1)):clone()
 end
