@@ -17,8 +17,7 @@ main = {
 ---@type {string: Scene}
 local scenes = {
     game = require("scenes.game.game"),
-    menu = require("scenes.menu.menu"),
-    debug = require("scenes.debug")
+    menu = require("scenes.menu.menu")
 }
 main.scenes = scenes
 
