@@ -8,9 +8,8 @@ local Scene = require("lib.2d.Scene")
 local gameData = require("gameData")
 
 ---@class MenuScene: Scene
-local MenuScene = Scene:new()
+local MenuScene = class("MenuScene", Scene)
 MenuScene.music = nil ---@type Audio
-
 
 function MenuScene:load()
     main.musicPos = 0

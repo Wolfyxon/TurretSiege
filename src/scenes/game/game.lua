@@ -12,8 +12,7 @@ local PauseGui = require("scenes.game.gui.PauseGui")
 local Scene = require("lib.2d.Scene")
 
 ---@class GameScene: Scene
-local GameScene = Scene:new()
-GameScene:_appendClass("GameScene")
+local GameScene = class("GameScene", Scene)
 
 GameScene.music = nil                 ---@type Audio
 GameScene.gears = {}                  ---@type Sprite[]
