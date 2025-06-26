@@ -5,8 +5,7 @@ local Button = require("lib.2d.gui.Button")
 local Color = require("lib.Color")
 
 ---@class DeathGui: GuiNode
-local DeathGui = GuiNode:new()
-DeathGui:_appendClass("DeathGui")
+local DeathGui = class("DeathGui", GuiNode)
 
 DeathGui.statList = nil ---@type ListContainer
 

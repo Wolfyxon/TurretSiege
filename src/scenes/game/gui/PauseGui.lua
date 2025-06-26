@@ -4,8 +4,7 @@ local Color = require("lib.Color")
 local GuiNode = require("lib.2d.gui.GuiNode")
 
 ---@class PauseGui: GuiNode
-local PauseGui = GuiNode:new()
-PauseGui:_appendClass("PauseGui")
+local PauseGui = class("PauseGui", GuiNode)
 
 PauseGui.visible = false
 PauseGui.updateMode = "always"
