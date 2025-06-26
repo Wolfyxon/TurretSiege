@@ -3,8 +3,7 @@ local Node2D = require("lib.2d.Node2d")
 local Entity = require("scenes.game.Entity")
 
 ---@class Turret: Entity
-local TurretShield = Node2D:new()
-TurretShield:_appendClass("TurretShield")
+local TurretShield = class("TurretShield", Node2D)
 
 TurretShield.segments = 25   ---@type integer
 TurretShield.distance = 0.15 ---@type number
