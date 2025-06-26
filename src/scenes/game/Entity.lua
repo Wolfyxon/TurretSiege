@@ -2,8 +2,7 @@ local utils = require("lib.utils")
 local Sprite = require("lib.2d.Sprite")
 
 ---@class Entity: Sprite
-local Entity = Sprite:new()
-Entity:_appendClass("Entity")
+local Entity = class("Entity",Sprite)
 Entity:_registerEvent("died", "damaged")
 
 Entity.maxHp = 100           ---@type number
@@ -13,15 +12,6 @@ Entity.dead = false          ---@type boolean
 Entity.damageSound = nil     ---@type Source
 Entity.damageSoundVolume = 1 ---@type number
 Entity.deathSound = nil      ---@type Source
-
-
-function Entity:new(o)
-    o = Sprite.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    return o
-end
 
 ---@param maxHp number
 function Entity:initHp(maxHp)

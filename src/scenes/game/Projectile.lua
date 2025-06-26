@@ -1,8 +1,7 @@
 local Entity = require("scenes.game.Entity")
 
 ---@class Projectile: Entity
-local Projectile = Entity:new()
-Projectile:_appendClass("Projectile")
+local Projectile = class("Projectile", Entity)
 Projectile:_registerEvent("hit")
 
 Projectile.hp = 3
@@ -22,32 +21,30 @@ Projectile.lifeTime   = 8            ---@type number
 Projectile.spawnedAt  = 0            ---@type number
 Projectile.damageProjectiles = false ---@type boolean
 
-function Projectile:new(o)
-    o = Entity.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
-
-    o.ignoredClasses = {}
-    o.spawnedAt = o:getTime()
-    o.damageSound = love.audio.newSource("scenes/game/projectiles/audio/smallHit.ogg", "static")
-
+function Projectile:init()
+    self.ignoredClasses = {}
+    self.spawnedAt = self:getTime()
+    self.damageSound = love.audio.newSource("scenes/game/projectiles/audio/smallHit.ogg", "static")
 
     local t = nil
     local oc = nil
-    o:onEvent("damaged", function ()
+    local proj = self
+
+    self:onEvent("damaged", function ()
         if t then t:stop() end
         if not oc then
-            oc = o.color:clone()
+            oc = proj.color:clone()
         end
 
-        t = o:createTween()
-                :addKeyframe(o.color, { 
+        t = proj:createTween()
+                :addKeyframe(proj.color, { 
                     r = 1,
                     g = 0.5,
                     b = 0.5,
                     a = 0.8 
                 }, 0.05)
-                :addKeyframe(o.color, { 
+
+                :addKeyframe(proj.color, { 
                     r = oc.r,
                     g = oc.g,
                     b = oc.b,
@@ -55,8 +52,6 @@ function Projectile:new(o)
                 }, 0.05)
         t:play()
     end)
-
-    return o
 end
 
 ---@param entity Entity
