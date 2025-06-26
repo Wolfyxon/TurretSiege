@@ -2,8 +2,7 @@ local PowerUp = require("scenes.game.projectiles.powerUps.PowerUp")
 local Color = require("lib.Color")
 
 ---@class HealthPowerUp: PowerUp
-local HealthPowerUp = PowerUp:new()
-HealthPowerUp:_appendClass("HealthPowerUp")
+local HealthPowerUp = class("HealthPowerUp", PowerUp)
 
 HealthPowerUp.color = Color:new(0.5, 1, 0.5)
 HealthPowerUp.iconImage = "health"

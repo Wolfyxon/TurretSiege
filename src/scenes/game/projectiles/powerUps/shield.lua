@@ -2,8 +2,7 @@ local PowerUp = require("scenes.game.projectiles.powerUps.PowerUp")
 local Color = require("lib.Color")
 
 ---@class ShieldPowerUp: PowerUp
-local ShieldPowerUp = PowerUp:new()
-ShieldPowerUp:_appendClass("ShieldPowerUp")
+local ShieldPowerUp = class("ShieldPowerUp", PowerUp)
 
 ShieldPowerUp.color = Color:new(0.5, 0.8, 1)
 ShieldPowerUp.iconImage = "shield"

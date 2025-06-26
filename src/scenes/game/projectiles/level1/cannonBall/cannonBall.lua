@@ -1,8 +1,7 @@
 local Projectile = require("scenes.game.Projectile")
 
 ---@class CannonBallProjectile: Projectile
-local CannonBallProjectile = Projectile:new()
-CannonBallProjectile:_appendClass("AxeProjectile")
+local CannonBallProjectile = class("CannonBallProjectile", Projectile)
 
 CannonBallProjectile.speed = 0.4
 CannonBallProjectile.rotationSpeed = 1000

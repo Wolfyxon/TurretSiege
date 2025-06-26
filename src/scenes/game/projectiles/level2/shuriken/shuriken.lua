@@ -2,8 +2,7 @@ local Projectile = require("scenes.game.Projectile")
 local Audio = require("lib.Audio")
 
 ---@class ShurikenProjectile: Projectile
-local ShurikenProjectile = Projectile:new()
-ShurikenProjectile:_appendClass("ShurikenProjectile")
+local ShurikenProjectile = class("ShurikenProjectile", Projectile)
 
 ShurikenProjectile.rotationSpeed = 800
 ShurikenProjectile.level = 2
