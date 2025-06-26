@@ -11,7 +11,7 @@ function warn(...)
     print("[Warning] " .. table.concat({...}, " "))
 
     local traceback = debug.traceback():split("\n")
-    local rmStart = 2
+    local rmStart = 3
     local rmEnd = 6
 
     for i = 1, rmStart do
