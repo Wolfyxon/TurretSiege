@@ -84,7 +84,7 @@ end
 ```lua
 
 ---@class CoolClass: BaseClass
-local CoolClass = BaseClass:new()
+local CoolClass = class("CoolClass", BaseClass)
 
 CoolClass.someProperty = 123             ---@type number
 CoolClass.name = "Friderick von Fazbear" ---@type string
