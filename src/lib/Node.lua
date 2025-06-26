@@ -77,15 +77,6 @@ function Node:getClass()
     return self.classList[#self.classList]
 end
 
----@deprecated
----@param className string
-function Node:_appendClass(className)
-    warn("_appendClass() is deprecated. Please use the new OOP system.")
-
-    self.classList = table.copy(self.classList)
-    table.insert(self.classList, className)
-end
-
 ---@param class string
 ---@param exact? boolean
 ---@return boolean
