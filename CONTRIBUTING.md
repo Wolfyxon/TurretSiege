@@ -91,7 +91,7 @@ CoolClass.name = "Friderick von Fazbear" ---@type string
 ```
 
 #### Independence
-Avoid adding any third-party unless necessary.
+Avoid adding any third-party libraries unless necessary.
 
 When making this project I wanted to create most the environment from the ground up and only rely on **Love2D** as the base engine.
 
