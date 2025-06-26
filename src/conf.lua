@@ -8,7 +8,21 @@ local utils = require("lib.utils")
 require("lib.utils.oop")
 
 function warn(...)
-    print("Warning:", ...)
+    print("[Warning] " .. table.concat({...}, " "))
+
+    local traceback = debug.traceback():split("\n")
+    local rmStart = 2
+    local rmEnd = 6
+
+    for i = 1, rmStart do
+        table.remove(traceback, 1)
+    end
+
+    for i = 1, rmEnd do
+        table.remove(traceback, #traceback)
+    end
+    
+    print(table.concat(traceback, "\n"))
 end
 
 --== Table ==--
