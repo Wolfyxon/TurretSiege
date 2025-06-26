@@ -4,8 +4,7 @@ local Sprite = require("lib.2d.Sprite")
 local Tween = require("lib.Tween")
 
 ---@class PowerUp: Projectile
-local PowerUp = Projectile:new()
-PowerUp:_appendClass("PowerUp")
+local PowerUp = class("PowerUp", Projectile)
 PowerUp:_registerEvent("collected")
 
 PowerUp.armorHp = 5                ---@type number
@@ -23,65 +22,64 @@ PowerUp.speed = 0.1
 local iconDir = "scenes/game/projectiles/powerUps/img/icons/"
 local armorTexture = "scenes/game/projectiles/powerUps/img/armor.png"
 
-function PowerUp:new(o)
-    o = Projectile.new(self, o)
-    setmetatable(o, self)
-    self.__index = self
+function PowerUp:init()
+    self.ignoredClasses = {"TurretShieldSegment"}
+    self.color = self.color:clone()
+    self.originalColor = self.color:clone()
+    self:initHp(self.armorHp + self.powerUpHp)
+    self:loadTextureFromFile("scenes/game/projectiles/powerUps/img/powerUp.png")
 
-    o.ignoredClasses = {"TurretShieldSegment"}
-    o.color = o.color:clone()
-    o.originalColor = o.color:clone()
-    o:initHp(o.armorHp + o.powerUpHp)
-    o:loadTextureFromFile("scenes/game/projectiles/powerUps/img/powerUp.png")
+    local pwu = self
 
-    o:onEvent("damaged", function ()
-        o.targetArmorDistance = o.targetArmorDistance + 0.05
+    self:onEvent("damaged", function ()
+        pwu.targetArmorDistance = pwu.targetArmorDistance + 0.05
 
-        if o:isSafe() then
-            o.damage = 0
+        if pwu:isSafe() then
+            pwu.damage = 0
             
-            Tween.fadeNode(o.armor[1], 0, 0.5)
-            Tween.fadeNode(o.armor[2], 0, 0.5)
+            Tween.fadeNode(pwu.armor[1], 0, 0.5)
+            Tween.fadeNode(pwu.armor[2], 0, 0.5)
         end
     end)
 
-    o:onEvent("hit", function ()
-        if not o:isSafe() then return end
-        o:emitEvent("collected")
-        o:collected()
-        o:getScene().turret:powerUpReceived(o)
+    self:onEvent("hit", function ()
+        if not pwu:isSafe() then return end
+        
+        pwu:emitEvent("collected")
+        pwu:collected()
+        pwu:getScene().turret:powerUpReceived(pwu)
     end)
 
     --== Icon ==--
-    o.icon = Sprite:new()
-    o.icon.colorMode = "set"
-    o.icon:loadTextureFromFile(iconDir .. o.iconImage .. ".png")
-    o.icon.enableShadow = false
-    o:addChild(o.icon)
+    self.icon = Sprite:new()
+    self.icon.colorMode = "set"
+    self.icon:loadTextureFromFile(iconDir .. pwu.iconImage .. ".png")
+    self.icon.enableShadow = false
+    self:addChild(pwu.icon)
 
     --== Armor ==--
 
-    o.armor = {
+    self.armor = {
         Sprite:new(),
         Sprite:new()
     }
 
     local as = 1.5
 
-    local la = o.armor[1]
+    local la = self.armor[1]
     la.colorMode = "set"
     la:loadTextureFromFile(armorTexture)
     la:setScaleAll(as)
-    o:addChild(la)
+    self:addChild(la)
 
-    local ra = o.armor[2]
+    local ra = pwu.armor[2]
     ra.colorMode = "set"
     ra:loadTextureFromFile(armorTexture)
     ra:setScaleAll(as)
     ra.rotation = 180
-    o:addChild(ra)
+    self:addChild(ra)
 
-    return o
+    return pwu
 end
 
 function PowerUp:ready()
