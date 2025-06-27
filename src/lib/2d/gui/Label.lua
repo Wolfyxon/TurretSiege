@@ -48,6 +48,7 @@ function Label:drawText()
 end
 
 ---@param size integer
+---@return self
 function Label:setFontSize(size)
     self._fontSize = size
     local font = love.graphics.newFont(fontPath, size)
@@ -55,6 +56,8 @@ function Label:setFontSize(size)
     local newText = love.graphics.newText or love.graphics.newTextBatch
     self.textObj = newText(font)
     self:setText(self:getText())
+
+    return self
 end
 
 function Label:adjustSize()
@@ -81,6 +84,7 @@ function Label:adjustSize()
 end
 
 ---@param text string | any
+---@return self
 function Label:setText(text)
     text = tostring(text) or "nil"
     self._unprocessedText = text
@@ -94,6 +98,8 @@ function Label:setText(text)
     end
 
     self:adjustSize()
+
+    return self
 end
 
 ---@return string
