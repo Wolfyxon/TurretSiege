@@ -260,7 +260,11 @@ function Node:updateRequest(delta)
     end
 
     for i = 1, #self.children do
-        self.children[i]:updateRequest(delta)
+        local node = self.children[i]
+
+        if node then
+            node:updateRequest(delta) 
+        end
     end
 end
 
