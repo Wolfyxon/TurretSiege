@@ -179,7 +179,7 @@ function Node2D:drawRequest(screen, data)
 
     love.graphics.push("transform")
 
-    if not self:isTransformDefault() then
+    if not self:isTransformDefault() then       
         love.graphics.translate(self.x * data.w, self.y * data.h)
         love.graphics.rotate(math.rad(self.rotation))
         love.graphics.scale(self.scaleX, self.scaleY)
@@ -191,9 +191,11 @@ function Node2D:drawRequest(screen, data)
         self:draw(screen)
     end
     
-    for i, v in ipairs(self.children) do
-        if v:isA("Node2D") then
-            v:drawRequest(screen, data)
+    for i = 1, #self.children do
+        local node = self.children[i]
+        
+        if node:isA("Node2D") then
+            node:drawRequest(screen, data)
         end
     end
 

@@ -259,8 +259,8 @@ function Node:updateRequest(delta)
         self:update(delta)
     end
 
-    for i, v in ipairs(self.children) do
-        v:updateRequest(delta)
+    for i = 1, #self.children do
+        self.children[i]:updateRequest(delta)
     end
 end
 
