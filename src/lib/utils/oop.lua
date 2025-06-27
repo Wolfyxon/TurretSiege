@@ -6,6 +6,7 @@ Object = {
     super = nil             ---@type Object?
 }
 
+---@return self
 function Object:new()
     return initClass(self)
 end

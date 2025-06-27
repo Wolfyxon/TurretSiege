@@ -10,6 +10,7 @@ Color.a = 1  ---@type number
 ---@param g? number
 ---@param b? number
 ---@param a? number
+---@return self
 function Color:new(r, g, b, a)
     return initClass(Color, {
         r = math.clamp(r  or 1, 0, 1),
