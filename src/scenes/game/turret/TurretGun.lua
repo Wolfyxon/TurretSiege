@@ -13,6 +13,7 @@ TurretGun.heatCapacity = 100 ---@type number
 TurretGun.cooling = 1        ---@type number
 TurretGun.heat = 0           ---@type number
 TurretGun.overheat = false   ---@type boolean
+TurretGun.fireSound = love.audio.newSource("scenes/game/turret/audio/fire.ogg") ---@type Source
 
 ---@param name string
 ---@param texture string?
@@ -27,6 +28,13 @@ function TurretGun:new(name, texture)
     end
 
     return ins
+end
+
+---@param path string
+---@return self
+function TurretGun:setFireSound(path)
+    self.sound = love.sound.newSource(path)
+    return self
 end
 
 ---@return boolean
@@ -66,6 +74,9 @@ function TurretGun:fire()
     if not self:canFire() then
         return
     end
+
+    self.fireSound:stop()
+    self.fireSound:play()
 
     self:fireCallback()
 
