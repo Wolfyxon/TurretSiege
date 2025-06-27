@@ -7,6 +7,8 @@ local Circle = require("lib.2d.Circle")
 local Color = require("lib.Color")
 local gameData = require("gameData")
 
+local basicGun = require("scenes.game.turret.guns.basic")
+
 ---@class Turret: Entity
 local Turret = class("Turret", Entity)
 
@@ -28,6 +30,7 @@ Turret.fireCooldown = 0.2       ---@type number
 Turret.lastFireTime = 0         ---@type number
 Turret.cannon = nil             ---@type Sprite
 Turret.base = nil               ---@type Sprite
+Turret.currentGun = nil         ---@type TurretGun
 Turret.projectiles = {}         ---@type Projectile[]
 
 function Turret:init()
@@ -35,15 +38,16 @@ function Turret:init()
     self.projectiles = {}
 
     self.base = Sprite:new("scenes/game/turret/img/base.png")
-    self.cannon = Sprite:new("scenes/game/turret/img/cannon.png")
+    --self.cannon = Sprite:new("scenes/game/turret/img/cannon.png")
 
-    self.cannon.x = 0.2
+    self.currentGun = self:addChild(basicGun:setPosition(0.2, 0))
+    self.currentGun.turret = self
 
     self:setScaleAll(scale)
     self.x = 0.5
     self.y = 0.5
 
-    self:addChild(self.cannon)
+    --self:addChild(self.cannon)
     self:addChild(self.base)
 
     local t = nil
@@ -107,7 +111,7 @@ function Turret:update(delta)
 
     self.bulletRotation = math.lerpAngle(self.bulletRotation, self.bulletTargetRotation, self.rotationSpeed * delta)
     self.rotation = math.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
-    self.cannon.x = math.lerp(self.cannon.x, 0.2, 5 * delta)
+    --self.cannon.x = math.lerp(self.cannon.x, 0.2, 5 * delta)
 end
 
 ---@param powerUp PowerUp
@@ -117,7 +121,8 @@ end
 
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
-    local now = self:getTime()
+    self.currentGun:fire()
+    --[[local now = self:getTime()
 
     if now < self.lastFireTime + self.fireCooldown then
         return
@@ -152,7 +157,7 @@ function Turret:fire()
 
     b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
     b:moveRotated(0.02, 0)
-    self.parent:addChild(b)
+    self.parent:addChild(b)]]
 end
 
 ---@param radius? number
