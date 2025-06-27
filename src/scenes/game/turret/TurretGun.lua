@@ -5,6 +5,7 @@ local TurretGun = class("TurretGun", Sprite)
 
 TurretGun:_registerEvent("overheat", "fire")
 
+TurretGun.name = "Gun"       ---@type string
 TurretGun.turret = nil       ---@type Turret
 TurretGun.lastFire = 0       ---@type number
 TurretGun.cooldown = 0.1     ---@type number
@@ -12,6 +13,21 @@ TurretGun.heatCapacity = 100 ---@type number
 TurretGun.cooling = 1        ---@type number
 TurretGun.heat = 0           ---@type number
 TurretGun.overheat = false   ---@type boolean
+
+---@param name string
+---@param texture string?
+---@return self
+function TurretGun:new(name, texture)
+    local ins = initClass(self, {
+        name = name
+    })
+
+    if texture then
+        ins:loadTextureFromFile(texture)
+    end
+
+    return ins
+end
 
 ---@return boolean
 function TurretGun:canFire()
