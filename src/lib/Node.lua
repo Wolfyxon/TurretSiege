@@ -163,6 +163,7 @@ function Node:orphanize()
 end
 
 ---@param node Node
+---@return Node
 function Node:addChild(node)
 
     node:orphanize()
@@ -180,6 +181,8 @@ function Node:addChild(node)
 
     self:emitEvent("nodeAdded", node)
     self:emitEvent("nodeListUpdated")
+
+    return node
 end
 
 ---@param node Node
