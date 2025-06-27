@@ -1,3 +1,5 @@
+local gameData = require("gameData")
+
 local Color = require("lib.Color")
 local Node = require("lib.Node")
 local Tween = require("lib.Tween")
@@ -174,7 +176,7 @@ function Node2D:getDrawnColor()
 end
 
 ---@param screen Screen?
-function Node2D:drawRequest(screen, data)
+function Node2D:drawRequest(screen)
     if not self.visible then return end
 
     local grp = love.graphics
@@ -182,7 +184,7 @@ function Node2D:drawRequest(screen, data)
     grp.push("transform")
 
     if not self:isTransformDefault() then
-        grp.translate(self.x * data.w, self.y * data.h)
+        grp.translate(self.x * gameData.width, self.y * gameData.height)
         grp.rotate(math.rad(self.rotation))
         grp.scale(self.scaleX, self.scaleY)
     end
@@ -197,7 +199,7 @@ function Node2D:drawRequest(screen, data)
         local node = self.children[i]
         
         if node:isA("Node2D") then
-            node:drawRequest(screen, data)
+            node:drawRequest(screen)
         end
     end
 

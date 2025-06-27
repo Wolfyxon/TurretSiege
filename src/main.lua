@@ -170,13 +170,15 @@ function love.load()
 end
 
 function love.draw(screen)
-    local drawData = utils.system.getDrawData(screen)
+    local w, h = love.graphics.getDimensions(screen)
+
+    local sX = w / gameData.width
+    local sY = h / gameData.height
     
-    love.graphics.scale(drawData.scaleX, drawData.scaleY)
-    --love.graphics.translate(drawData.offsetX, drawData.offsetY)
+    love.graphics.scale(sX, sY)
 
     if currentScene then
-        currentScene:drawRequest(screen, drawData)
+        currentScene:drawRequest(screen)
     end
 end
 

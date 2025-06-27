@@ -418,33 +418,6 @@ function utils.system.getPlatform()
     return love._console or love.system.getOS()
 end
 
----@param screen Screen?
-function utils.system.getDrawData(screen)
-    local w, h = love.graphics.getDimensions(screen)
-    local ratio = math.min(w / gameData.width, h / gameData.height)
-    local size = math.min(gameData.width, gameData.height)
-
-    local oX = (gameData.width - size) / 2
-    local oY = (gameData.height - size) / 2
-
-    local sX = w / gameData.width
-    local sY = h / gameData.height
-
-    return {
-        wW = w,
-        wH = h,
-        w = gameData.width,
-        h = gameData.height,
-        scaleX = sX,
-        scaleY = sY,
-        offsetX = oX,
-        offsetY = oY,
-        ratio = ratio,
-        size = size
-    }
-
-end
-
 --== Config ==--
 
 ---@return string[]
