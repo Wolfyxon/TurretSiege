@@ -177,15 +177,17 @@ end
 function Node2D:drawRequest(screen, data)
     if not self.visible then return end
 
-    love.graphics.push("transform")
+    local grp = love.graphics
 
-    if not self:isTransformDefault() then       
-        love.graphics.translate(self.x * data.w, self.y * data.h)
-        love.graphics.rotate(math.rad(self.rotation))
-        love.graphics.scale(self.scaleX, self.scaleY)
+    grp.push("transform")
+
+    if not self:isTransformDefault() then
+        grp.translate(self.x * data.w, self.y * data.h)
+        grp.rotate(math.rad(self.rotation))
+        grp.scale(self.scaleX, self.scaleY)
     end
 
-    love.graphics.setColor(self:getDrawnColor():getRGBA())
+    grp.setColor(self:getDrawnColor():getRGBA())
 
     if self:canBeDrawnOnScreen(screen) then
         self:draw(screen)
