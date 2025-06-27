@@ -25,7 +25,7 @@ end
 
 ---@param path string
 function Sprite:loadTextureFromFile(path)
-    self.texture = assets.getImage(path)
+    self.texture = assets.loadImage(path)
 
     local tW, tH = self:getTextureSize()
     self.width = tW / gameData.width
