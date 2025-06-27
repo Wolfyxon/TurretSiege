@@ -19,7 +19,7 @@ function MenuScene:load()
 
     --== Gears ==--
     
-    for i, gear in ipairs(main.addGears(self)) do
+    --[[for i, gear in ipairs(main.addGears(self)) do
         local dir = (-1) ^ i
         local time = 0
         local targetRot = 0
@@ -33,6 +33,24 @@ function MenuScene:load()
             if time % (120 / 167) <= 0.05 then
                 targetRot = targetRot + 5 * dir
             end
+        end
+    end]]
+    
+    local targetRot = 20
+
+    local gearTimer = self:createTimer()
+                        :setLoop(true)
+                        :setWait((60 / 167) * 2)
+                        :onEnd(function()
+                            targetRot = targetRot + 20
+                        end)
+                        :start()
+    
+    for i, gear in ipairs(main.addGears(self)) do
+        local dir = (-1) ^ i
+        
+        function gear:update(delta)
+            gear.rotation = math.lerpAngle(gear.rotation, targetRot * dir, delta * 3)
         end
     end
     
