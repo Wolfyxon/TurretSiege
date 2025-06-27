@@ -4,6 +4,7 @@ local assets = require("assets")
 
 local Color = require("lib.Color")
 local Sprite = require("lib.2d.Sprite")
+local DebugMenu = require("debugMenu")
 
 ---@class Main
 main = {
@@ -22,6 +23,7 @@ local scenes = {
 main.scenes = scenes
 
 local currentScene = nil ---@type Scene?
+local debugMenu = DebugMenu:new()
 local paused = false
 
 local events = {
@@ -166,6 +168,7 @@ function love.load()
     love.window.setTitle("Turret Siege")
     love.window.setMode(gameData.width * gameData.windowSizeMultiplier, gameData.height * gameData.windowSizeMultiplier, {resizable = true})
     
+    debugMenu:ready()
     main.loadSceneByName(utils.config.getFlagDictionary().scene)
 end
 
@@ -180,6 +183,8 @@ function love.draw(screen)
     if currentScene then
         currentScene:drawRequest(screen)
     end
+
+    debugMenu:drawRequest(screen)
 end
 
 function love.update(delta)
@@ -194,6 +199,8 @@ function love.update(delta)
     if currentScene then
         currentScene:updateRequest(delta)
     end
+
+    debugMenu:updateRequest(delta)
 end
 
 function love.mousepressed(x, y, button, isTouch, presses)
