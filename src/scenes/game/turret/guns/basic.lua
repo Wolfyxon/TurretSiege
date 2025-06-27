@@ -15,10 +15,10 @@ return TurretGun:new("Basic gun", "scenes/game/turret/img/cannon.png")
             b.owner = self
             b.damageProjectiles = true
             b.speed = 1
-            b.x = 0.5
-            b.y = 0.5
+            b.x = self.turret.x
+            b.y = self.turret.y
             b:setScaleAll(0.15)
-            b.rotation = self.turret.rotation
+            b.rotation = self.turret.bulletRotation
             b.color = color
 
             self.turret.parent:addChild(b)
