@@ -24,6 +24,10 @@ function DebugMenu:ready()
 end
 
 function DebugMenu:update(delta)
+    if not self.visible then
+        return
+    end
+
     self.fpsLabel:setText("FPS: " .. tostring(love.timer.getFPS()))
 end
 
