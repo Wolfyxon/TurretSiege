@@ -191,9 +191,9 @@ function Node2D:drawRequest(screen)
 
     grp.setColor(self:getDrawnColor():getRGBA())
 
-    if self:canBeDrawnOnScreen(screen) then
-        self:draw(screen)
-    end
+    --if self:canBeDrawnOnScreen(screen) then
+    self:draw(screen)
+    --end
     
     for i = 1, #self.children do
         local node = self.children[i]
