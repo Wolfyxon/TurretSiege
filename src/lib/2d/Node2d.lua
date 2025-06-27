@@ -1,6 +1,7 @@
 local Color = require("lib.Color")
 local Node = require("lib.Node")
 local Tween = require("lib.Tween")
+local Timer = require("lib.Timer")
 
 ---@alias Screen "left" | "bottom" -- NOTE: the top screen is called 'left'
 ---@alias ScreenTarget "all" | Screen
@@ -245,6 +246,14 @@ end
 ---@return Tween
 function Node2D:createTween()
     local t = Tween:new()
+    self:addChild(t)
+
+    return t
+end
+
+---@return Timer
+function Node2D:createTimer()
+    local t = Timer:new()
     self:addChild(t)
 
     return t
