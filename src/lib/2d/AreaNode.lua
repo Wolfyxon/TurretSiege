@@ -4,8 +4,10 @@ local gameData = require("gameData")
 ---@class AreaNode: Node2D
 local AreaNode = class("AreaNode", Node2D)
 
+---@alias Positioning "center" | "topleft"
+
 AreaNode.shape = "rect"         ---@type string
-AreaNode.positioning = "center" ---@type "center" | "topleft"
+AreaNode.positioning = "center" ---@type Positioning
 AreaNode.width = 0              ---@type number
 AreaNode.height = 0             ---@type number
 
@@ -48,6 +50,14 @@ end
 function AreaNode:setSizeAll(size)
     self.width = size
     self.height = size
+end
+
+---@param mode Positioning
+---@return self
+function AreaNode:setPositioning(mode)
+    self.positioning = mode
+    
+    return self
 end
 
 -- TODO: Rotation support

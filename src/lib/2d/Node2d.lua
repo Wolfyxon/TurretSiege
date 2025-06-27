@@ -50,6 +50,16 @@ function Node2D:setScaleAll(scale)
     self.scaleY = scale
 end
 
+---@param x number
+---@param y number
+---@return self
+function Node2D:setPosition(x, y)
+    self.x = x
+    self.y = y
+
+    return self
+end
+
 ---@return number
 function Node2D:getGlobalRotation()
     local rot = self.rotation
@@ -89,6 +99,7 @@ end
 
 ---@param x number
 ---@param y number
+---@return self
 function Node2D:setGlobalPosition(x, y)
     local ancestors = self:getAncestors()
 
@@ -111,6 +122,8 @@ function Node2D:setGlobalPosition(x, y)
     
     self.x = x / self.scaleX
     self.y = y / self.scaleY
+
+    return self
 end
 
 ---@return number, number
