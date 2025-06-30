@@ -87,7 +87,7 @@ function GameGui:update(delta)
             self.heatGradient.color.a = math.lerp(
                 self.heatGradient.color.a, 
                 gun.heat / gun.heatCapacity,
-                5 * delta
+                20 * delta
             )
         end
     end
