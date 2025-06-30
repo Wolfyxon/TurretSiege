@@ -18,23 +18,23 @@ GameGui.levelLabel = nil    ---@type Label
 function GameGui:ready()
     self.screen = "left"
 
-    --== Level label ==--
+    --== Heat gradient ==--
 
     self.heatGradient = self:addChild(
         Sprite:new("assets/img/gradient.png")
         :setPosition(0.5, 0.5)
         :setScaleAll(1.5)
+        :setColor(Color:new(1, 0.5, 0, 0))
     )
-    self.heatGradient.color = Color:new(1, 0.5, 0, 0)
 
-    local lvlLbl = Label:new()
-    lvlLbl.x = 0.01
-    lvlLbl.y = 0.01
-    lvlLbl.positioning = "topleft"
-    lvlLbl:setText("Level 1")
+    --== Level label ==--
 
-    self.levelLabel = lvlLbl
-    self:addChild(lvlLbl)
+    self.levelLabel = self:addChild(
+        Label:new()
+        :setText("Level 1")
+        :setPositioning("topleft")
+        :setPosition(0.01, 0.01)
+    )
 
     --== Health display ==--
     local healthDisplay = ListContainer:new()
