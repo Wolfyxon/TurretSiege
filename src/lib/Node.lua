@@ -77,17 +77,6 @@ function Node:getClass()
     return self.classList[#self.classList]
 end
 
----@param class string
----@param exact? boolean
----@return boolean
-function Node:isA(class, exact)
-    if exact then
-        return self:getClass() == class
-    end
-
-    return table.has(self.classList, class)
-end
-
 ---@return boolean
 function Node:isInScene()
     local scene = main.getCurrentScene()

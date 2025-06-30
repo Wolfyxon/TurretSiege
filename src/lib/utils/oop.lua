@@ -16,6 +16,17 @@ function Object:getClass()
     return self.classList[#self.classList]
 end
 
+---@param class string
+---@param exact? boolean
+---@return boolean
+function Object:isA(class, exact)
+    if exact then
+        return self:getClass() == class
+    end
+
+    return table.has(self.classList, class)
+end
+
 function Object:init() end
 
 -------------------------------------------------
