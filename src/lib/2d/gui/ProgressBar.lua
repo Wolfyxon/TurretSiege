@@ -7,8 +7,10 @@ local utils = require("lib.utils")
 ---@class ProgressBar: Label
 local ProgressBar = class("ProgressBar", Label)
 
+---@alias BarPositioning "left" | "center"
+
 ProgressBar.textDisplayStyle = "value/max" ---@type "value/max" | "value" | "percent" | "none"
-ProgressBar.barPositioning = "left"        ---@type "left" | "center"
+ProgressBar.barPositioning = "left"        ---@type BarPositioning
 ProgressBar.barColor = nil                 ---@type Color
 ProgressBar.max = 100                      ---@type number
 ProgressBar.value = 50                     ---@type number
@@ -18,6 +20,13 @@ function ProgressBar:init()
     self.backgroundColor = Color:new(0.1, 0.1, 0.1)
     self.barColor = Color:new(1, 0, 0)
     self.displayValue = self.value
+end
+
+---@param mode BarPositioning
+---@return self
+function ProgressBar:setBarPositioning(mode)
+    self.barPositioning = mode
+    return self
 end
 
 function ProgressBar:update(delta)
