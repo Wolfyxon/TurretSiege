@@ -1,6 +1,5 @@
 local Entity = require("scenes.game.Entity")
 local TurretShield = require("scenes.game.turret.shield")
-local Projectile = require("scenes.game.Projectile")
 local Sprite = require("lib.2d.Sprite")
 local utils = require("lib.utils")
 local Circle = require("lib.2d.Circle")
@@ -13,7 +12,6 @@ local basicGun = require("scenes.game.turret.guns.basic")
 local Turret = class("Turret", Entity)
 
 local scale = 0.15
-local bulletColor = Color:new255(255, 106, 0)
 
 local fireSound = love.audio.newSource("scenes/game/turret/audio/fire.ogg", "static")
 local joystick = love.joystick.getJoysticks()[1]
@@ -35,10 +33,8 @@ Turret.projectiles = {}         ---@type Projectile[]
 
 function Turret:init()
     self.lastFireTime = self:getTime()
-    self.projectiles = {}
 
     self.base = Sprite:new("scenes/game/turret/img/base.png")
-    --self.cannon = Sprite:new("scenes/game/turret/img/cannon.png")
 
     self.currentGun = self:addChild(basicGun:setPosition(0.2, 0))
     self.currentGun.turret = self
@@ -47,7 +43,6 @@ function Turret:init()
     self.x = 0.5
     self.y = 0.5
 
-    --self:addChild(self.cannon)
     self:addChild(self.base)
 
     local t = nil
@@ -111,7 +106,6 @@ function Turret:update(delta)
 
     self.bulletRotation = math.lerpAngle(self.bulletRotation, self.bulletTargetRotation, self.rotationSpeed * delta)
     self.rotation = math.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
-    --self.cannon.x = math.lerp(self.cannon.x, 0.2, 5 * delta)
 end
 
 ---@param powerUp PowerUp
@@ -122,42 +116,6 @@ end
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
     self.currentGun:fire()
-    --[[local now = self:getTime()
-
-    if now < self.lastFireTime + self.fireCooldown then
-        return
-    end
-
-    fireSound:stop()
-    fireSound:play()
-
-    self.lastFireTime = now
-    self.cannon.x = 0.15
-
-    local b = class("TurretBullet", Projectile):new()
-    b.ignoredClasses = {"TurretShieldSegment"}
-    b.moveTarget = "forward"
-    b.owner = self
-    b.damageProjectiles = true
-    b.speed = 1
-    b.x = self.x
-    b.y = self.y
-    b.scaleX = scale
-    b.scaleY = scale
-    b.rotation = self.bulletRotation
-    b.color = bulletColor
-
-    table.insert(self.projectiles, b)
-
-    -- NOTE: self.projectiles can't be accessed in the sub-function so it has to be point to a variable
-    local projectiles = self.projectiles
-    function b:removed()
-        table.erase(projectiles, b)
-    end
-
-    b:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
-    b:moveRotated(0.02, 0)
-    self.parent:addChild(b)]]
 end
 
 ---@param radius? number
