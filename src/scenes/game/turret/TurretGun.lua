@@ -11,6 +11,8 @@ TurretGun.lastFire = 0       ---@type number
 TurretGun.cooldown = 0.1     ---@type number
 TurretGun.heatCapacity = 100 ---@type number
 TurretGun.cooling = 1        ---@type number
+TurretGun.recoil = 0.15      ---@type number
+TurretGun.recoilRecover = 5  ---@type number
 TurretGun.heat = 0           ---@type number
 TurretGun.overheat = false   ---@type boolean
 TurretGun.fireSound = love.audio.newSource("scenes/game/turret/audio/fire.ogg", "static") ---@type Source
@@ -56,6 +58,16 @@ function TurretGun:setCooling(cooling)
     return self
 end
 
+---@param distance number?
+---@param recovering number?
+---@return self
+function TurretGun:setRecoil(distance, recovering)
+    self.recoil = distance or self.recoil
+    self.recoilRecover = recovering or self.recoilRecover
+
+    return self
+end
+
 ---@param cap number
 ---@return self
 function TurretGun:setHeatCapacity(cap)
@@ -66,7 +78,8 @@ end
 function TurretGun:update(delta)
     self.heat = math.max(self.heat - self.cooling, 0)
     self.color.r = math.lerp(self.color.r, self.heat / self.heatCapacity, 5 * delta)
-
+    self.x = math.lerp(self.x, 0.2, self.recoilRecover * delta)
+    
     self:updateCallback(delta)
 end
 
@@ -75,6 +88,7 @@ function TurretGun:fire()
         return
     end
 
+    self.x = self.recoil
     self.fireSound:stop()
     self.fireSound:play()
 
