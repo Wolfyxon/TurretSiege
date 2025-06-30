@@ -44,6 +44,14 @@ function Node2D:isVisibleInTree()
     return true
 end
 
+---@param color Color
+---@return self
+function Node2D:setColor(color)
+    self.color = color
+    
+    return self
+end
+
 ---@param scale number
 ---@return self
 function Node2D:setScaleAll(scale)
