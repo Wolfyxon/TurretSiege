@@ -20,6 +20,12 @@ function GuiNode:init()
     end)
 end
 
+---@param color Color
+function GuiNode:setBackgroundColor(color)
+    self.backgroundColor = color
+    return self
+end
+
 function GuiNode:draw()
     local ox = -(self.width / 2) * gameData.width
     local oy = -(self.height / 2) * gameData.height

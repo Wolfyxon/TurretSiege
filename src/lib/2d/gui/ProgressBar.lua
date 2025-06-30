@@ -37,6 +37,13 @@ function ProgressBar:setTextEnabled(state)
     return self
 end
 
+---@param color Color
+function ProgressBar:setBarColor(color)
+    self.barColor = color
+    return self
+end
+
+
 function ProgressBar:update(delta)
     self.displayValue = math.lerp(self.displayValue, self.value, delta * 10)
 
