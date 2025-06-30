@@ -8,7 +8,7 @@ local Sprite = class("Sprite", AreaNode)
 
 Sprite.texture = nil        ---@type ImageData?
 Sprite.textureRotation = 0  ---@type number
-Sprite.enableShadow = true  ---@type boolean
+Sprite.enableShadow = false ---@type boolean
 Sprite.shadowOffset = 15    ---@type number
 Sprite.shadowOpaticy = 0.4  ---@type number
 

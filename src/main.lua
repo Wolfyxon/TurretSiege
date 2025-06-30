@@ -137,6 +137,7 @@ function main.addGears(parent)
          end
          
          gear.color = Color:new(0.8 * c, 0.6 * c, 0)
+         gear.enableShadow = true
          gear.shadowOpaticy = 0.25
          gear.x = 0.5
          gear.y = 0.5

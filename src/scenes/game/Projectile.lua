@@ -30,6 +30,8 @@ function Projectile:init()
     local oc = nil
     local proj = self
 
+    self.enableShadow = true
+
     self:onEvent("damaged", function ()
         if t then t:stop() end
         if not oc then

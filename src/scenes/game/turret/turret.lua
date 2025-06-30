@@ -35,6 +35,7 @@ function Turret:init()
     self.lastFireTime = self:getTime()
 
     self.base = Sprite:new("scenes/game/turret/img/base.png")
+    self.base.enableShadow = true
 
     self.currentGun = self:addChild(basicGun:setPosition(0.2, 0))
     self.currentGun.turret = self

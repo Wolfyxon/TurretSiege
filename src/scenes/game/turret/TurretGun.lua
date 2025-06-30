@@ -22,7 +22,8 @@ TurretGun.fireSound = love.audio.newSource("scenes/game/turret/audio/fire.ogg", 
 ---@return self
 function TurretGun:new(name, texture)
     local ins = initClass(self, {
-        name = name
+        name = name,
+        enableShadow = true
     })
 
     if texture then
