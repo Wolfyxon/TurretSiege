@@ -77,7 +77,7 @@ function TurretGun:setHeatCapacity(cap)
 end
 
 function TurretGun:update(delta)
-    self.heat = math.max(self.heat - self.cooling, 0)
+    self.heat = math.max(self.heat - self.cooling * delta, 0)
     self.color.r = math.lerp(self.color.r, self.heat / self.heatCapacity, 5 * delta)
     self.x = math.lerp(self.x, 0.2, self.recoilRecover * delta)
     
