@@ -20,7 +20,7 @@ function TurretShield:ready()
         seg:setScaleAll(0.2)
         
         seg.enableShadow = false
-        seg:loadTextureFromFile("scenes/game/projectiles/bullet/bullet.png")
+        seg:loadTextureFromFile("assets/img/bullet.png")
 
         local angle = step * (i - 1)
 
