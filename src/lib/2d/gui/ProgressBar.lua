@@ -10,6 +10,7 @@ local ProgressBar = class("ProgressBar", Label)
 ---@alias BarPositioning "left" | "center"
 
 ProgressBar.textDisplayStyle = "value/max" ---@type "value/max" | "value" | "percent" | "none"
+ProgressBar.textEnabled = true             ---@type boolean
 ProgressBar.barPositioning = "left"        ---@type BarPositioning
 ProgressBar.barColor = nil                 ---@type Color
 ProgressBar.max = 100                      ---@type number
@@ -26,6 +27,13 @@ end
 ---@return self
 function ProgressBar:setBarPositioning(mode)
     self.barPositioning = mode
+    return self
+end
+
+---@param state boolean
+---@return self
+function ProgressBar:setTextEnabled(state)
+    self.textEnabled = state
     return self
 end
 
@@ -71,7 +79,10 @@ function ProgressBar:draw()
     )
 
     self.color:toGraphics()
-    self:drawText()
+
+    if self.textEnabled then
+        self:drawText()
+    end
 end
 
 return ProgressBar
