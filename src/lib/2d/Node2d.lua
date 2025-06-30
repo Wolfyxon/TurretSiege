@@ -45,9 +45,12 @@ function Node2D:isVisibleInTree()
 end
 
 ---@param scale number
+---@return self
 function Node2D:setScaleAll(scale)
     self.scaleX = scale
     self.scaleY = scale
+
+    return self
 end
 
 ---@param x number
