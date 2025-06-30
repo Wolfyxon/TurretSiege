@@ -1,4 +1,5 @@
 local Node2D = require("lib.2d.Node2d")
+local Sprite = require("lib.2d.Sprite")
 local ListContainer = require("lib.2d.gui.container.ListContainer")
 local Label = require("lib.2d.gui.Label")
 local Color = require("lib.Color")
@@ -7,6 +8,7 @@ local ProgressBar = require("lib.2d.gui.ProgressBar")
 ---@class GameGui: Node2D
 local GameGui = class("GameGui", Node2D)
 
+GameGui.heatGradient = nil  ---@type Sprite
 GameGui.healthDisplay = nil ---@type Node2D
 GameGui.effectBar = nil     ---@type ProgressBar
 GameGui.hpBar = nil         ---@type ProgressBar
@@ -17,6 +19,13 @@ function GameGui:ready()
     self.screen = "left"
 
     --== Level label ==--
+
+    self.heatGradient = self:addChild(
+        Sprite:new("assets/img/gradient.png")
+        :setPosition(0.5, 0.5)
+        :setScaleAll(1.5)
+    )
+    self.heatGradient.color = Color:new(1, 0.5, 0, 0)
 
     local lvlLbl = Label:new()
     lvlLbl.x = 0.01
@@ -71,6 +80,16 @@ function GameGui:update(delta)
     if turret then
         self.hpBar.value = turret.hp
         self.hpBar.max = turret.maxHp
+
+        local gun = turret.currentGun
+
+        if gun then
+            self.heatGradient.color.a = math.lerp(
+                self.heatGradient.color.a, 
+                gun.heat / gun.heatCapacity,
+                5 * delta
+            )
+        end
     end
 
     local effectBarSpeed = 0.5
