@@ -81,6 +81,10 @@ function TurretGun:update(delta)
     self.color.r = math.lerp(self.color.r, self.heat / self.heatCapacity, 5 * delta)
     self.x = math.lerp(self.x, 0.2, self.recoilRecover * delta)
     
+    if self.heat == 0 then
+        self.overheat = false
+    end
+
     self:updateCallback(delta)
 end
 
