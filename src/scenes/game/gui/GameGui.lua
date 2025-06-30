@@ -22,9 +22,9 @@ function GameGui:ready()
 
     self.heatGradient = self:addChild(
         Sprite:new("assets/img/gradient.png")
-        :setPosition(0.5, 0.5)
+        :setPosition(0.5, 1)
         :setScaleAll(1.5)
-        :setColor(Color:new(1, 0.5, 0, 0))
+        :setColor(Color:new(1, 0.4, 0, 0))
     )
 
     --== Level label ==--
