@@ -6,7 +6,10 @@ Object = {
     super = nil             ---@type Object?
 }
 
----@return self
+
+---@generic T: Object
+---@param self T
+---@return T
 function Object:new()
     return initClass(self)
 end
