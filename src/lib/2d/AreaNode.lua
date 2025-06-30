@@ -52,6 +52,16 @@ function AreaNode:setSizeAll(size)
     self.height = size
 end
 
+---@param w number
+---@param h number
+---@return self
+function AreaNode:setSize(w, h)
+    self.width = w
+    self.height = h
+    
+    return self
+end
+
 ---@param mode Positioning
 ---@return self
 function AreaNode:setPositioning(mode)
