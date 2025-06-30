@@ -22,5 +22,5 @@ return TurretGun:new("Basic gun", "scenes/game/turret/img/cannon.png")
             b.color = color
 
             self.turret.parent:addChild(b)
-            b:moveRotated(0.02, 0)
+            b:moveRotated(0.05, 0)
         end)
