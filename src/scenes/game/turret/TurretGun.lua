@@ -15,7 +15,7 @@ TurretGun.recoil = 0.15      ---@type number
 TurretGun.recoilRecover = 5  ---@type number
 TurretGun.heat = 0           ---@type number
 TurretGun.overheat = false   ---@type boolean
-TurretGun.fireSound = love.audio.newSource("scenes/game/turret/audio/fire.ogg", "static") ---@type Source
+TurretGun.fireSound = love.audio.newSource("scenes/game/turret/audio/firing/small.ogg", "static") ---@type Source
 
 ---@param name string
 ---@param texture string?
