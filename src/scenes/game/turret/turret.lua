@@ -18,6 +18,7 @@ local manualRotationSpeed = 20
 
 Turret.damageSound = love.audio.newSource("scenes/game/turret/audio/damage.ogg", "static")
 Turret.deathSound = love.audio.newSource("scenes/game/turret/audio/death.ogg", "static")
+Turret.heatSound = love.audio.newSource("scenes/game/turret/audio/heat.ogg", "stream")
 Turret.overheatSound = love.audio.newSource("scenes/game/turret/audio/overheat.ogg", "static")
 
 Turret.bulletRotation = 0       ---@type number
@@ -32,6 +33,9 @@ Turret.currentGun = nil         ---@type TurretGun
 Turret.projectiles = {}         ---@type Projectile[]
 
 function Turret:init()
+    self.heatSound:setLooping(true)
+    self.heatSound:play()
+
     self.lastFireTime = self:getTime()
 
     self.base = Sprite:new("scenes/game/turret/img/base.png")
@@ -107,6 +111,25 @@ function Turret:update(delta)
 
     self.bulletRotation = math.lerpAngle(self.bulletRotation, self.bulletTargetRotation, self.rotationSpeed * delta)
     self.rotation = math.lerpAngle(self.rotation, self.targetRotation, self.rotationSpeed * delta)
+    
+    local gun = self.currentGun
+
+    if gun then
+        local heatSound = self.heatSound
+        local ratio = gun.heat / gun.heatCapacity
+
+        local targetPitch = 0.2
+        local targetVolume = 0
+        local speed = 5 * delta
+
+        if not gun.overheat then
+            targetPitch = math.clamp(ratio * 1.5, 0.2, 1.3)
+            targetVolume = ratio * 1.5
+        end
+
+        heatSound:setPitch(math.lerp(heatSound:getPitch(), targetPitch, speed))
+        heatSound:setVolume(math.lerp(heatSound:getVolume(), targetVolume, speed))
+    end
 end
 
 ---@param powerUp PowerUp
