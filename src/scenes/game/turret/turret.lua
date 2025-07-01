@@ -13,7 +13,6 @@ local Turret = class("Turret", Entity)
 
 local scale = 0.15
 
-local fireSound = love.audio.newSource("scenes/game/turret/audio/fire.ogg", "static")
 local joystick = love.joystick.getJoysticks()[1]
 local manualRotationSpeed = 20
 
