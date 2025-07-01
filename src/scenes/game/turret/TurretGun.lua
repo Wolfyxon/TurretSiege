@@ -104,6 +104,8 @@ function TurretGun:fire()
 
     if self.heat >= self.heatCapacity then
         self.overheat = true
+        self.turret.overheatSound:stop()
+        self.turret.overheatSound:play()
         self:emitEvent("overheat")
     end
 end

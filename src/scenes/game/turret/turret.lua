@@ -18,6 +18,7 @@ local manualRotationSpeed = 20
 
 Turret.damageSound = love.audio.newSource("scenes/game/turret/audio/damage.ogg", "static")
 Turret.deathSound = love.audio.newSource("scenes/game/turret/audio/death.ogg", "static")
+Turret.overheatSound = love.audio.newSource("scenes/game/turret/audio/overheat.ogg", "static")
 
 Turret.bulletRotation = 0       ---@type number
 Turret.bulletTargetRotation = 0 ---@type number
