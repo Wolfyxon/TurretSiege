@@ -30,6 +30,8 @@ function TurretGun:new(name, texture)
         ins:loadTextureFromFile(texture)
     end
 
+    ins:loadShader("shaders/colorBoost.glsl")
+
     return ins
 end
 
@@ -84,7 +86,16 @@ function TurretGun:update(delta)
     end
 
     self.heat = math.max(self.heat - self.cooling * delta * coolingMultiplier, 0)
-    self.color.r = math.lerp(self.color.r, self.heat / self.heatCapacity, 5 * delta)
+    
+    local heatMul = (self.heat / self.heatCapacity) * 0.5
+
+    self.shader:send("color", {
+        heatMul * 2,
+        heatMul * 0.2,
+        heatMul * 0.1,
+        0
+    })
+
     self.x = math.lerp(self.x, 0.2, self.recoilRecover * delta)
     
     if self.heat == 0 then
