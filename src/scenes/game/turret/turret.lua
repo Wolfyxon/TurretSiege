@@ -124,7 +124,7 @@ function Turret:update(delta)
         local speed = 5 * delta
 
         if not gun.overheat then
-            targetPitch = math.clamp(ratio * 1.5, 0.2, 1.3)
+            targetPitch = math.clamp(ratio * 1.5, 0.2, 3)
             targetVolume = ratio * 1.5
         end
 
