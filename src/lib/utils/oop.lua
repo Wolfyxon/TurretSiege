@@ -60,6 +60,7 @@ function initClass(classTable, body)
 
     local ins = setmetatable(table.copy(body), {
         __index = classTable,
+        __tostring = classTable.__tostring or classTable.toString,
         __add = classTable.__add,
         __sub = classTable.__sub,
         __mul = classTable.__mul,
