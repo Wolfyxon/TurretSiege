@@ -53,7 +53,7 @@ function Color:lerpRGBA(r, g, b, a, speed)
 end
 
 function Color:lerpRGB(r, g, b, speed)
-    Color:lerpRGBA(r, g, b, self.a, speed)
+    self:lerpRGBA(r, g, b, self.a, speed)
 end
 
 ---@param color Color
