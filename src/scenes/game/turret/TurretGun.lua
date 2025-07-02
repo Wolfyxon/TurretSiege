@@ -44,7 +44,13 @@ end
 
 ---@return boolean
 function TurretGun:canFire()
-    return not self.overheat and self:getTime() > self.lastFire + self.cooldown
+    if self.overheat then
+        return false
+    end
+
+    local cooldown = self.cooldown - math.min(self.cooldown * 0.4, self.heat / self.heatCapacity)
+
+    return self:getTime() > self.lastFire + cooldown 
 end
 
 ---@param cooldown number
