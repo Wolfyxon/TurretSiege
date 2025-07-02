@@ -82,7 +82,7 @@ function TurretGun:update(delta)
     local coolingMultiplier = 1
 
     if self.overheat then
-        coolingMultiplier = 2
+        coolingMultiplier = 5
     end
 
     self.heat = math.max(self.heat - self.cooling * delta * coolingMultiplier, 0)
