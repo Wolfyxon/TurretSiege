@@ -34,6 +34,7 @@ Turret.projectiles = {}         ---@type Projectile[]
 
 function Turret:init()
     self.heatSound:setLooping(true)
+    self.heatSound:setVolume(0)
     self.heatSound:play()
 
     self.lastFireTime = self:getTime()
