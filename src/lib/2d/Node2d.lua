@@ -13,6 +13,7 @@ local Timer = require("lib.Timer")
 ---@class Node2D: Node
 local Node2D = class("Node2D", Node)
 
+Node2D.shader = nil               ---@type Shader?
 Node2D.visible = true             ---@type boolean
 Node2D.colorMode = "mul"          ---@type ColorMode
 Node2D.screen = "inherit"         ---@type ScreenMode
@@ -49,6 +50,24 @@ end
 function Node2D:setColor(color)
     self.color = color
     
+    return self
+end
+
+---@param path string
+---@return self
+function Node2D:loadShader(path)
+    local code = love.filesystem.read(path)
+    assert(code, "Shader '" .. tostring(path) .. "' not found")
+
+    self:setShader(love.graphics.newShader(code))
+    
+    return self
+end
+
+---@param shader Shader
+---@return self
+function Node2D:setShader(shader)
+    self.shader = shader
     return self
 end
 
@@ -213,10 +232,12 @@ function Node2D:drawRequest(screen)
         grp.scale(self.scaleX, self.scaleY)
     end
 
+    grp.setShader(self.shader)
     grp.setColor(self:getDrawnColor():getRGBA())
 
     --if self:canBeDrawnOnScreen(screen) then
     self:draw(screen)
+    grp.setShader()
     --end
     
     for i = 1, #self.children do
