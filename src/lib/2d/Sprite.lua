@@ -39,6 +39,8 @@ function Sprite:draw()
 
     love.graphics.rotate(math.rad(self.textureRotation))
 
+    love.graphics.setShader()
+
     if self.enableShadow then
         local r, g, b, a = love.graphics.getColor()
 
@@ -67,6 +69,7 @@ function Sprite:draw()
         oy = 0
     end
 
+    love.graphics.setShader(self.shader)
     love.graphics.draw(self.texture, ox, oy)
 end
 
