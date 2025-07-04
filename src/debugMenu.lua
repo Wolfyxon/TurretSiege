@@ -4,7 +4,9 @@ local Label = require("lib.2d.gui.Label")
 ---@class DebugMenu: Node2D
 local DebugMenu = class("DebugMenu", Node2D)
 
-DebugMenu.fpsLabel = nil ---@type Label
+DebugMenu.label = nil ---@type Label
+
+local mem = 0
 
 function DebugMenu:ready()
     local dm = self
@@ -15,11 +17,19 @@ function DebugMenu:ready()
         end
     end)
 
+    self:createTimer()
+        :setWait(0.5)
+        :setLoop(true)
+        :onEnd(function()
+            mem = collectgarbage("count")
+        end)
+        :start()
+
     self.visible = false
-    self.fpsLabel = self:addChild(
+    self.label = self:addChild(
         Label:new()
         :setPosition(0.5, 0.9)
-        :setText("FPS: unknown")
+        :setText("loading info...")
     )
 end
 
@@ -28,7 +38,16 @@ function DebugMenu:update(delta)
         return
     end
 
-    self.fpsLabel:setText("FPS: " .. tostring(love.timer.getFPS()))
+    local info = {}
+    
+    local function add(label, value)
+         table.insert(info, label .. ": " .. tostring(value))
+    end
+
+    add("FPS", love.timer.getFPS())
+    add("Mem", string.format("%.2f MB", mem / 1024))
+    
+    self.label:setText(table.concat(info, " | "))
 end
 
 return DebugMenu
