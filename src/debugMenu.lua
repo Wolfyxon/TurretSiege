@@ -5,6 +5,7 @@ local Label = require("lib.2d.gui.Label")
 local DebugMenu = class("DebugMenu", Node2D)
 
 DebugMenu.label = nil ---@type Label
+DebugMenu.updateMode = "always"
 
 local mem = 0
 
@@ -46,7 +47,7 @@ function DebugMenu:update(delta)
 
     add("FPS", love.timer.getFPS())
     add("Mem", string.format("%.2f MB", mem / 1024))
-    
+
     self.label:setText(table.concat(info, " | "))
 end
 
