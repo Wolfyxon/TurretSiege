@@ -61,12 +61,12 @@ function Sprite:draw()
     end
 
 
-    local ox = -(tW / 2)
-    local oy = -(tH / 2)
+    local ox = 0
+    local oy = 0
 
-    if self.positioning == "topleft" then
-        ox = 0
-        oy = 0
+    if self.positioning == "center" then
+        ox = -(tW / 2)
+        oy = -(tH / 2)
     end
 
     love.graphics.setShader(self.shader)
