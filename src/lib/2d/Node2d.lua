@@ -247,7 +247,7 @@ function Node2D:drawRequest()
         end
     end
 
-    love.graphics.pop()
+    grp.pop()
 end
 
 ---@param x number
