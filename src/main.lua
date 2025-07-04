@@ -14,14 +14,6 @@ main = {
     musicPos = 0
 }
 
-
----@type {string: Scene}
-local scenes = {
-    game = require("scenes.game.game"),
-    menu = require("scenes.menu.menu")
-}
-main.scenes = scenes
-
 local currentScene = nil ---@type Scene?
 local debugMenu = DebugMenu:new()
 local paused = false
@@ -114,11 +106,12 @@ end
 
 ---@param sceneName string
 function main.loadSceneByName(sceneName)
-    local s = main.scenes[sceneName]
-    assert(s, "Scene '" .. tostring(sceneName) .. "' does not exist")
+    local path = "scenes/" .. sceneName .. "/" .. sceneName .. ".lua"
 
-    print("-> Loading scene: ", sceneName)
-    main.loadScene(s)
+    print("-> Loading scene: ", sceneName)    
+    local moduleFunc, err = love.filesystem.load(path)
+    
+    main.loadScene(moduleFunc())
 end
 
 function main.addGears(parent)
