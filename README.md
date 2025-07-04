@@ -49,4 +49,4 @@ love src
 ### Manual building
 Refer to the [Love2D wiki](https://love2d.org/wiki/Game_Distribution) and [LovePotion wiki](https://lovebrew.org/#/packaging?id=fused-binary).
 
-You may also use other build tools than Lover but their features will not be supported.
+You may also use other build tools than Lover but issues related to them won't be supported and their features (example: conditional compilation, templates, build scripts) won't be implemented into TurretSiege.
