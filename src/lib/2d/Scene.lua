@@ -5,10 +5,6 @@ local Scene = class("Scene", Node2D)
 
 Scene.name = "scene" ---@type string?
 
-function Scene:draw()
-    love.graphics.print(self.name .. "\nNo draw function implemented")
-end
-
 function Scene:reload()
     self:unload()
     self:load()
