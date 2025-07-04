@@ -218,8 +218,7 @@ function Node2D:getDrawnColor()
     return self.color
 end
 
----@param screen Screen?
-function Node2D:drawRequest(screen)
+function Node2D:drawRequest()
     if not self.visible then return end
 
     local grp = love.graphics
@@ -236,7 +235,7 @@ function Node2D:drawRequest(screen)
     grp.setColor(self:getDrawnColor():getRGBA())
 
     --if self:canBeDrawnOnScreen(screen) then
-    self:draw(screen)
+    self:draw()
     grp.setShader()
     --end
     
@@ -244,7 +243,7 @@ function Node2D:drawRequest(screen)
         local node = self.children[i]
         
         if node:isA("Node2D") then
-            node:drawRequest(screen)
+            node:drawRequest()
         end
     end
 
@@ -310,7 +309,6 @@ function Node2D:createTimer()
     return t
 end
 
----@param screen Screen?
-function Node2D:draw(screen) end
+function Node2D:draw() end
 
 return Node2D

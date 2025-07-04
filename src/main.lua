@@ -182,10 +182,10 @@ function love.draw(screen)
     love.graphics.scale(sX, sY)
 
     if currentScene then
-        currentScene:drawRequest(screen)
+        currentScene:drawRequest()
     end
 
-    debugMenu:drawRequest(screen)
+    debugMenu:drawRequest()
 end
 
 function love.update(delta)
