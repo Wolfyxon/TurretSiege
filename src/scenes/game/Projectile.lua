@@ -21,6 +21,8 @@ Projectile.lifeTime   = 8            ---@type number
 Projectile.spawnedAt  = 0            ---@type number
 Projectile.damageProjectiles = false ---@type boolean
 
+Projectile.readyCallback = function() end ---@type function
+
 function Projectile:init()
     self.ignoredClasses = {}
     self.spawnedAt = self:getTime()
@@ -112,6 +114,14 @@ function Projectile:update(delta)
     end
 
 end
+
+---@param callback function
+---@return self
+function Projectile:onReady(callback)
+    self.readyCallback = callback
+    return self
+end
+
 
 ---@return Turret?
 function Projectile:getTurret()

@@ -17,7 +17,6 @@ PowerUp.iconImage = "none"         ---@type string
 PowerUp.originalColor = nil        ---@type Color
 
 PowerUp.collectCallback = function() end      ---@type function
-PowerUp.readyCallback = function()   end      ---@type function
 
 PowerUp:setScaleAll(0.12)
 PowerUp.speed = 0.1
@@ -102,13 +101,6 @@ end
 ---@return self
 function PowerUp:onCollect(callback)
     self.collectCallback = callback
-    return self
-end
-
----@param callback function
----@return self
-function PowerUp:onReady(callback)
-    self.readyCallback = callback
     return self
 end
 
