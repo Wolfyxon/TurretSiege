@@ -4,7 +4,7 @@ local Projectile = require("scenes.game.Projectile")
 local SmallRocketProjectile = class("SmallRocketProjectile", Projectile)
 
 SmallRocketProjectile.level = 2
-SmallRocketProjectile.comminity = 0.5
+SmallRocketProjectile.commonity = 0.5
 SmallRocketProjectile.speed = 0.45
 SmallRocketProjectile.damage = 10
 SmallRocketProjectile.rotationOffset = 90

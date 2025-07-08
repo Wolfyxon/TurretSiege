@@ -6,7 +6,7 @@ local ShurikenProjectile = class("ShurikenProjectile", Projectile)
 
 ShurikenProjectile.rotationSpeed = 800
 ShurikenProjectile.level = 2
-ShurikenProjectile.comminity = 10.2
+ShurikenProjectile.commonity = 10.2
 ShurikenProjectile.speed = 0.5
 ShurikenProjectile.damage = 8
 ShurikenProjectile.moveTarget = "forward"

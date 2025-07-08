@@ -36,7 +36,7 @@ function GameScene:registerProjectile(projectile)
 
     self.projectiles[projectile.level] = self.projectiles[projectile.level] or {}
 
-    table.insert(self.projectiles[projectile.level], utils.table.occurrenceWrap(projectile, projectile.comminity))
+    table.insert(self.projectiles[projectile.level], utils.table.occurrenceWrap(projectile, projectile.commonity))
 end
 
 ---@param projectile Projectile
