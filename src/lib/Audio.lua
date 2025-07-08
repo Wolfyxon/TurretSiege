@@ -64,11 +64,11 @@ function Audio:setSource(source)
 end
 
 ---@param volume number
----@return Audio?
+---@return Audio
 function Audio:setVolume(volume)
     if not self.source then 
         warn("Volume cannot be applied when no source is loaded.")
-        return
+        return self
     end
 
     self.source:setVolume(volume)
@@ -76,11 +76,11 @@ function Audio:setVolume(volume)
 end
 
 ---@param pitch number
----@return Audio?
+---@return Audio
 function Audio:setPitch(pitch)
     if not self.source then 
         warn("Pitch cannot be applied when no source is loaded.")
-        return
+        return self
     end
 
     self.source:setPitch(pitch)
