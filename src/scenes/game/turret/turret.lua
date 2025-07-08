@@ -44,6 +44,7 @@ function Turret:init()
 
     self.currentGun = self:addChild(basicGun:setPosition(0.2, 0))
     self.currentGun.turret = self
+    self.currentGun.heat = 0
 
     self:setScaleAll(scale)
     self.x = 0.5
@@ -65,7 +66,12 @@ function Turret:init()
     end)
 
     self:onEvent("died", function ()
+        self.heatSound:stop()
         self:shockwave()
+    end)
+
+    self:onEvent("removed", function ()
+        self.heatSound:stop()
     end)
 
     local customHp = utils.config.getFlagNumberValue("turretHp")
