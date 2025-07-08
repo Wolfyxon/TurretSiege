@@ -19,6 +19,15 @@ function Object:getClass()
     return self.classList[#self.classList]
 end
 
+---@generic T: Object
+---@param property string
+---@param value any
+---@return T
+function Object:set(property, value)
+    self[property] = value
+    return self
+end
+
 ---@param class string
 ---@param exact? boolean
 ---@return boolean
