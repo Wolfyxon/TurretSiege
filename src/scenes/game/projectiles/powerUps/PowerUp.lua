@@ -16,6 +16,9 @@ PowerUp.targetArmorDistance = 0.15 ---@type number
 PowerUp.iconImage = "none"         ---@type string
 PowerUp.originalColor = nil        ---@type Color
 
+PowerUp.collectCallback = function() end      ---@type function
+PowerUp.readyCallback = function()   end      ---@type function
+
 PowerUp:setScaleAll(0.12)
 PowerUp.speed = 0.1
 
@@ -46,7 +49,7 @@ function PowerUp:init()
         if not pwu:isSafe() then return end
         
         pwu:emitEvent("collected")
-        pwu:collected()
+        pwu:collectCallback()
         pwu:getScene().turret:powerUpReceived(pwu)
     end)
 
@@ -84,6 +87,7 @@ end
 
 function PowerUp:ready()
     self.icon.rotation = -self.rotation
+    self.readyCallback()
 end
 
 function PowerUp:update(delta)
@@ -92,6 +96,20 @@ function PowerUp:update(delta)
     local extraDistance = math.abs(math.sin(self:getTime()) * 0.05)
     self.armorDistance = math.lerp(self.armorDistance, self.targetArmorDistance + extraDistance, 2 * delta)
     self:setArmorDistance(self.armorDistance)
+end
+
+---@param callback function
+---@return self
+function PowerUp:onCollect(callback)
+    self.collectCallback = callback
+    return self
+end
+
+---@param callback function
+---@return self
+function PowerUp:onReady(callback)
+    self.readyCallback = callback
+    return self
 end
 
 ---@return boolean
@@ -107,7 +125,5 @@ function PowerUp:setArmorDistance(distance)
     local ra = self.armor[2]
     ra.x = distance
 end
-
-function PowerUp:collected() end
 
 return PowerUp
