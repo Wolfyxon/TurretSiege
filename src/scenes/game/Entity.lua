@@ -13,10 +13,13 @@ Entity.damageSound = nil     ---@type Source
 Entity.damageSoundVolume = 1 ---@type number
 Entity.deathSound = nil      ---@type Source
 
+---@generic Self: Entity
 ---@param maxHp number
 function Entity:initHp(maxHp)
     self.maxHp = maxHp
     self.hp = maxHp
+
+    return self
 end
 
 ---@param amount number
