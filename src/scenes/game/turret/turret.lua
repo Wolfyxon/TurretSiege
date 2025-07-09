@@ -25,8 +25,6 @@ Turret.bulletRotation = 0       ---@type number
 Turret.bulletTargetRotation = 0 ---@type number
 Turret.targetRotation = 0       ---@type number
 Turret.rotationSpeed = 5        ---@type number
-Turret.fireCooldown = 0.2       ---@type number
-Turret.lastFireTime = 0         ---@type number
 Turret.cannon = nil             ---@type Sprite
 Turret.base = nil               ---@type Sprite
 Turret.currentGun = nil         ---@type TurretGun
@@ -36,8 +34,6 @@ function Turret:init()
     self.heatSound:setLooping(true)
     self.heatSound:setVolume(0)
     self.heatSound:play()
-
-    self.lastFireTime = self:getTime()
 
     self.base = Sprite:new("scenes/game/turret/img/base.png")
     self.base.enableShadow = true
