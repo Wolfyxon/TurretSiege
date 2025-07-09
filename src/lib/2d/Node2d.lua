@@ -45,16 +45,18 @@ function Node2D:isVisibleInTree()
     return true
 end
 
+---@generic Self: Node2D
 ---@param color Color
----@return self
+---@return Self
 function Node2D:setColor(color)
     self.color = color
     
     return self
 end
 
+---@generic Self: Node2D
 ---@param path string
----@return self
+---@return Self
 function Node2D:loadShader(path)
     local code = love.filesystem.read(path)
     assert(code, "Shader '" .. tostring(path) .. "' not found")
@@ -64,13 +66,15 @@ function Node2D:loadShader(path)
     return self
 end
 
+---@generic Self: Node2D
 ---@param shader Shader
----@return self
+---@return Self
 function Node2D:setShader(shader)
     self.shader = shader
     return self
 end
 
+---@generic Self: Node2D
 ---@param scale number
 ---@return self
 function Node2D:setScaleAll(scale)
@@ -80,9 +84,10 @@ function Node2D:setScaleAll(scale)
     return self
 end
 
+---@generic Self: Node2D
 ---@param x number
 ---@param y number
----@return self
+---@return Self
 function Node2D:setPosition(x, y)
     self.x = x
     self.y = y
