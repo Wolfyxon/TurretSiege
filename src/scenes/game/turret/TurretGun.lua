@@ -17,9 +17,10 @@ TurretGun.heat = 0           ---@type number
 TurretGun.overheat = false   ---@type boolean
 TurretGun.fireSound = love.audio.newSource("scenes/game/turret/audio/firing/small.ogg", "static") ---@type Source
 
+---@generic Self: self
 ---@param name string
 ---@param texture string?
----@return self
+---@return Self
 function TurretGun:new(name, texture)
     local ins = initClass(self, {
         name = name,

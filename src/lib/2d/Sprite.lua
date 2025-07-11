@@ -12,8 +12,9 @@ Sprite.enableShadow = false ---@type boolean
 Sprite.shadowOffset = 15    ---@type number
 Sprite.shadowOpaticy = 0.4  ---@type number
 
+---@generic Self: self
 ---@param path string?
----@return self
+---@return Self
 function Sprite:new(path)
     local ins = initClass(self)
     
