@@ -151,8 +151,9 @@ function Node:orphanize()
     self.parent:disownChild(self)
 end
 
+---@generic T: Node
 ---@param node Node
----@return Node
+---@return T
 function Node:addChild(node)
 
     node:orphanize()
