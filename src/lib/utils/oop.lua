@@ -41,6 +41,16 @@ end
 
 function Object:init() end
 
+function Object:__tostring()
+    local temp = {}
+    setmetatable(temp, {
+        index = self,
+        __tostring = nil
+    })
+
+    return string.format("[%s %s]", self:getClass(), temp)
+end
+
 ---@return boolean
 function Object.isObject(val)
     return (

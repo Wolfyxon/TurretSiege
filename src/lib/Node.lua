@@ -270,11 +270,6 @@ function Node:getScene()
     end
 end
 
----@return string
-function Node:__tostring()
-    return self:getClass() .. "(" .. tostring(self) .. ")"
-end
-
 -- Overrides --
 
 ---@param delta number
