@@ -160,7 +160,22 @@ function love.load()
     print("==================================================================")
 
     love.window.setTitle("Turret Siege")
-    love.window.setMode(gameData.width * gameData.windowSizeMultiplier, gameData.height * gameData.windowSizeMultiplier, {resizable = true})
+    
+    love.window.setFullscreen(true)
+
+    local sw, sh = love.graphics.getDimensions()
+
+    love.window.setFullscreen(false)
+    
+
+    love.window.setMode(
+        math.min(gameData.width * gameData.windowSizeMultiplier, sw),
+        math.min(gameData.height * gameData.windowSizeMultiplier, sh),
+        
+        {
+            resizable = true
+        }
+    )
     
     debugMenu:ready()
     main.loadSceneByName(utils.config.getFlagDictionary().scene)
