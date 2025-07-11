@@ -145,9 +145,12 @@ function Turret:getGame()
     return self.parent.parent ---@type GameScene
 end
 
-
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
+    if os.time() < self:getGame().startTime + 0.2 then
+        return
+    end
+
     self.currentGun:fire()
 end
 

@@ -27,6 +27,7 @@ GameScene.projectileSpawnDelay = 1    ---@type number
 GameScene.lastProjectileSpawnTime = 2 ---@type number
 GameScene.projectilesDestroyed = 0    ---@type integer
 GameScene.level = 1                   ---@type integer
+GameScene.startTime = 0
 
 ---@param projectile Projectile
 function GameScene:registerProjectile(projectile)
@@ -84,6 +85,7 @@ end
 
 function GameScene:load()
     self.lastProjectileSpawnTime = self:getTime()
+    self.startTime = os.time()
 
     local projectileList = {
         require("scenes.game.projectiles.powerUps.health"),
