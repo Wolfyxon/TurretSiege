@@ -140,6 +140,12 @@ function Turret:powerUpReceived(powerUp)
     self:shockwave(50, powerUp.originalColor, 30)
 end
 
+---@return GameScene
+function Turret:getGame()
+    return self.parent.parent ---@type GameScene
+end
+
+
 -- TODO: Fix freeze on fire on 3DS
 function Turret:fire()
     self.currentGun:fire()
