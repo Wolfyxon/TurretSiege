@@ -198,11 +198,7 @@ function GameScene:levelUp()
     if self.level % 2 == 0 then
         self.projectileSpawnDelay = self.projectileSpawnDelay - 0.025
     end
-
-    if self.level % 4 == 0 then
-        self.turret.fireCooldown = self.turret.fireCooldown * 0.9
-    end
-
+    
     self.gui.levelLabel:setText("Level " .. tostring(self.level))
     self.gui.levelLabel.color = Color.GREEN:clone()
 
