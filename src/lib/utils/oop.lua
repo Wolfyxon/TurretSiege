@@ -41,6 +41,15 @@ end
 
 function Object:init() end
 
+---@return boolean
+function Object.isObject(val)
+    return (
+        type(val) == "table" and
+        type(val.classList) == "table" and
+        table.find(val, "Object") ~= nil
+    )
+end
+
 -------------------------------------------------
 
 ---@param name string
