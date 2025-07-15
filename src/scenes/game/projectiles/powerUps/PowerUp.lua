@@ -53,9 +53,7 @@ function PowerUp:ready()
         pwu:collectCallback()
         pwu:getScene().turret:powerUpReceived(pwu)
     end)
-
-
-    --== Icon ==--
+    
     self.icon = self:addChild(
         Sprite:new()
         :set("colorMode", "set")
@@ -63,30 +61,25 @@ function PowerUp:ready()
         :loadTextureFromFile(iconDir .. self.iconImage .. ".png")
     )
 
-    --== Armor ==--
-
     self.armor = {
-        Sprite:new(),
-        Sprite:new()
+        self:createArmor(),
+        self:createArmor(180)
     }
-
-    local as = 1.5
-
-    local la = self.armor[1]
-    la.colorMode = "set"
-    la:loadTextureFromFile(armorTexture)
-    la:setScaleAll(as)
-    self:addChild(la)
-
-    local ra = self.armor[2]
-    ra.colorMode = "set"
-    ra:loadTextureFromFile(armorTexture)
-    ra:setScaleAll(as)
-    ra.rotation = 180
-    self:addChild(ra)
 
     self.icon.rotation = -self.rotation
     self.readyCallback()
+end
+
+---@param rotation number?
+---@return Sprite
+function PowerUp:createArmor(rotation)
+    return self:addChild(
+        Sprite:new()
+        :loadTextureFromFile(armorTexture)
+        :set("colorMode", "set")
+        :set("rotation", rotation or 0)
+        :setScaleAll(1.5)
+    )
 end
 
 function PowerUp:update(delta)
