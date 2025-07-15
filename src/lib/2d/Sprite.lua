@@ -25,13 +25,17 @@ function Sprite:new(path)
     return ins
 end
 
+---@generic Self: Sprite
 ---@param path string
+---@return Self
 function Sprite:loadTextureFromFile(path)
     self.texture = assets.loadImage(path)
 
     local tW, tH = self:getTextureSize()
     self.width = tW / gameData.width
     self.height = tH / gameData.height
+
+    return self
 end
 
 function Sprite:draw()
