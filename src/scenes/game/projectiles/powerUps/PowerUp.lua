@@ -30,7 +30,9 @@ function PowerUp:init()
     self.originalColor = self.color:clone()
     self:initHp(self.armorHp + self.powerUpHp)
     self:loadTextureFromFile("scenes/game/projectiles/powerUps/img/powerUp.png")
+end
 
+function PowerUp:ready()
     local pwu = self
 
     self:onEvent("damaged", function ()
@@ -52,12 +54,14 @@ function PowerUp:init()
         pwu:getScene().turret:powerUpReceived(pwu)
     end)
 
+
     --== Icon ==--
-    self.icon = Sprite:new()
-    self.icon.colorMode = "set"
-    self.icon:loadTextureFromFile(iconDir .. pwu.iconImage .. ".png")
-    self.icon.enableShadow = false
-    self:addChild(pwu.icon)
+    self.icon = self:addChild(
+        Sprite:new()
+        :set("colorMode", "set")
+        :set("enableShadow", false)
+        :loadTextureFromFile(iconDir .. self.iconImage .. ".png")
+    )
 
     --== Armor ==--
 
@@ -74,17 +78,13 @@ function PowerUp:init()
     la:setScaleAll(as)
     self:addChild(la)
 
-    local ra = pwu.armor[2]
+    local ra = self.armor[2]
     ra.colorMode = "set"
     ra:loadTextureFromFile(armorTexture)
     ra:setScaleAll(as)
     ra.rotation = 180
     self:addChild(ra)
 
-    return pwu
-end
-
-function PowerUp:ready()
     self.icon.rotation = -self.rotation
     self.readyCallback()
 end
