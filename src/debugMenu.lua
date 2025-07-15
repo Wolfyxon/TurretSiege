@@ -47,6 +47,8 @@ function DebugMenu:update(delta)
 
     add("FPS", love.timer.getFPS())
     add("Mem", string.format("%.2f MB", mem / 1024))
+    add("OS", love.system.getOS())
+    add("Ver", os.getenv("LOVER_PKG_VERSION"))
 
     self.label:setText(table.concat(info, " | "))
 end
