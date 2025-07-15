@@ -38,7 +38,7 @@ function PowerUp:ready()
     self:onEvent("damaged", function ()
         pwu.targetArmorDistance = pwu.targetArmorDistance + 0.05
 
-        if pwu:isSafe() then
+        if pwu:isSafe() and #self.armor ~= 0 then
             pwu.damage = 0
             
             Tween.fadeNode(pwu.armor[1], 0, 0.5)
@@ -53,7 +53,7 @@ function PowerUp:ready()
         pwu:collectCallback()
         pwu:getScene().turret:powerUpReceived(pwu)
     end)
-    
+
     self.icon = self:addChild(
         Sprite:new()
         :set("colorMode", "set")
@@ -61,10 +61,15 @@ function PowerUp:ready()
         :loadTextureFromFile(iconDir .. self.iconImage .. ".png")
     )
 
-    self.armor = {
-        self:createArmor(),
-        self:createArmor(180)
-    }
+    if math.random(0, 5) == 0 then
+        self.hp = self.hp - self.armorHp
+        self.damage = 0
+    else
+        self.armor = {
+            self:createArmor(),
+            self:createArmor(180)
+        }
+    end
 
     self.icon.rotation = -self.rotation
     self.readyCallback()
@@ -99,11 +104,15 @@ end
 
 ---@return boolean
 function PowerUp:isSafe()
-    return self.hp < self.maxHp - self.armorHp
+    return self.hp <= self.maxHp - self.armorHp
 end
 
 ---@param distance number
 function PowerUp:setArmorDistance(distance)
+    if #self.armor == 0 then
+        return
+    end
+
     local la = self.armor[1]
     la.x = -distance
 
