@@ -72,11 +72,6 @@ function Node:getIndex()
     end
 end
 
----@return string
-function Node:getClass()
-    return self.classList[#self.classList]
-end
-
 ---@return boolean
 function Node:isInScene()
     local scene = main.getCurrentScene()
