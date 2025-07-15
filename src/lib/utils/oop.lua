@@ -96,11 +96,15 @@ function initClass(classTable, body)
     })
 
     local super = classTable.super
+    local supers = {}
 
     while super do
-        super.init(ins)
-
+        table.insert(supers, super)
         super = super.super
+    end
+
+    for i = #supers, 1, -1 do
+        supers[i].init(ins)
     end
 
     ins:init()
