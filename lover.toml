@@ -3,5 +3,8 @@ name = "TurretSiege"
 version = "0.3.0-alpha"
 author = "Wolfyxon"
 
+[paths]
+main = "src"
+
 [build]
 default = ["linux", "win32", "win64"]
