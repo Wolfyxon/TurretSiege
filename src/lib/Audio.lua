@@ -49,7 +49,7 @@ function Audio:setEffect(name, settings)
 end
 
 ---@param path string
----@param sourceType "stream" | "static"
+---@param sourceType? "stream" | "static"
 ---@return Audio
 function Audio:loadFromFile(path, sourceType)
     return self:setSource(love.audio.newSource(path, sourceType or "stream"))
@@ -127,42 +127,44 @@ function Audio:setPlayTime(time)
     self.source:seek(time)
 end
 
----@return Audio?
+---@return Audio
 function Audio:play()
-    if not self.source then return end
+    if self.source then        
+        self._wasPlaying = true
 
-    self._wasPlaying = true
-
-    self.source:seek(0)
-    self.source:play()
+        self.source:seek(0)
+        self.source:play()
+    end
 
     return self
 end
 
----@return Audio?
+---@return Audio
 function Audio:stop()
-    if not self.source then return end
-
-    self.source:stop()
-    self:emitEvent("finished")
+    if self.source then
+        self.source:stop()
+        self:emitEvent("finished")
+    end
 
     return self
 end
 
----@return Audio?
+---@return Audio
 function Audio:pause()
-    if not self.source then return end
-    self.source:pause()
+    if self.source then
+        self.source:pause()
+    end
 
     return self
 end
 
----@return Audio?
+---@return Audio
 function Audio:resume()
-    if not self.source then return end
-    self.source:play()
+    if self.source then
+        self.source:play()
+    end
 
-    return
+    return self
 end
 
 return Audio
