@@ -2,6 +2,7 @@ local ListContainer = require("lib.2d.gui.container.ListContainer")
 local Label = require("lib.2d.gui.Label")
 local Color = require("lib.Color")
 local GuiNode = require("lib.2d.gui.GuiNode")
+local Button  = require("lib.2d.gui.Button")
 
 ---@class PauseGui: GuiNode
 local PauseGui = class("PauseGui", GuiNode)
@@ -10,6 +11,7 @@ PauseGui.visible = false
 PauseGui.updateMode = "always"
 
 PauseGui.title = nil    ---@type Label
+PauseGui.list = nil     ---@type ListContainer
 
 function PauseGui:ready()
     self.screen = "bottom"
@@ -23,6 +25,20 @@ function PauseGui:ready()
     self.title.x = 0.5
     self.title.y = 0.2
     self:addChild(self.title)
+
+    self.list = ListContainer:new()
+    self.list.spacing = 0.01
+    self.list:setPosition(0.5, 0.5)
+    self:addChild(self.list)
+    
+    self:addButton("Resume", function()
+        main.setPause(false)
+    end)
+
+    self:addButton("Quit to menu", function()
+        main.setPause(false)
+        main.loadSceneByName("menu")
+    end)
 
     local music = self.parent.music
 
@@ -51,16 +67,30 @@ function PauseGui:ready()
 end
 
 function PauseGui:update(delta)
-    self.visible = self.color.a > 0.01
-    self.title.visible = main.isPaused()
-
     local a = 0
+    local paused = main.isPaused()
 
-    if main.isPaused() then
+    self.visible = self.color.a > 0.01
+    self.title.visible = paused
+    self.list.visible = paused
+
+    if paused then
         a = 0.5
     end
 
     self.backgroundColor.a = math.lerp(self.backgroundColor.a, a, 10 * delta)
+end
+
+---@param text string
+---@param onClick function
+function PauseGui:addButton(text, onClick)
+    local btn = Button:new()
+
+    btn:setText(text)
+    btn:onEvent("pressed", onClick)
+    btn:setSize(0.5, 0.05)
+
+    self.list:addChild(btn)
 end
 
 return PauseGui
