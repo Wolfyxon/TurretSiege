@@ -454,6 +454,10 @@ function utils.config.getFlagDictionary()
         local name = split[1]
         local value = split[2]
 
+        if value == nil then
+            value = ""
+        end
+
         res[name] = value
     end
 
