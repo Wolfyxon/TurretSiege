@@ -8,6 +8,7 @@ local utils = require("lib.utils")
 local gameData = require("gameData")
 
 require("lib.utils.oop")
+require("tests")
 
 function warn(...)
     print("[Warning] " .. table.concat({...}, " "))
@@ -61,6 +62,7 @@ local function printHelp()
     print("Options")
     print(" --help:                 Show this help")
     print(" --version:              Show game version")
+    print(" --test:                 Run unit tests and exit")
     print(" --scene=<scene name>:   Start game in a specific scene")
     
     print("")
@@ -76,6 +78,11 @@ local function handleArgs()
 
     if flags.version then
         print("TurretSiege " .. gameData.version)
+        os.exit()
+    end
+
+    if flags.test then
+        RunUnitTests()
         os.exit()
     end
 end
