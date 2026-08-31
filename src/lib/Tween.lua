@@ -21,6 +21,7 @@ Tween.paused = false        ---@type boolean
 Tween.removeOnFinish = true ---@type boolean
 Tween.keyframes = {}        ---@type {}[]
 Tween.currentKeyframe = 1   ---@type integer
+Tween.loopFunc = nil        ---@type function?
 
 Tween:_registerEvent("started", "finished")
 
@@ -62,6 +63,13 @@ function Tween:addKeyframe(target, properties, duration, easingStyle, easingDire
 
 end
 
+---@param func function
+---@return Tween
+function Tween:setLoopFunc(func)
+    self.loopFunc = func
+    return self
+end
+
 function Tween:update(delta)
     if self.paused or not self.isPlaying then return end
 
@@ -98,6 +106,9 @@ function Tween:update(delta)
         end
     end
 
+    if self.loopFunc then
+        self:loopFunc(delta)
+    end
 end
 
 function Tween:play()
