@@ -9,7 +9,7 @@ function tests.replace()
 end
 
 function RunUnitTests()
-    print("------ Running unit test ------")
+    print("------ Running unit tests ------")
 
     for name, func in pairs(tests) do
         local start = os.clock()
