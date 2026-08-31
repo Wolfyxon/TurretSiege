@@ -1,4 +1,4 @@
-local utils = require "lib.utils"
+local utils = require("lib.utils")
 
 local tests = {}
 
@@ -16,7 +16,7 @@ function RunUnitTests()
         local suc, res = pcall(func)
         local finish = os.clock()
 
-        local timeStr = tostring(finish - start) .. "s"
+        local timeStr = tostring(finish - start) .. " CPU s"
 
         if suc then
             print(name, "Ok", timeStr)
