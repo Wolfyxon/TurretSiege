@@ -158,7 +158,7 @@ end
 ---@param color? Color
 function Turret:shockwave(radius, color, speed)
     radius = radius or 250
-    speed = speed or 50
+    speed = speed or 40
 
     local cir = Circle:new()
 
