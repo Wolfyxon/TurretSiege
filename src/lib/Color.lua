@@ -78,6 +78,13 @@ function Color:getRGBA()
     return self.r, self.g, self.b, self.a
 end
 
+---@return table
+function Color:getArray()
+    return {
+        self.r, self.g, self.b, self.a
+    }
+end
+
 function Color:toGraphics()
     love.graphics.setColor(self.r, self.g, self.b, self.a)
 end
