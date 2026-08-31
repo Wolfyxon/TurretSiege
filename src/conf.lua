@@ -5,6 +5,8 @@
 -- (I would use a for loop but Intelisense is too stupid)
 
 local utils = require("lib.utils")
+local gameData = require("gameData")
+
 require("lib.utils.oop")
 
 function warn(...)
@@ -53,4 +55,30 @@ math.rotateDirection = utils.math.rotateDirection
 
 -------=========== Other setup ===============---------
 
-math.randomseed(-os.clock(), os.clock()) -- this fixes random generator creating the same results on each run
+local function printHelp()
+    print("Usage: TurretSiege [OPTIONS...]")
+    print("")
+    print("Options")
+    print(" --help:                 Show this help")
+    print(" --version:              Show game version")
+    print(" --scene=<scene name>:   Start game in a specific scene")
+    
+    print("")
+end
+
+local function handleArgs()
+    local flags = utils.config.getFlagDictionary()
+
+    if flags.help then
+        printHelp()
+        os.exit()
+    end
+
+    if flags.version then
+        print("TurretSiege " .. gameData.version)
+        os.exit()
+    end
+end
+
+math.randomseed(-os.clock(), os.clock())
+handleArgs()
