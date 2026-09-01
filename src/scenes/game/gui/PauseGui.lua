@@ -33,14 +33,16 @@ function PauseGui:ready()
     
     self:addButton("Resume", function()
         main.setPause(false)
+        self:processPause()
+        
     end)
-
+    
     self:addButton("Quit to menu", function()
         main.setPause(false)
+        self:processPause()
+
         main.loadSceneByName("menu")
     end)
-
-    local music = self.parent.music
 
     love.audio.setEffect("pause", { type = "reverb" })
     
@@ -48,14 +50,7 @@ function PauseGui:ready()
         if key == "escape" then
             main.setPause(not main.isPaused())
 
-            local paused = main.isPaused()
-            music:setEffect("pause", paused)
-
-            if paused then
-                music:setVolume(0.5)
-            else
-                music:setVolume(1)
-            end
+            self:processPause()
         end
     end)
 
@@ -64,6 +59,19 @@ function PauseGui:ready()
     end)
 
     print("PauseGui ready")
+end
+
+function PauseGui:processPause()
+    local music = self.parent.music
+    local paused = main.isPaused()
+
+    music:setEffect("pause", paused)
+
+    if paused then
+        music:setVolume(0.5)
+    else
+        music:setVolume(1)
+    end
 end
 
 function PauseGui:update(delta)
