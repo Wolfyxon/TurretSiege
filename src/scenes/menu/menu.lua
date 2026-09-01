@@ -16,25 +16,6 @@ function MenuScene:load()
     
     self.music = Audio:new():loadFromFile("scenes/menu/music.ogg"):setLoop(true):play()
     self:addChild(self.music)
-
-    --== Gears ==--
-    
-    --[[for i, gear in ipairs(main.addGears(self)) do
-        local dir = (-1) ^ i
-        local time = 0
-        local targetRot = 0
-
-        function gear:update(delta)
-            gear.rotation = math.lerpAngle(gear.rotation, targetRot, delta * 3)
-            time = time + delta
-            
-            -- 167 is the BPM of the menu soundtrack
-            -- 120 is kinda close to the length but it's somehow perfect lol
-            if time % (120 / 167) <= 0.05 then
-                targetRot = targetRot + 5 * dir
-            end
-        end
-    end]]
     
     local targetRot = 20
 

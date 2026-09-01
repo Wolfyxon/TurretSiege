@@ -120,25 +120,26 @@ function main.addGears(parent)
 
     for i = 1, gearCount do
         if i > 11 then
-         local gear = Sprite:new("assets/img/gear.png")
-         local dir = (-1) ^ i
-         local s = ((gearCount - i) / gearCount) * 5
-         
-         local c = i / gearCount
-         if dir == -1 then
-             c = c * 0.8
-         end
-         
-         gear.color = Color:new(0.8 * c, 0.6 * c, 0)
-         gear.enableShadow = true
-         gear.shadowOpaticy = 0.25
-         gear.x = 0.5
-         gear.y = 0.5
-         gear.scaleX = s
-         gear.scaleY = s
-         
-         parent:addChild(gear)
-         table.insert(res, gear)
+            local gear = Sprite:new("assets/img/gear.png")
+            local dir = (-1) ^ i
+            local s = ((gearCount - i) / gearCount) * 5
+            
+            local c = i / gearCount
+            
+            if dir == -1 then
+                c = c * 0.8
+            end
+            
+            gear.color = Color:new(0.8 * c, 0.6 * c, 0)
+            gear.enableShadow = true
+            gear.shadowOpaticy = 0.25
+            gear.x = 0.5
+            gear.y = 0.5
+            gear.scaleX = s
+            gear.scaleY = s
+            
+            parent:addChild(gear)
+            table.insert(res, gear)
         end
      end
 
