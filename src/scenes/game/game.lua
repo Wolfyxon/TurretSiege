@@ -142,10 +142,6 @@ function GameScene:unload()
     self.gui = nil
 end
 
-function GameScene:draw()
-    love.graphics.clear(0.2, 0.1, 0.1)
-end
-
 function GameScene:update(delta)
     local now = self:getTime()
     

@@ -95,8 +95,4 @@ function MenuScene:load()
     self:addChild(buttonContainer)
 end
 
-function MenuScene:draw()
-    love.graphics.clear(0.2, 0.1, 0.1)
-end
-
 return MenuScene
