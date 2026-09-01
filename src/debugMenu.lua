@@ -29,7 +29,7 @@ function DebugMenu:ready()
     self.visible = false
     self.label = self:addChild(
         Label:new()
-        :setPosition(0.5, 0.9)
+        :setPosition(0.5, 0.15)
         :setText("loading info...")
     )
 end
