@@ -122,7 +122,7 @@ function main.addGears(parent)
         if i > 11 then
             local gear = Sprite:new("assets/img/gear.png")
             local dir = (-1) ^ i
-            local s = ((gearCount - i) / gearCount) * 5
+            local s = ((gearCount - i) / gearCount) * 5 + 0.015
             
             local c = i / gearCount
             
