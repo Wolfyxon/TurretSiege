@@ -10,6 +10,7 @@ return TurretGun:new("Basic gun", "scenes/game/turret/img/cannon.png")
         :onFire(function(self)
             local b = class("TurretBullet", Projectile):new()
             b:loadTextureFromFile("assets/img/bullet.png")
+            b.shadowOpaticy = 0.25
             b.ignoredClasses = {"TurretShieldSegment"}
             b.moveTarget = "forward"
             b.owner = self
