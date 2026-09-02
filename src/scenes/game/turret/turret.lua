@@ -29,6 +29,7 @@ Turret.cannon = nil             ---@type Sprite
 Turret.base = nil               ---@type Sprite
 Turret.currentGun = nil         ---@type TurretGun
 Turret.projectiles = {}         ---@type Projectile[]
+Turret.ai = false               ---@type boolean
 
 function Turret:init()
     self.heatSound:setLooping(true)
@@ -71,14 +72,15 @@ function Turret:init()
     end)
 
     local customHp = utils.config.getFlagNumberValue("turretHp")
+    self.ai = utils.config.hasFlag("ai")
 
     if customHp then
         self.hp = customHp
     end
 end
 
-function Turret:update(delta)
-    if utils.system.hasMouse() then
+function Turret:processControls(delta)
+     if utils.system.hasMouse() then
         local x, y = utils.system.getMousePos()
         self.bulletTargetRotation = self:rotationTo(x, y)
         
@@ -86,11 +88,13 @@ function Turret:update(delta)
         y = y - self.y
 
         local ratio = gameData.width / gameData.height
+        
         if ratio > 1 then
             x = x * ratio
         else
             x = x / ratio
         end
+
         self.targetRotation = self:rotationTo(self.x + x, self.y + y)
     end
 
@@ -110,6 +114,31 @@ function Turret:update(delta)
         if joystick:isGamepadDown("dpright") then
             self.targetRotation = self.targetRotation + manualRotationSpeed * delta
         end
+    end
+end
+
+function Turret:processAi()
+    local target = self:getClosestTarget()
+
+    if not target then
+        return
+    end
+
+    self.targetRotation = self:rotationTo(target.x, target.y)
+    self.bulletTargetRotation = self.targetRotation
+
+    local angleDiff = math.abs((self.rotation - self.targetRotation + 180) % 360 - 180)
+
+    if angleDiff < 10 then
+        self:fire()
+    end
+end
+
+function Turret:update(delta)
+    if not self.ai then    
+        self:processControls(delta)
+    else
+        self:processAi()
     end
 
     self.bulletRotation = math.lerpAngle(self.bulletRotation, self.bulletTargetRotation, self.rotationSpeed * delta)
@@ -143,6 +172,39 @@ end
 ---@return GameScene
 function Turret:getGame()
     return self.parent.parent ---@type GameScene
+end
+
+---@return Entity?
+function Turret:getClosestTarget()
+    local game = self:getGame()
+
+    local target = nil
+    local targetDist = math.huge
+
+    for i, v in ipairs(game.arena.children) do
+        if not v:isA("Projectile") then
+            goto continue
+        end
+
+        if v:isA("TurretBullet") then
+            goto continue
+        end
+
+        if v:isA("PowerUp") and v:isSafe() then
+            goto continue
+        end
+
+        local dist = v:distanceToNode(self)
+        
+        if dist < targetDist then
+            target = v
+            targetDist = dist
+        end
+
+        ::continue::
+    end
+
+    return target
 end
 
 -- TODO: Fix freeze on fire on 3DS
