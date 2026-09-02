@@ -283,6 +283,13 @@ function utils.math.rotationToPosition(x1, y1, angle, distance)
     return x2, y2
 end
 
+---@param rotA number
+---@param rotB number
+---@return number
+function utils.math.rotationDiff(rotA, rotB)
+    return math.abs((rotA - rotB + 180) % 360 - 180)
+end
+
 ---@param x1 number
 ---@param y1 number
 ---@param x2 number

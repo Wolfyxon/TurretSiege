@@ -127,7 +127,7 @@ function Turret:processAi()
     self.targetRotation = self:rotationTo(target.x, target.y)
     self.bulletTargetRotation = self.targetRotation
 
-    local angleDiff = math.abs((self.rotation - self.targetRotation + 180) % 360 - 180)
+    local angleDiff = utils.math.rotationDiff(self.rotation, self.targetRotation)
 
     if angleDiff < 10 then
         self:fire()
