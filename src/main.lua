@@ -111,6 +111,9 @@ function main.loadSceneByName(sceneName)
     print("-> Loading scene: ", sceneName)    
     local moduleFunc, err = love.filesystem.load(path)
     
+    assert(not err, "Unable to load scene: " .. tostring(err))
+    assert(type(moduleFunc) == "function", "love.filesystem.load should return a function")
+
     main.loadScene(moduleFunc())
 end
 
