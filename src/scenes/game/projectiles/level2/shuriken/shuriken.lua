@@ -8,7 +8,7 @@ ShurikenProjectile.rotationSpeed = 800
 ShurikenProjectile.level = 2
 ShurikenProjectile.commonity = 10.2
 ShurikenProjectile.speed = 0.5
-ShurikenProjectile.damage = 8
+ShurikenProjectile.damage = 4
 ShurikenProjectile.moveTarget = "forward"
 
 function ShurikenProjectile:ready()
