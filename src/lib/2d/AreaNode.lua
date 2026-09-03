@@ -71,7 +71,7 @@ function AreaNode:setPositioning(mode)
 end
 
 -- TODO: Rotation support
----@return {string: number[]}
+---@return {topLeft: number[], topRight: number[], bottomLeft: number[], bottomRight: number[]}
 function AreaNode:getGlobalCorners()
     local sx, sy = self:getGlobalScale()
 

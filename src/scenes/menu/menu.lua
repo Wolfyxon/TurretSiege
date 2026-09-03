@@ -19,13 +19,13 @@ function MenuScene:load()
     
     local targetRot = 20
 
-    local gearTimer = self:createTimer()
-                        :setLoop(true)
-                        :setWait((60 / 167) * 2)
-                        :onEnd(function()
-                            targetRot = targetRot + 20
-                        end)
-                        :start()
+    self:createTimer()
+        :setLoop(true)
+        :setWait((60 / 167) * 2)
+        :onEnd(function()
+            targetRot = targetRot + 20
+        end)
+        :start()
     
     for i, gear in ipairs(main.addGears(self)) do
         local dir = (-1) ^ i
@@ -75,20 +75,23 @@ function MenuScene:load()
     btnPlay:setFontSize(fontSize)
     btnPlay:setText("Play")
     buttonContainer:addChild(btnPlay)
+
     btnPlay:onEvent("pressed", function ()
         main.loadSceneByName("game")
     end)
+
 
     local btnQuit = Button:new()
     btnQuit.width = w
     btnQuit.height = h
     btnQuit:setFontSize(fontSize)
     btnQuit:setText("Quit")
+
     btnQuit:onEvent("pressed", function ()
         love.event.quit()
     end)
-    buttonContainer:addChild(btnQuit)
 
+    buttonContainer:addChild(btnQuit)
     buttonContainer:arrangeChildren()
 
     self:addChild(titleContainer)

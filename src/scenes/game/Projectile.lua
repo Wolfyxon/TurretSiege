@@ -83,14 +83,17 @@ function Projectile:update(delta)
 
     if self.moveTarget == "forward" then
         self:moveRotated(self.speed * delta, 0, self.rotation - self.rotationOffset)
-    end
-
-    if self.moveTarget == "turret" then
+    else if self.moveTarget == "turret" then
         self:moveToward(0.5, 0.5, self.speed * delta)
-    end
+    end end
     
+    self:checkCollision()
+end
 
-    for i, v in ipairs(self:getScene():getDescendantsOfClass("Entity")) do
+function Projectile:checkCollision()
+    local entities = self:getScene():getDescendantsOfClass("Entity")
+
+    for i, v in ipairs(entities) do
         if self.owner ~= v and self:isTouching(v) and v:getClass() ~= self:getClass() then
            local ignored = false
            
@@ -100,7 +103,7 @@ function Projectile:update(delta)
                     break
                 end
            end
-
+           
            if not ignored then
                 if v:isA("Projectile") then
                     if self.damageProjectiles then
@@ -110,10 +113,8 @@ function Projectile:update(delta)
                     self:hit(v)
                 end
            end
-
         end
     end
-
 end
 
 ---@param callback function
