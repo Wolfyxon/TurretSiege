@@ -9,6 +9,7 @@ SmallRocketProjectile.speed = 0.45
 SmallRocketProjectile.damage = 10
 SmallRocketProjectile.rotationOffset = 90
 SmallRocketProjectile.moveTarget = "forward"
+SmallRocketProjectile.hitSound = love.audio.newSource("assets/sfx/smallBoom.ogg", "static")
 
 function SmallRocketProjectile:ready()
     self:setScaleAll(0.2)
