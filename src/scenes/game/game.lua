@@ -194,9 +194,7 @@ end
 function GameScene:levelUp()
     self.level = self.level + 1
     
-    if self.level % 2 == 0 then
-        self.projectileSpawnDelay = self.projectileSpawnDelay - 0.025
-    end
+    self.projectileSpawnDelay = math.max(self.projectileSpawnDelay - 0.05, 0.1)
     
     self.gui.levelLabel:setText("Level " .. tostring(self.level))
     self.gui.levelLabel.color = Color.GREEN:clone()
