@@ -1,4 +1,4 @@
-local PowerUp = require("scenes.game.projectiles.powerUps.PowerUp")
+local PowerUp = require("scenes.game.PowerUp")
 local Color = require("lib.Color")
 
 ---@class HealthPowerUp: PowerUp
