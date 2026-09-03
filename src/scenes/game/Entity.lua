@@ -5,13 +5,15 @@ local Sprite = require("lib.2d.Sprite")
 local Entity = class("Entity",Sprite)
 Entity:_registerEvent("died", "damaged")
 
-Entity.maxHp = 100           ---@type number
-Entity.hp = Entity.maxHp     ---@type number
-Entity.invincible = false    ---@type boolean
-Entity.dead = false          ---@type boolean
-Entity.damageSound = nil     ---@type Source
-Entity.damageSoundVolume = 1 ---@type number
-Entity.deathSound = nil      ---@type Source
+Entity.maxHp = 100                ---@type number
+Entity.hp = Entity.maxHp          ---@type number
+Entity.invincible = false         ---@type boolean
+Entity.dead = false               ---@type boolean
+Entity.damageSound = nil          ---@type Source
+Entity.damageSoundVolume = 1      ---@type number
+Entity.damageSoundPitchMin = 0.98 ---@type number
+Entity.damageSoundPitchMax = 1.02 ---@type number
+Entity.deathSound = nil           ---@type Source
 
 ---@generic Self: Entity
 ---@param maxHp number
@@ -19,6 +21,16 @@ function Entity:initHp(maxHp)
     self.maxHp = maxHp
     self.hp = maxHp
 
+    return self
+end
+
+---@generic Self: Entity
+---@param min number
+---@param max number
+function Entity:setDamageSoundPitchRange(min, max)
+    self.damageSoundPitchMin = min
+    self.damageSoundPitchMax = max
+    
     return self
 end
 
@@ -33,7 +45,7 @@ function Entity:dealDamage(amount)
     
     if self.damageSound then
         self.damageSound:setVolume(self.damageSoundVolume)
-        self.damageSound:setPitch(math.randomf(0.98, 1.02))
+        self.damageSound:setPitch(math.randomf(self.damageSoundPitchMin, self.damageSoundPitchMax))
 
         self.damageSound:stop()
         self.damageSound:play()
