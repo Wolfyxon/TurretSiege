@@ -27,7 +27,8 @@ GameScene.projectileSpawnDelay = 1    ---@type number
 GameScene.lastProjectileSpawnTime = 2 ---@type number
 GameScene.projectilesDestroyed = 0    ---@type integer
 GameScene.level = 1                   ---@type integer
-GameScene.startTime = 0
+GameScene.startTime = 0               ---@type number
+GameScene.seenPowerupTutorial = false ---@type boolean
 
 ---@param projectile Projectile
 function GameScene:registerProjectile(projectile)

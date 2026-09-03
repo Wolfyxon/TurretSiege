@@ -2,6 +2,8 @@ local utils = require("lib.utils")
 local Projectile = require("scenes.game.Projectile")
 local Sprite = require("lib.2d.Sprite")
 local Tween = require("lib.Tween")
+local Label = require("lib.2d.gui.Label")
+local Color = require("lib.Color")
 
 ---@class PowerUp: Projectile
 local PowerUp = class("PowerUp", Projectile)
@@ -15,6 +17,7 @@ PowerUp.armorDistance = 0.15       ---@type number
 PowerUp.targetArmorDistance = 0.15 ---@type number
 PowerUp.iconImage = "none"         ---@type string
 PowerUp.originalColor = nil        ---@type Color
+PowerUp.tutorialLabel = nil        ---@type Label
 
 PowerUp.collectCallback = function() end      ---@type function
 
@@ -32,26 +35,61 @@ function PowerUp:init()
     self:loadTextureFromFile("scenes/game/projectiles/powerUps/img/powerUp.png")
 end
 
+function PowerUp:armorChanged()
+    if not self:isSafe() then
+        return
+    end
+    
+    if self.tutorialLabel then
+        return
+    end
+
+    if self:getScene().seenPowerupTutorial then
+        return
+    end
+
+    self.tutorialLabel = Label:new()
+    self.tutorialLabel:setFontSize(128)
+    self.tutorialLabel:setText("Don't shoot!")
+    self.tutorialLabel.rotation = -self.rotation
+    self.tutorialLabel.color = Color:new(1, 1, 1, 0)
+    self.tutorialLabel:moveRotated(0, -0.4)
+
+    self:addChild(self.tutorialLabel)
+end
+
 function PowerUp:ready()
     local pwu = self
 
     self:onEvent("damaged", function ()
         pwu.targetArmorDistance = pwu.targetArmorDistance + 0.05
 
+        if self.tutorialLabel and pwu.hp < pwu.maxHp * 0.3 then
+            self.tutorialLabel:setText("I'm here to help")
+        end
+
         if pwu:isSafe() and #self.armor ~= 0 then
             pwu.damage = 0
             
             Tween.fadeNode(pwu.armor[1], 0, 0.5)
             Tween.fadeNode(pwu.armor[2], 0, 0.5)
+
+            self:armorChanged()
         end
     end)
 
     self:onEvent("hit", function ()
         if not pwu:isSafe() then return end
         
+        local game = pwu:getScene() ---@type GameScene
+
+        if pwu.tutorialLabel then
+            game.seenPowerupTutorial = true
+        end
+
         pwu:emitEvent("collected")
         pwu:collectCallback()
-        pwu:getScene().turret:powerUpReceived(pwu)
+        game.turret:powerUpReceived(pwu)
     end)
 
     self.icon = self:addChild(
@@ -64,6 +102,8 @@ function PowerUp:ready()
     if math.random(0, 5) == 0 then
         self.hp = self.hp - self.armorHp
         self.damage = 0
+
+        self:armorChanged()
     else
         self.armor = {
             self:createArmor(),
@@ -93,6 +133,10 @@ function PowerUp:update(delta)
     local extraDistance = math.abs(math.sin(self:getTime()) * 0.05)
     self.armorDistance = math.lerp(self.armorDistance, self.targetArmorDistance + extraDistance, 2 * delta)
     self:setArmorDistance(self.armorDistance)
+
+    if self.tutorialLabel then
+        self.tutorialLabel.color.a = 0.5 + math.sin(self:getTime() * 5) * 0.5
+    end
 end
 
 ---@param callback function
