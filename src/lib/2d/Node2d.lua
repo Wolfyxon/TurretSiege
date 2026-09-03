@@ -95,6 +95,11 @@ function Node2D:setPosition(x, y)
     return self
 end
 
+function Node2D:lerpPosition(x, y, speed)
+    self.x = math.lerp(self.x, x, speed)
+    self.y = math.lerp(self.x, x, speed)
+end
+
 ---@return number
 function Node2D:getGlobalRotation()
     local rot = self.rotation
