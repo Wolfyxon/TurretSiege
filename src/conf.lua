@@ -63,6 +63,7 @@ local function printHelp()
     print(" --version:              Show game version")
     print(" --test:                 Run unit tests and exit")
     print(" --scene=<scene name>:   Start game in a specific scene")
+    print(" --fulscreen:            Run in fullscreen")
     print(" --ai:                   Make the game play itself")
     
     print("")

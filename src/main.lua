@@ -171,14 +171,14 @@ function love.load()
     love.window.setFullscreen(true)
 
     local sw, sh = love.graphics.getDimensions()
-    love.window.setFullscreen(false)
-    
+        
     love.window.setMode(
         math.min(gameData.width * gameData.windowSizeMultiplier, sw),
         math.min(gameData.height * gameData.windowSizeMultiplier, sh),
         
         {
-            resizable = true
+            resizable = true,
+            fullscreen = utils.config.hasFlag("fullscreen")
         }
     )
     
