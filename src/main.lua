@@ -151,7 +151,7 @@ end
 function love.load()
     print("==================================================================")
     print("TurretSiege by Wolfyxon")
-    print("Licensed under GPL-2.0")
+    print("Licensed under GPL-3.0")
     print("Made with Love2D")
     print("https://github.com/Wolfyxon/TurretSiege/")
     print(" ")
