@@ -33,11 +33,11 @@ function RunUnitTests()
         local timeStr = tostring(finish - start) .. " CPU s"
 
         if suc then
-            print(name, "Ok", timeStr)
+            print(name, "Ok:", timeStr)
         else
-            print(name, "FAIL: " .. res, timeStr)
+            print(name, "FAIL:", timeStr)
+            print(res)
         end
-
     end
 
     print("-------------------------------")
