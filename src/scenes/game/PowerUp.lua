@@ -71,13 +71,17 @@ function PowerUp:ready()
             self.tutorialLabel:setText("I'm here to help")
         end
 
-        if pwu:isSafe() and #self.armor ~= 0 then
-            pwu.damage = 0
-            
-            Tween.fadeNode(pwu.armor[1], 0, 0.5)
-            Tween.fadeNode(pwu.armor[2], 0, 0.5)
+        if pwu:isSafe() then
+             self.icon:move(math.randomf(-0.05, 0.05), math.randomf(-0.05, 0.05))
 
-            self:armorChanged()
+            if #self.armor ~= 0 then
+                pwu.damage = 0
+                
+                Tween.fadeNode(pwu.armor[1], 0, 0.5)
+                Tween.fadeNode(pwu.armor[2], 0, 0.5)
+
+                self:armorChanged()
+            end
         end
     end)
 
@@ -140,6 +144,8 @@ function PowerUp:update(delta)
     if self.tutorialLabel then
         self.tutorialLabel.color.a = 0.5 + math.sin(self:getTime() * 5) * 0.5
     end
+
+    self.icon:lerpPosition(0, 0, delta * 10)
 end
 
 ---@param callback function
