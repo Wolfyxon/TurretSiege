@@ -20,6 +20,7 @@ Projectile.alreadyHit = false        ---@type boolean
 Projectile.lifeTime   = 8            ---@type number
 Projectile.spawnedAt  = 0            ---@type number
 Projectile.damageProjectiles = false ---@type boolean
+Projectile.hitSound = nil            ---@type Source
 
 Projectile.readyCallback = function() end  ---@type function
 Projectile.damageCallback = function() end ---@type function
@@ -64,6 +65,11 @@ function Projectile:hit(entity)
     if not self.parent then return end
 
     entity:dealDamage(self.damage)
+
+    if self.hitSound then
+        self.hitSound:play()
+    end
+
     self:emitEvent("hit", entity)
     self:orphanize()
 end
@@ -103,7 +109,7 @@ function Projectile:checkCollision()
                     break
                 end
            end
-           
+
            if not ignored then
                 if v:isA("Projectile") then
                     if self.damageProjectiles then
