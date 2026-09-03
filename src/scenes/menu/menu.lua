@@ -73,7 +73,7 @@ function MenuScene:load()
     btnPlay.width = w
     btnPlay.height = h
     btnPlay:setFontSize(fontSize)
-    btnPlay:setText("Play")
+    btnPlay:setText("Play") -- this exact line causes a crash on on web with an error message saying just the text.
     buttonContainer:addChild(btnPlay)
 
     btnPlay:onEvent("pressed", function ()
