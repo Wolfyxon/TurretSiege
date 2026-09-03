@@ -47,7 +47,7 @@ function Sprite:draw()
     love.graphics.setShader()
 
     if self.enableShadow then
-        self:drawShdow()
+        self:drawShdow(tW, tH)
     end
 
     local ox = 0
@@ -62,7 +62,9 @@ function Sprite:draw()
     love.graphics.draw(self.texture, ox, oy)
 end
 
-function Sprite:drawShdow()
+---@param tW number
+---@param tH number
+function Sprite:drawShdow(tW, tH)
     local r, g, b, a = love.graphics.getColor()
 
     local ox, oy = math.rotateDirection(self.shadowOffset, self.shadowOffset, -self:getGlobalRotation())
@@ -81,10 +83,12 @@ function Sprite:drawShdow()
     love.graphics.rotate(math.rad(self.textureRotation))
 end
 
----@return number?, number?
+---@return number, number
 function Sprite:getTextureSize()
-    if not self.texture then return end
-    
+    if not self.texture then 
+        return 0, 0
+    end
+
     return self.texture:getDimensions()
 end
 
