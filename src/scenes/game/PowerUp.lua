@@ -72,7 +72,7 @@ function PowerUp:ready()
         end
 
         if pwu:isSafe() then
-             self.icon:move(math.randomf(-0.05, 0.05), math.randomf(-0.05, 0.05))
+             self.icon:move(math.randomf(-0.025, 0.025), math.randomf(-0.025, 0.025))
 
             if #self.armor ~= 0 then
                 pwu.damage = 0
@@ -146,7 +146,7 @@ function PowerUp:update(delta)
         self.tutorialLabel.color.a = 0.5 + math.sin(self:getTime() * 5) * 0.5
     end
 
-    self.icon:lerpPosition(0, 0, delta * 10)
+    self.icon:lerpPosition(0, 0, delta * 15)
 end
 
 ---@param callback function
