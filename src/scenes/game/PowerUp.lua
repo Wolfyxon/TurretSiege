@@ -96,6 +96,7 @@ function PowerUp:ready()
 
         pwu:emitEvent("collected")
         pwu:collectCallback()
+        love.audio.newSource("scenes/game/projectiles/powerUps/powerUp.ogg", "static"):play()
         game.turret:powerUpReceived(pwu)
     end)
 
