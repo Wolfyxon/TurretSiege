@@ -8,7 +8,6 @@ local utils = require("lib.utils")
 local gameData = require("gameData")
 
 require("lib.utils.oop")
-require("tests")
 
 function warn(...)
     print("[Warning] " .. table.concat({...}, " "))
@@ -83,6 +82,8 @@ local function handleArgs()
     end
 
     if flags.test then
+        require("tests") -- must be improrted late to ensure all modules are properly loaded
+
         RunUnitTests()
         os.exit()
     end

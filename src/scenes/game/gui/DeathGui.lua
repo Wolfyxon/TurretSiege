@@ -9,9 +9,7 @@ local DeathGui = class("DeathGui", GuiNode)
 
 DeathGui.statList = nil ---@type ListContainer
 
-local targetColor = Color:new(0, 0, 0, 0.5)
-
-local randomTexts = {
+DeathGui.randomTexts = {
     "You are dead",
     "You can do better!",
     "You can do this!",
@@ -42,8 +40,10 @@ local randomTexts = {
     "Try again!",
     "Game over",
     "Come on!",
-    "..."
+    "...",
 }
+
+local targetColor = Color:new(0, 0, 0, 0.5)
 
 function DeathGui:ready()
     self.backgroundColor = Color:new(0, 0, 0, 0)
@@ -56,7 +56,7 @@ function DeathGui:ready()
     local lbl = Label:new()
     lbl.x = 0.5
     lbl.y = 0.3
-    lbl:setText(table.random(randomTexts))
+    lbl:setText(table.random(self.randomTexts))
     lbl:setFontSize(64)
     self:addChild(lbl)
 
