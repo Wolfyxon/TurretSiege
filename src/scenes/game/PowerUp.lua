@@ -39,6 +39,9 @@ function PowerUp:armorChanged()
     if not self:isSafe() then
         return
     end
+
+    self.damageSound = love.audio.newSource("scenes/game/projectiles/powerUps/powerUpHit.ogg", "static")
+    self.deathSound = love.audio.newSource("scenes/game/projectiles/powerUps/powerUpBreak.ogg", "static")
     
     if self.tutorialLabel then
         return
