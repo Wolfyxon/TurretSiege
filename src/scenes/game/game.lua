@@ -206,7 +206,8 @@ function GameScene:gameOver()
     for i, v in ipairs(self.arena:getChildrenOfClass("Projectile")) do
         v:destroy()
     end
-
+    
+    main.setPause(false)
     self.gui.healthDisplay.visible = false
     self.deathGui:show()
 
